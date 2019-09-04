@@ -426,7 +426,7 @@ node -v可以看到版本就安装成功
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.5k
+                        1.6k
                     </div>
                     
 
@@ -588,8 +588,11 @@ hexo d -g #生成并上传</code></pre><h2 id="将hexo博客部署到github上">
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/14.png" alt></p>
 <p>紧接着在博客源文件的_config.yml文件下修改如下字段:</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/15.png" alt></p>
-<p>!!!格式要像我这样一样啊，或者填<a href="https://github.com/373005226/373005226.github.io.git也行" target="_blank" rel="noopener">https://github.com/373005226/373005226.github.io.git也行</a></p>
-<p>然后就可以上传到github了</p>
+<p>!!!格式要像我这样一样啊，或者填<a href="https://github.com/373005226/373005226.github.io.git" target="_blank" rel="noopener">https://github.com/373005226/373005226.github.io.git</a></p>
+<p>然后再命令行输入这三行代码</p>
+<pre><code>hexo clean
+hexo g
+hexo d</code></pre><p>根据上述步骤就可以上传到github了</p>
 <h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><p>github可以绑定自己买的域名</p>
 <p>域名可以去各大服务商买，这里我用的是阿里云</p>
 <p>购买完域名后，进入域名解析</p>
@@ -597,6 +600,7 @@ hexo d -g #生成并上传</code></pre><h2 id="将hexo博客部署到github上">
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/17.png" alt></p>
 <p>这里的记录值好像是不一定的，记录值就是你打开cmd命令行，ping 你的账号.github.io</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/18.png" alt></p>
+<p>先使用<code>hexo d</code>上传好代码到github上之后，然后在github上新建一个CNAME(没有后缀)文件，里面填写你购买的域名(加不加www都可以)</p>
 <p>然后就可以绑定自己的域名了</p>
 <h2 id="写markdown注意事项"><a href="#写markdown注意事项" class="headerlink" title="写markdown注意事项"></a>写markdown注意事项</h2><p>写markdown有时候本地编辑没问题，但是上传到服务器的图片有时候是失效的，所以最好图片音乐什么的媒体资源都放到腾讯云、七牛云什么的上面，他们都有对象存储可以把媒体文件上传到他们的服务器，然后再通过域名来访问的</p>
 
@@ -939,7 +943,7 @@ node -v可以看到版本就安装成功
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">1.5k</span>
+                <span class="white-color">1.6k</span>
             
 
             
