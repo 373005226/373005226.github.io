@@ -33,7 +33,8 @@ node -v可以看到版本就安装成功
     <style type="text/css">
         
     </style>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -194,7 +195,7 @@ node -v可以看到版本就安装成功
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
                 <i class="fa fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -275,7 +276,7 @@ node -v可以看到版本就安装成功
     }
 </style>
 
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -419,21 +420,21 @@ node -v可以看到版本就安装成功
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-04
+                    2019-09-05
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.6k
+                        1.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        7 分
                     </div>
                     
                 
@@ -449,7 +450,7 @@ node -v可以看到版本就安装成功
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="使用hexo和github搭建个人博客"><a href="#使用hexo和github搭建个人博客" class="headerlink" title="使用hexo和github搭建个人博客"></a>使用hexo和github搭建个人博客</h1><h3 id="搭建环境准备"><a href="#搭建环境准备" class="headerlink" title="搭建环境准备"></a>搭建环境准备</h3><ol>
+                <h1 id="使用hexo和github搭建个人博客"><a href="#使用hexo和github搭建个人博客" class="headerlink" title="使用hexo和github搭建个人博客"></a>使用hexo和github搭建个人博客</h1><h2 id="搭建环境准备"><a href="#搭建环境准备" class="headerlink" title="搭建环境准备"></a>搭建环境准备</h2><ol>
 <li><p>安装node</p>
 <p><a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/download/</a></p>
 <p>(电脑是多少位的就下载多少位)</p>
@@ -562,10 +563,25 @@ layout: &quot;about&quot;
     <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"ttps://me.csdn.net/jlh912008548"</span><span class="token punctuation">,</span>
     <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"前去学习"</span>
 <span class="token punctuation">}</span><span class="token punctuation">]</span></code></pre>
-<p>文章还有一个description字段，是显示在主页的摘要，如果不填就是默认取内容的前面的几个字</p>
-<p>以上博客的全部页面都有了，其他的配置可以看这个主题的文档</p>
-<p><a href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/#toc-heading-1" target="_blank" rel="noopener">主题文档</a></p>
-<h2 id="hexo的常见命令"><a href="#hexo的常见命令" class="headerlink" title="hexo的常见命令"></a>hexo的常见命令</h2><p>常见命令</p>
+<p><strong>文章还有一个description字段，是显示在主页的摘要，如果不填就是默认取内容的前70个字</strong></p>
+<h2 id="Hexo-Theme-Matery主题的配置"><a href="#Hexo-Theme-Matery主题的配置" class="headerlink" title="Hexo-Theme-Matery主题的配置"></a>Hexo-Theme-Matery主题的配置</h2><p>Hexo-Theme-Matery主题的其他配置可以看他们的<a href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/#toc-heading-1" target="_blank" rel="noopener">主题文档</a></p>
+<p>如果要对Hexo-Theme-Matery主题进行个性化的修改的话，可以参考这个<a href="https://www.jianshu.com/p/2e6ae2123d57" target="_blank" rel="noopener">大神的文章</a></p>
+<p>这里对上面主题修改的文章进行补充，如果你不喜欢文章里面的每日一言，想换一个比如<a href="https://api.ooopn.com/ciba/api.php?type=json" target="_blank" rel="noopener">金山每日一言</a>那些的话，就直接在主题文件里面的hexo-theme-matery-1.0.1/layout/index.exj文件添加个ajax代码<br>例如:</p>
+<pre><code>&lt;script&gt;
+(function () {
+        $.ajax({
+            url: &quot;https://api.ooopn.com/ciba/api.php?type=json&quot;,//向本地的json文件发送请求
+            type: &quot;GET&quot;,
+            success: function (data) {
+                ciba=data.ciba  #ciba就是你插入片段的id
+                document.getElementById(&quot;ciba&quot;).innerHTML=ciba
+            },
+            error: function (error) {
+                document.getElementById(&quot;ciba&quot;).innerHTML=error
+            }
+        })
+    })();
+&lt;/script&gt;</code></pre><h2 id="hexo的常见命令"><a href="#hexo的常见命令" class="headerlink" title="hexo的常见命令"></a>hexo的常见命令</h2><p>常见命令</p>
 <pre><code>hexo new &quot;postName&quot; #新建文章
 hexo new page &quot;pageName&quot; #新建页面
 hexo generate #生成静态页面至public目录
@@ -603,7 +619,7 @@ hexo d</code></pre><p>根据上述步骤就可以上传到github了</p>
 <p>先使用<code>hexo d</code>上传好代码到github上之后，然后在github上新建一个CNAME(没有后缀)文件，里面填写你购买的域名(加不加www都可以)<br><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/19.png" alt></p>
 <p>然后点击settings找到Github Pages填写自己的域名</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/21.png" alt></p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/20.png" alt></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/22.png" alt></p>
 <p>然后就可以绑定自己的域名了</p>
 <h2 id="写markdown注意事项"><a href="#写markdown注意事项" class="headerlink" title="写markdown注意事项"></a>写markdown注意事项</h2><p>写markdown有时候本地编辑没问题，但是上传到服务器的图片有时候是失效的，所以最好图片音乐什么的媒体资源都放到腾讯云、七牛云什么的上面，他们都有对象存储可以把媒体文件上传到他们的服务器，然后再通过域名来访问的</p>
 
@@ -746,7 +762,7 @@ hexo d</code></pre><p>根据上述步骤就可以上传到github了</p>
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/04/hello-world/" class="b-link-green">使用hexo搭建个人博客并部署域名</a>
+                    <a href="/2019/09/05/hello-world/" class="b-link-green">使用hexo搭建个人博客并部署域名</a>
                 </p>
             </div>
         </div>
@@ -772,7 +788,7 @@ hexo d</code></pre><p>根据上述步骤就可以上传到github了</p>
                 <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2019/09/04/hello-world/">
+                <a href="/2019/09/05/hello-world/">
                     <div class="card-image">
                         
                         
@@ -792,7 +808,7 @@ node -v可以看到版本就安装成功
 安</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-04
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
                             </span>
                         <span class="publish-author">
                             
@@ -829,7 +845,7 @@ node -v可以看到版本就安装成功
                 本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/04/hello-world/">
+                <a href="/2019/09/05/hello-world/">
                     <div class="card-image">
                         
                         
@@ -849,7 +865,7 @@ node -v可以看到版本就安装成功
 安</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-04
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
                             </span>
                         <span class="publish-author">
                             
@@ -946,7 +962,7 @@ node -v可以看到版本就安装成功
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">1.6k</span>
+                <span class="white-color">1.8k</span>
             
 
             
