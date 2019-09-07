@@ -427,7 +427,7 @@ node -v可以看到版本就安装成功
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.8k
+                        1.9k
                     </div>
                     
 
@@ -566,7 +566,8 @@ layout: &quot;about&quot;
 <p><strong>文章还有一个description字段，是显示在主页的摘要，如果不填就是默认取内容的前70个字</strong></p>
 <h2 id="Hexo-Theme-Matery主题的配置"><a href="#Hexo-Theme-Matery主题的配置" class="headerlink" title="Hexo-Theme-Matery主题的配置"></a>Hexo-Theme-Matery主题的配置</h2><p>Hexo-Theme-Matery主题的其他配置可以看他们的<a href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/#toc-heading-1" target="_blank" rel="noopener">主题文档</a></p>
 <p>如果要对Hexo-Theme-Matery主题进行个性化的修改的话，可以参考这个<a href="https://www.jianshu.com/p/2e6ae2123d57" target="_blank" rel="noopener">大神的文章</a></p>
-<p>这里对上面主题修改的文章进行补充，如果你不喜欢文章里面的每日一言，想换一个比如<a href="https://api.ooopn.com/ciba/api.php?type=json" target="_blank" rel="noopener">金山每日一言</a>那些的话，就直接在主题文件里面的hexo-theme-matery-1.0.1/layout/index.exj文件添加个ajax代码<br>例如:</p>
+<p>这里对上面主题修改的文章有说不明白的地方进行补充说明</p>
+<h3 id="自定义每日一言"><a href="#自定义每日一言" class="headerlink" title="自定义每日一言"></a>自定义每日一言</h3><p>如果你不喜欢文章里面的每日一言，想换一个比如<a href="https://api.ooopn.com/ciba/api.php?type=json" target="_blank" rel="noopener">金山每日一言</a>那些的话，就直接在主题文件里面的hexo-theme-matery-1.0.1/layout/index.exj文件添加个ajax代码<br>例如:</p>
 <pre><code>&lt;script&gt;
 (function () {
         $.ajax({
@@ -581,7 +582,15 @@ layout: &quot;about&quot;
             }
         })
     })();
-&lt;/script&gt;</code></pre><h2 id="hexo的常见命令"><a href="#hexo的常见命令" class="headerlink" title="hexo的常见命令"></a>hexo的常见命令</h2><p>常见命令</p>
+&lt;/script&gt;</code></pre><h3 id="评论的gittalk配置"><a href="#评论的gittalk配置" class="headerlink" title="评论的gittalk配置"></a>评论的gittalk配置</h3><p>首先要申请github授权，<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">申请地址</a></p>
+<p><img src="C:%5CUsers%5CLY%5CPictures%5C%E5%8D%9A%E5%AE%A2%E7%85%A7%E7%89%87%5C1.png" alt="1567826356473"></p>
+<ul>
+<li>Application name：项目名，随便填</li>
+<li>Homepage URL：博客地址，也就是要访问的地址，我的是<a href="https://ly-blog.top" target="_blank" rel="noopener">https://ly-blog.top</a></li>
+<li>Application description：应用描述，这个随便填</li>
+<li>Authorization callback URL:这个跟上面的Homepage URL一样就好了</li>
+</ul>
+<h2 id="hexo的常见命令"><a href="#hexo的常见命令" class="headerlink" title="hexo的常见命令"></a>hexo的常见命令</h2><p>常见命令</p>
 <pre><code>hexo new &quot;postName&quot; #新建文章
 hexo new page &quot;pageName&quot; #新建页面
 hexo generate #生成静态页面至public目录
@@ -768,6 +777,28 @@ hexo d</code></pre><p>根据上述步骤就可以上传到github了</p>
         </div>
     </div>
 
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a72baccd769af9856260',
+        clientSecret: 'b62546f1929634449af7fd1c5df3abaf69a498ad',
+        repo: 'https://ly-blog.top',
+        owner: '373005226',
+        admin: 373005226,
+        id: '2019-09-05T12-11-58',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
     
 
     
@@ -962,7 +993,7 @@ node -v可以看到版本就安装成功
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">1.8k</span>
+                <span class="white-color">1.9k</span>
             
 
             
