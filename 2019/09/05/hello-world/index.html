@@ -427,14 +427,14 @@ node -v可以看到版本就安装成功
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.9k
+                        2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        7 分
+                        8 分
                     </div>
                     
                 
@@ -582,14 +582,28 @@ layout: &quot;about&quot;
             }
         })
     })();
-&lt;/script&gt;</code></pre><h3 id="评论的gittalk配置"><a href="#评论的gittalk配置" class="headerlink" title="评论的gittalk配置"></a>评论的gittalk配置</h3><p>首先要申请github授权，<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">申请地址</a></p>
-<p><img src="C:%5CUsers%5CLY%5CPictures%5C%E5%8D%9A%E5%AE%A2%E7%85%A7%E7%89%87%5C1.png" alt="1567826356473"></p>
+&lt;/script&gt;</code></pre><h3 id="评论的gittalk配置"><a href="#评论的gittalk配置" class="headerlink" title="评论的gittalk配置"></a>评论的gittalk配置</h3><p>gittalk主题配置说明没有说清楚，我这里补充一下，因为主题配置说推荐gittalk，所以我这里也拿gittalk来说明</p>
+<p>首先要申请github授权，<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">申请地址</a></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1.png" alt></p>
 <ul>
 <li>Application name：项目名，随便填</li>
 <li>Homepage URL：博客地址，也就是要访问的地址，我的是<a href="https://ly-blog.top" target="_blank" rel="noopener">https://ly-blog.top</a></li>
 <li>Application description：应用描述，这个随便填</li>
 <li>Authorization callback URL:这个跟上面的Homepage URL一样就好了</li>
 </ul>
+<p>输入完后会给你一个Client ID和Client Secret</p>
+<p>打开主题配置文件的_config.yml，找到gittalk的这一行</p>
+<pre><code>gitalk:
+  enable: true        #默认是false，改为true才可以开启评论
+  owner:             #这里是你的github用户名&#39;
+  repo:             #这里是你的博客地址
+  oauth:
+    clientId:         #刚刚申请的id
+    clientSecret:     #刚刚申请的密码
+  admin:             #一般都是你的github用户名了</code></pre><p>然后</p>
+<pre><code>hexo clean
+hexo g
+hexo d</code></pre><p>上传到你的博客就可以看到评论地址搞定了</p>
 <h2 id="hexo的常见命令"><a href="#hexo的常见命令" class="headerlink" title="hexo的常见命令"></a>hexo的常见命令</h2><p>常见命令</p>
 <pre><code>hexo new &quot;postName&quot; #新建文章
 hexo new page &quot;pageName&quot; #新建页面
@@ -993,7 +1007,7 @@ node -v可以看到版本就安装成功
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">1.9k</span>
+                <span class="white-color">2k</span>
             
 
             
