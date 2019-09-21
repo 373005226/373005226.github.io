@@ -39,9 +39,9 @@
       <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="gitbook" scheme="http://yoursite.com/tags/gitbook/"/>
-    
       <category term="github" scheme="http://yoursite.com/tags/github/"/>
+    
+      <category term="gitbook" scheme="http://yoursite.com/tags/gitbook/"/>
     
   </entry>
   
@@ -68,9 +68,9 @@
       <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="github" scheme="http://yoursite.com/tags/github/"/>
-    
       <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="github" scheme="http://yoursite.com/tags/github/"/>
     
   </entry>
   
