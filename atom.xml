@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-07T05:33:12.869Z</updated>
+  <updated>2019-09-21T07:58:37.986Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用gitbook搭建github上的书城</title>
+    <link href="http://yoursite.com/2019/09/21/gitbook/"/>
+    <id>http://yoursite.com/2019/09/21/gitbook/</id>
+    <published>2019-09-21T07:22:43.543Z</published>
+    <updated>2019-09-21T07:58:37.986Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;使用gitbook搭建github上的书城&quot;&gt;&lt;a href=&quot;#使用gitbook搭建github上的书城&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="gitbook" scheme="http://yoursite.com/tags/gitbook/"/>
+    
+      <category term="github" scheme="http://yoursite.com/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用hexo搭建个人博客并部署域名</title>
-    <link href="http://yoursite.com/2019/09/05/hello-world/"/>
-    <id>http://yoursite.com/2019/09/05/hello-world/</id>
+    <link href="http://yoursite.com/2019/09/05/hexo/"/>
+    <id>http://yoursite.com/2019/09/05/hexo/</id>
     <published>2019-09-05T04:11:58.982Z</published>
-    <updated>2019-09-07T05:33:12.869Z</updated>
+    <updated>2019-09-21T07:25:38.449Z</updated>
     
     <summary type="html">
     
@@ -36,12 +65,12 @@
     </summary>
     
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
     
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
       <category term="github" scheme="http://yoursite.com/tags/github/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
