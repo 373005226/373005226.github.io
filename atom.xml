@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-21T07:58:37.986Z</updated>
+  <updated>2019-09-21T14:30:53.958Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gitlab部署与使用</title>
+    <link href="http://yoursite.com/2019/09/21/gitlab/"/>
+    <id>http://yoursite.com/2019/09/21/gitlab/</id>
+    <published>2019-09-21T13:43:01.472Z</published>
+    <updated>2019-09-21T14:30:53.958Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;自动化运维三剑客–gitlab的安装&quot;&gt;&lt;a href=&quot;#自动化运维三剑客–gitlab的安装&quot; class=&quot;headerlink&quot; title=&quot;自动化运维三剑客–gitlab的安装&quot;&gt;&lt;/a&gt;自动化运维三剑客–gitlab的安装&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="自动化运维" scheme="http://yoursite.com/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="gitlab" scheme="http://yoursite.com/tags/gitlab/"/>
+    
+  </entry>
   
   <entry>
     <title>使用gitbook搭建github上的书城</title>
