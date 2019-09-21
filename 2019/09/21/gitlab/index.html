@@ -419,14 +419,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        1.6k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        6 分
                     </div>
                     
                 
@@ -483,22 +483,69 @@ firewall-cmd --reload   # 配置立即生效</code></pre><p>然后执行命令</
 <pre><code>gitlab-ctl restart</code></pre><p>这样就可以通过你的服务器ip:你的端口就可以访问gitlab了，这个是成功画面</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE7.png" alt></p>
 <p>这个是要你重新配置你的密码，默认的账号是root</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE9.png" alt></p>
-<p><strong>注意：如果出现了502错误，不要慌</strong></p>
+<h2 id="502错误解决和优化"><a href="#502错误解决和优化" class="headerlink" title="502错误解决和优化"></a>502错误解决和优化</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE9.png" alt></p>
+<p><strong>注意，第一时间是看错误日志，而不是立马去谷歌百度，因为每一个人的错误都是不同的</strong></p>
 <p>第一时间要查看错误日志，而不是查百度，因为每个人的错误都不同</p>
-<pre><code>cat /var/log/gitlab/unicorn/unicorn_stderr.log</code></pre><p>此时继续修改配置文件</p>
+<pre><code># 看看unicorn启动日志
+cat /var/log/gitlab/unicorn/unicorn_stderr.log
+# 然后再看看gitlab日志，看看是哪里出错
+tail -100 /var/log/gitlab/gitlab-rails/production.log</code></pre><p><strong>每个人的错误都不同，根据错误日志的问题再去百度谷歌才是正道理</strong></p>
+<h3 id="端口错误问题"><a href="#端口错误问题" class="headerlink" title="端口错误问题"></a>端口错误问题</h3><p><strong>端口错误都是端口被占用，当然按照我上面的方法是不会出现这个情况的</strong></p>
+<p>此时继续修改配置文件</p>
 <pre><code>vim  /etc/gitlab/gitlab.rb</code></pre><p><strong>看看你的错误日志，我的是8080端口被占用，改端口就行了</strong></p>
 <p>找到以下字段取消注释并且修改：</p>
-<pre><code># unicorn[&#39;port&#39;] = 8090   #千万不要是原来的8899端口啊，8090也是我打开过的端口</code></pre><p><strong>查看日志后，如果你的是内存爆满，使用命令<code>free -m</code>，如果是内存爆满</strong></p>
-<p>那么找到这个字段取消注释</p>
-<pre><code>postgresql[&#39;shared_buffers&#39;] = &quot;256MB&quot;</code></pre><p>可能还有其他的bug，但是这个看错误日志修改就好了</p>
-<p>最后修改完之后再重新执行命令</p>
+<pre><code># unicorn[&#39;port&#39;] = 8090   #千万不要是原来的8899端口啊，8090也是我打开过的端口</code></pre><h3 id="内存爆满和内存消耗过大的问题"><a href="#内存爆满和内存消耗过大的问题" class="headerlink" title="内存爆满和内存消耗过大的问题"></a>内存爆满和内存消耗过大的问题</h3><p>但是最大的问题就是内存爆满，用命令看看<code>free -h</code>,或者用<code>htop</code>看看，我相信大部分人都跟我一样，物理内存爆满</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE10.png" alt></p>
+<p>用这两个命令一看！，swap去哪了，哦吼，查了一下阿里云默认不开启swap，那么看以下的方法</p>
+<h4 id="使用swap分区来减少内存消耗"><a href="#使用swap分区来减少内存消耗" class="headerlink" title="使用swap分区来减少内存消耗"></a>使用swap分区来减少内存消耗</h4><p>阿里云默认情况下是不启用swap的，不通过取消swap降低磁盘IO占用率怎么让你去买他更好的服务器呢，这里不多哔哔</p>
+<ol>
+<li>查看当前系统中是否已经启用swap分区</li>
+</ol>
+<pre><code>cat /proc/swaps</code></pre><ol start="2">
+<li>如果没有启用swap分区功能，则新建一个专门的文件用于swap分区</li>
+</ol>
+<pre><code>dd if=/dev/zero of=/data/swap bs=512 count=8388616</code></pre><p><strong>swap的大小是count的大小乘以bs大小，上面命令的大小是4294971392，即4GB</strong></p>
+<ol start="3">
+<li>通过mkswap命令将上面新建出的文件做成swap分区</li>
+</ol>
+<pre><code>mkswap /data/swap</code></pre><ol start="4">
+<li>查看内核参数vm.swappiness中的数值是否为0，如果为0则根据实际需要调整成30或者60</li>
+</ol>
+<pre><code>cat /proc/sys/vm/swappiness
+sysctl -w vm.swappiness=60
+#永久修改
+若想永久修改，则编辑/etc/sysctl.conf文件，改文件中有vm.swappiness变量配置，默认为0</code></pre><p><strong>注：若想永久修改，则编辑/etc/sysctl.conf文件</strong></p>
+<ol start="5">
+<li>启用此交换分区的交换功能</li>
+</ol>
+<pre><code>swapon /data/swap
+echo “/data/swap swap swap defaults 0 0” &gt;&gt; /etc/fstab</code></pre><ol start="6">
+<li>然后再看看swap分区是否启动</li>
+</ol>
+<pre><code>cat /proc/swaps </code></pre><ol start="7">
+<li>然后重启gitlab看看</li>
+</ol>
+<pre><code>gitlab-ctl restart</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE11.png" alt></p>
+<p>哦吼，这不就，好起来了吗</p>
+<p>再运行gitlab看看</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE12.png" alt></p>
+<p>运行速度如丝般顺滑，刚部署好不知道多少倍，除此之外可能还有其他的bug，但是这个看错误日志修改就好了</p>
+<p><strong>注意：如果修改了配置文件，一定要执行以下命令</strong></p>
 <pre><code>gitlab-ctl reconfigure
-gitlab-ctl restart</code></pre><p>最后再确认一次再看看是不是全部都run了</p>
-<pre><code>gitlab-ctl status</code></pre><p>这样重新再配置一次应该就可以了</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE8.png" alt></p>
-<p><strong>如果配置了还是502，耐心等一等，因为不知道为啥访问很慢，导致配置没有修改回来，可能刷新下就好了</strong></p>
-<p>这个里面的地址栏就跟你用github一样的，可以用git命令行执行，也可以用sourcetree直接clone下来</p>
+gitlab-ctl restart</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE8.png" alt></p>
+<p><strong>如果配置了还是502，耐心等一等，等那么一分钟左右就好了</strong></p>
+<h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><p>​    这个运行速度慢折腾了我一下午，问题归根结底就是…..服务器配置太烂了，性能差就会经常出现502，因为官方推荐的服务器性能是最低 双核 + 8GB RAM，所以这里只能使用swap才能正常使用</p>
+<p>​    gitlab的使用方法是和github差不多的，可以用git命令行执行，也可以用sourcetree直接clone下来</p>
+<p><strong>解决问题使用到的博客</strong></p>
+<blockquote>
+<p><a href="https://blog.csdn.net/qq_25283709/article/details/78207881" target="_blank" rel="noopener">gitlab服务器经常出现502(阿里云搭建)</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://yq.aliyun.com/articles/52098" target="_blank" rel="noopener">阿里云云主机添加swap分区与swap性能优化</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://blog.csdn.net/wanchaopeng/article/details/84771195" target="_blank" rel="noopener">gitlab占用内存过大</a></p>
+</blockquote>
 
             </div>
             <hr/>
@@ -848,7 +895,7 @@ $ g</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3.6k</span>
+                <span class="white-color">4.2k</span>
             
 
             
