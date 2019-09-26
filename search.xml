@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>全文搜索方法的使用</title>
+      <link href="/2019/09/26/sou-suo-fang-fa/"/>
+      <url>/2019/09/26/sou-suo-fang-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="记一次全文搜索方法"><a href="#记一次全文搜索方法" class="headerlink" title="记一次全文搜索方法"></a>记一次全文搜索方法</h1><h2 id="基于-haystack来使用whoosh检索引擎"><a href="#基于-haystack来使用whoosh检索引擎" class="headerlink" title="基于 haystack来使用whoosh检索引擎"></a>基于 haystack来使用whoosh检索引擎</h2><p>这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就可以自由切换引擎</p><p>这里拿haystack使用whoosh引擎来作为案例</p><h3 id="基本安装和配置"><a href="#基本安装和配置" class="headerlink" title="基本安装和配置"></a>基本安装和配置</h3><p>首先先安装这两个包</p><pre><code>pip install django-haystackpip install whoosh</code></pre><p>然后在setting.py注册应用haystack</p><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/18.png" alt></p><p>并且在setting.py文件添加如下字段：</p><pre><code># 全文检索框架配置HAYSTACK_CONNECTIONS = {    &#39;default&#39;: {        # 使用whoosh引擎        # &#39;ENGINE&#39;: &#39;haystack.backends.whoosh_backend.WhooshEngine&#39;,        &#39;ENGINE&#39;: &#39;haystack.backends.whoosh_backend.WhooshEngine&#39;,           # 索引文件路径        &#39;PATH&#39;: os.path.join(os.path.dirname(__file__), &#39;whoosh_index&#39;),    },}# 当添加、修改、删除数据时，自动生成索引HAYSTACK_SIGNAL_PROCESSOR = &#39;haystack.signals.RealtimeSignalProcessor&#39;</code></pre><p>以上的是默认的配置，如果要添加jieba文字的话要另外配置</p><h3 id="生成索引文件"><a href="#生成索引文件" class="headerlink" title="生成索引文件"></a>生成索引文件</h3><p>在你要检索的模型类的那个包中，添加一个文件</p><p>如我要检索的是所有的商品文件：</p><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/19.png" alt></p><p>里面的search_indexes.py就是我写的文件</p><p>内容如下：</p><pre><code>from haystack import indexesfrom goods.models import GoodsSKUclass GoodsSKUIndex(indexes.SearchIndex, indexes.Indexable):    #索引字段document=True指定根据表的哪些字段简历索引文件制定在一个文件中    text = indexes.CharField(document=True, use_template=True)    # author = indexes.CharField(model_attr=&#39;user&#39;)    # pub_date = indexes.DateTimeField(model_attr=&#39;pub_date&#39;)    def get_model(self):        return GoodsSKU    # 建立索引数据    def index_queryset(self, using=None):        return self.get_model().objects.all()        #返回所有数据就是对所有的数据进行索引</code></pre><p>然后要定义你检索出来的那个界面</p><p>创建如下文件：</p><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20.png" alt></p><p>goodssku_text.txt就是定义你可以检索的字段，我的检索字段如下：</p><pre><code># 指定根据表中的哪些字段建立索引数据{{ object.name }}  # 根据商品的名称建立索引{{ object.desc }}  # 根据商品的简介建立索引{{ object.goods.detail }}  # 根据商品的详情建立索引</code></pre><p>然后使用命令</p><pre><code>python manage.py rebuild_index</code></pre><p>这样会生成索引文件</p><p>如图：</p><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/21.png" alt></p><h3 id="使用搜索功能"><a href="#使用搜索功能" class="headerlink" title="使用搜索功能"></a>使用搜索功能</h3><p>在搜索的那个表单上，填写内容如下</p><pre><code>&lt;form action=&quot;/search&quot; method=&quot;get&quot;&gt;&lt;/form&gt;</code></pre><p>然后要添加url路径</p><pre><code>url(&#39;search/&#39;, include(&#39;haystack.urls&#39;)),  # 全文检索框架</code></pre><p>搜索完后结果会提交到一个search.html页面，会传递这几个变量</p><pre><code>query：搜索关键字page：当前页的page对象 –&gt;遍历page对象，获取到的是SearchResult类的实例对象，对象的属性object才是模型类的对象。paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列表的模板，将这三个变量使用Django传递变量的方式添加进去即可</p><h3 id="汉语分词检索"><a href="#汉语分词检索" class="headerlink" title="汉语分词检索"></a>汉语分词检索</h3><p>如果是英文的话一个单词就是一个商品，但是汉语远远比英语复杂的多，比如搜索你好，可以分为你和好</p><p>Python有个jieba包可以帮助我们进行汉语分词</p><p>首先先安装jieba包</p><pre><code>pip install jieba</code></pre><p>要对原来的分词结果使用汉语分词的话就要对下载下来的包进行jieba分词</p><p>进入对pip下载的haystack包里面添加ChineseTokenizer.py文件，内容如下</p><pre><code>import jiebafrom whoosh.analysis import Tokenizer, Tokenclass ChineseTokenizer(Tokenizer):    def __call__(self, value, positions=False, chars=False,                 keeporiginal=False, removestops=True,                 start_pos=0, start_char=0, mode=&#39;&#39;, **kwargs):        t = Token(positions, chars, removestops=removestops, mode=mode, **kwargs)        seglist = jieba.cut(value, cut_all=True)        for w in seglist:            t.original = t.text = w            t.boost = 1.0            if positions:                t.pos = start_pos + value.find(w)            if chars:                t.startchar = start_char + value.find(w)                t.endchar = start_char + value.find(w) + len(w)            yield tdef ChineseAnalyzer():    return ChineseTokenizer()</code></pre><p>然后拷贝原来的whoosh_backend.py文件，改名为whoosh_cn_backend.py</p><p>添加如下字段：</p><pre><code>#对原来导入的包添加from .ChineseAnalyzer import ChineseAnalyzer# 第163行的# schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=StemmingAnalyzer(),      # field_boost=field_class.boost, sortable=True)# 改为# schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=ChineseAnalyzer(),  # field_boost=field_class.boost, sortable=True)</code></pre><p>然后回去setting.py修改成’ENGINE’: ‘haystack.backends.whoosh_cn_backend.WhooshEngine’</p><p>然后再进行一次索引就可以使用汉语的jieba分词了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Django </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 全文检索 </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>fastDFS安装和使用</title>
+      <link href="/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/"/>
+      <url>/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="fastDFS安装及在Django中的部署"><a href="#fastDFS安装及在Django中的部署" class="headerlink" title="fastDFS安装及在Django中的部署"></a>fastDFS安装及在Django中的部署</h1><h2 id="FastDFS在阿里云服务器的安装和配置"><a href="#FastDFS在阿里云服务器的安装和配置" class="headerlink" title="FastDFS在阿里云服务器的安装和配置"></a>FastDFS在阿里云服务器的安装和配置</h2><p>FastDFS安装在这篇<a href="https://blog.csdn.net/busishenren/article/details/83584885" target="_blank" rel="noopener">博客</a>讲解的很清楚了，这里我就不再赘述，只作为补充</p><p>如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则端口</p><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/15.png" alt></p><p>开启了防火墙端口还不够</p><p>在进入服务器下，使用这条命令查看防火墙的状态</p><pre><code>firewall-cmd --state</code></pre><p>如果防火墙已开启，则看开放的所有端口</p><pre><code>firewall-cmd --zone=public --list-ports</code></pre><p>如果防火墙关闭，那么开启防火墙</p><pre><code>systemctl start firewalld.service</code></pre><p>如果嫌麻烦就把防火墙关了也行，但是不建议这么做</p><p>查看开放的所有端口后，如果没有开启22122和23000端口，那么开启他</p><pre><code>firewall-cmd --zone=public --add-port=22122/tcp --permanent #开启22122端口firewall-cmd --zone=public --add-port=23000/tcp --permanent #开启23000端口firewall-cmd --reload   # 配置立即生效</code></pre><p>再一次查看端口是否开启</p><pre><code>firewall-cmd --zone=public --list-ports</code></pre><p>在部署完FastDFS并且开启storage和tracker服务后，看一下端口是否被监听</p><pre><code>netstat -lnpt</code></pre><p>能看到23000和22122端口被监听那么就说明成功</p><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/16.png" alt></p><h2 id="FastDFS在Django中的使用"><a href="#FastDFS在Django中的使用" class="headerlink" title="FastDFS在Django中的使用"></a>FastDFS在Django中的使用</h2><p>在Django中，所有资源都是来自于后台的部署，Django后台数据库采用的是ORM模式，Django默认文件的上传是上传到指定的文件夹下面的，如果要修改的话要在一个文件中自定义文件的存储类，也就是继承django.core.files.storage.Storage</p><p>关于文件存储官网文档有很清楚的描述</p><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/17.png" alt></p><p>在setting.py配置你服务器的fastDFS的ip和端口号</p><pre><code># 设置Django的文件存储类DEFAULT_FILE_STORAGE = &#39;utils.fdfs.storage.FDFSStorage&#39;# 设置fdfs使用的client.conf文件路径FDFS_CLIENT_CONF = &#39;./utils/fdfs/client.conf&#39;# 设置fdfs存储服务器上nginx的IP和端口号FDFS_URL = &#39;&#39;</code></pre><p>然后在一个单独的文件夹(比如utils)里面加入以下两个文件</p><p>storage.py</p><pre><code>from django.core.files.storage import Storagefrom django.conf import settingsfrom fdfs_client.client import *class FDFSStorage(Storage):    def __init__(self, client_conf=None, base_url=None):        &quot;&quot;&quot;初始化&quot;&quot;&quot;        if client_conf is None:            client_conf = settings.FDFS_CLIENT_CONF        self.client_conf = client_conf        if base_url is None:            base_url = settings.FDFS_URL        self.base_url = base_url    def _open(self, name, mode=&#39;rb&#39;):        # 打开文件时使用        pass    def _save(self, name, content):        client=Fdfs_client(&#39;./utils/fdfs/client.conf&#39;)        res = client.upload_by_buffer(content.read())        if res.get(&#39;Status&#39;) != &#39;Upload successed.&#39;:            raise Exception(&#39;上传文件到FastDFS失败&#39;)        filename = res.get(&#39;Remote file_id&#39;)        return filename    def exists(self, name):        &quot;&quot;&quot;Django判断文件名是否可用&quot;&quot;&quot;        return False    def url(self, name):        &quot;&quot;&quot;返回访问文件url路径，不然后台保存的时候会报错&quot;&quot;&quot;        return self.base_url + name</code></pre><p>client.conf(修改相应的字段)</p><pre><code># connect timeout in seconds# default value is 30sconnect_timeout=30# network timeout in seconds# default value is 30snetwork_timeout=60# the base path to store log files# 你的个人电脑的存储日志，必须要有这个路径base_path=/Users/LY/Python_log# tracker_server can ocur more than once, and tracker_server format is#  &quot;host:port&quot;, host can be hostname or ip addresstracker_server=你服务器的IP:22122#standard log level as syslog, case insensitive, value list:### emerg for emergency### alert### crit for critical### error### warn for warning### notice### info### debuglog_level=info# if use connection pool# default value is false# since V4.05use_connection_pool = false# connections whose the idle time exceeds this time will be closed# unit: second# default value is 3600# since V4.05connection_pool_max_idle_time = 3600# if load FastDFS parameters from tracker server# since V4.05# default value is falseload_fdfs_parameters_from_tracker=false# if use storage ID instead of IP address# same as tracker.conf# valid only when load_fdfs_parameters_from_tracker is false# default value is false# since V4.05use_storage_id = false# specify storage ids filename, can use relative or absolute path# same as tracker.conf# valid only when load_fdfs_parameters_from_tracker is false# since V4.05storage_ids_filename = storage_ids.conf#HTTP settingshttp.tracker_server_port=80#use &quot;#include&quot; directive to include HTTP other settiongs##include http.conf</code></pre><p>文件上传的路径可以随便写，因为这个都没用，上传后Django会自动按照你自己写的自定义存储方法去上传文件</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Django </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Celery异步框架的使用</title>
+      <link href="/2019/09/24/celery/"/>
+      <url>/2019/09/24/celery/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Celery异步框架的使用"><a href="#Celery异步框架的使用" class="headerlink" title="Celery异步框架的使用"></a>Celery异步框架的使用</h1><h2 id="Celery是什么"><a href="#Celery是什么" class="headerlink" title="Celery是什么"></a>Celery是什么</h2><p>​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在队列中执行。</p><p>​    Celery本身只是一个任务队列，或者严格的说是管理分布式任务队列的工具，封装了常用的任务队列操作，通过Celery来管理任务队列的执行和管理，celery本身不含消息服务，它使用第三方消息服务来传递任务，目前，celery支持的消息服务RabbitMQ,redis甚至是数据库，redis是最佳选择，<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq" target="_blank" rel="noopener">RabbitMQ</a>、<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis" target="_blank" rel="noopener">Redis</a>处理任务队列的方式，两者的使用文档写的很清楚</p><p>​    在实际应用中，可以把一些比如邮件注册、手机注册、网站页面静态化等耗时操作交给Celery队列中，然后让Redis或者RabbitMQ去执行。下面我拿我项目中的案例来演示一下，也便于自己加深印象</p><h2 id="Celery演示"><a href="#Celery演示" class="headerlink" title="Celery演示"></a>Celery演示</h2><p>这里我拿的都是我最熟悉的Django框架和redis来演示</p><p>首先要导入Celery包</p><p>一般第三方的处理文件都会专门放到一个文件夹里面，我的直接命名Celery_tasks</p><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> celery <span class="token keyword">import</span> Celeryapp <span class="token operator">=</span> Celery<span class="token punctuation">(</span><span class="token string">'任务名字'</span><span class="token punctuation">,</span> broker<span class="token operator">=</span><span class="token string">'redis://你的服务器IP/数据库名'</span><span class="token punctuation">)</span>@app<span class="token punctuation">.</span>task<span class="token keyword">def</span> 你的要运行的耗时任务<span class="token punctuation">:</span>    <span class="token keyword">pass</span></code></pre><p>直接使用装饰器就可以使得普通的方法变成异步方法</p><p>上面的是uwsgi使用的服务器的代码，在运行异步方法的服务器还要加上这一行代码， 整体代码如下：</p><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> celery <span class="token keyword">import</span> Celeryapp <span class="token operator">=</span> Celery<span class="token punctuation">(</span><span class="token string">'任务名字'</span><span class="token punctuation">,</span> broker<span class="token operator">=</span><span class="token string">'redis://你的服务器IP/数据库名'</span><span class="token punctuation">)</span><span class="token keyword">import</span> os<span class="token keyword">import</span> djangoos<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>setdefault<span class="token punctuation">(</span><span class="token string">'DJANGO_SETTINGS_MODULE'</span><span class="token punctuation">,</span> <span class="token string">'dailyfreshshop.settings'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#dailyfreshshop是我的项目名</span>django<span class="token punctuation">.</span>setup<span class="token punctuation">(</span><span class="token punctuation">)</span>@app<span class="token punctuation">.</span>task<span class="token keyword">def</span> 你的要运行的耗时任务<span class="token punctuation">:</span>    <span class="token keyword">pass</span></code></pre><p>把原本的同步的方法转换为Celery异步的代码运行即可</p><p>如果你在linux系统上运行Celery代码，就在linux服务器端运行<code>celery -A celery_tasks.tasks worker -l info</code></p><p>如果是windows系统上运行Celery代码，就运行<code>celery -A celery_tasks.tasks worker -l info -P eventlet</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Django </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 异步 </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>运维人员的gitlab基本操作</title>
       <link href="/2019/09/22/yun-wei-ren-yuan-de-gitlab-shi-yong/"/>
       <url>/2019/09/22/yun-wei-ren-yuan-de-gitlab-shi-yong/</url>
@@ -70,9 +151,9 @@
       
         <tags>
             
-            <tag> gitbook </tag>
-            
             <tag> github </tag>
+            
+            <tag> gitbook </tag>
             
         </tags>
       
@@ -97,9 +178,9 @@
       
         <tags>
             
-            <tag> github </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> github </tag>
             
         </tags>
       
