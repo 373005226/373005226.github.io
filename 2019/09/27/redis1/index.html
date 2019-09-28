@@ -4,8 +4,17 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Celery异步框架的使用, 懒惰小L的博客">
-    <meta name="description" content="Celery异步框架的使用Celery是什么​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在">
+    <meta name="keywords" content="redis初步认识, 懒惰小L的博客">
+    <meta name="description" content="Redis初识Redis的五大数据结构
+String
+hash
+list
+set
+zset
+
+Redis的特性
+速度快：因为redis是保存在内存当中的
+持久化：Redis的数据保存在内存中，一般的保存在内存中突然断电内存就会丢失，所以re">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +22,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Celery异步框架的使用 | 懒惰小L的博客</title>
+    <title>redis初步认识 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -286,13 +295,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/redis.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Celery异步框架的使用
+                        redis初步认识
                     </div>
                 </div>
             </div>
@@ -384,12 +393,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/异步/" target="_blank">
-                                <span class="chip bg-color">异步</span>
-                            </a>
-                        
-                            <a href="/tags/python/" target="_blank">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/Redis/" target="_blank">
+                                <span class="chip bg-color">Redis</span>
                             </a>
                         
                     </div>
@@ -400,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Django/" class="post-category" target="_blank">
-                                Django
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                数据库
                             </a>
                         
                     </div>
@@ -412,21 +417,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-24
+                    2019-09-27
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        584
+                        1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -442,34 +447,83 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Celery异步框架的使用"><a href="#Celery异步框架的使用" class="headerlink" title="Celery异步框架的使用"></a>Celery异步框架的使用</h1><h2 id="Celery是什么"><a href="#Celery是什么" class="headerlink" title="Celery是什么"></a>Celery是什么</h2><p>​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在队列中执行。</p>
-<p>​    Celery本身只是一个任务队列，或者严格的说是管理分布式任务队列的工具，封装了常用的任务队列操作，通过Celery来管理任务队列的执行和管理，celery本身不含消息服务，它使用第三方消息服务来传递任务，目前，celery支持的消息服务RabbitMQ,redis甚至是数据库，redis是最佳选择，<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq" target="_blank" rel="noopener">RabbitMQ</a>、<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis" target="_blank" rel="noopener">Redis</a>处理任务队列的方式，两者的使用文档写的很清楚</p>
-<p>​    在实际应用中，可以把一些比如邮件注册、手机注册、网站页面静态化等耗时操作交给Celery队列中，然后让Redis或者RabbitMQ去执行。下面我拿我项目中的案例来演示一下，也便于自己加深印象</p>
-<h2 id="Celery演示"><a href="#Celery演示" class="headerlink" title="Celery演示"></a>Celery演示</h2><p>这里我拿的都是我最熟悉的Django框架和redis来演示</p>
-<p>首先要导入Celery包</p>
-<p>一般第三方的处理文件都会专门放到一个文件夹里面，我的直接命名Celery_tasks</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> celery <span class="token keyword">import</span> Celery
-app <span class="token operator">=</span> Celery<span class="token punctuation">(</span><span class="token string">'任务名字'</span><span class="token punctuation">,</span> broker<span class="token operator">=</span><span class="token string">'redis://你的服务器IP/数据库名'</span><span class="token punctuation">)</span>
-
-@app<span class="token punctuation">.</span>task
-<span class="token keyword">def</span> 你的要运行的耗时任务<span class="token punctuation">:</span>
-    <span class="token keyword">pass</span></code></pre>
-<p>直接使用装饰器就可以使得普通的方法变成异步方法</p>
-<p>上面的是uwsgi使用的服务器的代码，在运行异步方法的服务器还要加上这一行代码， 整体代码如下：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> celery <span class="token keyword">import</span> Celery
-app <span class="token operator">=</span> Celery<span class="token punctuation">(</span><span class="token string">'任务名字'</span><span class="token punctuation">,</span> broker<span class="token operator">=</span><span class="token string">'redis://你的服务器IP/数据库名'</span><span class="token punctuation">)</span>
-
-<span class="token keyword">import</span> os
-<span class="token keyword">import</span> django
-os<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>setdefault<span class="token punctuation">(</span><span class="token string">'DJANGO_SETTINGS_MODULE'</span><span class="token punctuation">,</span> <span class="token string">'dailyfreshshop.settings'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#dailyfreshshop是我的项目名</span>
-django<span class="token punctuation">.</span>setup<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-@app<span class="token punctuation">.</span>task
-<span class="token keyword">def</span> 你的要运行的耗时任务<span class="token punctuation">:</span>
-    <span class="token keyword">pass</span></code></pre>
-<p>把原本的同步的方法转换为Celery异步的代码运行即可</p>
-<p>如果你在linux系统上运行Celery代码，就在linux服务器端运行<code>celery -A celery_tasks.tasks worker -l info</code></p>
-<p>如果是windows系统上运行Celery代码，就运行<code>celery -A celery_tasks.tasks worker -l info -P eventlet</code></p>
+                <h1 id="Redis初识"><a href="#Redis初识" class="headerlink" title="Redis初识"></a>Redis初识</h1><h2 id="Redis的五大数据结构"><a href="#Redis的五大数据结构" class="headerlink" title="Redis的五大数据结构"></a>Redis的五大数据结构</h2><ul>
+<li>String</li>
+<li>hash</li>
+<li>list</li>
+<li>set</li>
+<li>zset</li>
+</ul>
+<h2 id="Redis的特性"><a href="#Redis的特性" class="headerlink" title="Redis的特性"></a>Redis的特性</h2><ol>
+<li>速度快：因为redis是保存在内存当中的</li>
+<li>持久化：Redis的数据保存在内存中，一般的保存在内存中突然断电内存就会丢失，所以redis在保存数据的时候会异步的保存在硬盘中</li>
+<li>支持多种数据结构：Redis支持(字符串、列表、哈希、集合、有序集合)这五种数据结构，在新版本中也支持BitMaps(位图，使用很小的内存来实现高效的存储)、HyperLoglog(超小内存唯一计数，即使用12K)、GEO(地理信息定位 )这三种衍生的数据结构</li>
+<li>支持多种语言：基本上现在的主流语言都是支持redis的</li>
+<li>功能丰富：支持发布订阅、Lua脚本、事物，pipeline(提高客服端的并发效率)</li>
+<li>简单性：Redis不依赖任何外部库和使用的是单线程模型</li>
+<li>主从复制：主服务器的数据可以同步到从服务器上，给高可用和分布式提供了一个很好的基础</li>
+<li>高可用、分布式：Redis单单靠主从复制是不能进行高可用分布式的，所以Redis2.8版本提供了Redis-Sentinel来支持高可用，Redis3.0版本提供了Redis-Cluster来支持分布式</li>
+</ol>
+<h2 id="Redis的应用场景"><a href="#Redis的应用场景" class="headerlink" title="Redis的应用场景"></a>Redis的应用场景</h2><p>Redis应用场景十分的广泛，缓存(比如在网站中可以使用Redis缓存来代替session和cookie)、计数器(比如微博的转发、评论数)、消息队列(比如Celery和redis结合来使用异步任务)、排行榜、实时系统(垃圾邮件过滤功能)、社交系统(比如youtube那些社交网站的共同关注数、粉丝数)等，大多数企业都使用了Redis</p>
+<h2 id="Redis的常用命令"><a href="#Redis的常用命令" class="headerlink" title="Redis的常用命令"></a>Redis的常用命令</h2><ul>
+<li><code>keys</code>：这个一般不在生产环境中使用，其一是因为key是一个很重的命令，时间复杂度为O(n)如果有上万个键值对一下子遍历出来会很慢，这个可以在不在生产环境中使用的从节点使用比较重的命令，不会对生产环境产生危害即可<ul>
+<li><code>keys *</code>：查看所有的键</li>
+<li><code>keys [pattern]</code>：keys支持正则表达式，比如<code>keys he*</code>,就可以选择出所有he开头的key</li>
+</ul>
+</li>
+<li><code>dbsize</code>：计算keys的总数，这个是可以在生产环境中使用的，因为这个不是遍历所有的表，而是内置的一个计数器，所以时间复杂度是O(1)</li>
+<li><code>exists keys</code>：判断一个key是否存在，存在返回1，不存在返回0</li>
+<li><code>del key</code>：删除制定的key-value，成功删除返回1，不成功返回0</li>
+<li><code>expire key seconds</code>：(设置过期时间)，一般用于网站记录用户缓存，seconds就是秒数，seconds为30就是30秒后过期<ul>
+<li><code>ttl key</code>：查看key的过期时间，返回值为-2代表key不存在了，-1表示没有过期时间</li>
+<li><code>persist key</code>：去除key过期时间</li>
+</ul>
+</li>
+<li><code>type key</code>：查看key的数据类型</li>
+<li><code>select number</code>：选择使用第number个数据库</li>
+<li><code>info</code>：查看客户端的所有信息</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>keys</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>dbsize</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>exists keys</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>del key</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>expire key seconds</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>type key</td>
+<td>O(1)</td>
+</tr>
+</tbody></table>
+<h2 id="Redis的数据结构和内部编码"><a href="#Redis的数据结构和内部编码" class="headerlink" title="Redis的数据结构和内部编码"></a>Redis的数据结构和内部编码</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1.png" alt></p>
+<p>每一个数据结构都有自己的内部编码，在开发过程中，如果一些元素比较小的时候可以通过空间换时间的操作，这些得看开发中的具体要求和操作来定制</p>
+<h2 id="Redis-的单线程操作"><a href="#Redis-的单线程操作" class="headerlink" title="Redis 的单线程操作"></a>Redis 的单线程操作</h2><p>Redis的单线程就像一个队列，每一个瞬间只能执行一个命令，所以在开发中，一定要注意不要轻易使用很长时间的命令，不然后面的命令都会阻塞在那</p>
+<p>Redis单线程还这么快的原因跟node.js部分很像，快的原因如下</p>
+<ul>
+<li>Redis采用的是纯内存的存储，内存的存储是非常的快的(这个是主要的原因)</li>
+<li>非阻塞IO</li>
+<li>避免了线程的切换和竞态的消耗</li>
+</ul>
 
             </div>
             <hr/>
@@ -610,7 +664,7 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/24/celery/" class="b-link-green">Celery异步框架的使用</a>
+                    <a href="/2019/09/27/redis1/" class="b-link-green">redis初步认识</a>
                 </p>
             </div>
         </div>
@@ -632,7 +686,7 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-09-24T20-04-42',
+        id: '2019-09-27T19-44-17',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -657,22 +711,68 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/">
+                <a href="/2019/09/28/redis2/">
                     <div class="card-image">
                         
+                        <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/redis.jpg" class="responsive-img" alt="redis基本命令">
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="fastDFS安装和使用">
-                        
-                        <span class="card-title">fastDFS安装和使用</span>
+                        <span class="card-title">redis基本命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">fastDFS安装及在Django中的部署FastDFS在阿里云服务器的安装和配置FastDFS安装在这篇博客讲解的很清楚了，这里我就不再赘述，只作为补充
-如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则</div>
+                    <div class="summary">Redis五大数据结构的介绍String(字符串)String的限制String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M
+字符串的API
+赋值：
+set key</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-28
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/09/26/sou-suo-fang-fa/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="全文搜索方法的使用">
+                        
+                        <span class="card-title">全文搜索方法的使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">记一次全文搜索方法基于 haystack来使用whoosh检索引擎这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -688,59 +788,12 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/分布式/" target="_blank">
-                        <span class="chip bg-color">分布式</span>
+                    <a href="/tags/全文检索/" target="_blank">
+                        <span class="chip bg-color">全文检索</span>
                     </a>
                     
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/09/22/yun-wei-ren-yuan-de-gitlab-shi-yong/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="运维人员的gitlab基本操作">
-                        
-                        <span class="card-title">运维人员的gitlab基本操作</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">gitlab后台管理界面的使用关于git、github和gitlab的区别想必大家都清楚，这里我就不再赘述
-管理员的操作点击上面的扳手图标可以进入后台管理界面
-查看日志点击左边的monitoring标签第一个system info是服务器的</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-22
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/自动化运维/" class="post-category" target="_blank">
-                                    自动化运维
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/gitlab/" target="_blank">
-                        <span class="chip bg-color">gitlab</span>
                     </a>
                     
                 </div>
