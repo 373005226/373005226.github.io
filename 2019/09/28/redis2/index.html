@@ -8,7 +8,7 @@
     <meta name="description" content="Redis五大数据结构的介绍String(字符串)String的限制String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M
 字符串的API
 赋值：
-set key">
+set ：se">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -444,35 +444,35 @@ set key">
                 <h1 id="Redis五大数据结构的介绍"><a href="#Redis五大数据结构的介绍" class="headerlink" title="Redis五大数据结构的介绍"></a>Redis五大数据结构的介绍</h1><h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串)"></a>String(字符串)</h2><h3 id="String的限制"><a href="#String的限制" class="headerlink" title="String的限制"></a>String的限制</h3><p>String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M</p>
 <h3 id="字符串的API"><a href="#字符串的API" class="headerlink" title="字符串的API"></a>字符串的API</h3><ul>
 <li>赋值：<ul>
-<li>set key value：添加键值对，无论key是否存在都设置</li>
-<li>setnx key value：key不存在才添加键值对</li>
-<li>set key value xx：key存在才设置键值对</li>
-<li>mset key1 value1 key2 value2：设置多个键值对，时间复杂度为O(n)</li>
-<li>getset key newvalue：添加新的值并且返回老的值</li>
-<li>append key value：将value追加到旧的value</li>
-<li>setrange key index value：设置指定下标所有对应的值，比如hello的值为world，setrange hello 0 L就是得到Lorld</li>
+<li>set ：<code>set key value</code>，加键值对，无论key是否存在都设置</li>
+<li>setnx ：<code>setnx key value</code>，key不存在才添加键值对</li>
+<li>set  xx：<code>set key value xx</code>，key存在才设置键值对</li>
+<li>mset ：<code>mset key1 value1 key2 value2</code>，设置多个键值对，时间复杂度为O(n)</li>
+<li>getset ：<code>getset key newvalue</code>，添加新的值并且返回老的值</li>
+<li>append ：<code>append key value</code>，将value追加到旧的value</li>
+<li>setrange ：<code>setrange key index value</code>，设置指定下标所有对应的值，比如hello的值为world，setrange hello 0 L就是得到Lorld</li>
 </ul>
 </li>
 <li>查询：<ul>
-<li>get key：获取键值对</li>
-<li>mget key1 key2：批量获取key，原子操作，时间复杂度为O(n)</li>
-<li>strlen key：返回字符串的长度(中文一个字占两个字符)</li>
-<li>getrange key start end：获取字符串指定下标的所有值，比如hello的值为world，getrange hello 0 2就是得到wor</li>
+<li>get ：<code>get key</code>，获取键值对</li>
+<li>mget ：<code>mget key1 key2</code>，批量获取key，原子操作，时间复杂度为O(n)</li>
+<li>strlen ：<code>strlen key</code>，返回字符串的长度(中文一个字占两个字符)</li>
+<li>getrange ：<code>getrange key start end</code>，获取字符串指定下标的所有值，比如hello的值为world，getrange hello 0 2就是得到wor</li>
 </ul>
 </li>
 <li>删除：<ul>
-<li>del key：删除键值对</li>
+<li>del：<code>del key</code>，删除键值对</li>
 </ul>
 </li>
 <li>自增：<ul>
-<li>incr key：key自增1，如果key不存在，自增后get(key)=1</li>
-<li>incrby key：key自增k，如果key不存在，自增后get(key)=k</li>
-<li>incrbyfloat key：是浮点数的自增操作</li>
+<li>incr ：<code>incr key</code>，key自增1，如果key不存在，自增后get(key)=1</li>
+<li>incrby ：<code>incrby key</code>，key自增k，如果key不存在，自增后get(key)=k</li>
+<li>incrbyfloat ：<code>incrbyfloat key</code>，是浮点数的自增操作</li>
 </ul>
 </li>
 <li>自减：<ul>
-<li>decrby key：key自减k，如果key不存在，自增后get(key)=-k</li>
-<li>decr key：key自减1，如果key不存在，自增后get(key)=-1</li>
+<li>decrby ：<code>decrby key</code>，key自减k，如果key不存在，自增后get(key)=-k</li>
+<li>decr ：<code>decr key</code>，key自减1，如果key不存在，自增后get(key)=-1</li>
 </ul>
 </li>
 </ul>
@@ -835,7 +835,7 @@ set key">
                     <div class="summary">Redis五大数据结构的介绍String(字符串)String的限制String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M
 字符串的API
 赋值：
-set key</div>
+set ：se</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-28
