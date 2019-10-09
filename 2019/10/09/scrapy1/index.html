@@ -4,10 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="使用gitbook搭建github上的书城, 懒惰小L的博客">
-    <meta name="description" content="使用gitbook搭建github上的书城gitbook的安装和使用安装Gitbook前应该先安装node.js，安装这里就不赘述了，直接进入node交互界面
-$ npm install gitbook-cli -g检验是否安装成功
-$ g">
+    <meta name="keywords" content="死磕爬虫之CrawlSpider类, 懒惰小L的博客">
+    <meta name="description" content="前言爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用和说明
+CrawlSpider类">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@ $ g">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>使用gitbook搭建github上的书城 | 懒惰小L的博客</title>
+    <title>死磕爬虫之CrawlSpider类 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -288,13 +287,13 @@ $ g">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        使用gitbook搭建github上的书城
+                        死磕爬虫之CrawlSpider类
                     </div>
                 </div>
             </div>
@@ -386,12 +385,12 @@ $ g">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/gitbook/" target="_blank">
-                                <span class="chip bg-color">gitbook</span>
+                            <a href="/tags/Redis/" target="_blank">
+                                <span class="chip bg-color">Redis</span>
                             </a>
                         
-                            <a href="/tags/github/" target="_blank">
-                                <span class="chip bg-color">github</span>
+                            <a href="/tags/scrapy/" target="_blank">
+                                <span class="chip bg-color">scrapy</span>
                             </a>
                         
                     </div>
@@ -402,8 +401,8 @@ $ g">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/工具/" class="post-category" target="_blank">
-                                工具
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                爬虫
                             </a>
                         
                     </div>
@@ -414,14 +413,14 @@ $ g">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-21
+                    2019-10-09
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        461
+                        51
                     </div>
                     
 
@@ -444,24 +443,8 @@ $ g">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="使用gitbook搭建github上的书城"><a href="#使用gitbook搭建github上的书城" class="headerlink" title="使用gitbook搭建github上的书城"></a>使用gitbook搭建github上的书城</h1><h2 id="gitbook的安装和使用"><a href="#gitbook的安装和使用" class="headerlink" title="gitbook的安装和使用"></a>gitbook的安装和使用</h2><p>安装Gitbook前应该先安装node.js，安装这里就不赘述了，直接进入node交互界面</p>
-<pre><code>$ npm install gitbook-cli -g</code></pre><p>检验是否安装成功</p>
-<pre><code>$ gitbook -V</code></pre><p>进入一个空文件夹</p>
-<pre><code>$ gitbook init</code></pre><p>然后会创建 <code>README.md</code> 和 <code>SUMMARY.md</code> 这两个文件， <code>README.md</code> 是说明文件， <code>SUMMARY.md</code>是书的章节目录，然后输入</p>
-<pre><code>$ gitbook serve</code></pre><p>就可以创建gitbook了，默认端口是4000，地址输入<a href="http://localhost:4000就可以进入页面，可以用一些markdown编辑器来写，然后就可以在网页上看到实时编辑的内容了。" target="_blank" rel="noopener">http://localhost:4000就可以进入页面，可以用一些markdown编辑器来写，然后就可以在网页上看到实时编辑的内容了。</a></p>
-<p>目录结构如图</p>
-<p><img src="https://img-blog.csdnimg.cn/20190720225822792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<p><img src="https://img-blog.csdnimg.cn/20190720225836562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<p>gitbook的目录结构就是缩进，语法结构一看就懂</p>
-<p>gitbook写完后可以输入命令</p>
-<pre><code>$ gitbook build</code></pre><p>使用这个命令后在本地会生成一个_book的文件夹，里面是自动生成的html文件，这些htm文件在本地打开是不具备跳转效果的，要部署到网上才可以具备全部效果</p>
-<h2 id="部署gitbook到github上"><a href="#部署gitbook到github上" class="headerlink" title="部署gitbook到github上"></a>部署gitbook到github上</h2><p>根据上面的操作，通过 <code>$ gitbook build</code> 把</p>
-<p>先在自己的github上创建一个新的仓库，然后把刚刚_book里面的文件上传到github上，这部分的方法是个程序员都应该掌握，这里不再赘述，上传完之后点击setting，拉倒最下面有个github page的，如图</p>
-<p><img src="https://img-blog.csdnimg.cn/20190720230934856.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<p>上面绿色这个地址就是你的网上书籍地址了</p>
-<p>如果要给你自己的gitbook设置一个域名，方法如我上一篇<a href="https://www.ly-blog.top/2019/09/05/hello-world/" target="_blank" rel="noopener">博客</a>的自定义域名部分</p>
-<h2 id="gitbook-安装插件"><a href="#gitbook-安装插件" class="headerlink" title="gitbook 安装插件"></a>gitbook 安装插件</h2><p>单单使用gitbook来写，写出来的界面不是特别的好看，功能也没有那么多，gitbook是可以添加插件的，比如返回顶部、折叠、添加版权信息、分享等功能</p>
-
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用和说明</p>
+<h2 id="CrawlSpider类"><a href="#CrawlSpider类" class="headerlink" title="CrawlSpider类"></a>CrawlSpider类</h2>
             </div>
             <hr/>
 
@@ -601,7 +584,7 @@ $ g">
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/21/gitbook/" class="b-link-green">使用gitbook搭建github上的书城</a>
+                    <a href="/2019/10/09/scrapy1/" class="b-link-green">死磕爬虫之CrawlSpider类</a>
                 </p>
             </div>
         </div>
@@ -623,7 +606,7 @@ $ g">
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-09-21T15-22-43',
+        id: '2019-10-09T22-46-29',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -644,46 +627,49 @@ $ g">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/21/gitlab/">
+                <a href="/2019/10/09/scrapy1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="gitlab部署与使用">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="死磕爬虫之CrawlSpider类">
                         
-                        <span class="card-title">gitlab部署与使用</span>
+                        <span class="card-title">死磕爬虫之CrawlSpider类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">自动化运维三剑客–gitlab的安装gitlab的安装gitlab和github的区别想必大家都懂，这里我就不再赘述
-这里我来用阿里云学生服务器centos7来演示gitlab的安装过程
-首先打开你的防火墙控制台，开启防火墙规则
-
-注(这里</div>
+                    <div class="summary">前言爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用和说明
+CrawlSpider类</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/自动化运维/" class="post-category" target="_blank">
-                                    自动化运维
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/gitlab/" target="_blank">
-                        <span class="chip bg-color">gitlab</span>
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -697,34 +683,27 @@ $ g">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/05/hexo/">
+                <a href="/2019/10/07/scrapy/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="使用hexo搭建个人博客并部署域名">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="死磕爬虫之scrapy框架初识">
                         
-                        <span class="card-title">使用hexo搭建个人博客并部署域名</span>
+                        <span class="card-title">死磕爬虫之scrapy框架初识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">使用hexo和github搭建个人博客搭建环境准备
-安装node
-https://nodejs.org/zh-cn/download/
-(电脑是多少位的就下载多少位)
-安装成功之后在cmd输入命令
-node -v可以看到版本就安装成功
-
-安</div>
+                    <div class="summary">前言​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，但是</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/工具/" class="post-category" target="_blank">
-                                    工具
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
                                 </a>
                             
                             
@@ -734,12 +713,12 @@ node -v可以看到版本就安装成功
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/github/" target="_blank">
-                        <span class="chip bg-color">github</span>
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
-                    <a href="/tags/Hexo/" target="_blank">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>

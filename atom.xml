@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-09-28T15:21:22.396Z</updated>
+  <updated>2019-10-09T14:53:45.296Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>死磕爬虫之CrawlSpider类</title>
+    <link href="https://373005226.github.io/2019/10/09/scrapy1/"/>
+    <id>https://373005226.github.io/2019/10/09/scrapy1/</id>
+    <published>2019-10-09T14:46:29.561Z</published>
+    <updated>2019-10-09T14:53:45.296Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="Redis" scheme="https://373005226.github.io/tags/Redis/"/>
+    
+      <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>死磕爬虫之scrapy框架初识</title>
+    <link href="https://373005226.github.io/2019/10/07/scrapy/"/>
+    <id>https://373005226.github.io/2019/10/07/scrapy/</id>
+    <published>2019-10-07T02:38:06.252Z</published>
+    <updated>2019-10-09T12:36:10.121Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="Redis" scheme="https://373005226.github.io/tags/Redis/"/>
+    
+      <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+  </entry>
   
   <entry>
     <title>redis基本命令</title>
