@@ -384,12 +384,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Redis/" target="_blank">
-                                <span class="chip bg-color">Redis</span>
-                            </a>
-                        
                             <a href="/tags/scrapy/" target="_blank">
                                 <span class="chip bg-color">scrapy</span>
+                            </a>
+                        
+                            <a href="/tags/Redis/" target="_blank">
+                                <span class="chip bg-color">Redis</span>
                             </a>
                         
                     </div>
@@ -419,7 +419,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.7k
+                        1.8k
                     </div>
                     
 
@@ -627,11 +627,12 @@ class ItcastSpider(scrapy.Spider):
 
     <span class="token keyword">def</span> <span class="token function">close_spider</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>filename<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h3 id="scrapy-shell的使用"><a href="#scrapy-shell的使用" class="headerlink" title="scrapy shell的使用"></a>scrapy shell的使用</h3><p>scrapy shell简直是个利器，一般我们在爬取网站的时候，可以先试一下使用scrapy shell启动，因为有些网页是使用ajax或者js来显示的，直接以上面演示的方式请求只能请求到一个空的网页，比如我现在要爬取一个智联招聘的页面：</p>
+<h3 id="scrapy-shell的使用"><a href="#scrapy-shell的使用" class="headerlink" title="scrapy shell的使用"></a>scrapy shell的使用</h3><p>scrapy shell可以帮助我们快速查看网页的请求，一般我们在爬取网站的时候，可以先试一下使用scrapy shell启动，因为有些网页是使用ajax或者js来显示的，直接以上面演示的方式请求只能请求到一个空的网页，比如我现在要爬取一个智联招聘的页面：</p>
 <pre><code>$ scrapy shell  https://sou.zhaopin.com/?jl=763&amp;kw=python&amp;kt=3&amp;sf=0&amp;st=0</code></pre><p> 进入shell命令行之后输入命令</p>
 <pre><code>&gt;&gt;&gt; view(response)</code></pre><p>然后就可以通过你的默认浏览器看到请求后的结果，如果爬取后的网页是跟浏览器输入地址访问的一样的话，那么就可以直接像我上面演示的方式请求。如果请求后发现重要数据为空的话，比如我这样：</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570623395604.png" alt="scrapy直接爬取智联招聘页面"></p>
-<p>因为智联招聘的页面是通过js去请求的，所以这些数据都没有显示在request请求的页面上，这里就要经过其他设置才行，关于如何提取这类数据在《scrapy爬取动态网页》博客可以详解</p>
+<p>因为智联招聘的页面是通过js去请求的，所以这些数据都没有显示在request请求的页面上，因为这部分的数据都是使用js去加载的，所以只要打开调试网页查看js的请求地址，然后去请求js的请求地址就可以获取这部分的数据了。</p>
+<p>更多关于如何提取异步加载的数据可以在《scrapy爬取动态网页》博客可以详解</p>
 
             </div>
             <hr/>
@@ -819,7 +820,7 @@ class ItcastSpider(scrapy.Spider):
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/09/scrapy1/">
+                <a href="/2019/10/09/crawlspider/">
                     <div class="card-image">
                         
                         
@@ -829,8 +830,10 @@ class ItcastSpider(scrapy.Spider):
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用和说明
-CrawlSpider类</div>
+                    <div class="summary">前言
+爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比
+
+Spider与CrawlSpi</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-09
@@ -850,12 +853,12 @@ CrawlSpider类</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
-                    </a>
-                    
                     <a href="/tags/scrapy/" target="_blank">
                         <span class="chip bg-color">scrapy</span>
+                    </a>
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -976,7 +979,7 @@ set ：se</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">11.8k</span>
+                <span class="white-color">12.7k</span>
             
 
             

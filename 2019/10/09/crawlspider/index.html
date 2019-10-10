@@ -4,17 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="redis初步认识, 懒惰小L的博客">
-    <meta name="description" content="Redis初识Redis的五大数据结构
-String
-hash
-list
-set
-zset
+    <meta name="keywords" content="死磕爬虫之CrawlSpider类, 懒惰小L的博客">
+    <meta name="description" content="前言
+爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比
 
-Redis的特性
-速度快：因为redis是保存在内存当中的
-持久化：Redis的数据保存在内存中，一般的保存在内存中突然断电内存就会丢失，所以re">
+Spider与CrawlSpi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +16,7 @@ Redis的特性
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>redis初步认识 | 懒惰小L的博客</title>
+    <title>死磕爬虫之CrawlSpider类 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -295,13 +289,13 @@ Redis的特性
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/redis.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        redis初步认识
+                        死磕爬虫之CrawlSpider类
                     </div>
                 </div>
             </div>
@@ -393,8 +387,12 @@ Redis的特性
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Redis/" target="_blank">
-                                <span class="chip bg-color">Redis</span>
+                            <a href="/tags/scrapy/" target="_blank">
+                                <span class="chip bg-color">scrapy</span>
+                            </a>
+                        
+                            <a href="/tags/python/" target="_blank">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -405,8 +403,8 @@ Redis的特性
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/数据库/" class="post-category" target="_blank">
-                                数据库
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                爬虫
                             </a>
                         
                     </div>
@@ -417,14 +415,14 @@ Redis的特性
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-27
+                    2019-10-09
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        879
                     </div>
                     
 
@@ -447,84 +445,100 @@ Redis的特性
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Redis初识"><a href="#Redis初识" class="headerlink" title="Redis初识"></a>Redis初识</h1><h2 id="Redis的五大数据结构"><a href="#Redis的五大数据结构" class="headerlink" title="Redis的五大数据结构"></a>Redis的五大数据结构</h2><ul>
-<li>String</li>
-<li>hash</li>
-<li>list</li>
-<li>set</li>
-<li>zset</li>
-</ul>
-<h2 id="Redis的特性"><a href="#Redis的特性" class="headerlink" title="Redis的特性"></a>Redis的特性</h2><ol>
-<li>速度快：因为redis是保存在内存当中的</li>
-<li>持久化：Redis的数据保存在内存中，一般的保存在内存中突然断电内存就会丢失，所以redis在保存数据的时候会异步的保存在硬盘中</li>
-<li>支持多种数据结构：Redis支持(字符串、列表、哈希、集合、有序集合)这五种数据结构，在新版本中也支持BitMaps(位图，使用很小的内存来实现高效的存储)、HyperLoglog(超小内存唯一计数，即使用12K)、GEO(地理信息定位 )这三种衍生的数据结构</li>
-<li>支持多种语言：基本上现在的主流语言都是支持redis的</li>
-<li>功能丰富：支持发布订阅、Lua脚本、事物，pipeline(提高客服端的并发效率)</li>
-<li>简单性：Redis不依赖任何外部库和使用的是单线程模型</li>
-<li>主从复制：主服务器的数据可以同步到从服务器上，给高可用和分布式提供了一个很好的基础</li>
-<li>高可用、分布式：Redis单单靠主从复制是不能进行高可用分布式的，所以Redis2.8版本提供了Redis-Sentinel来支持高可用，Redis3.0版本提供了Redis-Cluster来支持分布式</li>
-</ol>
-<h2 id="Redis的应用场景"><a href="#Redis的应用场景" class="headerlink" title="Redis的应用场景"></a>Redis的应用场景</h2><p>Redis应用场景十分的广泛，缓存(比如在网站中可以使用Redis缓存来代替session和cookie)、计数器(比如微博的转发、评论数)、消息队列(比如Celery和redis结合来使用异步任务)、排行榜、实时系统(垃圾邮件过滤功能)、社交系统(比如youtube那些社交网站的共同关注数、粉丝数)等，大多数企业都使用了Redis</p>
-<h2 id="Redis的常用命令"><a href="#Redis的常用命令" class="headerlink" title="Redis的常用命令"></a>Redis的常用命令</h2><ul>
-<li><code>keys</code>：这个一般不在生产环境中使用，其一是因为key是一个很重的命令，时间复杂度为O(n)如果有上万个键值对一下子遍历出来会很慢，这个可以在不在生产环境中使用的从节点使用比较重的命令，不会对生产环境产生危害即可<ul>
-<li><code>keys *</code>：查看所有的键</li>
-<li><code>keys [pattern]</code>：keys支持正则表达式，比如<code>keys he*</code>,就可以选择出所有he开头的key</li>
-</ul>
-</li>
-<li><code>dbsize</code>：计算keys的总数，这个是可以在生产环境中使用的，因为这个不是遍历所有的表，而是内置的一个计数器，所以时间复杂度是O(1)</li>
-<li><code>exists keys</code>：判断一个key是否存在，存在返回1，不存在返回0</li>
-<li><code>del key</code>：删除制定的key-value，成功删除返回1，不成功返回0</li>
-<li><code>expire key seconds</code>：(设置过期时间)，一般用于网站记录用户缓存，seconds就是秒数，seconds为30就是30秒后过期<ul>
-<li><code>ttl key</code>：查看key的过期时间，返回值为-2代表key不存在了，-1表示没有过期时间</li>
-<li><code>persist key</code>：去除key过期时间</li>
-</ul>
-</li>
-<li><code>type key</code>：查看key的数据类型</li>
-<li><code>select number</code>：选择使用第number个数据库</li>
-<li><code>info</code>：查看客户端的所有信息</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>时间复杂度</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>keys</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>dbsize</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>exists keys</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>del key</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>expire key seconds</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>type key</td>
-<td>O(1)</td>
-</tr>
-</tbody></table>
-<h2 id="Redis的数据结构和内部编码"><a href="#Redis的数据结构和内部编码" class="headerlink" title="Redis的数据结构和内部编码"></a>Redis的数据结构和内部编码</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1.png" alt></p>
-<p>每一个数据结构都有自己的内部编码，在开发过程中，如果一些元素比较小的时候可以通过空间换时间的操作，这些得看开发中的具体要求和操作来定制</p>
-<h2 id="Redis-的单线程操作"><a href="#Redis-的单线程操作" class="headerlink" title="Redis 的单线程操作"></a>Redis 的单线程操作</h2><p>Redis的单线程就像一个队列，每一个瞬间只能执行一个命令，所以在开发中，一定要注意不要轻易使用很长时间的命令，不然后面的命令都会阻塞在那</p>
-<p>Redis单线程还这么快的原因跟node.js部分很像，快的原因如下</p>
-<ul>
-<li>Redis采用的是纯内存的存储，内存的存储是非常的快的(这个是主要的原因)</li>
-<li>非阻塞IO</li>
-<li>避免了线程的切换和竞态的消耗</li>
-</ul>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><blockquote>
+<p>爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比</p>
+</blockquote>
+<h2 id="Spider与CrawlSpider的对比"><a href="#Spider与CrawlSpider的对比" class="headerlink" title="Spider与CrawlSpider的对比"></a>Spider与CrawlSpider的对比</h2><h3 id="Spider类字段"><a href="#Spider类字段" class="headerlink" title="Spider类字段"></a>Spider类字段</h3><p><strong>Spider类中有三个必须填的地方：</strong></p>
+<p>start_urls和name两个必须要的字段和parse这个必要的函数，allowed_domains这个可以不填，这个是为了防止怕错其他网站的地址，所以规定一个域给你限制。</p>
+<p>原因这里我直接拿Spider这个类的部分源码来分析</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Spider</span><span class="token punctuation">(</span>object_ref<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
+    name <span class="token operator">=</span> None
+    custom_settings <span class="token operator">=</span> None
+
+    <span class="token comment" spellcheck="true">#初始化文件，提取爬虫名字，也就是start_urls</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token operator">=</span>None<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> name <span class="token keyword">is</span> <span class="token operator">not</span> None<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token comment" spellcheck="true">#如果爬虫没有名字，中断后续的操作</span>
+        <span class="token keyword">elif</span> <span class="token operator">not</span> getattr<span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">"%s must have a name"</span> <span class="token operator">%</span> type<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">.</span>__name__<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>__dict__<span class="token punctuation">.</span>update<span class="token punctuation">(</span>kwargs<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token operator">not</span> hasattr<span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token string">'start_urls'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+
+    <span class="token comment" spellcheck="true">#打印Scrapy执行后的log信息</span>
+    <span class="token keyword">def</span> <span class="token function">log</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> message<span class="token punctuation">,</span> level<span class="token operator">=</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""Log the given message at the given log level
+
+        This helper wraps a log call to the logger within the spider, but you
+        can use it directly (e.g. Spider.logger.info('msg')) or use any other
+        Python logger too.
+        """</span>
+        self<span class="token punctuation">.</span>logger<span class="token punctuation">.</span>log<span class="token punctuation">(</span>level<span class="token punctuation">,</span> message<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
+
+
+    <span class="token comment" spellcheck="true">#该方法将读取start_urls内的地址，并为每一个地址生成一个Request对象，交给Scrapy下载并返回Response</span>
+    <span class="token keyword">def</span> <span class="token function">start_requests</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        cls <span class="token operator">=</span> self<span class="token punctuation">.</span>__class__
+        <span class="token keyword">if</span> method_is_overridden<span class="token punctuation">(</span>cls<span class="token punctuation">,</span> Spider<span class="token punctuation">,</span> <span class="token string">'make_requests_from_url'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            warnings<span class="token punctuation">.</span>warn<span class="token punctuation">(</span>
+                <span class="token string">"Spider.make_requests_from_url method is deprecated; it "</span>
+                <span class="token string">"won't be called in future Scrapy releases. Please "</span>
+                <span class="token string">"override Spider.start_requests method instead (see %s.%s)."</span> <span class="token operator">%</span> <span class="token punctuation">(</span>
+                    cls<span class="token punctuation">.</span>__module__<span class="token punctuation">,</span> cls<span class="token punctuation">.</span>__name__
+                <span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">)</span>
+            <span class="token keyword">for</span> url <span class="token keyword">in</span> self<span class="token punctuation">.</span>start_urls<span class="token punctuation">:</span>
+                <span class="token keyword">yield</span> self<span class="token punctuation">.</span>make_requests_from_url<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">for</span> url <span class="token keyword">in</span> self<span class="token punctuation">.</span>start_urls<span class="token punctuation">:</span>
+                <span class="token keyword">yield</span> Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span> dont_filter<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">#start_requests中调用这个方法，实际生成request函数，这个dont_filter就是genspider 网址的时候回默认带个http：//在头        部，是因为这个地址默认是填写域名，域名是不带http：//的，所以会给你加上个http</span>
+    <span class="token keyword">def</span> <span class="token function">make_requests_from_url</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">""" This method is deprecated. """</span>
+        <span class="token keyword">return</span> Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span> dont_filter<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">#request对象的回调函数，处理返回的Response，生成Item和各种Request对象必须实现这个类</span>
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> NotImplementedError<span class="token punctuation">(</span><span class="token string">'{}.parse callback is not defined'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>所以在Spider类中的字段都是由内部类规定好的</p>
+<h3 id="Spider爬取有页码的数据"><a href="#Spider爬取有页码的数据" class="headerlink" title="Spider爬取有页码的数据"></a>Spider爬取有页码的数据</h3><p>Spider在爬取有页码的数据的时候要使用回调函数，在请求完一页的数据之后使用回调函数继续执行下一个页面</p>
+<p>比如我这要爬取的是智联招聘的网站</p>
+<p><img src="C:%5CUsers%5CLY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1570640740275.png" alt="1570640740275"></p>
+<p>下面有五页数据，从第二页开始url地址就会增加个p=1，所以在每次请求完页面的时候都给p+1去重新爬取新的页面。</p>
+<p>部分源码如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
+<span class="token keyword">from</span> demo<span class="token punctuation">.</span>items <span class="token keyword">import</span> zhaoping
+
+<span class="token keyword">class</span> <span class="token class-name">ZhaopingSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'zhaoping'</span>
+    <span class="token comment" spellcheck="true"># allowed_domains = ['https://sou.zhaopin.com']</span>
+    url <span class="token operator">=</span> <span class="token string">'https://sou.zhaopin.com/?jl=763&amp;sf=0&amp;st=0&amp;kw=python&amp;kt=3'</span>
+    p<span class="token operator">=</span><span class="token number">0</span>
+    start_urls<span class="token operator">=</span><span class="token punctuation">[</span>url<span class="token operator">+</span>str<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        zp<span class="token operator">=</span>zhaoping<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        zp_list<span class="token operator">=</span>response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//div[@class='contentpile__content__wrapper__item clearfix']"</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">for</span> each <span class="token keyword">in</span> zp_list<span class="token punctuation">:</span>
+            name<span class="token operator">=</span>each<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//a[contains(@class,'contentpile__content__wrapper__item__info__box__cname__title company_title')]/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+            zp<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token operator">=</span>name<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+            <span class="token keyword">yield</span> zp
+
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>p<span class="token operator">&lt;</span><span class="token number">6</span><span class="token punctuation">:</span>            <span class="token comment" spellcheck="true">#因为总页数只有5页，所以要反复请求</span>
+            self<span class="token punctuation">.</span>p<span class="token operator">+</span><span class="token number">1</span>
+
+        <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>Request<span class="token punctuation">(</span>self<span class="token punctuation">.</span>url<span class="token operator">+</span>str<span class="token punctuation">(</span>self<span class="token punctuation">.</span>p<span class="token punctuation">)</span><span class="token punctuation">,</span>callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse<span class="token punctuation">)</span></code></pre>
+<p>里面代码重要的就是确定爬取的总页码是多少，然后没请求完一页的所有数据之后就让p+1，然后再使用最后一行的代码去重新请求一次parse函数，这样就可以把每一页的数据爬取下来了。不过使用CrawlSpider会更简单，CrawlSpider可以创建自己的规则,比如只要存在还有跳转到下一页页码的url字段，就反复请求。</p>
+<h3 id="CrawlSpider"><a href="#CrawlSpider" class="headerlink" title="CrawlSpider"></a>CrawlSpider</h3>
             </div>
             <hr/>
 
@@ -664,7 +678,7 @@ Redis的特性
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/27/redis1/" class="b-link-green">redis初步认识</a>
+                    <a href="/2019/10/09/crawlspider/" class="b-link-green">死磕爬虫之CrawlSpider类</a>
                 </p>
             </div>
         </div>
@@ -686,7 +700,7 @@ Redis的特性
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-09-27T19-44-17',
+        id: '2019-10-09T22-46-29',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -707,44 +721,51 @@ Redis的特性
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/28/redis2/">
+                <a href="/2019/10/09/crawlspider/">
                     <div class="card-image">
                         
-                        <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/redis.jpg" class="responsive-img" alt="redis基本命令">
                         
-                        <span class="card-title">redis基本命令</span>
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="死磕爬虫之CrawlSpider类">
+                        
+                        <span class="card-title">死磕爬虫之CrawlSpider类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Redis五大数据结构的介绍String(字符串)String的限制String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M
-字符串的API
-赋值：
-set ：se</div>
+                    <div class="summary">前言
+爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比
+
+Spider与CrawlSpi</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/数据库/" class="post-category" target="_blank">
-                                    数据库
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
+                    </a>
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -758,27 +779,27 @@ set ：se</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/26/sou-suo-fang-fa/">
+                <a href="/2019/10/07/scrapy/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="全文搜索方法的使用">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="死磕爬虫之scrapy框架初识">
                         
-                        <span class="card-title">全文搜索方法的使用</span>
+                        <span class="card-title">死磕爬虫之scrapy框架初识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">记一次全文搜索方法基于 haystack来使用whoosh检索引擎这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就</div>
+                    <div class="summary">前言​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，但是</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-26
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Django/" class="post-category" target="_blank">
-                                    Django
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
                                 </a>
                             
                             
@@ -788,12 +809,12 @@ set ：se</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
-                    <a href="/tags/全文检索/" target="_blank">
-                        <span class="chip bg-color">全文检索</span>
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
                 </div>
