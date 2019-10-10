@@ -419,7 +419,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        984
                     </div>
                     
 
@@ -449,40 +449,42 @@
 pip install whoosh</code></pre><p>然后在setting.py注册应用haystack</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/18.png" alt></p>
 <p>并且在setting.py文件添加如下字段：</p>
-<pre><code># 全文检索框架配置
-HAYSTACK_CONNECTIONS = {
-    &#39;default&#39;: {
-        # 使用whoosh引擎
-        # &#39;ENGINE&#39;: &#39;haystack.backends.whoosh_backend.WhooshEngine&#39;,
-        &#39;ENGINE&#39;: &#39;haystack.backends.whoosh_backend.WhooshEngine&#39;,   
-        # 索引文件路径
-        &#39;PATH&#39;: os.path.join(os.path.dirname(__file__), &#39;whoosh_index&#39;),
-    },
-}
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 全文检索框架配置</span>
+HAYSTACK_CONNECTIONS <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'default'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true"># 使用whoosh引擎</span>
+        <span class="token comment" spellcheck="true"># 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',</span>
+        <span class="token string">'ENGINE'</span><span class="token punctuation">:</span> <span class="token string">'haystack.backends.whoosh_backend.WhooshEngine'</span><span class="token punctuation">,</span>   
+        <span class="token comment" spellcheck="true"># 索引文件路径</span>
+        <span class="token string">'PATH'</span><span class="token punctuation">:</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'whoosh_index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
 
-# 当添加、修改、删除数据时，自动生成索引
-HAYSTACK_SIGNAL_PROCESSOR = &#39;haystack.signals.RealtimeSignalProcessor&#39;</code></pre><p>以上的是默认的配置，如果要添加jieba文字的话要另外配置</p>
+<span class="token comment" spellcheck="true"># 当添加、修改、删除数据时，自动生成索引</span>
+HAYSTACK_SIGNAL_PROCESSOR <span class="token operator">=</span> <span class="token string">'haystack.signals.RealtimeSignalProcessor'</span></code></pre>
+<p>以上的是默认的配置，如果要添加jieba文字的话要另外配置</p>
 <h3 id="生成索引文件"><a href="#生成索引文件" class="headerlink" title="生成索引文件"></a>生成索引文件</h3><p>在你要检索的模型类的那个包中，添加一个文件</p>
 <p>如我要检索的是所有的商品文件：</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/19.png" alt></p>
 <p>里面的search_indexes.py就是我写的文件</p>
 <p>内容如下：</p>
-<pre><code>from haystack import indexes
-from goods.models import GoodsSKU
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> haystack <span class="token keyword">import</span> indexes
+<span class="token keyword">from</span> goods<span class="token punctuation">.</span>models <span class="token keyword">import</span> GoodsSKU
 
-class GoodsSKUIndex(indexes.SearchIndex, indexes.Indexable):
-    #索引字段document=True指定根据表的哪些字段简历索引文件制定在一个文件中
-    text = indexes.CharField(document=True, use_template=True)
-    # author = indexes.CharField(model_attr=&#39;user&#39;)
-    # pub_date = indexes.DateTimeField(model_attr=&#39;pub_date&#39;)
+<span class="token keyword">class</span> <span class="token class-name">GoodsSKUIndex</span><span class="token punctuation">(</span>indexes<span class="token punctuation">.</span>SearchIndex<span class="token punctuation">,</span> indexes<span class="token punctuation">.</span>Indexable<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true">#索引字段document=True指定根据表的哪些字段简历索引文件制定在一个文件中</span>
+    text <span class="token operator">=</span> indexes<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>document<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> use_template<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># author = indexes.CharField(model_attr='user')</span>
+    <span class="token comment" spellcheck="true"># pub_date = indexes.DateTimeField(model_attr='pub_date')</span>
 
-    def get_model(self):
-        return GoodsSKU
+    <span class="token keyword">def</span> <span class="token function">get_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> GoodsSKU
 
-    # 建立索引数据
-    def index_queryset(self, using=None):
-        return self.get_model().objects.all()
-        #返回所有数据就是对所有的数据进行索引</code></pre><p>然后要定义你检索出来的那个界面</p>
+    <span class="token comment" spellcheck="true"># 建立索引数据</span>
+    <span class="token keyword">def</span> <span class="token function">index_queryset</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> using<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>get_model<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">#返回所有数据就是对所有的数据进行索引</span></code></pre>
+<p>然后要定义你检索出来的那个界面</p>
 <p>创建如下文件：</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20.png" alt></p>
 <p>goodssku_text.txt就是定义你可以检索的字段，我的检索字段如下：</p>
@@ -506,39 +508,41 @@ paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列�
 <p>首先先安装jieba包</p>
 <pre><code>pip install jieba</code></pre><p>要对原来的分词结果使用汉语分词的话就要对下载下来的包进行jieba分词</p>
 <p>进入对pip下载的haystack包里面添加ChineseTokenizer.py文件，内容如下</p>
-<pre><code>import jieba
-from whoosh.analysis import Tokenizer, Token
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> jieba
+<span class="token keyword">from</span> whoosh<span class="token punctuation">.</span>analysis <span class="token keyword">import</span> Tokenizer<span class="token punctuation">,</span> Token
 
-class ChineseTokenizer(Tokenizer):
-    def __call__(self, value, positions=False, chars=False,
-                 keeporiginal=False, removestops=True,
-                 start_pos=0, start_char=0, mode=&#39;&#39;, **kwargs):
-        t = Token(positions, chars, removestops=removestops, mode=mode, **kwargs)
-        seglist = jieba.cut(value, cut_all=True)
-        for w in seglist:
-            t.original = t.text = w
-            t.boost = 1.0
-            if positions:
-                t.pos = start_pos + value.find(w)
-            if chars:
-                t.startchar = start_char + value.find(w)
-                t.endchar = start_char + value.find(w) + len(w)
-            yield t
+<span class="token keyword">class</span> <span class="token class-name">ChineseTokenizer</span><span class="token punctuation">(</span>Tokenizer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">,</span> positions<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> chars<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+                 keeporiginal<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> removestops<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+                 start_pos<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> start_char<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        t <span class="token operator">=</span> Token<span class="token punctuation">(</span>positions<span class="token punctuation">,</span> chars<span class="token punctuation">,</span> removestops<span class="token operator">=</span>removestops<span class="token punctuation">,</span> mode<span class="token operator">=</span>mode<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        seglist <span class="token operator">=</span> jieba<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>value<span class="token punctuation">,</span> cut_all<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> w <span class="token keyword">in</span> seglist<span class="token punctuation">:</span>
+            t<span class="token punctuation">.</span>original <span class="token operator">=</span> t<span class="token punctuation">.</span>text <span class="token operator">=</span> w
+            t<span class="token punctuation">.</span>boost <span class="token operator">=</span> <span class="token number">1.0</span>
+            <span class="token keyword">if</span> positions<span class="token punctuation">:</span>
+                t<span class="token punctuation">.</span>pos <span class="token operator">=</span> start_pos <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> chars<span class="token punctuation">:</span>
+                t<span class="token punctuation">.</span>startchar <span class="token operator">=</span> start_char <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
+                t<span class="token punctuation">.</span>endchar <span class="token operator">=</span> start_char <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token operator">+</span> len<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
+            <span class="token keyword">yield</span> t
 
-def ChineseAnalyzer():
-    return ChineseTokenizer()</code></pre><p>然后拷贝原来的whoosh_backend.py文件，改名为whoosh_cn_backend.py</p>
+<span class="token keyword">def</span> <span class="token function">ChineseAnalyzer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> ChineseTokenizer<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>然后拷贝原来的whoosh_backend.py文件，改名为whoosh_cn_backend.py</p>
 <p>添加如下字段：</p>
-<pre><code>#对原来导入的包添加
-from .ChineseAnalyzer import ChineseAnalyzer
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#对原来导入的包添加</span>
+<span class="token keyword">from</span> <span class="token punctuation">.</span>ChineseAnalyzer <span class="token keyword">import</span> ChineseAnalyzer
 
-# 第163行的
-# schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=StemmingAnalyzer(),      
-# field_boost=field_class.boost, sortable=True)
-# 改为
+<span class="token comment" spellcheck="true"># 第163行的</span>
+<span class="token comment" spellcheck="true"># schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=StemmingAnalyzer(),      </span>
+<span class="token comment" spellcheck="true"># field_boost=field_class.boost, sortable=True)</span>
+<span class="token comment" spellcheck="true"># 改为</span>
 
 
-# schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=ChineseAnalyzer(),  
-# field_boost=field_class.boost, sortable=True)</code></pre><p>然后回去setting.py修改成’ENGINE’: ‘haystack.backends.whoosh_cn_backend.WhooshEngine’</p>
+<span class="token comment" spellcheck="true"># schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=ChineseAnalyzer(),  </span>
+<span class="token comment" spellcheck="true"># field_boost=field_class.boost, sortable=True)</span></code></pre>
+<p>然后回去setting.py修改成’ENGINE’: ‘haystack.backends.whoosh_cn_backend.WhooshEngine’</p>
 <p>然后再进行一次索引就可以使用汉语的jieba分词了</p>
 
             </div>
@@ -890,7 +894,7 @@ Redis的特性
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">11.8k</span>
+                <span class="white-color">12.9k</span>
             
 
             

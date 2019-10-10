@@ -384,8 +384,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Redis/" target="_blank">
-                                <span class="chip bg-color">Redis</span>
+                            <a href="/tags/python/" target="_blank">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                             <a href="/tags/scrapy/" target="_blank">
@@ -472,79 +472,85 @@
 <p><code>items.py</code>是根据要爬取的数据的字段进行设置</p>
 <p><code>pipelines.py</code>是管道文件，即把爬取下来的数据进行存储和过滤等操作</p>
 <p><code>setting.py</code>是核心配置文件</p>
-<pre><code>12. BOT_NAME = &#39;demo&#39;                            #项目名字
-14. SPIDER_MODULES = [&#39;demo.spiders&#39;]            #项目模板位置
-15. NEWSPIDER_MODULE = &#39;demo.spiders&#39;            #新爬虫模板位置
-22. ROBOTSTXT_OBEY = True                         #是否遵守robots协议
-25. CONCURRENT_REQUESTS = 32                    #爬虫的并发量
-30. DOWNLOAD_DELAY = 3                            #爬虫延迟
-36. COOKIES_ENABLED = False                        #是否启用cookie，不想爬虫留下自己的痕迹就不用开启
+<pre class=" language-python"><code class="language-python"><span class="token number">12</span><span class="token punctuation">.</span> BOT_NAME <span class="token operator">=</span> <span class="token string">'demo'</span>                            <span class="token comment" spellcheck="true">#项目名字</span>
+<span class="token number">14</span><span class="token punctuation">.</span> SPIDER_MODULES <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'demo.spiders'</span><span class="token punctuation">]</span>            <span class="token comment" spellcheck="true">#项目模板位置</span>
+<span class="token number">15</span><span class="token punctuation">.</span> NEWSPIDER_MODULE <span class="token operator">=</span> <span class="token string">'demo.spiders'</span>            <span class="token comment" spellcheck="true">#新爬虫模板位置</span>
+<span class="token number">22</span><span class="token punctuation">.</span> ROBOTSTXT_OBEY <span class="token operator">=</span> <span class="token boolean">True</span>                         <span class="token comment" spellcheck="true">#是否遵守robots协议</span>
+<span class="token number">25</span><span class="token punctuation">.</span> CONCURRENT_REQUESTS <span class="token operator">=</span> <span class="token number">32</span>                    <span class="token comment" spellcheck="true">#爬虫的并发量</span>
+<span class="token number">30</span><span class="token punctuation">.</span> DOWNLOAD_DELAY <span class="token operator">=</span> <span class="token number">3</span>                            <span class="token comment" spellcheck="true">#爬虫延迟</span>
+<span class="token number">36</span><span class="token punctuation">.</span> COOKIES_ENABLED <span class="token operator">=</span> <span class="token boolean">False</span>                        <span class="token comment" spellcheck="true">#是否启用cookie，不想爬虫留下自己的痕迹就不用开启</span>
 
-42. DEFAULT_REQUEST_HEADERS = {                    #42-45 默认的请求头
-43.   &#39;Accept&#39;: &#39;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#39;,
-44.   &#39;Accept-Language&#39;: &#39;en&#39;,
-45. }
+<span class="token number">42</span><span class="token punctuation">.</span> DEFAULT_REQUEST_HEADERS <span class="token operator">=</span> <span class="token punctuation">{</span>                    <span class="token comment" spellcheck="true">#42-45 默认的请求头</span>
+<span class="token number">43</span><span class="token punctuation">.</span>   <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span><span class="token punctuation">,</span>
+<span class="token number">44</span><span class="token punctuation">.</span>   <span class="token string">'Accept-Language'</span><span class="token punctuation">:</span> <span class="token string">'en'</span><span class="token punctuation">,</span>
+<span class="token number">45</span><span class="token punctuation">.</span> <span class="token punctuation">}</span>
 
-49. #SPIDER_MIDDLEWARES = {                        #爬虫中间件设置，数字越小优先级越大
-50. #    &#39;demo.middlewares.DemoSpiderMiddleware&#39;: 543,
-51. #}
+<span class="token number">49</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#SPIDER_MIDDLEWARES = {                        #爬虫中间件设置，数字越小优先级越大</span>
+<span class="token number">50</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#    'demo.middlewares.DemoSpiderMiddleware': 543,</span>
+<span class="token number">51</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#}</span>
 
-55. #DOWNLOADER_MIDDLEWARES = {                    #下载中间件
-56. #    &#39;demo.middlewares.DemoDownloaderMiddleware&#39;: 543,
-57. #}
+<span class="token number">55</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#DOWNLOADER_MIDDLEWARES = {                    #下载中间件</span>
+<span class="token number">56</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#    'demo.middlewares.DemoDownloaderMiddleware': 543,</span>
+<span class="token number">57</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#}</span>
 
-67. #ITEM_PIPELINES = {                            #管道文件
-68. #    &#39;demo.pipelines.DemoPipeline&#39;: 300,
-69. #}</code></pre><h3 id="第一个scrapy爬虫"><a href="#第一个scrapy爬虫" class="headerlink" title="第一个scrapy爬虫"></a>第一个scrapy爬虫</h3><p>scrapy的所有命令都可以用cmd看到</p>
+<span class="token number">67</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#ITEM_PIPELINES = {                            #管道文件</span>
+<span class="token number">68</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#    'demo.pipelines.DemoPipeline': 300,</span>
+<span class="token number">69</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#}</span></code></pre>
+<h3 id="第一个scrapy爬虫"><a href="#第一个scrapy爬虫" class="headerlink" title="第一个scrapy爬虫"></a>第一个scrapy爬虫</h3><p>scrapy的所有命令都可以用cmd看到</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570517173800.png" alt></p>
 <p>创建爬虫文件：</p>
 <pre><code>scrapy genspider bilibili(爬虫文件名) https://www.bilibili.com/(要爬虫的网站)</code></pre><p>刚刚创建的爬虫项目内容如下</p>
-<pre><code># -*- coding: utf-8 -*-
-import scrapy
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
+<span class="token keyword">import</span> scrapy
 
 
-class BilibiliSpider(scrapy.Spider):
-    name = &#39;bilibili&#39;
-    allowed_domains = [&#39;https://www.bilibili.com/&#39;]                    #允许访问的域
-    start_urls = [&#39;http://https://www.bilibili.com//&#39;]                #开始爬取的网站地址
+<span class="token keyword">class</span> <span class="token class-name">BilibiliSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'bilibili'</span>
+    allowed_domains <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'https://www.bilibili.com/'</span><span class="token punctuation">]</span>                    <span class="token comment" spellcheck="true">#允许访问的域</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://https://www.bilibili.com//'</span><span class="token punctuation">]</span>                <span class="token comment" spellcheck="true">#开始爬取的网站地址</span>
 
-    def parse(self, response):                                        #解析方法
-        pass</code></pre><p>现在编写一些请求函数</p>
-<pre><code># -*- coding: utf-8 -*-
-import scrapy
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>                                        <span class="token comment" spellcheck="true">#解析方法</span>
+        <span class="token keyword">pass</span></code></pre>
+<p>现在编写一些请求函数</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
+<span class="token keyword">import</span> scrapy
 
 
-class BilibiliSpider(scrapy.Spider):
-    name = &#39;bilibili&#39;
-    allowed_domains = [&#39;https://www.bilibili.com/&#39;]
-    start_urls = [&#39;https://www.bilibili.com/v/game/stand_alone/?spm_id_from=333.6.b_7072696d6172795f6d656e75.41#/&#39;]
+<span class="token keyword">class</span> <span class="token class-name">BilibiliSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'bilibili'</span>
+    allowed_domains <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'https://www.bilibili.com/'</span><span class="token punctuation">]</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'https://www.bilibili.com/v/game/stand_alone/?spm_id_from=333.6.b_7072696d6172795f6d656e75.41#/'</span><span class="token punctuation">]</span>
 
-    def parse(self, response):
-        with open(&quot;demo.html&quot;,&quot;wb+&quot;) as f:
-            f.write(response.body)</code></pre><p>然后执行命令</p>
-<pre><code>scrapy crawl bilibili</code></pre><p>就可以请求bilibili的页面，然后把源代码写到demo.html文件了</p>
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"demo.html"</span><span class="token punctuation">,</span><span class="token string">"wb+"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span></code></pre>
+<p>然后执行命令</p>
+<pre class=" language-python"><code class="language-python">scrapy crawl bilibili</code></pre>
+<p>就可以请求bilibili的页面，然后把源代码写到demo.html文件了</p>
 <h3 id="将scrapy得到的结果保存到第三方格式"><a href="#将scrapy得到的结果保存到第三方格式" class="headerlink" title="将scrapy得到的结果保存到第三方格式"></a>将scrapy得到的结果保存到第三方格式</h3><p>scrapy是默认有xpath解析库的，所以可以直接使用xpath，这里拿传播智客的讲师页面来演示</p>
 <p>创建一个爬虫文件</p>
-<pre><code>scrapy genspider itcast http://www.itcast.cn/</code></pre><p>首先先编写要确定爬取的部分</p>
-<pre><code># -*- coding: utf-8 -*-
-import scrapy
+<pre class=" language-python"><code class="language-python">scrapy genspider itcast http<span class="token punctuation">:</span><span class="token operator">//</span>www<span class="token punctuation">.</span>itcast<span class="token punctuation">.</span>cn<span class="token operator">/</span></code></pre>
+<p>首先先编写要确定爬取的部分</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
+<span class="token keyword">import</span> scrapy
 
-class ItcastSpider(scrapy.Spider):
-    name = &#39;itcast&#39;
-    allowed_domains = [&#39;http://www.itcast.cn/&#39;]
-    start_urls = [&#39;http://www.itcast.cn/channel/teacher.shtml#ajavaee&#39;]
+<span class="token keyword">class</span> <span class="token class-name">ItcastSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'itcast'</span>
+    allowed_domains <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://www.itcast.cn/'</span><span class="token punctuation">]</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://www.itcast.cn/channel/teacher.shtml#ajavaee'</span><span class="token punctuation">]</span>
 
-    def parse(self, response):
-        teacher_list =response.xpath(&#39;//div[@class=&quot;li_txt&quot;]&#39;)
-        teacherItem = []
-        for each in teacher_list:
-            name=each.xpath(&#39;./h3/text()&#39;).extract()
-            title=each.xpath(&#39;./h4/text()&#39;).extract()
-            info=each.xpath(&#39;./p/text()&#39;).extract()
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        teacher_list <span class="token operator">=</span>response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//div[@class="li_txt"]'</span><span class="token punctuation">)</span>
+        teacherItem <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> each <span class="token keyword">in</span> teacher_list<span class="token punctuation">:</span>
+            name<span class="token operator">=</span>each<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'./h3/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            title<span class="token operator">=</span>each<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'./h4/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            info<span class="token operator">=</span>each<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'./p/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-            print(name)
-            print(title)
-            print(info)</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570469433346.png" alt></p>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span></code></pre>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570469433346.png" alt></p>
 <p>得到如上页面说明爬取的内容正确</p>
 <p>然后在<code>items.py</code>编写要存储的字段</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
@@ -628,8 +634,10 @@ class ItcastSpider(scrapy.Spider):
     <span class="token keyword">def</span> <span class="token function">close_spider</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>filename<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <h3 id="scrapy-shell的使用"><a href="#scrapy-shell的使用" class="headerlink" title="scrapy shell的使用"></a>scrapy shell的使用</h3><p>scrapy shell可以帮助我们快速查看网页的请求，一般我们在爬取网站的时候，可以先试一下使用scrapy shell启动，因为有些网页是使用ajax或者js来显示的，直接以上面演示的方式请求只能请求到一个空的网页，比如我现在要爬取一个智联招聘的页面：</p>
-<pre><code>$ scrapy shell  https://sou.zhaopin.com/?jl=763&amp;kw=python&amp;kt=3&amp;sf=0&amp;st=0</code></pre><p> 进入shell命令行之后输入命令</p>
-<pre><code>&gt;&gt;&gt; view(response)</code></pre><p>然后就可以通过你的默认浏览器看到请求后的结果，如果爬取后的网页是跟浏览器输入地址访问的一样的话，那么就可以直接像我上面演示的方式请求。如果请求后发现重要数据为空的话，比如我这样：</p>
+<pre class=" language-python"><code class="language-python">$ scrapy shell  https<span class="token punctuation">:</span><span class="token operator">//</span>sou<span class="token punctuation">.</span>zhaopin<span class="token punctuation">.</span>com<span class="token operator">/</span>?jl<span class="token operator">=</span><span class="token number">763</span><span class="token operator">&amp;</span>kw<span class="token operator">=</span>python<span class="token operator">&amp;</span>kt<span class="token operator">=</span><span class="token number">3</span><span class="token operator">&amp;</span>sf<span class="token operator">=</span><span class="token number">0</span><span class="token operator">&amp;</span>st<span class="token operator">=</span><span class="token number">0</span></code></pre>
+<p> 进入shell命令行之后输入命令</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> view<span class="token punctuation">(</span>response<span class="token punctuation">)</span></code></pre>
+<p>然后就可以通过你的默认浏览器看到请求后的结果，如果爬取后的网页是跟浏览器输入地址访问的一样的话，那么就可以直接像我上面演示的方式请求。如果请求后发现重要数据为空的话，比如我这样：</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570623395604.png" alt="scrapy直接爬取智联招聘页面"></p>
 <p>因为智联招聘的页面是通过js去请求的，所以这些数据都没有显示在request请求的页面上，因为这部分的数据都是使用js去加载的，所以只要打开调试网页查看js的请求地址，然后去请求js的请求地址就可以获取这部分的数据了。</p>
 <p>更多关于如何提取异步加载的数据可以在《scrapy爬取动态网页》博客可以详解</p>
@@ -816,26 +824,28 @@ class ItcastSpider(scrapy.Spider):
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/07/scrapy/">
+                <a href="/2019/10/09/crawlspider/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="死磕爬虫之scrapy框架初识">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="死磕爬虫之CrawlSpider类">
                         
-                        <span class="card-title">死磕爬虫之scrapy框架初识</span>
+                        <span class="card-title">死磕爬虫之CrawlSpider类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，但是</div>
+                    <div class="summary">前言
+爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比
+
+Spider与CrawlSpi</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -848,12 +858,11 @@ class ItcastSpider(scrapy.Spider):
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                     <a href="/tags/scrapy/" target="_blank">
@@ -978,7 +987,7 @@ set ：se</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">11.8k</span>
+                <span class="white-color">12.9k</span>
             
 
             

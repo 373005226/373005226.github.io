@@ -387,12 +387,12 @@ Spider与CrawlSpi">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/scrapy/" target="_blank">
-                                <span class="chip bg-color">scrapy</span>
-                            </a>
-                        
                             <a href="/tags/python/" target="_blank">
                                 <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/scrapy/" target="_blank">
+                                <span class="chip bg-color">scrapy</span>
                             </a>
                         
                     </div>
@@ -422,14 +422,14 @@ Spider与CrawlSpi">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        879
+                        1.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        5 分
                     </div>
                     
                 
@@ -448,97 +448,129 @@ Spider与CrawlSpi">
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><blockquote>
 <p>爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比</p>
 </blockquote>
-<h2 id="Spider与CrawlSpider的对比"><a href="#Spider与CrawlSpider的对比" class="headerlink" title="Spider与CrawlSpider的对比"></a>Spider与CrawlSpider的对比</h2><h3 id="Spider类字段"><a href="#Spider类字段" class="headerlink" title="Spider类字段"></a>Spider类字段</h3><p><strong>Spider类中有三个必须填的地方：</strong></p>
-<p>start_urls和name两个必须要的字段和parse这个必要的函数，allowed_domains这个可以不填，这个是为了防止怕错其他网站的地址，所以规定一个域给你限制。</p>
-<p>原因这里我直接拿Spider这个类的部分源码来分析</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Spider</span><span class="token punctuation">(</span>object_ref<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    name <span class="token operator">=</span> None
-    custom_settings <span class="token operator">=</span> None
-
-    <span class="token comment" spellcheck="true">#初始化文件，提取爬虫名字，也就是start_urls</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token operator">=</span>None<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> name <span class="token keyword">is</span> <span class="token operator">not</span> None<span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
-        <span class="token comment" spellcheck="true">#如果爬虫没有名字，中断后续的操作</span>
-        <span class="token keyword">elif</span> <span class="token operator">not</span> getattr<span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">"%s must have a name"</span> <span class="token operator">%</span> type<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">.</span>__name__<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>__dict__<span class="token punctuation">.</span>update<span class="token punctuation">(</span>kwargs<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> <span class="token operator">not</span> hasattr<span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token string">'start_urls'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-
-    <span class="token comment" spellcheck="true">#打印Scrapy执行后的log信息</span>
-    <span class="token keyword">def</span> <span class="token function">log</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> message<span class="token punctuation">,</span> level<span class="token operator">=</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""Log the given message at the given log level
-
-        This helper wraps a log call to the logger within the spider, but you
-        can use it directly (e.g. Spider.logger.info('msg')) or use any other
-        Python logger too.
-        """</span>
-        self<span class="token punctuation">.</span>logger<span class="token punctuation">.</span>log<span class="token punctuation">(</span>level<span class="token punctuation">,</span> message<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
-
-
-    <span class="token comment" spellcheck="true">#该方法将读取start_urls内的地址，并为每一个地址生成一个Request对象，交给Scrapy下载并返回Response</span>
-    <span class="token keyword">def</span> <span class="token function">start_requests</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        cls <span class="token operator">=</span> self<span class="token punctuation">.</span>__class__
-        <span class="token keyword">if</span> method_is_overridden<span class="token punctuation">(</span>cls<span class="token punctuation">,</span> Spider<span class="token punctuation">,</span> <span class="token string">'make_requests_from_url'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            warnings<span class="token punctuation">.</span>warn<span class="token punctuation">(</span>
-                <span class="token string">"Spider.make_requests_from_url method is deprecated; it "</span>
-                <span class="token string">"won't be called in future Scrapy releases. Please "</span>
-                <span class="token string">"override Spider.start_requests method instead (see %s.%s)."</span> <span class="token operator">%</span> <span class="token punctuation">(</span>
-                    cls<span class="token punctuation">.</span>__module__<span class="token punctuation">,</span> cls<span class="token punctuation">.</span>__name__
-                <span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token punctuation">)</span>
-            <span class="token keyword">for</span> url <span class="token keyword">in</span> self<span class="token punctuation">.</span>start_urls<span class="token punctuation">:</span>
-                <span class="token keyword">yield</span> self<span class="token punctuation">.</span>make_requests_from_url<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">for</span> url <span class="token keyword">in</span> self<span class="token punctuation">.</span>start_urls<span class="token punctuation">:</span>
-                <span class="token keyword">yield</span> Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span> dont_filter<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true">#start_requests中调用这个方法，实际生成request函数，这个dont_filter就是genspider 网址的时候回默认带个http：//在头        部，是因为这个地址默认是填写域名，域名是不带http：//的，所以会给你加上个http</span>
-    <span class="token keyword">def</span> <span class="token function">make_requests_from_url</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">""" This method is deprecated. """</span>
-        <span class="token keyword">return</span> Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span> dont_filter<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true">#request对象的回调函数，处理返回的Response，生成Item和各种Request对象必须实现这个类</span>
-    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">raise</span> NotImplementedError<span class="token punctuation">(</span><span class="token string">'{}.parse callback is not defined'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
-<p>所以在Spider类中的字段都是由内部类规定好的</p>
-<h3 id="Spider爬取有页码的数据"><a href="#Spider爬取有页码的数据" class="headerlink" title="Spider爬取有页码的数据"></a>Spider爬取有页码的数据</h3><p>Spider在爬取有页码的数据的时候要使用回调函数，在请求完一页的数据之后使用回调函数继续执行下一个页面</p>
-<p>比如我这要爬取的是智联招聘的网站</p>
-<p><img src="C:%5CUsers%5CLY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1570640740275.png" alt="1570640740275"></p>
-<p>下面有五页数据，从第二页开始url地址就会增加个p=1，所以在每次请求完页面的时候都给p+1去重新爬取新的页面。</p>
+<h2 id="Spider与CrawlSpider案例对比"><a href="#Spider与CrawlSpider案例对比" class="headerlink" title="Spider与CrawlSpider案例对比"></a>Spider与CrawlSpider案例对比</h2><h3 id="Spider爬取有页码的数据"><a href="#Spider爬取有页码的数据" class="headerlink" title="Spider爬取有页码的数据"></a>Spider爬取有页码的数据</h3><p>Spider在爬取有页码的数据的时候要使用回调函数，在请求完一页的数据之后使用回调函数继续执行下一个页面</p>
+<p>比如我这要爬取的是csdn的论坛网站</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570709064975.png" alt></p>
+<p>下面有五页数据，从第二页开始url地址就会增加个pages，所以在每次请求完页面的时候都给pages+1去重新爬取新的页面。</p>
 <p>部分源码如下：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
-<span class="token keyword">from</span> demo<span class="token punctuation">.</span>items <span class="token keyword">import</span> zhaoping
+<p>scdemo.py（爬虫文件）</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
+<span class="token keyword">import</span> scrapy
+<span class="token keyword">from</span> ZLzhaoping<span class="token punctuation">.</span>items <span class="token keyword">import</span> ZlzhaopingItem
 
-<span class="token keyword">class</span> <span class="token class-name">ZhaopingSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    name <span class="token operator">=</span> <span class="token string">'zhaoping'</span>
-    <span class="token comment" spellcheck="true"># allowed_domains = ['https://sou.zhaopin.com']</span>
-    url <span class="token operator">=</span> <span class="token string">'https://sou.zhaopin.com/?jl=763&amp;sf=0&amp;st=0&amp;kw=python&amp;kt=3'</span>
-    p<span class="token operator">=</span><span class="token number">0</span>
-    start_urls<span class="token operator">=</span><span class="token punctuation">[</span>url<span class="token operator">+</span>str<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ScdemoSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'scdemo'</span>
+    <span class="token comment" spellcheck="true"># allowed_domains = ['https://sou.zhaopin.com/?jl=763']</span>
+    pages<span class="token operator">=</span><span class="token number">1</span>
+    url<span class="token operator">=</span><span class="token string">'https://bbs.csdn.net/forums/OL_Script?page='</span>
+    start_urls <span class="token operator">=</span><span class="token punctuation">[</span>url<span class="token operator">+</span>str<span class="token punctuation">(</span>pages<span class="token punctuation">)</span><span class="token punctuation">]</span>
 
     <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        zp<span class="token operator">=</span>zhaoping<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        zp_list<span class="token operator">=</span>response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//div[@class='contentpile__content__wrapper__item clearfix']"</span><span class="token punctuation">)</span>
+        zhilian <span class="token operator">=</span> ZlzhaopingItem<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        list<span class="token operator">=</span>response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//td[@class='forums_topic']"</span><span class="token punctuation">)</span>
 
-        <span class="token keyword">for</span> each <span class="token keyword">in</span> zp_list<span class="token punctuation">:</span>
-            name<span class="token operator">=</span>each<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//a[contains(@class,'contentpile__content__wrapper__item__info__box__cname__title company_title')]/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> each <span class="token keyword">in</span> list<span class="token punctuation">:</span>
+            title<span class="token operator">=</span>each<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"./a[contains(@class,'forums_title ')]/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            zhilian<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span><span class="token operator">=</span>title<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+            <span class="token keyword">yield</span> zhilian
+
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>pages<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>pages<span class="token operator">+=</span><span class="token number">1</span>
+
+        <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>Request<span class="token punctuation">(</span>self<span class="token punctuation">.</span>url <span class="token operator">+</span> str<span class="token punctuation">(</span>self<span class="token punctuation">.</span>pages<span class="token punctuation">)</span><span class="token punctuation">,</span> callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># with open("bbs.html", "wb+") as f:</span>
+        <span class="token comment" spellcheck="true">#     f.write(response.body)</span></code></pre>
+<p>pipelines.py（管道文件）</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> json
 
 
-            zp<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token operator">=</span>name<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token keyword">class</span> <span class="token class-name">ZlzhaopingPipeline</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>filename <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">"zp.json"</span><span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span>
 
-            <span class="token keyword">yield</span> zp
+    <span class="token keyword">def</span> <span class="token function">process_item</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> item<span class="token punctuation">,</span> spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        jsontext <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>dict<span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">,</span> ensure_ascii<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'\n'</span>
+        self<span class="token punctuation">.</span>filename<span class="token punctuation">.</span>write<span class="token punctuation">(</span>jsontext<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> item
 
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>p<span class="token operator">&lt;</span><span class="token number">6</span><span class="token punctuation">:</span>            <span class="token comment" spellcheck="true">#因为总页数只有5页，所以要反复请求</span>
-            self<span class="token punctuation">.</span>p<span class="token operator">+</span><span class="token number">1</span>
+    <span class="token keyword">def</span> <span class="token function">close_spider</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>filename<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>里面代码关键的就是确定爬取的页码是多少，然后每一次请求玩一页的数据都让pages+1，这样就可以循环出所有的页码的数据了。不过使用CrawlSpider会更简单，CrawlSpider可以创建自己的规则,比如只要存在还有跳转到下一页页码的url字段，就反复请求。</p>
+<h3 id="CrawlSpider爬取有页码的数据"><a href="#CrawlSpider爬取有页码的数据" class="headerlink" title="CrawlSpider爬取有页码的数据"></a>CrawlSpider爬取有页码的数据</h3><p>crawlSpider我先演示一下同样是爬取同一个网页</p>
+<p>使用如下命令快捷创建CrawlSpider</p>
+<pre class=" language-python"><code class="language-python">$ scrapy genspider <span class="token operator">-</span>t crawl clidemo https<span class="token punctuation">:</span><span class="token operator">//</span>bbs<span class="token punctuation">.</span>csdn<span class="token punctuation">.</span>net<span class="token operator">/</span>forums<span class="token operator">/</span>OL_Script?page<span class="token operator">=</span><span class="token number">0</span></code></pre>
+<p>clidemo.py:</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
+<span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>linkextractors <span class="token keyword">import</span> LinkExtractor
+<span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>spiders <span class="token keyword">import</span> CrawlSpider<span class="token punctuation">,</span> Rule
+<span class="token keyword">from</span> ZLzhaoping<span class="token punctuation">.</span>items <span class="token keyword">import</span> ZlzhaopingItem
 
-        <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>Request<span class="token punctuation">(</span>self<span class="token punctuation">.</span>url<span class="token operator">+</span>str<span class="token punctuation">(</span>self<span class="token punctuation">.</span>p<span class="token punctuation">)</span><span class="token punctuation">,</span>callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse<span class="token punctuation">)</span></code></pre>
-<p>里面代码重要的就是确定爬取的总页码是多少，然后没请求完一页的所有数据之后就让p+1，然后再使用最后一行的代码去重新请求一次parse函数，这样就可以把每一页的数据爬取下来了。不过使用CrawlSpider会更简单，CrawlSpider可以创建自己的规则,比如只要存在还有跳转到下一页页码的url字段，就反复请求。</p>
-<h3 id="CrawlSpider"><a href="#CrawlSpider" class="headerlink" title="CrawlSpider"></a>CrawlSpider</h3>
+
+<span class="token keyword">class</span> <span class="token class-name">ClidemoSpider</span><span class="token punctuation">(</span>CrawlSpider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'clidemo'</span>
+    <span class="token comment" spellcheck="true"># allowed_domains = ['https://bbs.csdn.net/forums/OL_Script?page=2']</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'https://bbs.csdn.net/forums/OL_Script?page=0'</span><span class="token punctuation">]</span>
+
+    rules <span class="token operator">=</span> <span class="token punctuation">(</span>
+        Rule<span class="token punctuation">(</span>LinkExtractor<span class="token punctuation">(</span>allow<span class="token operator">=</span>r<span class="token string">'page=\d+'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> callback<span class="token operator">=</span><span class="token string">'parse_item'</span><span class="token punctuation">,</span> follow<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">parse_item</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        zhilian <span class="token operator">=</span> ZlzhaopingItem<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        list<span class="token operator">=</span>response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//td[@class='forums_topic']"</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">for</span> each <span class="token keyword">in</span> list<span class="token punctuation">:</span>
+            title<span class="token operator">=</span>each<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"./a[contains(@class,'forums_title ')]/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            zhilian<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span><span class="token operator">=</span>title<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+            <span class="token keyword">yield</span> zhilian</code></pre>
+<p>运行之后就可以直接把所有的页面全部爬完了,方法比Spider来写方便很多。</p>
+<p>唯一不足的地方就是CrawlSpider一次性把全部的页码请求完，而Spider可以设置一个停止条件，不必全部爬完。</p>
+<h2 id="CrawlSpider的字段详解"><a href="#CrawlSpider的字段详解" class="headerlink" title="CrawlSpider的字段详解"></a>CrawlSpider的字段详解</h2><p>CrawlSpider源码没啥好解释的，写的挺清楚的，这里解释一下CrawlSpider的匹配规则和提取规则</p>
+<p><strong>LinkExtractor：</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> allow<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> deny<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> allow_domains<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> deny_domains<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> restrict_xpaths<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                 tags<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'area'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> attrs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'href'</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">,</span> canonicalize<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+                 unique<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> process_value<span class="token operator">=</span>None<span class="token punctuation">,</span> deny_extensions<span class="token operator">=</span>None<span class="token punctuation">,</span> restrict_css<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                 strip<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span></code></pre>
+<p>其中主要的参数如下：</p>
+<ul>
+<li><code>allow</code>：满足括号中“正则表达式”的值会被提取，如果为空，则全部匹配。</li>
+<li><code>deny</code>：与这个正则表达式(或正则表达式列表)不匹配的URL一定不提取。</li>
+<li><code>allow_domains</code>：会被提取的链接的domains。</li>
+<li><code>deny_domains</code>：一定不会被提取链接的domains。</li>
+<li><code>restrict_xpaths</code>：使用xpath表达式，和allow共同作用过滤链接。</li>
+</ul>
+<p><strong>Rule：</strong></p>
+<pre class=" language-python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> link_extractor<span class="token punctuation">,</span> callback<span class="token operator">=</span>None<span class="token punctuation">,</span> cb_kwargs<span class="token operator">=</span>None<span class="token punctuation">,</span> follow<span class="token operator">=</span>None<span class="token punctuation">,</span> process_links<span class="token operator">=</span>None<span class="token punctuation">,</span> process_request<span class="token operator">=</span>identity<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>link_extractor <span class="token operator">=</span> link_extractor
+        self<span class="token punctuation">.</span>callback <span class="token operator">=</span> callback
+        self<span class="token punctuation">.</span>cb_kwargs <span class="token operator">=</span> cb_kwargs <span class="token operator">or</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        self<span class="token punctuation">.</span>process_links <span class="token operator">=</span> process_links
+        self<span class="token punctuation">.</span>process_request <span class="token operator">=</span> process_request
+        <span class="token keyword">if</span> follow <span class="token keyword">is</span> None<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>follow <span class="token operator">=</span> <span class="token boolean">False</span> <span class="token keyword">if</span> callback <span class="token keyword">else</span> <span class="token boolean">True</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>follow <span class="token operator">=</span> follow</code></pre>
+<ul>
+<li><p><code>link_extractor</code>：是一个Link Extractor对象，用于定义需要提取的链接。</p>
+</li>
+<li><p><code>callback</code>： 从link_extractor中每获取到链接时，参数所指定的值作为回调函数，该回调函数接受一个response作为其第一个参数。</p>
+<blockquote>
+<p>注意：当编写爬虫规则时，避免使用parse作为回调函数。由于CrawlSpider使用parse方法来实现其逻辑，如果覆盖了 parse方法，crawl spider将会运行失败。</p>
+</blockquote>
+</li>
+<li><p><code>follow</code>：是一个布尔(boolean)值，指定了根据该规则从response提取的链接是否需要跟进(就是是否根据爬取到的页面继续点进去爬取)。 如果callback为None，follow 默认就为True。如果写了callback，follow默认就为False</p>
+</li>
+<li><p><code>process_links</code>：指定该spider中哪个的函数将会被调用，从link_extractor中获取到链接列表时将会调用该函数。该方法主要用来过滤。（比如一些网站，在你快速爬取的时候回给你一些错误的链接让你中断爬取，通常会修改url地址的某些参数，比如说&amp;改成？，但是使用CrawlSpider的话，只要写一个函数来修改就可以了，方法如 process_links=”deal_links”）</p>
+</li>
+<li><p><code>process_request</code>：指定该spider中哪个的函数将会被调用， 该规则提取到每个request时都会调用该函数。 (用来过滤request)</p>
+</li>
+</ul>
+
             </div>
             <hr/>
 
@@ -760,12 +792,12 @@ Spider与CrawlSpi</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -809,12 +841,12 @@ Spider与CrawlSpi</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -888,7 +920,7 @@ Spider与CrawlSpi</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">12.7k</span>
+                <span class="white-color">12.9k</span>
             
 
             
