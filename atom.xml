@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-10-10T15:32:26.455Z</updated>
+  <updated>2019-10-11T08:04:07.598Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -15,6 +15,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>死磕爬虫之scrapy下载中间件</title>
+    <link href="https://373005226.github.io/2019/10/11/scrapy4/"/>
+    <id>https://373005226.github.io/2019/10/11/scrapy4/</id>
+    <published>2019-10-11T07:22:12.652Z</published>
+    <updated>2019-10-11T08:04:07.598Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>死磕爬虫之scrapy模拟登陆的方法</title>
+    <link href="https://373005226.github.io/2019/10/10/scrapy3/"/>
+    <id>https://373005226.github.io/2019/10/10/scrapy3/</id>
+    <published>2019-10-10T15:35:25.582Z</published>
+    <updated>2019-10-11T08:22:56.343Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;模拟登陆人人网案例&quot;&gt;&lt;a href=&quot;#模拟登陆人人网案例&quot; class=&quot;headerlink&quot; title=&quot;模拟登陆人人网案例&quot;&gt;&lt;/a&gt;模拟登陆人人网案例&lt;/h1&gt;&lt;h2 id=&quot;使用保存的cookie登陆（100-成功）&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>死磕爬虫之CrawlSpider类</title>
@@ -39,9 +98,9 @@
       <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
     
   </entry>
   
@@ -50,7 +109,7 @@
     <link href="https://373005226.github.io/2019/10/07/scrapy/"/>
     <id>https://373005226.github.io/2019/10/07/scrapy/</id>
     <published>2019-10-07T02:38:06.252Z</published>
-    <updated>2019-10-10T15:32:49.691Z</updated>
+    <updated>2019-10-11T07:59:51.769Z</updated>
     
     <summary type="html">
     
@@ -68,9 +127,9 @@
       <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
     
   </entry>
   
@@ -209,9 +268,9 @@
       <category term="Django" scheme="https://373005226.github.io/categories/Django/"/>
     
     
-      <category term="异步" scheme="https://373005226.github.io/tags/%E5%BC%82%E6%AD%A5/"/>
-    
       <category term="python" scheme="https://373005226.github.io/tags/python/"/>
+    
+      <category term="异步" scheme="https://373005226.github.io/tags/%E5%BC%82%E6%AD%A5/"/>
     
   </entry>
   
@@ -292,9 +351,9 @@
       <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="gitbook" scheme="https://373005226.github.io/tags/gitbook/"/>
-    
       <category term="github" scheme="https://373005226.github.io/tags/github/"/>
+    
+      <category term="gitbook" scheme="https://373005226.github.io/tags/gitbook/"/>
     
   </entry>
   
@@ -321,9 +380,9 @@
       <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="github" scheme="https://373005226.github.io/tags/github/"/>
-    
       <category term="Hexo" scheme="https://373005226.github.io/tags/Hexo/"/>
+    
+      <category term="github" scheme="https://373005226.github.io/tags/github/"/>
     
   </entry>
   

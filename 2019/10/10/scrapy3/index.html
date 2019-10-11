@@ -4,10 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="运维人员的gitlab基本操作, 懒惰小L的博客">
-    <meta name="description" content="gitlab后台管理界面的使用关于git、github和gitlab的区别想必大家都清楚，这里我就不再赘述
-管理员的操作点击上面的扳手图标可以进入后台管理界面
-查看日志点击左边的monitoring标签第一个system info是服务器的">
+    <meta name="keywords" content="死磕爬虫之scrapy模拟登陆的方法, 懒惰小L的博客">
+    <meta name="description" content="模拟登陆人人网案例使用保存的cookie登陆（100%成功）登陆后查看自己的cookie信息
+重写Spider类的start_requests方法因为所有的爬虫类都是继承于Spider的，所以重写start_requests方法可以适用于所">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>运维人员的gitlab基本操作 | 懒惰小L的博客</title>
+    <title>死磕爬虫之scrapy模拟登陆的方法 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -288,13 +287,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        运维人员的gitlab基本操作
+                        死磕爬虫之scrapy模拟登陆的方法
                     </div>
                 </div>
             </div>
@@ -386,8 +385,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/gitlab/" target="_blank">
-                                <span class="chip bg-color">gitlab</span>
+                            <a href="/tags/scrapy/" target="_blank">
+                                <span class="chip bg-color">scrapy</span>
+                            </a>
+                        
+                            <a href="/tags/python/" target="_blank">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -398,8 +401,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/自动化运维/" class="post-category" target="_blank">
-                                自动化运维
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                爬虫
                             </a>
                         
                     </div>
@@ -410,21 +413,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-22
+                    2019-10-10
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        545
+                        981
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -440,17 +443,130 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="gitlab后台管理界面的使用"><a href="#gitlab后台管理界面的使用" class="headerlink" title="gitlab后台管理界面的使用"></a>gitlab后台管理界面的使用</h1><p>关于git、github和gitlab的区别想必大家都清楚，这里我就不再赘述</p>
-<h2 id="管理员的操作"><a href="#管理员的操作" class="headerlink" title="管理员的操作"></a>管理员的操作</h2><p>点击上面的扳手图标可以进入后台管理界面<br><img src="https://img-blog.csdnimg.cn/20190922092307422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p>点击左边的monitoring标签<br><img src="https://img-blog.csdnimg.cn/20190922092435431.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>第一个system info是服务器的资源使用情况<br><img src="https://img-blog.csdnimg.cn/20190922092634854.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>logs就是gitlab的应用日志和使用日志</p>
-<h2 id="创建账号"><a href="#创建账号" class="headerlink" title="创建账号"></a>创建账号</h2><p>以下两种方法都可以添加账号<br>点击overview的new user按钮，可以为使用者创建账号<br><img src="https://img-blog.csdnimg.cn/20190922093118594.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<p><img src="https://img-blog.csdnimg.cn/20190922093433289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>点击右上角的new user按钮就可以给项目主负责人创建账号</p>
-<h2 id="给项目添加人员"><a href="#给项目添加人员" class="headerlink" title="给项目添加人员"></a>给项目添加人员</h2><p>我这里原先就已经创建好了一个名为test的仓库<br>我这里给test仓库添加人员<br>点击project1<br><img src="https://img-blog.csdnimg.cn/20190922093735602.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>再点击你需要操作的仓库<br><img src="https://img-blog.csdnimg.cn/20190922093800821.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>然后点击manage access<br><img src="https://img-blog.csdnimg.cn/20190922093832764.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>这里你要给项目添加的是什么权限可以自定义<br><img src="https://img-blog.csdnimg.cn/20190922094119996.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>master就是有合并分支的权限，developer就是可以用自己的分支写代码的权限<br><img src="https://img-blog.csdnimg.cn/20190922094248435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<h2 id="给人员修改自己的密码"><a href="#给人员修改自己的密码" class="headerlink" title="给人员修改自己的密码"></a>给人员修改自己的密码</h2><p>点击扳手按钮重回管理界面，点击user<br><img src="https://img-blog.csdnimg.cn/20190922094452932.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>这里就可以给人员信息进行修改了<br><img src="https://img-blog.csdnimg.cn/20190922094506428.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>可以修改密码<br><img src="https://img-blog.csdnimg.cn/20190922094616363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<h2 id="模拟企业开发者和负责人的使用流程"><a href="#模拟企业开发者和负责人的使用流程" class="headerlink" title="模拟企业开发者和负责人的使用流程"></a>模拟企业开发者和负责人的使用流程</h2><p>这里我不用git原始命令操作，因为比较麻烦，我贪方便就用sourcetree操作，原理是一样的</p>
-<p>开发者使用自己的分支来编写代码</p>
-<p>黏贴这个地址<br><img src="https://img-blog.csdnimg.cn/20190922095222895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>我随便写了一个test文件，我上传上去的时候会让我给账号密码，就是你刚刚设置的devloper账号密码<br><img src="https://img-blog.csdnimg.cn/20190922104059340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>这里就可以显示我刚刚上传的分支了<br><img src="https://img-blog.csdnimg.cn/20190922104108895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>然后点右上角蓝色的create merge request<br><img src="https://img-blog.csdnimg.cn/20190922104243370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>assign是项目负责人的账号就行了，其他的你随便填<br>然后用同样的方法打开负责人账号lead<br><img src="https://img-blog.csdnimg.cn/20190922104425940.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>右上角有个橙色的消息，点开<br><img src="https://img-blog.csdnimg.cn/20190922104503516.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>就可以看到开发者提交的申请<br><img src="https://img-blog.csdnimg.cn/20190922104537582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>点击merge就可以合并分支<br>这里还可以给开发者回复<br><img src="https://img-blog.csdnimg.cn/20190922104737164.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<p>重新返回项目，就可以看到你刚刚操作的文件合并到主分支了<br><img src="https://img-blog.csdnimg.cn/20190922104839441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
+                <h1 id="模拟登陆人人网案例"><a href="#模拟登陆人人网案例" class="headerlink" title="模拟登陆人人网案例"></a>模拟登陆人人网案例</h1><h2 id="使用保存的cookie登陆（100-成功）"><a href="#使用保存的cookie登陆（100-成功）" class="headerlink" title="使用保存的cookie登陆（100%成功）"></a>使用保存的cookie登陆（100%成功）</h2><h3 id="登陆后查看自己的cookie信息"><a href="#登陆后查看自己的cookie信息" class="headerlink" title="登陆后查看自己的cookie信息"></a>登陆后查看自己的cookie信息</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570770626349.png" alt="cookie信息"></p>
+<h3 id="重写Spider类的start-requests方法"><a href="#重写Spider类的start-requests方法" class="headerlink" title="重写Spider类的start_requests方法"></a>重写Spider类的start_requests方法</h3><p>因为所有的爬虫类都是继承于Spider的，所以重写start_requests方法可以适用于所有的爬虫类</p>
+<p>然后记得要把setting.py的COOKIES_ENABLED开启起来</p>
+<p>我的setting.py文件关键配置如下：</p>
+<pre><code>COOKIES_ENABLED = True
+
+DEFAULT_REQUEST_HEADERS = {
+  &#39;Accept&#39;: &#39;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#39;,
+  &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36&#39;,
+}
+
+ROBOTSTXT_OBEY = False</code></pre><p>然后使用命令创建一个新的爬虫文件(renren.py)</p>
+<h3 id="编写爬虫字段"><a href="#编写爬虫字段" class="headerlink" title="编写爬虫字段"></a>编写爬虫字段</h3><p>renren.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
+<span class="token keyword">import</span> scrapy
+
+
+<span class="token keyword">class</span> <span class="token class-name">RenrenSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'renren'</span>
+    allowed_domains <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://www.renren.com/972451360/newsfeed/photo'</span><span class="token punctuation">]</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://www.renren.com/972451360/newsfeed/photo/'</span><span class="token punctuation">]</span>
+
+    cookies <span class="token operator">=</span><span class="token punctuation">{</span>
+    <span class="token string">"JSESSIONID"</span><span class="token punctuation">:</span> <span class="token string">"abc6L9jo347Dw9fWUf52w"</span><span class="token punctuation">,</span>
+    <span class="token string">"anonymid"</span> <span class="token punctuation">:</span> <span class="token string">"k1lmx3wm-pdg03r"</span><span class="token punctuation">,</span>
+    <span class="token string">"_r01_"</span> <span class="token punctuation">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+    <span class="token string">"depovince"</span> <span class="token punctuation">:</span> <span class="token string">"GW"</span><span class="token punctuation">,</span>
+    <span class="token string">"springskin"</span> <span class="token punctuation">:</span> <span class="token string">"set"</span><span class="token punctuation">,</span>
+    <span class="token string">"jebe_key"</span> <span class="token punctuation">:</span> <span class="token string">"09e48352-6a6a-490c-a137-d78928ffe419%7C18edbeb77a97f6145ca4db5e06940ded%7C1570768484510%7C1%7C1570768487369"</span><span class="token punctuation">,</span>
+    <span class="token string">"t"</span> <span class="token punctuation">:</span> <span class="token string">"7e803da6e1d3c6ce4421d9adc13a20390"</span><span class="token punctuation">,</span>
+    <span class="token string">"societyguester"</span> <span class="token punctuation">:</span> <span class="token string">"7e803da6e1d3c6ce4421d9adc13a20390"</span><span class="token punctuation">,</span>
+    <span class="token string">"id"</span> <span class="token punctuation">:</span> <span class="token string">"972451360"</span><span class="token punctuation">,</span>
+    <span class="token string">"xnsid"</span> <span class="token punctuation">:</span> <span class="token string">"46d5aac1cccccccc"</span><span class="token punctuation">,</span>
+    <span class="token string">"loginfrom"</span> <span class="token punctuation">:</span> <span class="token string">"null"</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">def</span> <span class="token function">start_requests</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> url <span class="token keyword">in</span> self<span class="token punctuation">.</span>start_urls<span class="token punctuation">:</span>
+            <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>FormRequest<span class="token punctuation">(</span>url<span class="token punctuation">,</span> cookies<span class="token operator">=</span>self<span class="token punctuation">.</span>cookies<span class="token punctuation">,</span> callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse_page<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">parse_page</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"deng.html"</span><span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> filename<span class="token punctuation">:</span>
+            filename<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span></code></pre>
+<p>爬取得到的结果如下：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570776253453.png" alt></p>
+<p>这个方法虽然麻烦，但是肯定是可以成功的</p>
+<h2 id="使用post请求"><a href="#使用post请求" class="headerlink" title="使用post请求"></a>使用post请求</h2><h3 id="找到表单登陆请求地址"><a href="#找到表单登陆请求地址" class="headerlink" title="找到表单登陆请求地址"></a>找到表单登陆请求地址</h3><p>如果使用post请求的话就一定要找到人人网登陆表单的请求地址，人人网的请求地址如图所示：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570769345282.png" alt="人人网表单"></p>
+<p>得到的地址就为’<a href="http://www.renren.com/PLogin.do&#39;" target="_blank" rel="noopener">http://www.renren.com/PLogin.do&#39;</a></p>
+<h3 id="编写爬虫字段-1"><a href="#编写爬虫字段-1" class="headerlink" title="编写爬虫字段"></a>编写爬虫字段</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
+
+
+<span class="token keyword">class</span> <span class="token class-name">RenrenSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'renren'</span>
+    <span class="token comment" spellcheck="true"># allowed_domains = ['http://www.renren.com/972451360/newsfeed/photo']</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://www.renren.com/972451360/newsfeed/photo/'</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">start_requests</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        url <span class="token operator">=</span> <span class="token string">'http://www.renren.com/PLogin.do'</span>
+        data <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">"email"</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+            <span class="token string">"password"</span><span class="token punctuation">:</span> <span class="token string">""</span>
+        <span class="token punctuation">}</span>
+        request <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>FormRequest<span class="token punctuation">(</span>url<span class="token punctuation">,</span> formdata<span class="token operator">=</span>data<span class="token punctuation">,</span> callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse_page<span class="token punctuation">)</span>
+        <span class="token keyword">yield</span> request
+
+    <span class="token keyword">def</span> <span class="token function">parse_page</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"renren.html"</span><span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> filename<span class="token punctuation">:</span>
+            filename<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span></code></pre>
+<p>这个方法其实就先访问登陆页面的表单，然后登陆成功之后再去爬取想要的页面</p>
+<h2 id="模拟正规的登陆状态"><a href="#模拟正规的登陆状态" class="headerlink" title="模拟正规的登陆状态"></a>模拟正规的登陆状态</h2><h3 id="编写爬虫字段-2"><a href="#编写爬虫字段-2" class="headerlink" title="编写爬虫字段"></a>编写爬虫字段</h3><p>这个方法不同于前两种，前两种是重写start_requests方法，这个方法是模拟用户的登陆流程：先访问登陆页面，输入账号密码之后再访问详情页面</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
+
+
+<span class="token keyword">class</span> <span class="token class-name">RenrenSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'renren'</span>
+    allowed_domains <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'renren.com'</span><span class="token punctuation">]</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://renren.com/'</span><span class="token punctuation">]</span>
+
+    <span class="token comment" spellcheck="true"># 处理start_urls里的登录url的响应内容，提取登陆需要的参数（如果需要的话)</span>
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 提取登陆需要的参数</span>
+        <span class="token comment" spellcheck="true"># 发送请求参数，并调用指定回调函数处理</span>
+        <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>FormRequest<span class="token punctuation">.</span>from_response<span class="token punctuation">(</span>
+            response<span class="token punctuation">,</span>
+            formdata<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"email"</span><span class="token punctuation">:</span> <span class="token string">"你的邮箱"</span><span class="token punctuation">,</span> <span class="token string">"password"</span><span class="token punctuation">:</span> <span class="token string">"你的密码"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            callback <span class="token operator">=</span> self<span class="token punctuation">.</span>parse_page
+            <span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 获取登录成功状态，访问需要登录后才能访问的页面</span>
+    <span class="token keyword">def</span> <span class="token function">parse_page</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        url <span class="token operator">=</span> <span class="token string">"http://www.renren.com/422167102/profile"</span>
+        <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span> callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse_newpage<span class="token punctuation">)</span>
+
+            <span class="token comment" spellcheck="true"># 处理响应内容</span>
+    <span class="token keyword">def</span> <span class="token function">parse_newpage</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"renren.html"</span><span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> filename<span class="token punctuation">:</span>
+            filename<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span></code></pre>
+<h2 id="补充点"><a href="#补充点" class="headerlink" title="补充点"></a>补充点</h2><p>单单爬取人人网这类的简单网站用以上三个方法是没问题的，但是类似于知乎这种使用Django作为后台的网站，登陆注册都有个<code>_xsrf</code>字段放在form表单的末尾，所以在使用模拟登陆前一定要查看表单有没有这个字段，如果有就用xpath或者正则表达式提取出来，然后一起提交。比如我这里拿最后一个方法来说明：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
+
+
+<span class="token keyword">class</span> <span class="token class-name">RenrenSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'renren'</span>
+    allowed_domains <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'renren.com'</span><span class="token punctuation">]</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://renren.com/'</span><span class="token punctuation">]</span>
+
+    <span class="token comment" spellcheck="true"># 处理start_urls里的登录url的响应内容，提取登陆需要的参数（如果需要的话)</span>
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 提取登陆需要的参数</span>
+        _xsrf <span class="token operator">=</span> response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//_xsrf"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token comment" spellcheck="true"># 发送请求参数，并调用指定回调函数处理</span>
+        <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>FormRequest<span class="token punctuation">.</span>from_response<span class="token punctuation">(</span>
+            response<span class="token punctuation">,</span>
+            formdata<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"email"</span><span class="token punctuation">:</span> <span class="token string">"xxx@163.com"</span><span class="token punctuation">,</span> <span class="token string">"password"</span><span class="token punctuation">:</span> <span class="token string">"xxx"</span><span class="token punctuation">,</span> <span class="token string">"_xsrf"</span> <span class="token punctuation">:</span> _xsrf <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        callback <span class="token operator">=</span> self<span class="token punctuation">.</span>parse_page
+        <span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 获取登录成功状态，访问需要登录后才能访问的页面</span>
+        <span class="token keyword">def</span> <span class="token function">parse_page</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            url <span class="token operator">=</span> <span class="token string">"http://www.renren.com/422167102/profile"</span>
+            <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span> callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse_newpage<span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># 处理响应内容</span>
+        <span class="token keyword">def</span> <span class="token function">parse_newpage</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"renren.html"</span><span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> filename<span class="token punctuation">:</span>
+                filename<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span></code></pre>
+<p>相比于原来的方法就多一个<code>_xsrf</code>字段</p>
 
             </div>
             <hr/>
@@ -591,7 +707,7 @@
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/22/yun-wei-ren-yuan-de-gitlab-shi-yong/" class="b-link-green">运维人员的gitlab基本操作</a>
+                    <a href="/2019/10/10/scrapy3/" class="b-link-green">死磕爬虫之scrapy模拟登陆的方法</a>
                 </p>
             </div>
         </div>
@@ -613,7 +729,7 @@
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-09-22T10-49-48',
+        id: '2019-10-10T23-35-25',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -638,27 +754,32 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/24/celery/">
+                <a href="/2019/10/11/scrapy4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Celery异步框架的使用">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="死磕爬虫之scrapy下载中间件">
                         
-                        <span class="card-title">Celery异步框架的使用</span>
+                        <span class="card-title">死磕爬虫之scrapy下载中间件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Celery异步框架的使用Celery是什么​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在</div>
+                    <div class="summary">前言
+ scrapy在请求网站的时候必须经过这个下载中间件
+一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施
+
+通常防止爬虫被反主要有以下几个策略：
+动</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-24
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-11
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Django/" class="post-category" target="_blank">
-                                    Django
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
                                 </a>
                             
                             
@@ -668,12 +789,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
-                    <a href="/tags/异步/" target="_blank">
-                        <span class="chip bg-color">异步</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -687,31 +808,30 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/21/gitlab/">
+                <a href="/2019/10/09/crawlspider/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="gitlab部署与使用">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="死磕爬虫之CrawlSpider类">
                         
-                        <span class="card-title">gitlab部署与使用</span>
+                        <span class="card-title">死磕爬虫之CrawlSpider类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">自动化运维三剑客–gitlab的安装gitlab的安装gitlab和github的区别想必大家都懂，这里我就不再赘述
-这里我来用阿里云学生服务器centos7来演示gitlab的安装过程
-首先打开你的防火墙控制台，开启防火墙规则
+                    <div class="summary">前言
+爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比
 
-注(这里</div>
+Spider与CrawlSpi</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/自动化运维/" class="post-category" target="_blank">
-                                    自动化运维
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
                                 </a>
                             
                             
@@ -721,8 +841,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/gitlab/" target="_blank">
-                        <span class="chip bg-color">gitlab</span>
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
+                    </a>
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>

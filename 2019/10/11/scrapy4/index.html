@@ -4,10 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="运维人员的gitlab基本操作, 懒惰小L的博客">
-    <meta name="description" content="gitlab后台管理界面的使用关于git、github和gitlab的区别想必大家都清楚，这里我就不再赘述
-管理员的操作点击上面的扳手图标可以进入后台管理界面
-查看日志点击左边的monitoring标签第一个system info是服务器的">
+    <meta name="keywords" content="死磕爬虫之scrapy下载中间件, 懒惰小L的博客">
+    <meta name="description" content="前言
+ scrapy在请求网站的时候必须经过这个下载中间件
+一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施
+
+通常防止爬虫被反主要有以下几个策略：
+动">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>运维人员的gitlab基本操作 | 懒惰小L的博客</title>
+    <title>死磕爬虫之scrapy下载中间件 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -288,13 +291,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        运维人员的gitlab基本操作
+                        死磕爬虫之scrapy下载中间件
                     </div>
                 </div>
             </div>
@@ -386,8 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/gitlab/" target="_blank">
-                                <span class="chip bg-color">gitlab</span>
+                            <a href="/tags/scrapy/" target="_blank">
+                                <span class="chip bg-color">scrapy</span>
+                            </a>
+                        
+                            <a href="/tags/python/" target="_blank">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -398,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/自动化运维/" class="post-category" target="_blank">
-                                自动化运维
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                爬虫
                             </a>
                         
                     </div>
@@ -410,21 +417,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-22
+                    2019-10-11
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        545
+                        1.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        6 分
                     </div>
                     
                 
@@ -440,17 +447,132 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="gitlab后台管理界面的使用"><a href="#gitlab后台管理界面的使用" class="headerlink" title="gitlab后台管理界面的使用"></a>gitlab后台管理界面的使用</h1><p>关于git、github和gitlab的区别想必大家都清楚，这里我就不再赘述</p>
-<h2 id="管理员的操作"><a href="#管理员的操作" class="headerlink" title="管理员的操作"></a>管理员的操作</h2><p>点击上面的扳手图标可以进入后台管理界面<br><img src="https://img-blog.csdnimg.cn/20190922092307422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p>点击左边的monitoring标签<br><img src="https://img-blog.csdnimg.cn/20190922092435431.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>第一个system info是服务器的资源使用情况<br><img src="https://img-blog.csdnimg.cn/20190922092634854.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>logs就是gitlab的应用日志和使用日志</p>
-<h2 id="创建账号"><a href="#创建账号" class="headerlink" title="创建账号"></a>创建账号</h2><p>以下两种方法都可以添加账号<br>点击overview的new user按钮，可以为使用者创建账号<br><img src="https://img-blog.csdnimg.cn/20190922093118594.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<p><img src="https://img-blog.csdnimg.cn/20190922093433289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>点击右上角的new user按钮就可以给项目主负责人创建账号</p>
-<h2 id="给项目添加人员"><a href="#给项目添加人员" class="headerlink" title="给项目添加人员"></a>给项目添加人员</h2><p>我这里原先就已经创建好了一个名为test的仓库<br>我这里给test仓库添加人员<br>点击project1<br><img src="https://img-blog.csdnimg.cn/20190922093735602.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>再点击你需要操作的仓库<br><img src="https://img-blog.csdnimg.cn/20190922093800821.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>然后点击manage access<br><img src="https://img-blog.csdnimg.cn/20190922093832764.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>这里你要给项目添加的是什么权限可以自定义<br><img src="https://img-blog.csdnimg.cn/20190922094119996.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>master就是有合并分支的权限，developer就是可以用自己的分支写代码的权限<br><img src="https://img-blog.csdnimg.cn/20190922094248435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<h2 id="给人员修改自己的密码"><a href="#给人员修改自己的密码" class="headerlink" title="给人员修改自己的密码"></a>给人员修改自己的密码</h2><p>点击扳手按钮重回管理界面，点击user<br><img src="https://img-blog.csdnimg.cn/20190922094452932.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>这里就可以给人员信息进行修改了<br><img src="https://img-blog.csdnimg.cn/20190922094506428.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>可以修改密码<br><img src="https://img-blog.csdnimg.cn/20190922094616363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<h2 id="模拟企业开发者和负责人的使用流程"><a href="#模拟企业开发者和负责人的使用流程" class="headerlink" title="模拟企业开发者和负责人的使用流程"></a>模拟企业开发者和负责人的使用流程</h2><p>这里我不用git原始命令操作，因为比较麻烦，我贪方便就用sourcetree操作，原理是一样的</p>
-<p>开发者使用自己的分支来编写代码</p>
-<p>黏贴这个地址<br><img src="https://img-blog.csdnimg.cn/20190922095222895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>我随便写了一个test文件，我上传上去的时候会让我给账号密码，就是你刚刚设置的devloper账号密码<br><img src="https://img-blog.csdnimg.cn/20190922104059340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>这里就可以显示我刚刚上传的分支了<br><img src="https://img-blog.csdnimg.cn/20190922104108895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>然后点右上角蓝色的create merge request<br><img src="https://img-blog.csdnimg.cn/20190922104243370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>assign是项目负责人的账号就行了，其他的你随便填<br>然后用同样的方法打开负责人账号lead<br><img src="https://img-blog.csdnimg.cn/20190922104425940.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>右上角有个橙色的消息，点开<br><img src="https://img-blog.csdnimg.cn/20190922104503516.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>就可以看到开发者提交的申请<br><img src="https://img-blog.csdnimg.cn/20190922104537582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt><br>点击merge就可以合并分支<br>这里还可以给开发者回复<br><img src="https://img-blog.csdnimg.cn/20190922104737164.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
-<p>重新返回项目，就可以看到你刚刚操作的文件合并到主分支了<br><img src="https://img-blog.csdnimg.cn/20190922104839441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTM3NzI3Mw==,size_16,color_FFFFFF,t_70" alt></p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p> scrapy在请求网站的时候必须经过这个下载中间件</p>
+<p>一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施</p>
+</blockquote>
+<h2 id="通常防止爬虫被反主要有以下几个策略："><a href="#通常防止爬虫被反主要有以下几个策略：" class="headerlink" title="通常防止爬虫被反主要有以下几个策略："></a>通常防止爬虫被反主要有以下几个策略：</h2><ul>
+<li><p>动态设置User-Agent（随机切换User-Agent，模拟不同用户的浏览器信息）</p>
+</li>
+<li><p>禁用Cookies（也就是不启用cookies middleware，不向Server发送cookies，有些网站通过cookie的使用发现爬虫行为）</p>
+<ul>
+<li>可以通过<code>COOKIES_ENABLED</code> 控制 CookiesMiddleware 开启或关闭</li>
+</ul>
+</li>
+<li><p>设置延迟下载（防止访问过于频繁，设置为 2秒 或更高）</p>
+</li>
+<li><p>Google Cache 和 Baidu Cache：如果可能的话，使用谷歌/百度等搜索引擎服务器页面缓存获取页面数据。</p>
+</li>
+<li><p>使用IP地址池：VPN和代理IP，现在大部分网站都是根据IP来ban的。</p>
+</li>
+<li><p>使用 <a href="https://scrapinghub.com/crawlera" target="_blank" rel="noopener">Crawlera</a>（专用于爬虫的代理组件），正确配置和设置下载中间件后，项目所有的request都是通过crawlera发出（也就是爬虫代理商，直接使用他们给你的账号密码就可以不停地切换IP来反爬虫）</p>
+<pre><code>  DOWNLOADER_MIDDLEWARES = {
+      &#39;scrapy_crawlera.CrawleraMiddleware&#39;: 600
+  }
+
+  CRAWLERA_ENABLED = True
+  CRAWLERA_USER = &#39;注册/购买的UserKey&#39;
+  CRAWLERA_PASS = &#39;注册/购买的Password&#39;</code></pre></li>
+</ul>
+<h2 id="设置下载中间件（Downloader-Middlewares）"><a href="#设置下载中间件（Downloader-Middlewares）" class="headerlink" title="设置下载中间件（Downloader Middlewares）"></a>设置下载中间件（Downloader Middlewares）</h2><p>下载中间件是处于引擎(crawler.engine)和下载器(crawler.engine.download())之间的一层组件，可以有多个下载中间件被加载运行。</p>
+<ol>
+<li>当引擎传递请求给下载器的过程中，下载中间件可以对请求进行处理 （例如增加http header信息，增加proxy信息等）；</li>
+<li>在下载器完成http请求，传递响应给引擎的过程中， 下载中间件可以对响应进行处理（例如进行gzip的解压等）</li>
+</ol>
+<p>要激活下载器中间件组件，将其加入到 DOWNLOADER_MIDDLEWARES 设置中。 该设置是一个字典(dict)，键为中间件类的路径，值为其中间件的顺序(order)。</p>
+<h2 id="下载中间件字段"><a href="#下载中间件字段" class="headerlink" title="下载中间件字段"></a>下载中间件字段</h2><h3 id="process-request-self-request-spider"><a href="#process-request-self-request-spider" class="headerlink" title="process_request(self, request, spider)"></a>process_request(self, request, spider)</h3><ul>
+<li><p>当每个request通过下载中间件时，该方法被调用。</p>
+</li>
+<li><p>process_request() 必须返回以下其中之一：一个 None 、一个 Response 对象、一个 Request 对象或 raise IgnoreRequest:</p>
+<ul>
+<li>如果其返回 None ，Scrapy将继续处理该request，执行其他的中间件的相应方法，直到合适的下载器处理函数(download handler)被调用， 该request被执行(其response被下载)。</li>
+<li>如果其返回 Response 对象，Scrapy将不会调用 任何 其他的 process_request() 或 process_exception() 方法，或相应地下载函数； 其将返回该response。 已安装的中间件的 process_response() 方法则会在每个response返回时被调用。</li>
+<li>如果其返回 Request 对象，Scrapy则停止调用 process_request方法并重新调度返回的request。当新返回的request被执行后， 相应地中间件链将会根据下载的response被调用。</li>
+<li>如果其raise一个 IgnoreRequest 异常，则安装的下载中间件的 process_exception() 方法会被调用。如果没有任何一个方法处理该异常， 则request的errback(Request.errback)方法会被调用。如果没有代码处理抛出的异常， 则该异常被忽略且不记录(不同于其他异常那样)。</li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code>request (Request 对象)</code> – 处理的request</p>
+</li>
+<li><p><code>spider (Spider 对象)</code> – 该request对应的spider</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="process-response-self-request-response-spider"><a href="#process-response-self-request-response-spider" class="headerlink" title="process_response(self, request, response, spider)"></a>process_response(self, request, response, spider)</h3><p>当下载器完成http请求，传递响应给引擎的时候调用</p>
+<ul>
+<li>process_request() 必须返回以下其中之一: 返回一个 Response 对象、 返回一个 Request 对象或raise一个 IgnoreRequest 异常。<ul>
+<li>如果其返回一个 Response (可以与传入的response相同，也可以是全新的对象)， 该response会被在链中的其他中间件的 process_response() 方法处理。</li>
+<li>如果其返回一个 Request 对象，则中间件链停止， 返回的request会被重新调度下载。处理类似于 process_request() 返回request所做的那样。</li>
+<li>如果其抛出一个 IgnoreRequest 异常，则调用request的errback(Request.errback)。 如果没有代码处理抛出的异常，则该异常被忽略且不记录(不同于其他异常那样)。</li>
+</ul>
+</li>
+<li>参数:<ul>
+<li><code>request (Request 对象)</code> – response所对应的request</li>
+<li><code>response (Response 对象)</code> – 被处理的response</li>
+<li><code>spider (Spider 对象)</code> – response所对应的spider</li>
+</ul>
+</li>
+</ul>
+<h2 id="编写中间件字段"><a href="#编写中间件字段" class="headerlink" title="编写中间件字段"></a>编写中间件字段</h2><p>首先先设置你的UserAgent和PROXIES的数据，可以在setting里面设置，也可以在中间件里面设置，但是setting直接导入就好了更方便，在类里面设置还得用个self。</p>
+<p>比如我的setting.py文件</p>
+<pre class=" language-python"><code class="language-python">USER_AGENTS <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)'</span><span class="token punctuation">,</span>
+    <span class="token string">'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.2)'</span><span class="token punctuation">,</span>
+    <span class="token string">'Opera/9.27 (Windows NT 5.2; U; zh-cn)'</span><span class="token punctuation">,</span>
+    <span class="token string">'Opera/8.0 (Macintosh; PPC Mac OS X; U; en)'</span><span class="token punctuation">,</span>
+    <span class="token string">'Mozilla/5.0 (Macintosh; PPC Mac OS X; U; en) Opera 8.0'</span><span class="token punctuation">,</span>
+    <span class="token string">'Mozilla/5.0 (Linux; U; Android 4.0.3; zh-cn; M032 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'</span><span class="token punctuation">,</span>
+    <span class="token string">'Mozilla/5.0 (Windows; U; Windows NT 5.2) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27 Safari/525.13'</span>
+<span class="token punctuation">]</span>
+PROXIES <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span><span class="token string">"ip_port"</span><span class="token punctuation">:</span> <span class="token string">"IP地址:端口号"</span><span class="token punctuation">,</span> <span class="token string">"user_passwd"</span><span class="token punctuation">:</span> <span class="token string">"账号:密码"</span><span class="token punctuation">}</span>
+           <span class="token comment" spellcheck="true"># {"ip_prot" :"121.42.140.113:16816", "user_passwd" : ""}</span>
+           <span class="token comment" spellcheck="true"># {"ip_prot" :"121.42.140.113:16816", "user_passwd" : ""}</span>
+           <span class="token comment" spellcheck="true"># {"ip_prot" :"121.42.140.113:16816", "user_passwd" : ""}</span>
+           <span class="token punctuation">]</span></code></pre>
+<p>然后编写中间件字段：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token keyword">import</span> base64
+
+<span class="token keyword">from</span> ZLzhaoping<span class="token punctuation">.</span>settings <span class="token keyword">import</span> USER_AGENTS
+<span class="token keyword">from</span> ZLzhaoping<span class="token punctuation">.</span>settings <span class="token keyword">import</span> PROXIES
+
+<span class="token comment" spellcheck="true"># 随机的User-Agent</span>
+<span class="token keyword">class</span> <span class="token class-name">RandomUserAgent</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">process_request</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> request<span class="token punctuation">,</span> spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        useragent <span class="token operator">=</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>USER_AGENTS<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">#print useragent</span>
+        request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>setdefault<span class="token punctuation">(</span><span class="token string">"User-Agent"</span><span class="token punctuation">,</span> useragent<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">RandomProxy</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">process_request</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> request<span class="token punctuation">,</span> spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        proxy <span class="token operator">=</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>PROXIES<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> proxy<span class="token punctuation">[</span><span class="token string">'user_passwd'</span><span class="token punctuation">]</span> <span class="token keyword">is</span> None<span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 没有代理账户验证的代理使用方式</span>
+            request<span class="token punctuation">.</span>meta<span class="token punctuation">[</span><span class="token string">'proxy'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"http://"</span> <span class="token operator">+</span> proxy<span class="token punctuation">[</span><span class="token string">'ip_port'</span><span class="token punctuation">]</span>
+
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 对账户密码进行base64编码转换</span>
+            base64_userpasswd <span class="token operator">=</span> base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>proxy<span class="token punctuation">[</span><span class="token string">'user_passwd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true"># 对应到代理服务器的信令格式里</span>
+            request<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'Proxy-Authorization'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Basic '</span> <span class="token operator">+</span> base64_userpasswd
+
+            request<span class="token punctuation">.</span>meta<span class="token punctuation">[</span><span class="token string">'proxy'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"http://"</span> <span class="token operator">+</span> proxy<span class="token punctuation">[</span><span class="token string">'ip_port'</span><span class="token punctuation">]</span></code></pre>
+<p>HTTP代理登陆的时候是要使用登陆验证的，原因如下：</p>
+<blockquote>
+<p>为什么HTTP代理要使用base64编码：</p>
+<p>HTTP代理的原理很简单，就是通过HTTP协议与代理服务器建立连接，协议信令中包含要连接到的远程主机的IP和端口号，如果有需要身份验证的话还需要加上授权信息，服务器收到信令后首先进行身份验证，通过后便与远程主机建立连接，连接成功之后会返回给客户端200，表示验证通过，就这么简单，下面是具体的信令格式：</p>
+</blockquote>
+<pre class=" language-python"><code class="language-python">CONNECT <span class="token number">59.64</span><span class="token punctuation">.</span><span class="token number">128.198</span><span class="token punctuation">:</span><span class="token number">21</span> HTTP<span class="token operator">/</span><span class="token number">1.1</span>
+Host<span class="token punctuation">:</span> <span class="token number">59.64</span><span class="token punctuation">.</span><span class="token number">128.198</span><span class="token punctuation">:</span><span class="token number">21</span>
+Proxy<span class="token operator">-</span>Authorization<span class="token punctuation">:</span> Basic bGV2I1TU5OTIz
+User<span class="token operator">-</span>Agent<span class="token punctuation">:</span> OpenFetion</code></pre>
+<blockquote>
+<p>其中<code>Proxy-Authorization</code>是身份验证信息，Basic后面的字符串是用户名和密码组合后进行base64编码的结果，也就是对username:password进行base64编码。</p>
+</blockquote>
 
             </div>
             <hr/>
@@ -591,7 +713,7 @@
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/22/yun-wei-ren-yuan-de-gitlab-shi-yong/" class="b-link-green">运维人员的gitlab基本操作</a>
+                    <a href="/2019/10/11/scrapy4/" class="b-link-green">死磕爬虫之scrapy下载中间件</a>
                 </p>
             </div>
         </div>
@@ -613,7 +735,7 @@
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-09-22T10-49-48',
+        id: '2019-10-11T15-22-12',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -634,46 +756,53 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/24/celery/">
+                <a href="/2019/10/11/scrapy4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Celery异步框架的使用">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="死磕爬虫之scrapy下载中间件">
                         
-                        <span class="card-title">Celery异步框架的使用</span>
+                        <span class="card-title">死磕爬虫之scrapy下载中间件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Celery异步框架的使用Celery是什么​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在</div>
+                    <div class="summary">前言
+ scrapy在请求网站的时候必须经过这个下载中间件
+一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施
+
+通常防止爬虫被反主要有以下几个策略：
+动</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Django/" class="post-category" target="_blank">
-                                    Django
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
-                    <a href="/tags/异步/" target="_blank">
-                        <span class="chip bg-color">异步</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -687,31 +816,28 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/21/gitlab/">
+                <a href="/2019/10/10/scrapy3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="gitlab部署与使用">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="死磕爬虫之scrapy模拟登陆的方法">
                         
-                        <span class="card-title">gitlab部署与使用</span>
+                        <span class="card-title">死磕爬虫之scrapy模拟登陆的方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">自动化运维三剑客–gitlab的安装gitlab的安装gitlab和github的区别想必大家都懂，这里我就不再赘述
-这里我来用阿里云学生服务器centos7来演示gitlab的安装过程
-首先打开你的防火墙控制台，开启防火墙规则
-
-注(这里</div>
+                    <div class="summary">模拟登陆人人网案例使用保存的cookie登陆（100%成功）登陆后查看自己的cookie信息
+重写Spider类的start_requests方法因为所有的爬虫类都是继承于Spider的，所以重写start_requests方法可以适用于所</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/自动化运维/" class="post-category" target="_blank">
-                                    自动化运维
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
                                 </a>
                             
                             
@@ -721,8 +847,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/gitlab/" target="_blank">
-                        <span class="chip bg-color">gitlab</span>
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
+                    </a>
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
