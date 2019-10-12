@@ -5,10 +5,10 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="死磕爬虫之CrawlSpider类, 懒惰小L的博客">
-    <meta name="description" content="前言
+    <meta name="description" content="
 爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比
 
-Spider与CrawlSpi">
+Spider与CrawlSpide">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -387,12 +387,12 @@ Spider与CrawlSpi">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/scrapy/" target="_blank">
-                                <span class="chip bg-color">scrapy</span>
-                            </a>
-                        
                             <a href="/tags/python/" target="_blank">
                                 <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/scrapy/" target="_blank">
+                                <span class="chip bg-color">scrapy</span>
                             </a>
                         
                     </div>
@@ -445,7 +445,7 @@ Spider与CrawlSpi">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><blockquote>
+                <blockquote>
 <p>爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比</p>
 </blockquote>
 <h2 id="Spider与CrawlSpider案例对比"><a href="#Spider与CrawlSpider案例对比" class="headerlink" title="Spider与CrawlSpider案例对比"></a>Spider与CrawlSpider案例对比</h2><h3 id="Spider爬取有页码的数据"><a href="#Spider爬取有页码的数据" class="headerlink" title="Spider爬取有页码的数据"></a>Spider爬取有页码的数据</h3><p>Spider在爬取有页码的数据的时候要使用回调函数，在请求完一页的数据之后使用回调函数继续执行下一个页面</p>
@@ -498,7 +498,9 @@ Spider与CrawlSpi">
 
     <span class="token keyword">def</span> <span class="token function">close_spider</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>filename<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
 <p>里面代码关键的就是确定爬取的页码是多少，然后每一次请求玩一页的数据都让pages+1，这样就可以循环出所有的页码的数据了。不过使用CrawlSpider会更简单，CrawlSpider可以创建自己的规则,比如只要存在还有跳转到下一页页码的url字段，就反复请求。</p>
+</blockquote>
 <h3 id="CrawlSpider爬取有页码的数据"><a href="#CrawlSpider爬取有页码的数据" class="headerlink" title="CrawlSpider爬取有页码的数据"></a>CrawlSpider爬取有页码的数据</h3><p>crawlSpider我先演示一下同样是爬取同一个网页</p>
 <p>使用如下命令快捷创建CrawlSpider</p>
 <pre class=" language-python"><code class="language-python">$ scrapy genspider <span class="token operator">-</span>t crawl clidemo https<span class="token punctuation">:</span><span class="token operator">//</span>bbs<span class="token punctuation">.</span>csdn<span class="token punctuation">.</span>net<span class="token operator">/</span>forums<span class="token operator">/</span>OL_Script?page<span class="token operator">=</span><span class="token number">0</span></code></pre>
@@ -528,8 +530,10 @@ Spider与CrawlSpi">
             zhilian<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span><span class="token operator">=</span>title<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
 
             <span class="token keyword">yield</span> zhilian</code></pre>
+<blockquote>
 <p>运行之后就可以直接把所有的页面全部爬完了,方法比Spider来写方便很多。</p>
 <p>唯一不足的地方就是CrawlSpider一次性把全部的页码请求完，而Spider可以设置一个停止条件，不必全部爬完。</p>
+</blockquote>
 <h2 id="CrawlSpider的字段详解"><a href="#CrawlSpider的字段详解" class="headerlink" title="CrawlSpider的字段详解"></a>CrawlSpider的字段详解</h2><p>CrawlSpider源码没啥好解释的，写的挺清楚的，这里解释一下CrawlSpider的匹配规则和提取规则</p>
 <p><strong>LinkExtractor：</strong></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> allow<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> deny<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> allow_domains<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> deny_domains<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> restrict_xpaths<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -767,8 +771,11 @@ Spider与CrawlSpi">
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">模拟登陆人人网案例使用保存的cookie登陆（100%成功）登陆后查看自己的cookie信息
-重写Spider类的start_requests方法因为所有的爬虫类都是继承于Spider的，所以重写start_requests方法可以适用于所</div>
+                    <div class="summary">
+ 以下三个策略以人人网作为案例来描述
+
+策略一：使用保存的cookie登陆（100%成功）登陆后查看自己的cookie信息
+重写Spider类的start_requests方法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-10
@@ -788,12 +795,12 @@ Spider与CrawlSpi">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -817,7 +824,9 @@ Spider与CrawlSpi">
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，但是</div>
+                    <div class="summary">
+前言
+​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-07
@@ -837,12 +846,12 @@ Spider与CrawlSpi">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -916,7 +925,7 @@ Spider与CrawlSpi">
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">15.6k</span>
+                <span class="white-color">17k</span>
             
 
             

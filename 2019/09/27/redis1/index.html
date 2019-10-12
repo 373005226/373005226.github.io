@@ -424,7 +424,7 @@ Redis的特性
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        1.1k
                     </div>
                     
 
@@ -464,7 +464,7 @@ Redis的特性
 <li>主从复制：主服务器的数据可以同步到从服务器上，给高可用和分布式提供了一个很好的基础</li>
 <li>高可用、分布式：Redis单单靠主从复制是不能进行高可用分布式的，所以Redis2.8版本提供了Redis-Sentinel来支持高可用，Redis3.0版本提供了Redis-Cluster来支持分布式</li>
 </ol>
-<h2 id="Redis的应用场景"><a href="#Redis的应用场景" class="headerlink" title="Redis的应用场景"></a>Redis的应用场景</h2><p>Redis应用场景十分的广泛，缓存(比如在网站中可以使用Redis缓存来代替session和cookie)、计数器(比如微博的转发、评论数)、消息队列(比如Celery和redis结合来使用异步任务)、排行榜、实时系统(垃圾邮件过滤功能)、社交系统(比如youtube那些社交网站的共同关注数、粉丝数)等，大多数企业都使用了Redis</p>
+<h2 id="Redis的应用场景"><a href="#Redis的应用场景" class="headerlink" title="Redis的应用场景"></a>Redis的应用场景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Redis应用场景十分的广泛，缓存(比如在网站中可以使用Redis缓存来代替session和cookie)、计数器(比如微博的转发、评论数)、消息队列(比如Celery和redis结合来使用异步任务)、排行榜、实时系统(垃圾邮件过滤功能)、社交系统(比如youtube那些社交网站的共同关注数、粉丝数)等，大多数企业都使用了Redis</p>
 <h2 id="Redis的常用命令"><a href="#Redis的常用命令" class="headerlink" title="Redis的常用命令"></a>Redis的常用命令</h2><ul>
 <li><code>keys</code>：这个一般不在生产环境中使用，其一是因为key是一个很重的命令，时间复杂度为O(n)如果有上万个键值对一下子遍历出来会很慢，这个可以在不在生产环境中使用的从节点使用比较重的命令，不会对生产环境产生危害即可<ul>
 <li><code>keys *</code>：查看所有的键</li>
@@ -516,8 +516,8 @@ Redis的特性
 </tr>
 </tbody></table>
 <h2 id="Redis的数据结构和内部编码"><a href="#Redis的数据结构和内部编码" class="headerlink" title="Redis的数据结构和内部编码"></a>Redis的数据结构和内部编码</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1.png" alt></p>
-<p>每一个数据结构都有自己的内部编码，在开发过程中，如果一些元素比较小的时候可以通过空间换时间的操作，这些得看开发中的具体要求和操作来定制</p>
-<h2 id="Redis-的单线程操作"><a href="#Redis-的单线程操作" class="headerlink" title="Redis 的单线程操作"></a>Redis 的单线程操作</h2><p>Redis的单线程就像一个队列，每一个瞬间只能执行一个命令，所以在开发中，一定要注意不要轻易使用很长时间的命令，不然后面的命令都会阻塞在那</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一个数据结构都有自己的内部编码，在开发过程中，如果一些元素比较小的时候可以通过空间换时间的操作，这些得看开发中的具体要求和操作来定制</p>
+<h2 id="Redis-的单线程操作"><a href="#Redis-的单线程操作" class="headerlink" title="Redis 的单线程操作"></a>Redis 的单线程操作</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Redis的单线程就像一个队列，每一个瞬间只能执行一个命令，所以在开发中，一定要注意不要轻易使用很长时间的命令，不然后面的命令都会阻塞在那</p>
 <p>Redis单线程还这么快的原因跟node.js部分很像，快的原因如下</p>
 <ul>
 <li>Redis采用的是纯内存的存储，内存的存储是非常的快的(这个是主要的原因)</li>
@@ -720,10 +720,7 @@ Redis的特性
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Redis五大数据结构的介绍String(字符串)String的限制String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M
-字符串的API
-赋值：
-set ：se</div>
+                    <div class="summary">Redis五大数据结构的介绍String(字符串)String的限制&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-28
@@ -867,7 +864,7 @@ set ：se</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">15.6k</span>
+                <span class="white-color">17k</span>
             
 
             

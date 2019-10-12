@@ -5,10 +5,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="redis基本命令, 懒惰小L的博客">
-    <meta name="description" content="Redis五大数据结构的介绍String(字符串)String的限制String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M
-字符串的API
-赋值：
-set ：se">
+    <meta name="description" content="Redis五大数据结构的介绍String(字符串)String的限制&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -418,7 +415,7 @@ set ：se">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.7k
+                        1.8k
                     </div>
                     
 
@@ -441,7 +438,7 @@ set ：se">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Redis五大数据结构的介绍"><a href="#Redis五大数据结构的介绍" class="headerlink" title="Redis五大数据结构的介绍"></a>Redis五大数据结构的介绍</h1><h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串)"></a>String(字符串)</h2><h3 id="String的限制"><a href="#String的限制" class="headerlink" title="String的限制"></a>String的限制</h3><p>String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M</p>
+                <h1 id="Redis五大数据结构的介绍"><a href="#Redis五大数据结构的介绍" class="headerlink" title="Redis五大数据结构的介绍"></a>Redis五大数据结构的介绍</h1><h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串)"></a>String(字符串)</h2><h3 id="String的限制"><a href="#String的限制" class="headerlink" title="String的限制"></a>String的限制</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M</p>
 <h3 id="字符串的API"><a href="#字符串的API" class="headerlink" title="字符串的API"></a>字符串的API</h3><ul>
 <li>赋值：<ul>
 <li>set ：<code>set key value</code>，加键值对，无论key是否存在都设置</li>
@@ -476,8 +473,8 @@ set ：se">
 </ul>
 </li>
 </ul>
-<h3 id="String的使用场景"><a href="#String的使用场景" class="headerlink" title="String的使用场景"></a>String的使用场景</h3><p>String一般适用于缓存（网站记录用户登录状态、视频缓存等）、计数器（比如每次观看视频，次数就+1，而且因为redis是单线程的，计数器是完全不会出错的），分布式锁等等</p>
-<h2 id="hash-哈希"><a href="#hash-哈希" class="headerlink" title="hash(哈希)"></a>hash(哈希)</h2><p>hash其实还是一个key-value结构，但是跟String有不同，hash类似于mysql的一个表的结构数据，每一个key都有一个field和value，field不能相同。就相当于key是mysql的一个表，filed是一个字段，value是值</p>
+<h3 id="String的使用场景"><a href="#String的使用场景" class="headerlink" title="String的使用场景"></a>String的使用场景</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String一般适用于缓存（网站记录用户登录状态、视频缓存等）、计数器（比如每次观看视频，次数就+1，而且因为redis是单线程的，计数器是完全不会出错的），分布式锁等等</p>
+<h2 id="hash-哈希"><a href="#hash-哈希" class="headerlink" title="hash(哈希)"></a>hash(哈希)</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hash其实还是一个key-value结构，但是跟String有不同，hash类似于mysql的一个表的结构数据，每一个key都有一个field和value，field不能相同。就相当于key是mysql的一个表，filed是一个字段，value是值</p>
 <h3 id="哈希的API"><a href="#哈希的API" class="headerlink" title="哈希的API"></a>哈希的API</h3><ul>
 <li>赋值：<ul>
 <li>hset：哈希赋值，比如hset user:1:info age 23</li>
@@ -544,8 +541,8 @@ set ：se">
 </ul>
 </li>
 </ul>
-<h2 id="set-集合"><a href="#set-集合" class="headerlink" title="set(集合)"></a>set(集合)</h2><h3 id="集合特征"><a href="#集合特征" class="headerlink" title="集合特征"></a>集合特征</h3><p>集合是一个<strong>无序和无重复元素</strong>的的，还可以使用<strong>集合操作</strong>，集合就相当于我们高中学的数学的那个集合，两个集合可以交、并、补操作，同时集合是无序和不能重复的</p>
-<p>集合的value是由field和value组成</p>
+<h2 id="set-集合"><a href="#set-集合" class="headerlink" title="set(集合)"></a>set(集合)</h2><h3 id="集合特征"><a href="#集合特征" class="headerlink" title="集合特征"></a>集合特征</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;集合是一个<strong>无序和无重复元素</strong>的的，还可以使用<strong>集合操作</strong>，集合就相当于我们高中学的数学的那个集合，两个集合可以交、并、补操作，同时集合是无序和不能重复的</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;集合的value是由field和value组成</p>
 <h3 id="集合的API"><a href="#集合的API" class="headerlink" title="集合的API"></a>集合的API</h3><ul>
 <li>添加：<ul>
 <li>sadd：<code>sadd key element1 [element2]</code>向集合添加element，如果element已存在就添加失败，返回结果为0</li>
@@ -576,7 +573,7 @@ set ：se">
 </ul>
 </li>
 </ul>
-<h2 id="sorted-set-有序集合"><a href="#sorted-set-有序集合" class="headerlink" title="sorted set(有序集合)"></a>sorted set(有序集合)</h2><h3 id="有序集合特征"><a href="#有序集合特征" class="headerlink" title="有序集合特征"></a>有序集合特征</h3><p>有序集合是无重复元素的、有序，有序集合的的value是由element和score共同组成，有序集合所有的API都是z开头</p>
+<h2 id="sorted-set-有序集合"><a href="#sorted-set-有序集合" class="headerlink" title="sorted set(有序集合)"></a>sorted set(有序集合)</h2><h3 id="有序集合特征"><a href="#有序集合特征" class="headerlink" title="有序集合特征"></a>有序集合特征</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有序集合是无重复元素的、有序，有序集合的的value是由element和score共同组成，有序集合所有的API都是z开头</p>
 <p>有序集合的score可以重复，element不可以重复</p>
 <h3 id="zset跟list和set的区别"><a href="#zset跟list和set的区别" class="headerlink" title="zset跟list和set的区别"></a>zset跟list和set的区别</h3><table>
 <thead>
@@ -832,7 +829,9 @@ set ：se">
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，但是</div>
+                    <div class="summary">
+前言
+​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-07
@@ -852,12 +851,12 @@ set ：se">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -984,7 +983,7 @@ Redis的特性
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">15.6k</span>
+                <span class="white-color">17k</span>
             
 
             

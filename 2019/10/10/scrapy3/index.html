@@ -5,8 +5,11 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="死磕爬虫之scrapy模拟登陆的方法, 懒惰小L的博客">
-    <meta name="description" content="模拟登陆人人网案例使用保存的cookie登陆（100%成功）登陆后查看自己的cookie信息
-重写Spider类的start_requests方法因为所有的爬虫类都是继承于Spider的，所以重写start_requests方法可以适用于所">
+    <meta name="description" content="
+ 以下三个策略以人人网作为案例来描述
+
+策略一：使用保存的cookie登陆（100%成功）登陆后查看自己的cookie信息
+重写Spider类的start_requests方法&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -385,12 +388,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/scrapy/" target="_blank">
-                                <span class="chip bg-color">scrapy</span>
-                            </a>
-                        
                             <a href="/tags/python/" target="_blank">
                                 <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/scrapy/" target="_blank">
+                                <span class="chip bg-color">scrapy</span>
                             </a>
                         
                     </div>
@@ -420,7 +423,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        981
+                        1k
                     </div>
                     
 
@@ -443,18 +446,23 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="模拟登陆人人网案例"><a href="#模拟登陆人人网案例" class="headerlink" title="模拟登陆人人网案例"></a>模拟登陆人人网案例</h1><h2 id="使用保存的cookie登陆（100-成功）"><a href="#使用保存的cookie登陆（100-成功）" class="headerlink" title="使用保存的cookie登陆（100%成功）"></a>使用保存的cookie登陆（100%成功）</h2><h3 id="登陆后查看自己的cookie信息"><a href="#登陆后查看自己的cookie信息" class="headerlink" title="登陆后查看自己的cookie信息"></a>登陆后查看自己的cookie信息</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570770626349.png" alt="cookie信息"></p>
-<h3 id="重写Spider类的start-requests方法"><a href="#重写Spider类的start-requests方法" class="headerlink" title="重写Spider类的start_requests方法"></a>重写Spider类的start_requests方法</h3><p>因为所有的爬虫类都是继承于Spider的，所以重写start_requests方法可以适用于所有的爬虫类</p>
-<p>然后记得要把setting.py的COOKIES_ENABLED开启起来</p>
-<p>我的setting.py文件关键配置如下：</p>
-<pre><code>COOKIES_ENABLED = True
+                <blockquote>
+<p> 以下三个策略以人人网作为案例来描述</p>
+</blockquote>
+<h2 id="策略一：使用保存的cookie登陆（100-成功）"><a href="#策略一：使用保存的cookie登陆（100-成功）" class="headerlink" title="策略一：使用保存的cookie登陆（100%成功）"></a>策略一：使用保存的cookie登陆（100%成功）</h2><h3 id="登陆后查看自己的cookie信息"><a href="#登陆后查看自己的cookie信息" class="headerlink" title="登陆后查看自己的cookie信息"></a>登陆后查看自己的cookie信息</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570770626349.png" alt="cookie信息"></p>
+<h3 id="重写Spider类的start-requests方法"><a href="#重写Spider类的start-requests方法" class="headerlink" title="重写Spider类的start_requests方法"></a>重写Spider类的start_requests方法</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因为所有的爬虫类都是继承于Spider的，所以重写start_requests方法可以适用于所有的爬虫类</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最重要记得要把setting.py的COOKIES_ENABLED开启起来</p>
+<p>&emsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的setting.py文件关键配置如下：</p>
+<pre class=" language-python"><code class="language-python">COOKIES_ENABLED <span class="token operator">=</span> <span class="token boolean">True</span>
 
-DEFAULT_REQUEST_HEADERS = {
-  &#39;Accept&#39;: &#39;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#39;,
-  &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36&#39;,
-}
+DEFAULT_REQUEST_HEADERS <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span><span class="token punctuation">,</span>
+  <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
 
-ROBOTSTXT_OBEY = False</code></pre><p>然后使用命令创建一个新的爬虫文件(renren.py)</p>
+ROBOTSTXT_OBEY <span class="token operator">=</span> <span class="token boolean">False</span></code></pre>
+<p>然后使用命令创建一个新的爬虫文件(renren.py)</p>
 <h3 id="编写爬虫字段"><a href="#编写爬虫字段" class="headerlink" title="编写爬虫字段"></a>编写爬虫字段</h3><p>renren.py</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
 <span class="token keyword">import</span> scrapy
@@ -489,7 +497,7 @@ ROBOTSTXT_OBEY = False</code></pre><p>然后使用命令创建一个新的爬虫
 <p>爬取得到的结果如下：</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570776253453.png" alt></p>
 <p>这个方法虽然麻烦，但是肯定是可以成功的</p>
-<h2 id="使用post请求"><a href="#使用post请求" class="headerlink" title="使用post请求"></a>使用post请求</h2><h3 id="找到表单登陆请求地址"><a href="#找到表单登陆请求地址" class="headerlink" title="找到表单登陆请求地址"></a>找到表单登陆请求地址</h3><p>如果使用post请求的话就一定要找到人人网登陆表单的请求地址，人人网的请求地址如图所示：</p>
+<h2 id="策略二：使用post请求来模拟登陆"><a href="#策略二：使用post请求来模拟登陆" class="headerlink" title="策略二：使用post请求来模拟登陆"></a>策略二：使用post请求来模拟登陆</h2><h3 id="找到表单登陆请求地址"><a href="#找到表单登陆请求地址" class="headerlink" title="找到表单登陆请求地址"></a>找到表单登陆请求地址</h3><p>如果使用post请求的话就一定要找到人人网登陆表单的请求地址，人人网的请求地址如图所示：</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570769345282.png" alt="人人网表单"></p>
 <p>得到的地址就为’<a href="http://www.renren.com/PLogin.do&#39;" target="_blank" rel="noopener">http://www.renren.com/PLogin.do&#39;</a></p>
 <h3 id="编写爬虫字段-1"><a href="#编写爬虫字段-1" class="headerlink" title="编写爬虫字段"></a>编写爬虫字段</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
@@ -513,7 +521,7 @@ ROBOTSTXT_OBEY = False</code></pre><p>然后使用命令创建一个新的爬虫
         <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"renren.html"</span><span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> filename<span class="token punctuation">:</span>
             filename<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span></code></pre>
 <p>这个方法其实就先访问登陆页面的表单，然后登陆成功之后再去爬取想要的页面</p>
-<h2 id="模拟正规的登陆状态"><a href="#模拟正规的登陆状态" class="headerlink" title="模拟正规的登陆状态"></a>模拟正规的登陆状态</h2><h3 id="编写爬虫字段-2"><a href="#编写爬虫字段-2" class="headerlink" title="编写爬虫字段"></a>编写爬虫字段</h3><p>这个方法不同于前两种，前两种是重写start_requests方法，这个方法是模拟用户的登陆流程：先访问登陆页面，输入账号密码之后再访问详情页面</p>
+<h2 id="策略三：模拟正规的登陆流程来模拟登陆"><a href="#策略三：模拟正规的登陆流程来模拟登陆" class="headerlink" title="策略三：模拟正规的登陆流程来模拟登陆"></a>策略三：模拟正规的登陆流程来模拟登陆</h2><h3 id="编写爬虫字段-2"><a href="#编写爬虫字段-2" class="headerlink" title="编写爬虫字段"></a>编写爬虫字段</h3><p>这个方法不同于前两种，前两种是重写start_requests方法，这个方法是模拟用户的登陆流程：先访问登陆页面，输入账号密码之后再访问详情页面</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
 
 
@@ -539,7 +547,7 @@ ROBOTSTXT_OBEY = False</code></pre><p>然后使用命令创建一个新的爬虫
     <span class="token keyword">def</span> <span class="token function">parse_newpage</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"renren.html"</span><span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> filename<span class="token punctuation">:</span>
             filename<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span></code></pre>
-<h2 id="补充点"><a href="#补充点" class="headerlink" title="补充点"></a>补充点</h2><p>单单爬取人人网这类的简单网站用以上三个方法是没问题的，但是类似于知乎这种使用Django作为后台的网站，登陆注册都有个<code>_xsrf</code>字段放在form表单的末尾，所以在使用模拟登陆前一定要查看表单有没有这个字段，如果有就用xpath或者正则表达式提取出来，然后一起提交。比如我这里拿最后一个方法来说明：</p>
+<h2 id="补充点"><a href="#补充点" class="headerlink" title="补充点"></a>补充点</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单单爬取人人网这类的简单网站用以上三个方法是没问题的，但是类似于知乎这种使用Django作为后台的网站，登陆注册都有个<code>_xsrf</code>字段放在form表单的末尾，所以在使用模拟登陆前一定要查看表单有没有这个字段，如果有就用xpath或者正则表达式提取出来，然后一起提交。比如我这里拿最后一个方法来说明：</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
 
 
@@ -764,12 +772,12 @@ ROBOTSTXT_OBEY = False</code></pre><p>然后使用命令创建一个新的爬虫
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言
+                    <div class="summary">
  scrapy在请求网站的时候必须经过这个下载中间件
 一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施
 
 通常防止爬虫被反主要有以下几个策略：
-动</div>
+动态设</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-11
@@ -789,12 +797,12 @@ ROBOTSTXT_OBEY = False</code></pre><p>然后使用命令创建一个新的爬虫
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -818,10 +826,10 @@ ROBOTSTXT_OBEY = False</code></pre><p>然后使用命令创建一个新的爬虫
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言
+                    <div class="summary">
 爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比
 
-Spider与CrawlSpi</div>
+Spider与CrawlSpide</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-09
@@ -841,12 +849,12 @@ Spider与CrawlSpi</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -920,7 +928,7 @@ Spider与CrawlSpi</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">15.6k</span>
+                <span class="white-color">17k</span>
             
 
             

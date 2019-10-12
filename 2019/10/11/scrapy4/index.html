@@ -5,12 +5,12 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="死磕爬虫之scrapy下载中间件, 懒惰小L的博客">
-    <meta name="description" content="前言
+    <meta name="description" content="
  scrapy在请求网站的时候必须经过这个下载中间件
 一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施
 
 通常防止爬虫被反主要有以下几个策略：
-动">
+动态设">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -389,12 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/scrapy/" target="_blank">
-                                <span class="chip bg-color">scrapy</span>
-                            </a>
-                        
                             <a href="/tags/python/" target="_blank">
                                 <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/scrapy/" target="_blank">
+                                <span class="chip bg-color">scrapy</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+                <blockquote>
 <p> scrapy在请求网站的时候必须经过这个下载中间件</p>
 <p>一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施</p>
 </blockquote>
@@ -515,8 +515,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="编写中间件字段"><a href="#编写中间件字段" class="headerlink" title="编写中间件字段"></a>编写中间件字段</h2><p>首先先设置你的UserAgent和PROXIES的数据，可以在setting里面设置，也可以在中间件里面设置，但是setting直接导入就好了更方便，在类里面设置还得用个self。</p>
-<p>比如我的setting.py文件</p>
+<h2 id="编写中间件字段"><a href="#编写中间件字段" class="headerlink" title="编写中间件字段"></a>编写中间件字段</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先先设置你的UserAgent和PROXIES的数据，可以在setting里面设置，也可以在中间件里面设置，但是setting直接导入就好了更方便，在类里面设置还得用个self。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比如我的setting.py文件</p>
 <pre class=" language-python"><code class="language-python">USER_AGENTS <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token string">'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)'</span><span class="token punctuation">,</span>
     <span class="token string">'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.2)'</span><span class="token punctuation">,</span>
@@ -756,55 +756,41 @@ User<span class="token operator">-</span>Agent<span class="token punctuation">:<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/11/scrapy4/">
+                <a href="/2019/10/11/ruan-jian-ce-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="死磕爬虫之scrapy下载中间件">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="软件测试基本知识(一)">
                         
-                        <span class="card-title">死磕爬虫之scrapy下载中间件</span>
+                        <span class="card-title">软件测试基本知识(一)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言
- scrapy在请求网站的时候必须经过这个下载中间件
-一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施
-
-通常防止爬虫被反主要有以下几个策略：
-动</div>
+                    <div class="summary">软件测试分类总览
+单元测试：集中编码和单元测试中，大多数时候用来开发自测、自我校验的一个手段
+冒烟测试：在后续需求中，对主要流程进行测试
+集成测试：模块与模块之间的测试
+系统测试：通过测试用例的执行来完成过程
+α测试：α测试就是让用户、开发</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/爬虫/" class="post-category" target="_blank">
-                                    爬虫
+                            <a href="/categories/软件测试/" class="post-category" target="_blank">
+                                    软件测试
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
-                    </a>
-                    
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -826,8 +812,11 @@ User<span class="token operator">-</span>Agent<span class="token punctuation">:<
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">模拟登陆人人网案例使用保存的cookie登陆（100%成功）登陆后查看自己的cookie信息
-重写Spider类的start_requests方法因为所有的爬虫类都是继承于Spider的，所以重写start_requests方法可以适用于所</div>
+                    <div class="summary">
+ 以下三个策略以人人网作为案例来描述
+
+策略一：使用保存的cookie登陆（100%成功）登陆后查看自己的cookie信息
+重写Spider类的start_requests方法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-10
@@ -847,12 +836,12 @@ User<span class="token operator">-</span>Agent<span class="token punctuation">:<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -926,7 +915,7 @@ User<span class="token operator">-</span>Agent<span class="token punctuation">:<
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">15.6k</span>
+                <span class="white-color">17k</span>
             
 
             

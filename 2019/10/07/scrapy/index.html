@@ -5,7 +5,9 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="死磕爬虫之scrapy框架初识, 懒惰小L的博客">
-    <meta name="description" content="前言​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，但是">
+    <meta name="description" content="
+前言
+​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -384,12 +386,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/scrapy/" target="_blank">
-                                <span class="chip bg-color">scrapy</span>
-                            </a>
-                        
                             <a href="/tags/python/" target="_blank">
                                 <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/scrapy/" target="_blank">
+                                <span class="chip bg-color">scrapy</span>
                             </a>
                         
                     </div>
@@ -442,8 +444,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，但是流程总归而言还是比较麻烦的，而scrapy框架则帮我们封装好了所有的流程，我们只需要编写几行代码就可以爬取我们需要的资源。</p>
-<h2 id="scrapy初识"><a href="#scrapy初识" class="headerlink" title="scrapy初识"></a>scrapy初识</h2><h3 id="scrapy架构图"><a href="#scrapy架构图" class="headerlink" title="scrapy架构图"></a>scrapy架构图</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/scrapy_all.png" alt="scrapy架构图"></p>
+                <blockquote>
+<p>前言</p>
+<p>​        我们原生爬虫需要使用urllib、requests等库去请求指定的网址，然后通过正则表达式、xpath、css选择等去解析网址，得到自己想要的信息，然后再写一个函数存储到数据库或者本地文件中，这样思路虽然说很清晰，但是流程总归而言还是比较麻烦的，而scrapy框架则帮我们封装好了所有的流程，我们只需要编写几行代码就可以爬取我们需要的资源。</p>
+</blockquote>
+<h2 id="scrapy架构图"><a href="#scrapy架构图" class="headerlink" title="scrapy架构图"></a>scrapy架构图</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/scrapy_all.png" alt="scrapy架构图"></p>
 <ul>
 <li><p><code>Scrapy Engine</code>就是爬虫的引擎，负责<code>Spider</code>、<code>ItemPipeline</code>、<code>Downloader</code>、<code>Scheduler</code>之间的通讯</p>
 </li>
@@ -460,7 +465,7 @@
 <li><p><code>Item Pipeline(管道)</code>：负责处理spiders获取到的item，并且对这些数据进行存储、分析、过滤等处理</p>
 </li>
 </ul>
-<h3 id="scrapy文件配置详解"><a href="#scrapy文件配置详解" class="headerlink" title="scrapy文件配置详解"></a>scrapy文件配置详解</h3><p>创建项目：</p>
+<h2 id="scrapy文件配置详解"><a href="#scrapy文件配置详解" class="headerlink" title="scrapy文件配置详解"></a>scrapy文件配置详解</h2><p>创建项目：</p>
 <pre><code>scrapy startproject demo(你的项目名)</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570425985011.png" alt></p>
 <p>然后就可以进入刚刚创建的demo项目了</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570426136366.png" alt></p>
@@ -497,7 +502,7 @@
 <span class="token number">68</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#    'demo.pipelines.DemoPipeline': 300,</span>
 <span class="token number">69</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#}</span></code></pre>
 <p>更多的详细配置可见<a href="https://scrapy-chs.readthedocs.io/zh_CN/1.0/topics/settings.html#topics-settings-ref" target="_blank" rel="noopener">官方文档</a></p>
-<h3 id="第一个scrapy爬虫"><a href="#第一个scrapy爬虫" class="headerlink" title="第一个scrapy爬虫"></a>第一个scrapy爬虫</h3><p>scrapy的所有命令都可以用cmd看到</p>
+<h2 id="第一个scrapy爬虫"><a href="#第一个scrapy爬虫" class="headerlink" title="第一个scrapy爬虫"></a>第一个scrapy爬虫</h2><p>scrapy的所有命令都可以用cmd看到</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/1570517173800.png" alt></p>
 <p>创建爬虫文件：</p>
 <pre><code>scrapy genspider bilibili(爬虫文件名) https://www.bilibili.com/(要爬虫的网站)</code></pre><p>刚刚创建的爬虫项目内容如下</p>
@@ -528,7 +533,7 @@
 <p>然后执行命令</p>
 <pre class=" language-python"><code class="language-python">scrapy crawl bilibili</code></pre>
 <p>就可以请求bilibili的页面，然后把源代码写到demo.html文件了</p>
-<h3 id="将scrapy得到的结果保存到第三方格式"><a href="#将scrapy得到的结果保存到第三方格式" class="headerlink" title="将scrapy得到的结果保存到第三方格式"></a>将scrapy得到的结果保存到第三方格式</h3><p>scrapy是默认有xpath解析库的，所以可以直接使用xpath，这里拿传播智客的讲师页面来演示</p>
+<h2 id="将scrapy得到的结果保存到第三方格式"><a href="#将scrapy得到的结果保存到第三方格式" class="headerlink" title="将scrapy得到的结果保存到第三方格式"></a>将scrapy得到的结果保存到第三方格式</h2><p>scrapy是默认有xpath解析库的，所以可以直接使用xpath，这里拿传播智客的讲师页面来演示</p>
 <p>创建一个爬虫文件</p>
 <pre class=" language-python"><code class="language-python">scrapy genspider itcast http<span class="token punctuation">:</span><span class="token operator">//</span>www<span class="token punctuation">.</span>itcast<span class="token punctuation">.</span>cn<span class="token operator">/</span></code></pre>
 <p>首先先编写要确定爬取的部分</p>
@@ -590,7 +595,7 @@
         <span class="token keyword">return</span> teacherItem</code></pre>
 <p>最后再执行命令：</p>
 <pre><code>$ scrapy crawl itcast -o itcast.csv</code></pre><p>可以保存为（json，csv，xml）等格式</p>
-<h3 id="使用管道来存储文件"><a href="#使用管道来存储文件" class="headerlink" title="使用管道来存储文件"></a>使用管道来存储文件</h3><p>管道就是在爬取数据之后的处理过程，这里拿个案例来说明</p>
+<h2 id="使用管道来存储文件"><a href="#使用管道来存储文件" class="headerlink" title="使用管道来存储文件"></a>使用管道来存储文件</h2><p>管道就是在爬取数据之后的处理过程，这里拿个案例来说明</p>
 <p>与上面不同的是爬取的结果不是直接return返回，因为return之后程序就结束了，所以使用yield返回</p>
 <p>itcast.py文件(你的爬虫文件)</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
@@ -634,7 +639,7 @@
 
     <span class="token keyword">def</span> <span class="token function">close_spider</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>filename<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h3 id="scrapy-shell的使用"><a href="#scrapy-shell的使用" class="headerlink" title="scrapy shell的使用"></a>scrapy shell的使用</h3><p>scrapy shell可以帮助我们快速查看网页的请求，一般我们在爬取网站的时候，可以先试一下使用scrapy shell启动，因为有些网页是使用ajax或者js来显示的，直接以上面演示的方式请求只能请求到一个空的网页，比如我现在要爬取一个智联招聘的页面：</p>
+<h2 id="scrapy-shell的使用"><a href="#scrapy-shell的使用" class="headerlink" title="scrapy shell的使用"></a>scrapy shell的使用</h2><p>scrapy shell可以帮助我们快速查看网页的请求，一般我们在爬取网站的时候，可以先试一下使用scrapy shell启动，因为有些网页是使用ajax或者js来显示的，直接以上面演示的方式请求只能请求到一个空的网页，比如我现在要爬取一个智联招聘的页面：</p>
 <pre class=" language-python"><code class="language-python">$ scrapy shell  https<span class="token punctuation">:</span><span class="token operator">//</span>sou<span class="token punctuation">.</span>zhaopin<span class="token punctuation">.</span>com<span class="token operator">/</span>?jl<span class="token operator">=</span><span class="token number">763</span><span class="token operator">&amp;</span>kw<span class="token operator">=</span>python<span class="token operator">&amp;</span>kt<span class="token operator">=</span><span class="token number">3</span><span class="token operator">&amp;</span>sf<span class="token operator">=</span><span class="token number">0</span><span class="token operator">&amp;</span>st<span class="token operator">=</span><span class="token number">0</span></code></pre>
 <p> 进入shell命令行之后输入命令</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> view<span class="token punctuation">(</span>response<span class="token punctuation">)</span></code></pre>
@@ -839,10 +844,10 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言
+                    <div class="summary">
 爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比
 
-Spider与CrawlSpi</div>
+Spider与CrawlSpide</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-09
@@ -862,12 +867,12 @@ Spider与CrawlSpi</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/scrapy/" target="_blank">
-                        <span class="chip bg-color">scrapy</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/" target="_blank">
+                        <span class="chip bg-color">scrapy</span>
                     </a>
                     
                 </div>
@@ -890,10 +895,7 @@ Spider与CrawlSpi</div>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Redis五大数据结构的介绍String(字符串)String的限制String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但是在有一个内存大小限制，最大只能存储512M
-字符串的API
-赋值：
-set ：se</div>
+                    <div class="summary">Redis五大数据结构的介绍String(字符串)String的限制&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String类型可以存储任何形式的字符串，比如整型，数字，二进制数据，json对象等，但</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-28
@@ -988,7 +990,7 @@ set ：se</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">15.6k</span>
+                <span class="white-color">17k</span>
             
 
             
