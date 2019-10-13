@@ -86,7 +86,7 @@
       
       <categories>
           
-          <category> 爬虫 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -190,7 +190,7 @@
       
       <categories>
           
-          <category> Django </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -198,6 +198,8 @@
         <tags>
             
             <tag> python </tag>
+            
+            <tag> Django </tag>
             
             <tag> 全文检索 </tag>
             
@@ -217,7 +219,7 @@
       
       <categories>
           
-          <category> Django </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -225,6 +227,8 @@
         <tags>
             
             <tag> python </tag>
+            
+            <tag> Django </tag>
             
             <tag> 分布式 </tag>
             
@@ -244,7 +248,7 @@
       
       <categories>
           
-          <category> Django </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -254,6 +258,8 @@
             <tag> 异步 </tag>
             
             <tag> python </tag>
+            
+            <tag> Django </tag>
             
         </tags>
       

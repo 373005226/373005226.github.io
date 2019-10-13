@@ -108,7 +108,7 @@
     <link href="https://373005226.github.io/2019/10/09/crawlspider/"/>
     <id>https://373005226.github.io/2019/10/09/crawlspider/</id>
     <published>2019-10-09T14:46:29.561Z</published>
-    <updated>2019-10-12T07:26:27.168Z</updated>
+    <updated>2019-10-13T10:26:53.658Z</updated>
     
     <summary type="html">
     
@@ -126,7 +126,7 @@
     </summary>
     
     
-      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
       <category term="python" scheme="https://373005226.github.io/tags/python/"/>
@@ -225,7 +225,7 @@
     <link href="https://373005226.github.io/2019/09/26/sou-suo-fang-fa/"/>
     <id>https://373005226.github.io/2019/09/26/sou-suo-fang-fa/</id>
     <published>2019-09-26T06:24:43.215Z</published>
-    <updated>2019-10-13T01:56:03.962Z</updated>
+    <updated>2019-10-13T10:25:43.804Z</updated>
     
     <summary type="html">
     
@@ -240,10 +240,12 @@
     </summary>
     
     
-      <category term="Django" scheme="https://373005226.github.io/categories/Django/"/>
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
       <category term="python" scheme="https://373005226.github.io/tags/python/"/>
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
     
       <category term="全文检索" scheme="https://373005226.github.io/tags/%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/"/>
     
@@ -254,7 +256,7 @@
     <link href="https://373005226.github.io/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/"/>
     <id>https://373005226.github.io/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/</id>
     <published>2019-09-25T14:53:30.460Z</published>
-    <updated>2019-10-13T01:55:23.646Z</updated>
+    <updated>2019-10-13T10:25:01.455Z</updated>
     
     <summary type="html">
     
@@ -269,10 +271,12 @@
     </summary>
     
     
-      <category term="Django" scheme="https://373005226.github.io/categories/Django/"/>
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
       <category term="python" scheme="https://373005226.github.io/tags/python/"/>
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
     
       <category term="分布式" scheme="https://373005226.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
@@ -283,7 +287,7 @@
     <link href="https://373005226.github.io/2019/09/24/celery/"/>
     <id>https://373005226.github.io/2019/09/24/celery/</id>
     <published>2019-09-24T12:04:42.233Z</published>
-    <updated>2019-10-13T01:55:39.211Z</updated>
+    <updated>2019-10-13T10:25:32.827Z</updated>
     
     <summary type="html">
     
@@ -298,12 +302,14 @@
     </summary>
     
     
-      <category term="Django" scheme="https://373005226.github.io/categories/Django/"/>
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
       <category term="异步" scheme="https://373005226.github.io/tags/%E5%BC%82%E6%AD%A5/"/>
     
       <category term="python" scheme="https://373005226.github.io/tags/python/"/>
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
     
   </entry>
   
