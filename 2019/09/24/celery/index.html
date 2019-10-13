@@ -5,7 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Celery异步框架的使用, 懒惰小L的博客">
-    <meta name="description" content="Celery异步框架的使用Celery是什么​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在">
+    <meta name="description" content="Celery是什么​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在队列中执行。
+​    C">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -384,12 +385,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/" target="_blank">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
                             <a href="/tags/异步/" target="_blank">
                                 <span class="chip bg-color">异步</span>
+                            </a>
+                        
+                            <a href="/tags/python/" target="_blank">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -419,7 +420,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        584
+                        577
                     </div>
                     
 
@@ -442,7 +443,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Celery异步框架的使用"><a href="#Celery异步框架的使用" class="headerlink" title="Celery异步框架的使用"></a>Celery异步框架的使用</h1><h2 id="Celery是什么"><a href="#Celery是什么" class="headerlink" title="Celery是什么"></a>Celery是什么</h2><p>​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在队列中执行。</p>
+                <h2 id="Celery是什么"><a href="#Celery是什么" class="headerlink" title="Celery是什么"></a>Celery是什么</h2><p>​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在队列中执行。</p>
 <p>​    Celery本身只是一个任务队列，或者严格的说是管理分布式任务队列的工具，封装了常用的任务队列操作，通过Celery来管理任务队列的执行和管理，celery本身不含消息服务，它使用第三方消息服务来传递任务，目前，celery支持的消息服务RabbitMQ,redis甚至是数据库，redis是最佳选择，<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq" target="_blank" rel="noopener">RabbitMQ</a>、<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis" target="_blank" rel="noopener">Redis</a>处理任务队列的方式，两者的使用文档写的很清楚</p>
 <p>​    在实际应用中，可以把一些比如邮件注册、手机注册、网站页面静态化等耗时操作交给Celery队列中，然后让Redis或者RabbitMQ去执行。下面我拿我项目中的案例来演示一下，也便于自己加深印象</p>
 <h2 id="Celery演示"><a href="#Celery演示" class="headerlink" title="Celery演示"></a>Celery演示</h2><p>这里我拿的都是我最熟悉的Django框架和redis来演示</p>
@@ -661,14 +662,17 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="fastDFS安装和使用">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="fastDFS安装及在Django中的部署">
                         
-                        <span class="card-title">fastDFS安装和使用</span>
+                        <span class="card-title">fastDFS安装及在Django中的部署</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">fastDFS安装及在Django中的部署FastDFS在阿里云服务器的安装和配置FastDFS安装在这篇博客讲解的很清楚了，这里我就不再赘述，只作为补充
-如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则</div>
+                    <div class="summary">FastDFS在阿里云服务器的安装和配置FastDFS安装在这篇博客讲解的很清楚了，这里我就不再赘述，只作为补充
+如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则端口
+
+开启了防火墙端口还不够
+在进入服务</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
@@ -688,12 +692,12 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/分布式/" target="_blank">
-                        <span class="chip bg-color">分布式</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>
@@ -717,9 +721,11 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">gitlab后台管理界面的使用关于git、github和gitlab的区别想必大家都清楚，这里我就不再赘述
+                    <div class="summary">
+ 本篇讲解了运维人员在后端的基本使用：创建开发项目、定义开发总监、开发人员等
+
 管理员的操作点击上面的扳手图标可以进入后台管理界面
-查看日志点击左边的monitoring标签第一个system info是服务器的</div>
+查看日志点击左边的monitoring标签第一个system info是服务器的资源使用情况logs就是g</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-22
@@ -814,7 +820,7 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">17k</span>
+                <span class="white-color">16.9k</span>
             
 
             

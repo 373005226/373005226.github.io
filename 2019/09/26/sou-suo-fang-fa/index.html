@@ -5,7 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="全文搜索方法的使用, 懒惰小L的博客">
-    <meta name="description" content="记一次全文搜索方法基于 haystack来使用whoosh检索引擎这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就">
+    <meta name="description" content="基于 haystack来使用whoosh检索引擎这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就可以自由切换引擎
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -419,7 +420,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        984
+                        975
                     </div>
                     
 
@@ -442,7 +443,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="记一次全文搜索方法"><a href="#记一次全文搜索方法" class="headerlink" title="记一次全文搜索方法"></a>记一次全文搜索方法</h1><h2 id="基于-haystack来使用whoosh检索引擎"><a href="#基于-haystack来使用whoosh检索引擎" class="headerlink" title="基于 haystack来使用whoosh检索引擎"></a>基于 haystack来使用whoosh检索引擎</h2><p>这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就可以自由切换引擎</p>
+                <h2 id="基于-haystack来使用whoosh检索引擎"><a href="#基于-haystack来使用whoosh检索引擎" class="headerlink" title="基于 haystack来使用whoosh检索引擎"></a>基于 haystack来使用whoosh检索引擎</h2><p>这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就可以自由切换引擎</p>
 <p>这里拿haystack使用whoosh引擎来作为案例</p>
 <h3 id="基本安装和配置"><a href="#基本安装和配置" class="headerlink" title="基本安装和配置"></a>基本安装和配置</h3><p>首先先安装这两个包</p>
 <pre><code>pip install django-haystack
@@ -740,7 +741,7 @@ paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列�
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Redis初识Redis的五大数据结构
+                    <div class="summary">Redis的五大数据结构
 String
 hash
 list
@@ -749,7 +750,7 @@ zset
 
 Redis的特性
 速度快：因为redis是保存在内存当中的
-持久化：Redis的数据保存在内存中，一般的保存在内存中突然断电内存就会丢失，所以re</div>
+持久化：Redis的数据保存在内存中，一般的保存在内存中突然断电内存就会丢失，所以redis在保存数</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-27
@@ -788,14 +789,17 @@ Redis的特性
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="fastDFS安装和使用">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="fastDFS安装及在Django中的部署">
                         
-                        <span class="card-title">fastDFS安装和使用</span>
+                        <span class="card-title">fastDFS安装及在Django中的部署</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">fastDFS安装及在Django中的部署FastDFS在阿里云服务器的安装和配置FastDFS安装在这篇博客讲解的很清楚了，这里我就不再赘述，只作为补充
-如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则</div>
+                    <div class="summary">FastDFS在阿里云服务器的安装和配置FastDFS安装在这篇博客讲解的很清楚了，这里我就不再赘述，只作为补充
+如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则端口
+
+开启了防火墙端口还不够
+在进入服务</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
@@ -815,12 +819,12 @@ Redis的特性
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/分布式/" target="_blank">
-                        <span class="chip bg-color">分布式</span>
-                    </a>
-                    
                     <a href="/tags/python/" target="_blank">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>
@@ -894,7 +898,7 @@ Redis的特性
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">17k</span>
+                <span class="white-color">16.9k</span>
             
 
             

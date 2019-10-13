@@ -4,13 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="死磕爬虫之scrapy下载中间件, 懒惰小L的博客">
+    <meta name="keywords" content="死磕爬虫之scrapy下载中间件使用和配置, 懒惰小L的博客">
     <meta name="description" content="
  scrapy在请求网站的时候必须经过这个下载中间件
 一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施
 
-通常防止爬虫被反主要有以下几个策略：
-动态设">
+常见的反爬虫策略
+动态设置User-Agen">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>死磕爬虫之scrapy下载中间件 | 懒惰小L的博客</title>
+    <title>死磕爬虫之scrapy下载中间件使用和配置 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -291,13 +291,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        死磕爬虫之scrapy下载中间件
+                        死磕爬虫之scrapy下载中间件使用和配置
                     </div>
                 </div>
             </div>
@@ -451,7 +451,7 @@
 <p> scrapy在请求网站的时候必须经过这个下载中间件</p>
 <p>一些网站反爬虫措施做的比较严谨的时候，如果你并发过高就会封你ip等反爬虫操作，这个时候就可以使用一些代理、随机请求头来躲避这些反爬虫措施</p>
 </blockquote>
-<h2 id="通常防止爬虫被反主要有以下几个策略："><a href="#通常防止爬虫被反主要有以下几个策略：" class="headerlink" title="通常防止爬虫被反主要有以下几个策略："></a>通常防止爬虫被反主要有以下几个策略：</h2><ul>
+<h2 id="常见的反爬虫策略"><a href="#常见的反爬虫策略" class="headerlink" title="常见的反爬虫策略"></a>常见的反爬虫策略</h2><ul>
 <li><p>动态设置User-Agent（随机切换User-Agent，模拟不同用户的浏览器信息）</p>
 </li>
 <li><p>禁用Cookies（也就是不启用cookies middleware，不向Server发送cookies，有些网站通过cookie的使用发现爬虫行为）</p>
@@ -466,13 +466,14 @@
 <li><p>使用IP地址池：VPN和代理IP，现在大部分网站都是根据IP来ban的。</p>
 </li>
 <li><p>使用 <a href="https://scrapinghub.com/crawlera" target="_blank" rel="noopener">Crawlera</a>（专用于爬虫的代理组件），正确配置和设置下载中间件后，项目所有的request都是通过crawlera发出（也就是爬虫代理商，直接使用他们给你的账号密码就可以不停地切换IP来反爬虫）</p>
-<pre><code>  DOWNLOADER_MIDDLEWARES = {
-      &#39;scrapy_crawlera.CrawleraMiddleware&#39;: 600
-  }
+<pre class=" language-python"><code class="language-python">  DOWNLOADER_MIDDLEWARES <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token string">'scrapy_crawlera.CrawleraMiddleware'</span><span class="token punctuation">:</span> <span class="token number">600</span>
+  <span class="token punctuation">}</span>
 
-  CRAWLERA_ENABLED = True
-  CRAWLERA_USER = &#39;注册/购买的UserKey&#39;
-  CRAWLERA_PASS = &#39;注册/购买的Password&#39;</code></pre></li>
+  CRAWLERA_ENABLED <span class="token operator">=</span> <span class="token boolean">True</span>
+  CRAWLERA_USER <span class="token operator">=</span> <span class="token string">'注册/购买的UserKey'</span>
+  CRAWLERA_PASS <span class="token operator">=</span> <span class="token string">'注册/购买的Password'</span></code></pre>
+</li>
 </ul>
 <h2 id="设置下载中间件（Downloader-Middlewares）"><a href="#设置下载中间件（Downloader-Middlewares）" class="headerlink" title="设置下载中间件（Downloader Middlewares）"></a>设置下载中间件（Downloader Middlewares）</h2><p>下载中间件是处于引擎(crawler.engine)和下载器(crawler.engine.download())之间的一层组件，可以有多个下载中间件被加载运行。</p>
 <ol>
@@ -713,7 +714,7 @@ User<span class="token operator">-</span>Agent<span class="token punctuation">:<
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/10/11/scrapy4/" class="b-link-green">死磕爬虫之scrapy下载中间件</a>
+                    <a href="/2019/10/11/scrapy4/" class="b-link-green">死磕爬虫之scrapy下载中间件使用和配置</a>
                 </p>
             </div>
         </div>
@@ -764,9 +765,9 @@ User<span class="token operator">-</span>Agent<span class="token punctuation">:<
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="软件测试基本知识(一)">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="软件测试之常用模型">
                         
-                        <span class="card-title">软件测试基本知识(一)</span>
+                        <span class="card-title">软件测试之常用模型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -915,7 +916,7 @@ User<span class="token operator">-</span>Agent<span class="token punctuation">:<
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">17k</span>
+                <span class="white-color">16.9k</span>
             
 
             

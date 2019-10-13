@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-10-12T07:24:29.797Z</updated>
+  <updated>2019-10-13T10:00:29.114Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>软件测试基本知识(一)</title>
+    <title>软件测试之常用模型</title>
     <link href="https://373005226.github.io/2019/10/11/ruan-jian-ce-shi/"/>
     <id>https://373005226.github.io/2019/10/11/ruan-jian-ce-shi/</id>
     <published>2019-10-11T10:26:44.580Z</published>
-    <updated>2019-10-12T07:24:29.797Z</updated>
+    <updated>2019-10-13T10:00:29.114Z</updated>
     
     <summary type="html">
     
@@ -42,11 +42,11 @@
   </entry>
   
   <entry>
-    <title>死磕爬虫之scrapy下载中间件</title>
+    <title>死磕爬虫之scrapy下载中间件使用和配置</title>
     <link href="https://373005226.github.io/2019/10/11/scrapy4/"/>
     <id>https://373005226.github.io/2019/10/11/scrapy4/</id>
     <published>2019-10-11T07:22:12.652Z</published>
-    <updated>2019-10-12T07:21:24.014Z</updated>
+    <updated>2019-10-13T10:01:51.166Z</updated>
     
     <summary type="html">
     
@@ -167,11 +167,11 @@
   </entry>
   
   <entry>
-    <title>redis基本命令</title>
+    <title>Redis五大数据结构的介绍及基本命令使用</title>
     <link href="https://373005226.github.io/2019/09/28/redis2/"/>
     <id>https://373005226.github.io/2019/09/28/redis2/</id>
     <published>2019-09-27T16:11:29.447Z</published>
-    <updated>2019-10-12T07:28:30.565Z</updated>
+    <updated>2019-10-13T01:54:41.471Z</updated>
     
     <summary type="html">
     
@@ -179,7 +179,7 @@
       
         
         
-          &lt;h1 id=&quot;Redis五大数据结构的介绍&quot;&gt;&lt;a href=&quot;#Redis五大数据结构的介绍&quot; class=&quot;headerlink&quot; title=&quot;Redis五大数据结构的介绍&quot;&gt;&lt;/a&gt;Redis五大数据结构的介绍&lt;/h1&gt;&lt;h2 id=&quot;String-字符串&quot;&gt;&lt;a
+          &lt;h2 id=&quot;String-字符串&quot;&gt;&lt;a href=&quot;#String-字符串&quot; class=&quot;headerlink&quot; title=&quot;String(字符串)&quot;&gt;&lt;/a&gt;String(字符串)&lt;/h2&gt;&lt;h3 id=&quot;String的限制&quot;&gt;&lt;a
         
       
     
@@ -198,7 +198,7 @@
     <link href="https://373005226.github.io/2019/09/27/redis1/"/>
     <id>https://373005226.github.io/2019/09/27/redis1/</id>
     <published>2019-09-27T11:44:17.092Z</published>
-    <updated>2019-10-12T07:27:50.662Z</updated>
+    <updated>2019-10-13T01:54:05.098Z</updated>
     
     <summary type="html">
     
@@ -206,7 +206,7 @@
       
         
         
-          &lt;h1 id=&quot;Redis初识&quot;&gt;&lt;a href=&quot;#Redis初识&quot; class=&quot;headerlink&quot; title=&quot;Redis初识&quot;&gt;&lt;/a&gt;Redis初识&lt;/h1&gt;&lt;h2 id=&quot;Redis的五大数据结构&quot;&gt;&lt;a href=&quot;#Redis的五大数据结构&quot;
+          &lt;h2 id=&quot;Redis的五大数据结构&quot;&gt;&lt;a href=&quot;#Redis的五大数据结构&quot; class=&quot;headerlink&quot;
         
       
     
@@ -225,7 +225,7 @@
     <link href="https://373005226.github.io/2019/09/26/sou-suo-fang-fa/"/>
     <id>https://373005226.github.io/2019/09/26/sou-suo-fang-fa/</id>
     <published>2019-09-26T06:24:43.215Z</published>
-    <updated>2019-10-10T12:57:36.864Z</updated>
+    <updated>2019-10-13T01:56:03.962Z</updated>
     
     <summary type="html">
     
@@ -233,7 +233,7 @@
       
         
         
-          &lt;h1 id=&quot;记一次全文搜索方法&quot;&gt;&lt;a href=&quot;#记一次全文搜索方法&quot; class=&quot;headerlink&quot; title=&quot;记一次全文搜索方法&quot;&gt;&lt;/a&gt;记一次全文搜索方法&lt;/h1&gt;&lt;h2 id=&quot;基于-haystack来使用whoosh检索引擎&quot;&gt;&lt;a
+          &lt;h2 id=&quot;基于-haystack来使用whoosh检索引擎&quot;&gt;&lt;a href=&quot;#基于-haystack来使用whoosh检索引擎&quot; class=&quot;headerlink&quot; title=&quot;基于 haystack来使用whoosh检索引擎&quot;&gt;&lt;/a&gt;基于
         
       
     
@@ -250,11 +250,11 @@
   </entry>
   
   <entry>
-    <title>fastDFS安装和使用</title>
+    <title>fastDFS安装及在Django中的部署</title>
     <link href="https://373005226.github.io/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/"/>
     <id>https://373005226.github.io/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/</id>
     <published>2019-09-25T14:53:30.460Z</published>
-    <updated>2019-09-28T14:47:56.001Z</updated>
+    <updated>2019-10-13T01:55:23.646Z</updated>
     
     <summary type="html">
     
@@ -262,7 +262,7 @@
       
         
         
-          &lt;h1 id=&quot;fastDFS安装及在Django中的部署&quot;&gt;&lt;a href=&quot;#fastDFS安装及在Django中的部署&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;FastDFS在阿里云服务器的安装和配置&quot;&gt;&lt;a href=&quot;#FastDFS在阿里云服务器的安装和配置&quot; class=&quot;headerlink&quot;
         
       
     
@@ -272,9 +272,9 @@
       <category term="Django" scheme="https://373005226.github.io/categories/Django/"/>
     
     
-      <category term="分布式" scheme="https://373005226.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="python" scheme="https://373005226.github.io/tags/python/"/>
+    
+      <category term="分布式" scheme="https://373005226.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
@@ -283,7 +283,7 @@
     <link href="https://373005226.github.io/2019/09/24/celery/"/>
     <id>https://373005226.github.io/2019/09/24/celery/</id>
     <published>2019-09-24T12:04:42.233Z</published>
-    <updated>2019-09-28T14:47:49.460Z</updated>
+    <updated>2019-10-13T01:55:39.211Z</updated>
     
     <summary type="html">
     
@@ -291,7 +291,7 @@
       
         
         
-          &lt;h1 id=&quot;Celery异步框架的使用&quot;&gt;&lt;a href=&quot;#Celery异步框架的使用&quot; class=&quot;headerlink&quot; title=&quot;Celery异步框架的使用&quot;&gt;&lt;/a&gt;Celery异步框架的使用&lt;/h1&gt;&lt;h2 id=&quot;Celery是什么&quot;&gt;&lt;a
+          &lt;h2 id=&quot;Celery是什么&quot;&gt;&lt;a href=&quot;#Celery是什么&quot; class=&quot;headerlink&quot; title=&quot;Celery是什么&quot;&gt;&lt;/a&gt;Celery是什么&lt;/h2&gt;&lt;p&gt;​   
         
       
     
@@ -301,9 +301,9 @@
       <category term="Django" scheme="https://373005226.github.io/categories/Django/"/>
     
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
       <category term="异步" scheme="https://373005226.github.io/tags/%E5%BC%82%E6%AD%A5/"/>
+    
+      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
     
   </entry>
   
@@ -312,7 +312,7 @@
     <link href="https://373005226.github.io/2019/09/22/yun-wei-ren-yuan-de-gitlab-shi-yong/"/>
     <id>https://373005226.github.io/2019/09/22/yun-wei-ren-yuan-de-gitlab-shi-yong/</id>
     <published>2019-09-22T02:49:48.972Z</published>
-    <updated>2019-09-28T14:32:22.081Z</updated>
+    <updated>2019-10-13T01:53:01.336Z</updated>
     
     <summary type="html">
     
@@ -320,7 +320,10 @@
       
         
         
-          &lt;h1 id=&quot;gitlab后台管理界面的使用&quot;&gt;&lt;a href=&quot;#gitlab后台管理界面的使用&quot; class=&quot;headerlink&quot;
+          &lt;blockquote&gt;
+&lt;p&gt; 本篇讲解了运维人员在后端的基本使用：创建开发项目、定义开发总监、开发人员等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;管理员的操作&quot;&gt;&lt;a href=&quot;#管理员的操作&quot; class=&quot;headerlink&quot;
         
       
     
@@ -339,7 +342,7 @@
     <link href="https://373005226.github.io/2019/09/21/gitlab/"/>
     <id>https://373005226.github.io/2019/09/21/gitlab/</id>
     <published>2019-09-21T13:43:01.472Z</published>
-    <updated>2019-09-28T14:37:05.990Z</updated>
+    <updated>2019-10-13T01:53:50.634Z</updated>
     
     <summary type="html">
     
@@ -347,7 +350,7 @@
       
         
         
-          &lt;h1 id=&quot;自动化运维三剑客–gitlab的安装&quot;&gt;&lt;a href=&quot;#自动化运维三剑客–gitlab的安装&quot; class=&quot;headerlink&quot; title=&quot;自动化运维三剑客–gitlab的安装&quot;&gt;&lt;/a&gt;自动化运维三剑客–gitlab的安装&lt;/h1&gt;&lt;h2
+          &lt;h2 id=&quot;gitlab的安装&quot;&gt;&lt;a href=&quot;#gitlab的安装&quot; class=&quot;headerlink&quot;
         
       
     
@@ -366,7 +369,7 @@
     <link href="https://373005226.github.io/2019/09/21/gitbook/"/>
     <id>https://373005226.github.io/2019/09/21/gitbook/</id>
     <published>2019-09-21T07:22:43.543Z</published>
-    <updated>2019-09-28T14:34:56.633Z</updated>
+    <updated>2019-10-13T01:54:45.816Z</updated>
     
     <summary type="html">
     
@@ -374,7 +377,7 @@
       
         
         
-          &lt;h1 id=&quot;使用gitbook搭建github上的书城&quot;&gt;&lt;a href=&quot;#使用gitbook搭建github上的书城&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;gitbook的安装和使用&quot;&gt;&lt;a href=&quot;#gitbook的安装和使用&quot; class=&quot;headerlink&quot;
         
       
     
@@ -395,7 +398,7 @@
     <link href="https://373005226.github.io/2019/09/05/hexo/"/>
     <id>https://373005226.github.io/2019/09/05/hexo/</id>
     <published>2019-09-05T04:11:58.982Z</published>
-    <updated>2019-09-28T14:38:33.510Z</updated>
+    <updated>2019-10-13T01:54:51.293Z</updated>
     
     <summary type="html">
     
@@ -403,7 +406,9 @@
       
         
         
-          &lt;h1 id=&quot;使用hexo和github搭建个人博客&quot;&gt;&lt;a href=&quot;#使用hexo和github搭建个人博客&quot; class=&quot;headerlink&quot; title=&quot;使用hexo和github搭建个人博客&quot;&gt;&lt;/a&gt;使用hexo和github搭建个人博客&lt;/h1&gt;&lt;h2
+          &lt;h2 id=&quot;搭建环境准备&quot;&gt;&lt;a href=&quot;#搭建环境准备&quot; class=&quot;headerlink&quot; title=&quot;搭建环境准备&quot;&gt;&lt;/a&gt;搭建环境准备&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装node&lt;/p&gt;
+&lt;p&gt;&lt;a
         
       
     
