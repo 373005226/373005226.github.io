@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-10-13T10:00:29.114Z</updated>
+  <updated>2019-10-14T08:31:31.218Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>天天生鲜项目总结</title>
+    <link href="https://373005226.github.io/2019/10/14/tian-tian-sheng-xian-zong-jie/"/>
+    <id>https://373005226.github.io/2019/10/14/tian-tian-sheng-xian-zong-jie/</id>
+    <published>2019-10-14T07:29:32.931Z</published>
+    <updated>2019-10-14T08:31:31.218Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做天天生鲜项目的时候使用了太多的技术，很多不会的我参考了很多的博客才做出来，这里记录这个项目的常用技术点，以便于我开发第二个系统&lt;/p&gt;
+&lt;/block
+        
+      
+    
+    </summary>
+    
+    
+      <category term="日常总结" scheme="https://373005226.github.io/categories/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>软件测试之常用模型</title>
@@ -46,7 +73,7 @@
     <link href="https://373005226.github.io/2019/10/11/scrapy4/"/>
     <id>https://373005226.github.io/2019/10/11/scrapy4/</id>
     <published>2019-10-11T07:22:12.652Z</published>
-    <updated>2019-10-13T10:01:51.166Z</updated>
+    <updated>2019-10-14T07:19:42.996Z</updated>
     
     <summary type="html">
     
@@ -76,7 +103,7 @@
     <link href="https://373005226.github.io/2019/10/10/scrapy3/"/>
     <id>https://373005226.github.io/2019/10/10/scrapy3/</id>
     <published>2019-10-10T15:35:25.582Z</published>
-    <updated>2019-10-12T07:23:33.700Z</updated>
+    <updated>2019-10-14T07:23:09.548Z</updated>
     
     <summary type="html">
     
@@ -108,7 +135,7 @@
     <link href="https://373005226.github.io/2019/10/09/crawlspider/"/>
     <id>https://373005226.github.io/2019/10/09/crawlspider/</id>
     <published>2019-10-09T14:46:29.561Z</published>
-    <updated>2019-10-13T10:26:53.658Z</updated>
+    <updated>2019-10-14T07:18:31.573Z</updated>
     
     <summary type="html">
     
@@ -126,7 +153,7 @@
     </summary>
     
     
-      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
     
       <category term="python" scheme="https://373005226.github.io/tags/python/"/>
@@ -404,7 +431,7 @@
     <link href="https://373005226.github.io/2019/09/05/hexo/"/>
     <id>https://373005226.github.io/2019/09/05/hexo/</id>
     <published>2019-09-05T04:11:58.982Z</published>
-    <updated>2019-10-13T01:54:51.293Z</updated>
+    <updated>2019-10-14T07:14:27.724Z</updated>
     
     <summary type="html">
     

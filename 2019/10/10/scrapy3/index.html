@@ -547,7 +547,8 @@ ROBOTSTXT_OBEY <span class="token operator">=</span> <span class="token boolean"
     <span class="token keyword">def</span> <span class="token function">parse_newpage</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"renren.html"</span><span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> filename<span class="token punctuation">:</span>
             filename<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span></code></pre>
-<h2 id="补充点"><a href="#补充点" class="headerlink" title="补充点"></a>补充点</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单单爬取人人网这类的简单网站用以上三个方法是没问题的，但是类似于知乎这种使用Django作为后台的网站，登陆注册都有个<code>_xsrf</code>字段放在form表单的末尾，所以在使用模拟登陆前一定要查看表单有没有这个字段，如果有就用xpath或者正则表达式提取出来，然后一起提交。比如我这里拿最后一个方法来说明：</p>
+<h2 id="补充点"><a href="#补充点" class="headerlink" title="补充点"></a>补充点</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单单爬取人人网这类的简单网站用以上三个方法是没问题的，但是类似于知乎这种使用<code>Django</code>作为后台的网站，登陆注册都有个<code>_xsrf</code>字段放在form表单的末尾，这个字段是Django为了防止 跨站域请求伪造攻击而添加的。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以在使用模拟登陆前一定要查看表单有没有这个字段，如果有就用xpath或者正则表达式提取出来，然后一起提交。比如我这里拿最后一个方法来说明：</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
 
 
@@ -574,7 +575,6 @@ ROBOTSTXT_OBEY <span class="token operator">=</span> <span class="token boolean"
         <span class="token keyword">def</span> <span class="token function">parse_newpage</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"renren.html"</span><span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> filename<span class="token punctuation">:</span>
                 filename<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span></code></pre>
-<p>相比于原来的方法就多一个<code>_xsrf</code>字段</p>
 
             </div>
             <hr/>
@@ -838,8 +838,8 @@ Spider与CrawlSpide</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                    后端
+                            <a href="/categories/爬虫/" class="post-category" target="_blank">
+                                    爬虫
                                 </a>
                             
                             
@@ -928,7 +928,7 @@ Spider与CrawlSpide</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">16.9k</span>
+                <span class="white-color">17.4k</span>
             
 
             
