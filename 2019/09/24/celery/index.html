@@ -424,7 +424,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        577
+                        603
                     </div>
                     
 
@@ -448,7 +448,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Celery是什么"><a href="#Celery是什么" class="headerlink" title="Celery是什么"></a>Celery是什么</h2><p>​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在队列中执行。</p>
-<p>​    Celery本身只是一个任务队列，或者严格的说是管理分布式任务队列的工具，封装了常用的任务队列操作，通过Celery来管理任务队列的执行和管理，celery本身不含消息服务，它使用第三方消息服务来传递任务，目前，celery支持的消息服务RabbitMQ,redis甚至是数据库，redis是最佳选择，<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq" target="_blank" rel="noopener">RabbitMQ</a>、<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis" target="_blank" rel="noopener">Redis</a>处理任务队列的方式，两者的使用文档写的很清楚</p>
+<p>​    Celery本身只是一个任务队列，或者严格的说是管理分布式任务队列的工具，封装了常用的任务队列操作，通过Celery来管理任务队列的执行和管理，celery本身不含消息服务，它使用第三方消息服务来传递任务，目前，celery支持的消息服务RabbitMQ,redis甚至是数据库，redis是最佳选择，RabbitMQ(<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq" target="_blank" rel="noopener">http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq</a>)、Redis(<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis" target="_blank" rel="noopener">http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis</a>)处理任务队列的方式，两者的使用文档写的很清楚</p>
 <p>​    在实际应用中，可以把一些比如邮件注册、手机注册、网站页面静态化等耗时操作交给Celery队列中，然后让Redis或者RabbitMQ去执行。下面我拿我项目中的案例来演示一下，也便于自己加深印象</p>
 <h2 id="Celery演示"><a href="#Celery演示" class="headerlink" title="Celery演示"></a>Celery演示</h2><p>这里我拿的都是我最熟悉的Django框架和redis来演示</p>
 <p>首先要导入Celery包</p>
@@ -828,7 +828,7 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">17.4k</span>
+                <span class="white-color">18.3k</span>
             
 
             

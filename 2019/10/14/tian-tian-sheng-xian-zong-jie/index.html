@@ -8,7 +8,7 @@
     <meta name="description" content="
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做天天生鲜项目的时候使用了太多的技术，很多不会的我参考了很多的博客才做出来，这里记录这个项目的常用技术点，以便于我开发第二个系统
 
-邮箱注册，">
+使用Dja">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,14 +414,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        476
+                        1.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        5 分
                     </div>
                     
                 
@@ -440,6 +440,34 @@
                 <blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;做天天生鲜项目的时候使用了太多的技术，很多不会的我参考了很多的博客才做出来，这里记录这个项目的常用技术点，以便于我开发第二个系统</p>
 </blockquote>
+<h2 id="使用Django内置的方法发送邮件"><a href="#使用Django内置的方法发送邮件" class="headerlink" title="使用Django内置的方法发送邮件"></a>使用Django内置的方法发送邮件</h2><p>首先先在setting.py文件里面配置你的邮件服务器，邮件服务器在QQ邮箱、网易163邮箱可以免费注册。</p>
+<p>将SMTP服务器的配置信息放到setting.py文件里面，配置信息如以下格式：</p>
+<pre class=" language-python"><code class="language-python">EMAIL_HOST <span class="token operator">=</span> <span class="token string">"smtp.qq.com"</span>
+EMAIL_PORT <span class="token operator">=</span> <span class="token number">25</span>
+EMAIL_HOST_USER <span class="token operator">=</span> <span class="token string">"373005226@qq.com"</span>
+EMAIL_HOST_PASSWORD <span class="token operator">=</span> <span class="token string">"***************"</span>
+EMAIL_USE_TLS<span class="token operator">=</span> <span class="token boolean">False</span>
+EMAIL_FROM <span class="token operator">=</span> <span class="token string">"373005226@qq.com"</span></code></pre>
+<p>然后在需要发送邮件的方法内导入需要的包就可以使用Django内置的发送邮件函数了</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#导入setting刚刚配置的文件</span>
+<span class="token keyword">from</span> dailyfreshshop<span class="token punctuation">.</span>settings <span class="token keyword">import</span> SECRET_KEY<span class="token punctuation">,</span>EMAIL_FROM
+<span class="token comment" spellcheck="true">#使用Django内置的发送方法</span>
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>mail <span class="token keyword">import</span> send_mail
+
+email_title <span class="token operator">=</span> <span class="token string">"天天生鲜注册激活链接"</span>
+email_body <span class="token operator">=</span> <span class="token string">''</span>
+sender <span class="token operator">=</span> EMAIL_FROM
+receiver <span class="token operator">=</span> <span class="token punctuation">[</span>email<span class="token punctuation">]</span>
+html_message <span class="token operator">=</span> <span class="token string">"&lt;h1>%s，欢迎您注册天天生鲜商城，请点击下面的连接激活你的账号&lt;/h1>"</span> \
+<span class="token string">"&lt;a href='http://127.0.0.1:8000/active/%s'>http://127.0.0.1:8000/active/%s&lt;/a>"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>
+    username<span class="token punctuation">,</span> token<span class="token punctuation">,</span> token<span class="token punctuation">)</span>
+send_mail<span class="token punctuation">(</span>email_title<span class="token punctuation">,</span> email_body<span class="token punctuation">,</span> sender<span class="token punctuation">,</span> receiver<span class="token punctuation">,</span> html_message<span class="token operator">=</span>html_message<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#发送函数的参数</span>
+<span class="token comment" spellcheck="true">#第一个参数email_title是标题</span>
+<span class="token comment" spellcheck="true">#第二个参数email_body是内容，但是这个内容只能是字符串，如果再html_message写了这里就可以不写</span>
+<span class="token comment" spellcheck="true">#第三个参数sender是setting配置好的SMTP服务器内容</span>
+<span class="token comment" spellcheck="true">#第四个参数receiver是要发送的人的邮箱账号</span>
+<span class="token comment" spellcheck="true">#第五个参数html_message=html_message，这个是如果你的内容共有html标签的话可以解析成html内容</span></code></pre>
 <h2 id="邮箱注册，用户信息加密"><a href="#邮箱注册，用户信息加密" class="headerlink" title="邮箱注册，用户信息加密"></a>邮箱注册，用户信息加密</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在发送邮件注册验证码的时候，为了防止有心人注册之后使用发送过来的激活码调整激活码中用户的ID，不停地输入修改后的激活码就会给服务器带来压力，所以在发送邮箱激活码的时候一定要加密，并且设置时间</p>
 <p>&emsp;</p>
 <p>使用文档：<a href="https://itsdangerous.readthedocs.io/en/1.1.x/" target="_blank" rel="noopener">https://itsdangerous.readthedocs.io/en/1.1.x/</a></p>
@@ -476,6 +504,7 @@ serializer <span class="token operator">=</span> Serializer<span class="token pu
 info <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'confirm'</span><span class="token punctuation">:</span>user<span class="token punctuation">.</span>id<span class="token punctuation">}</span>
 token<span class="token operator">=</span>serializer<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>info<span class="token punctuation">)</span>
 token <span class="token operator">=</span> token<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span></code></pre>
+<p>&emsp;</p>
 <p><strong>激活验证码的类</strong></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">AciveUserView</span><span class="token punctuation">(</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">get</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>request<span class="token punctuation">,</span>token<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -493,6 +522,37 @@ token <span class="token operator">=</span> token<span class="token punctuation"
             <span class="token comment" spellcheck="true">#激活链接过期了</span>
             <span class="token keyword">return</span> HttpResponse<span class="token punctuation">(</span><span class="token string">'激活链接过期，请重新提交'</span><span class="token punctuation">)</span></code></pre>
 <p>这样就可以保证每一次发送的激活码都唯一，这样就保证了激活码的安全性</p>
+<h2 id="异步方式"><a href="#异步方式" class="headerlink" title="异步方式"></a>异步方式</h2><p><img src="C:%5CUsers%5CLY%5CPictures%5C%E5%8D%9A%E5%AE%A2%E7%85%A7%E7%89%87%5C3.png" alt="Celery流程图"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; broker可以选择RabbitMQ和Redis作为消息中间人去处理耗时任务，RabbitMQ是生产环境中最佳的选择，使用文档如下：<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq" target="_blank" rel="noopener">http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq</a>，Redis也是一款功能完备的broker选项，但是Redis是一个内存级别的数据库，如果突然断电或者电源故障，Redis在内存中的数据就可以避免这种情况。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在网站设计中，邮件发送等操作还算是比较耗时的，如果发送邮件和完成跳转是同步进行的话，要等邮件发送完成再跳转到指定页面，停顿的那几秒就会给用户带来很不好的体验，所以异步耗时操作最好是交给异步方法去执行。这个项目我拿的是redis作为中间件来执行</p>
+<h2 id="异步发送邮件"><a href="#异步发送邮件" class="headerlink" title="异步发送邮件"></a>异步发送邮件</h2><p>第一步当然是redis服务器能够正常启动啦，我的redis服务器是部署到本地先的</p>
+<p>第二步是把需要异步操作的任务封装成函数，然后把原来同步操作的步骤使用异步的函数代替</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>mail <span class="token keyword">import</span> send_mail
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>conf <span class="token keyword">import</span> settings
+<span class="token keyword">from</span> celery <span class="token keyword">import</span> Celery
+
+<span class="token comment" spellcheck="true">#--------------这一段是异步任务执行端必须加入以下代码--------------------</span>
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> django
+os<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>setdefault<span class="token punctuation">(</span><span class="token string">'DJANGO_SETTINGS_MODULE'</span><span class="token punctuation">,</span> <span class="token string">'dailyfreshshop.settings'</span><span class="token punctuation">)</span>
+django<span class="token punctuation">.</span>setup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#------------------------------------------------------------------</span>
+
+<span class="token comment" spellcheck="true">#celery_tasks是我存放异步任务的文件夹</span>
+app <span class="token operator">=</span> Celery<span class="token punctuation">(</span><span class="token string">'celery_tasks.tasks'</span><span class="token punctuation">,</span> broker<span class="token operator">=</span><span class="token string">'redis://127.0.0.1/8'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">#必须加上装饰器才可以变成异步任务</span>
+@app<span class="token punctuation">.</span>task
+<span class="token keyword">def</span> <span class="token function">send_register_active_email</span><span class="token punctuation">(</span>to_email<span class="token punctuation">,</span> username<span class="token punctuation">,</span> token<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""发送激活邮件"""</span>
+    <span class="token comment" spellcheck="true"># 组织邮件信息</span>
+    subject <span class="token operator">=</span> <span class="token string">'天天生鲜欢迎信息'</span>
+    message <span class="token operator">=</span> <span class="token string">''</span>
+    sender <span class="token operator">=</span> settings<span class="token punctuation">.</span>EMAIL_FROM  <span class="token comment" spellcheck="true"># 发送人</span>
+    receiver <span class="token operator">=</span> <span class="token punctuation">[</span>to_email<span class="token punctuation">]</span>
+    html_message <span class="token operator">=</span> <span class="token string">'&lt;h1>%s, 欢迎您成为天天生鲜注册会员&lt;/h1>请点击下面链接激活您的账户&lt;br/>&lt;a href="http://127.0.0.1:8000/user/active/%s">http://127.0.0.1:8000/user/active/%s&lt;/a>'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>username<span class="token punctuation">,</span> token<span class="token punctuation">,</span> token<span class="token punctuation">)</span>
+
+    send_mail<span class="token punctuation">(</span>subject<span class="token punctuation">,</span> message<span class="token punctuation">,</span> sender<span class="token punctuation">,</span> receiver<span class="token punctuation">,</span> html_message<span class="token operator">=</span>html_message<span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr/>
@@ -694,7 +754,7 @@ token <span class="token operator">=</span> token<span class="token punctuation"
                     <div class="summary">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;做天天生鲜项目的时候使用了太多的技术，很多不会的我参考了很多的博客才做出来，这里记录这个项目的常用技术点，以便于我开发第二个系统
 
-邮箱注册，</div>
+使用Dja</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-14
@@ -824,7 +884,7 @@ token <span class="token operator">=</span> token<span class="token punctuation"
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">17.4k</span>
+                <span class="white-color">18.3k</span>
             
 
             
