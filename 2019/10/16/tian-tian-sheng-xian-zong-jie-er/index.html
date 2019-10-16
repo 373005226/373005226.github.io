@@ -411,14 +411,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.5k
+                        3.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        12 分
                     </div>
                     
                 
@@ -539,6 +539,122 @@ response<span class="token operator">=</span>redirect<span class="token punctuat
 <span class="token keyword">class</span> <span class="token class-name">UserAddressView</span><span class="token punctuation">(</span>LoginRequiredMixin<span class="token punctuation">,</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span></code></pre>
 <p>这样就可以实现更为简便的方法了</p>
 <p>这个方法的原理还是跟方法一一模一样的，<code>return login_required(view)</code>还是在view外面包装了一个<code>login_required</code>，只是这样写会没那么乱</p>
+<p>&emsp;</p>
+<h2 id="添加用户历史浏览记录"><a href="#添加用户历史浏览记录" class="headerlink" title="添加用户历史浏览记录"></a>添加用户历史浏览记录</h2><p>添加用户历史浏览记录我这里使用的是<code>hash</code>数据结构存储。依照逻辑来说，能记录用户浏览记录肯定是要先登录的，所以要先对用户判断是否登陆，具体代码如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> user<span class="token punctuation">.</span>is_authenticated<span class="token punctuation">:</span>
+<span class="token comment" spellcheck="true"># 用户已经登录</span>
+conn <span class="token operator">=</span> get_redis_connection<span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">)</span>
+cart_key <span class="token operator">=</span> <span class="token string">'cart_%d'</span> <span class="token operator">%</span> user<span class="token punctuation">.</span>id
+
+<span class="token comment" spellcheck="true"># 获取用户购物车中的商品条目数</span>
+cart_count <span class="token operator">=</span> conn<span class="token punctuation">.</span>hlen<span class="token punctuation">(</span>cart_key<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># hlen hash中的数目</span>
+
+context<span class="token punctuation">.</span>update<span class="token punctuation">(</span>cart_count<span class="token operator">=</span>cart_count<span class="token punctuation">)</span></code></pre>
+<h2 id="显示历史浏览记录"><a href="#显示历史浏览记录" class="headerlink" title="显示历史浏览记录"></a>显示历史浏览记录</h2><p>每次访问商品详情页的时候，都会使用Redis的list数据结构去保存用户浏览信息，在获取浏览记录的时候 使用<code>lrange key start stop</code>就可以自定义取多少条数据，假如要取A1的所有数据：<code>lrange A1 0 -1</code></p>
+<p>根据Django-redis的官方文档显示：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571232502432.png" alt></p>
+<p>这里面的<code>default</code>就是之前配置的字段，如图所示</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571232579990.png" alt></p>
+<p>在连接redis数据库之后，在数据字段里面显示前五个商品信息</p>
+<pre class=" language-python"><code class="language-python">con<span class="token operator">=</span>get_redis_connection<span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">)</span>
+history_key<span class="token operator">=</span><span class="token string">'history_%d'</span><span class="token operator">%</span>user<span class="token punctuation">.</span>id
+sku_ids<span class="token operator">=</span>con<span class="token punctuation">.</span>lrange<span class="token punctuation">(</span>history_key<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+
+goods_li<span class="token operator">=</span>GoodSKU<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>id__in<span class="token operator">=</span>sku_ids<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#使用两层列表的原因是因为输入[2,1,3]，在mysql得出的结果顺序依然为1，2，3，所以只能用两层循环去遍历</span>
+goods_res<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> a_id <span class="token keyword">in</span> sku_ids<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> goods <span class="token keyword">in</span> goods_li<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> a_id<span class="token operator">==</span>goods<span class="token punctuation">.</span>id<span class="token punctuation">:</span>
+            goods_res<span class="token punctuation">.</span>append<span class="token punctuation">(</span>goods<span class="token punctuation">)</span></code></pre>
+<h2 id="后台自定义使用FastDFS存储资源"><a href="#后台自定义使用FastDFS存储资源" class="headerlink" title="后台自定义使用FastDFS存储资源"></a>后台自定义使用FastDFS存储资源</h2><p>Django默认保存资源是保存在Media_root指定目录下方，现在我这个项目要改成FastDFS服务器上，所以这里要修改文件的默认存储路径，这里还是直接查看Django文档</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571232579990.png" alt></p>
+<p>也就是说Django保存文件使用的是<code>FileSystemStorage</code>这个类，其中save方法实现了保存</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571233304579.png" alt></p>
+<p>但是我们不能直接去修改源码，所以Django内置好了一套给我们自己去定义的存储类，我们只需要去继承<code>FileSystemStorage</code>的父类<code>Storage</code>就可以，继承<code>Storage</code>还必须要实现save和open方法，这里保存图片只需要实现save方法即可</p>
+<p>同样我自定义存储类的方法卸载一个单独的文件夹下，这里我定义在utils里面的FastDFS文件夹下</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571235260232.png" alt></p>
+<p>里面的蓝色的<code>storage</code>就是自定义的文件，<code>client.conf</code>是我FasDFS的配置文件，基本上的功能，上传图片资源的模块我都已经写好了，直接修改自己的服务器IP就可以经行第二次开发</p>
+<h2 id="页面资源静态化"><a href="#页面资源静态化" class="headerlink" title="页面资源静态化"></a>页面资源静态化</h2><p>在网站中，无论用户是否登陆都显示同一个页面，而如果人流量访问的越多，每个人访问都从数据库调用一遍就是一个非常伤服务器的操作，所以要把网站的常用页面给静态化。这里用的还是Celery去异步操作，具体的操作代码上的注释写的很详细，我这里只讲解我对这个问题的解决方案。</p>
+<p>&emsp;</p>
+<p>Django默认的后台<code>admin</code>是有一个<code>save_model</code>方法，也就是新增或更新数据时会自动调用，而我这个项目使用的是<code>xadmin</code>，不能直接调用<code>admin</code>的方法，依照网上博客的方法也不行，又不能去改写源代码，所以我想了个办法：在每次<code>return</code>返回给<code>index.html</code>数据的前，我都会先写一个缓存，这个缓存保存了返回给前端的数据，如果第二次访问的时候发现缓存改变了就给异步发送请求重新加载静态页面，如果没有改变就只进行一次对比之后返回静态页面，关键代码如下：</p>
+<pre class=" language-python"><code class="language-python"> context <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">'types'</span><span class="token punctuation">:</span> types<span class="token punctuation">,</span>
+            <span class="token string">'index_banner'</span><span class="token punctuation">:</span> index_banner<span class="token punctuation">,</span>
+            <span class="token string">'promotion_banner'</span><span class="token punctuation">:</span> promotion_banner<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> context <span class="token keyword">is</span> None<span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 设置缓存数据,缓存的名字，内容，过期的时间</span>
+            cache<span class="token punctuation">.</span>set<span class="token punctuation">(</span><span class="token string">'index_page_data'</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> <span class="token number">3600</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> context<span class="token operator">!=</span>cache<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'index_html_data'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            generate_static_index_html<span class="token punctuation">.</span>delay<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><p>分页这个其实官方文档说的比较清楚了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571237664233.png" alt></p>
+<p>初次之外还有一个方法，在github上start也有几百了，地址如下：<a href="https://github.com/jamespacileo/django-pure-pagination" target="_blank" rel="noopener">https://github.com/jamespacileo/django-pure-pagination</a></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571237740809.png" alt></p>
+<p>这个功能也是比较完善的，还具备前一页后一页的功能，最重要的是还带有省略号的功能，而且使用起来也挺简单的，不过这里因为我的图片资源本来就少，用不着折腾这个所以就没用</p>
+<h2 id="商品搜索"><a href="#商品搜索" class="headerlink" title="商品搜索"></a>商品搜索</h2><p>在商品搜索功能上，Django有一个全文检索框架<code>haystack</code>，开发者可以通过全文检索框架去使用搜索引擎,<code>haystack</code>支持whoosh、solr、Xapian、Elasticsearch四种全文检索引擎</p>
+<h3 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h3><p>首先先安装<code>haystack</code></p>
+<pre class=" language-python"><code class="language-python">pip install django<span class="token operator">-</span>haystack
+<span class="token comment" spellcheck="true">#你要用哪个搜索引擎就下载哪个，我这里用的是whoosh</span>
+pip install whoosh</code></pre>
+<p>然后在setting的INSTALLED_APPS添加<code>haystack</code>，紧接着要在setting里面添加如下字段：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 全文检索框架配置</span>
+HAYSTACK_CONNECTIONS <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'default'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true"># 使用whoosh引擎</span>
+        <span class="token string">'ENGINE'</span><span class="token punctuation">:</span> <span class="token string">'haystack.backends.whoosh_backend.WhooshEngine'</span><span class="token punctuation">,</span>
+        <span class="token comment" spellcheck="true"># 索引文件路径</span>
+        <span class="token string">'PATH'</span><span class="token punctuation">:</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'whoosh_index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># 当添加、修改、删除数据时，自动生成索引</span>
+HAYSTACK_SIGNAL_PROCESSOR <span class="token operator">=</span> <span class="token string">'haystack.signals.RealtimeSignalProcessor'</span></code></pre>
+<h3 id="配置索引文件"><a href="#配置索引文件" class="headerlink" title="配置索引文件"></a>配置索引文件</h3><p>在你需要被检索的包里面新建一个<code>search_indexes.py</code>文件，里面需要你配置的只有三个地方，代码如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> datetime
+<span class="token keyword">from</span> haystack <span class="token keyword">import</span> indexes
+<span class="token comment" spellcheck="true">#第一个地方，导入你的模型类</span>
+<span class="token keyword">from</span> goods<span class="token punctuation">.</span>models <span class="token keyword">import</span> GoodsSKU
+
+<span class="token comment" spellcheck="true">#第二个地方：索引类的格式名：模型类+Index</span>
+<span class="token keyword">class</span> <span class="token class-name">GoodsSKUIndex</span><span class="token punctuation">(</span>indexes<span class="token punctuation">.</span>SearchIndex<span class="token punctuation">,</span> indexes<span class="token punctuation">.</span>Indexable<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true">#索引字段document=True指定根据表的哪些字段简历索引文件制定在一个文件中</span>
+    text <span class="token operator">=</span> indexes<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>document<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> use_template<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># author = indexes.CharField(model_attr='user')</span>
+    <span class="token comment" spellcheck="true"># pub_date = indexes.DateTimeField(model_attr='pub_date')</span>
+
+<span class="token comment" spellcheck="true">#第三个地方：返回你的模型类</span>
+    <span class="token keyword">def</span> <span class="token function">get_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> GoodsSKU
+
+    <span class="token comment" spellcheck="true"># 建立索引数据</span>
+    <span class="token keyword">def</span> <span class="token function">index_queryset</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> using<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>get_model<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">#返回所有数据就是对所有的数据进行索引</span></code></pre>
+<p>配置完上面的字段后，需要自定义需要被检索的字段，格式为<code>模型类名的小写_text.txt</code>，比如我的是<code>GoodsSKU</code>，格式就为<code>goodssku_text.txt</code>,这个文件建立的地方是有要求的，比如我这里的形式如下：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571240232653.png" alt></p>
+<p>search和indexes是固定的，goods是你的应用名字就是什么名字。<code>goodssku_text.txt</code>里面填写你要索引的字段，我的如下</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 指定根据表中的哪些字段建立索引数据</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> object<span class="token punctuation">.</span>name <span class="token punctuation">}</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true"># 根据商品的名称建立索引</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> object<span class="token punctuation">.</span>desc <span class="token punctuation">}</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true"># 根据商品的简介建立索引</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> object<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>detail <span class="token punctuation">}</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true"># 根据商品的详情建立索引</span></code></pre>
+<p>然后使用python shell命令<code>python manage.py rebuild_index</code>就可以生成你的索引文件</p>
+<h3 id="搜索的页面"><a href="#搜索的页面" class="headerlink" title="搜索的页面"></a>搜索的页面</h3><p>搜索地址框搜索出来的页面也是单独设定的，首先搜索框的action的地址应该改为<code>&lt;form method=&#39;get&#39; action=&#39;/search&#39;&gt;</code></p>
+<p>这里的action写什么，url地址那里就写什么，我的是search，所以url地址就是search</p>
+<p>然后在全局的url地址那里添加<code>url(&#39;search/&#39;, include(&#39;haystack.urls&#39;)),  # 全文检索框架</code></p>
+<p>最后要写一个搜索后出现的页面，搜索的页面要在indexes文件夹下，新建的搜索页面名字为<code>search.html</code>,里面关键展示部分的数据如下：</p>
+<pre class=" language-python"><code class="language-python">搜索的关键字： <span class="token punctuation">{</span><span class="token punctuation">{</span> query <span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span>
+当前页的Page对象： <span class="token punctuation">{</span><span class="token punctuation">{</span> page <span class="token punctuation">}</span><span class="token punctuation">}</span>  <span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>ul<span class="token operator">></span>
+    <span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">for</span> item <span class="token keyword">in</span> page <span class="token operator">%</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span>li<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span> item<span class="token punctuation">.</span>object <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+    <span class="token punctuation">{</span><span class="token operator">%</span> endfor <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+分页Paginator对象<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> paginator <span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span></code></pre>
+<p>自己去定义一个搜索后的页面，显示部分改成如上关键词就可以了</p>
 
             </div>
             <hr/>
@@ -873,7 +989,7 @@ https://blog.csdn.net/fengxiaolu311/article/details/</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">22.5k</span>
+                <span class="white-color">24.4k</span>
             
 
             
