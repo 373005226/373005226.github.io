@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-10-16T15:49:56.384Z</updated>
+  <updated>2019-10-16T16:28:45.658Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://373005226.github.io/2019/10/16/tian-tian-sheng-xian-zong-jie-er/"/>
     <id>https://373005226.github.io/2019/10/16/tian-tian-sheng-xian-zong-jie-er/</id>
     <published>2019-10-16T02:10:45.140Z</published>
-    <updated>2019-10-16T15:49:56.384Z</updated>
+    <updated>2019-10-16T16:28:45.658Z</updated>
     
     <summary type="html">
     
@@ -475,9 +475,9 @@
       <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="gitbook" scheme="https://373005226.github.io/tags/gitbook/"/>
-    
       <category term="github" scheme="https://373005226.github.io/tags/github/"/>
+    
+      <category term="gitbook" scheme="https://373005226.github.io/tags/gitbook/"/>
     
   </entry>
   
@@ -506,9 +506,9 @@
       <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="github" scheme="https://373005226.github.io/tags/github/"/>
-    
       <category term="Hexo" scheme="https://373005226.github.io/tags/Hexo/"/>
+    
+      <category term="github" scheme="https://373005226.github.io/tags/github/"/>
     
   </entry>
   

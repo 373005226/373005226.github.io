@@ -411,14 +411,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.3k
+                        3.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        12 分
+                        14 分
                     </div>
                     
                 
@@ -655,6 +655,48 @@ HAYSTACK_SIGNAL_PROCESSOR <span class="token operator">=</span> <span class="tok
 <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
 分页Paginator对象<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> paginator <span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span></code></pre>
 <p>自己去定义一个搜索后的页面，显示部分改成如上关键词就可以了</p>
+<h3 id="使用jieba进行分词处理"><a href="#使用jieba进行分词处理" class="headerlink" title="使用jieba进行分词处理"></a>使用jieba进行分词处理</h3><p>我们汉语向来都是博大精深，不像英语一个单词就是一个意思，所以我们可以使用jieba包去对搜索的文字进行分词处理</p>
+<p>首先先安装jieba分词</p>
+<pre class=" language-python"><code class="language-python">pip install jieba</code></pre>
+<p>然后去找haystack的源码目录</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571242333996.png" alt></p>
+<p>创建一个<code>ChineseAnalyzer.py</code>文件，输入以下代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> jieba
+<span class="token keyword">from</span> whoosh<span class="token punctuation">.</span>analysis <span class="token keyword">import</span> Tokenizer<span class="token punctuation">,</span> Token
+
+<span class="token keyword">class</span> <span class="token class-name">ChineseTokenizer</span><span class="token punctuation">(</span>Tokenizer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">,</span> positions<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> chars<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+                 keeporiginal<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> removestops<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+                 start_pos<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> start_char<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        t <span class="token operator">=</span> Token<span class="token punctuation">(</span>positions<span class="token punctuation">,</span> chars<span class="token punctuation">,</span> removestops<span class="token operator">=</span>removestops<span class="token punctuation">,</span> mode<span class="token operator">=</span>mode<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        seglist <span class="token operator">=</span> jieba<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>value<span class="token punctuation">,</span> cut_all<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> w <span class="token keyword">in</span> seglist<span class="token punctuation">:</span>
+            t<span class="token punctuation">.</span>original <span class="token operator">=</span> t<span class="token punctuation">.</span>text <span class="token operator">=</span> w
+            t<span class="token punctuation">.</span>boost <span class="token operator">=</span> <span class="token number">1.0</span>
+            <span class="token keyword">if</span> positions<span class="token punctuation">:</span>
+                t<span class="token punctuation">.</span>pos <span class="token operator">=</span> start_pos <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> chars<span class="token punctuation">:</span>
+                t<span class="token punctuation">.</span>startchar <span class="token operator">=</span> start_char <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
+                t<span class="token punctuation">.</span>endchar <span class="token operator">=</span> start_char <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token operator">+</span> len<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
+            <span class="token keyword">yield</span> t
+
+<span class="token keyword">def</span> <span class="token function">ChineseAnalyzer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> ChineseTokenizer<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>这个代码其实就是对搜索框输入的字符串进行jieba分词处理</p>
+<p>然后复制<code>whoosh_backend.py</code>文件为<code>whoose_cn_backend.py</code>，因为最好不要去修改源码</p>
+<p>在新的文件<code>whoose_cn_backend.py</code>修改一些字段：</p>
+<pre><code>#第一处要导入刚刚的jieba分词的包
+from .ChineseAnalyzer import ChineseAnalyzer
+
+第164行改成 TEXT(stored=True, analyzer=ChineseAnalyzer()</code></pre><p>最后修改setting的<code>&#39;ENGINE&#39;: &#39;haystack.backends.whoosh_backend.WhooshEngine&#39;</code>改为<code>&#39;ENGINE&#39;:&#39;haystack.backends.whoosh_cn_backend.WhooshEngine&#39;</code></p>
+<p>最后执行python shell命令`python manage.py rebuild_index重新生成索引文件就可以jieba分词搜索了</p>
+<h2 id="订单并发"><a href="#订单并发" class="headerlink" title="订单并发"></a>订单并发</h2><p>在Django的订单页面，处理订单的高并发处理有两种方法，一种叫悲观锁，另一种叫乐观锁</p>
+<h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>当查询某条记录时，即让数据库为该记录加锁，锁住记录后别人无法操作，使用类似如下语法</p>
+<pre class=" language-python"><code class="language-python">select stock <span class="token keyword">from</span> tb_sku where id<span class="token operator">=</span><span class="token number">1</span> <span class="token keyword">for</span> update<span class="token punctuation">;</span>
+SKU<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>select_for_update<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span>id<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<p>这个跟多线程的互斥锁原理十分的相像</p>
+<h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h3><p>乐观锁不是锁，只是在修改数据库库存的时候跟修改前的数据做对比，判断修改时的库存是不是跟之前查询的库存一样，连续判断两次，如果不一样就不执行这个操作，一样就执行更改</p>
+<h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><p>这个其实不止有如上两个方法的，比如还有延迟队列、Redis集群来设计，但是单单对于Django来说这两个方法也足够应付了</p>
 
             </div>
             <hr/>
@@ -989,7 +1031,7 @@ https://blog.csdn.net/fengxiaolu311/article/details/</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">24.4k</span>
+                <span class="white-color">24.9k</span>
             
 
             
