@@ -4,9 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="全文搜索方法的使用, 懒惰小L的博客">
-    <meta name="description" content="基于 haystack来使用whoosh检索引擎这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就可以自由切换引擎
-">
+    <meta name="keywords" content="天天生鲜项目总结（二）, 懒惰小L的博客">
+    <meta name="description" content="使用Redis作为Django的缓存来存储用户登录状态&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;通常网站用的都是session和cookie作为记录用户信息的存储，Django默认是把s">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>全文搜索方法的使用 | 懒惰小L的博客</title>
+    <title>天天生鲜项目总结（二） | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -287,13 +286,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        全文搜索方法的使用
+                        天天生鲜项目总结（二）
                     </div>
                 </div>
             </div>
@@ -383,21 +382,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/python/" target="_blank">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/Django/" target="_blank">
-                                <span class="chip bg-color">Django</span>
-                            </a>
-                        
-                            <a href="/tags/全文检索/" target="_blank">
-                                <span class="chip bg-color">全文检索</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -405,8 +392,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                后端
+                            <a href="/categories/日常总结/" class="post-category" target="_blank">
+                                日常总结
                             </a>
                         
                     </div>
@@ -417,21 +404,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-26
+                    2019-10-16
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        975
+                        1.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        5 分
                     </div>
                     
                 
@@ -447,108 +434,111 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="基于-haystack来使用whoosh检索引擎"><a href="#基于-haystack来使用whoosh检索引擎" class="headerlink" title="基于 haystack来使用whoosh检索引擎"></a>基于 haystack来使用whoosh检索引擎</h2><p>这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就可以自由切换引擎</p>
-<p>这里拿haystack使用whoosh引擎来作为案例</p>
-<h3 id="基本安装和配置"><a href="#基本安装和配置" class="headerlink" title="基本安装和配置"></a>基本安装和配置</h3><p>首先先安装这两个包</p>
-<pre><code>pip install django-haystack
-pip install whoosh</code></pre><p>然后在setting.py注册应用haystack</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/18.png" alt></p>
-<p>并且在setting.py文件添加如下字段：</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 全文检索框架配置</span>
-HAYSTACK_CONNECTIONS <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">'default'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true"># 使用whoosh引擎</span>
-        <span class="token comment" spellcheck="true"># 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',</span>
-        <span class="token string">'ENGINE'</span><span class="token punctuation">:</span> <span class="token string">'haystack.backends.whoosh_backend.WhooshEngine'</span><span class="token punctuation">,</span>   
-        <span class="token comment" spellcheck="true"># 索引文件路径</span>
-        <span class="token string">'PATH'</span><span class="token punctuation">:</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'whoosh_index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true"># 当添加、修改、删除数据时，自动生成索引</span>
-HAYSTACK_SIGNAL_PROCESSOR <span class="token operator">=</span> <span class="token string">'haystack.signals.RealtimeSignalProcessor'</span></code></pre>
-<p>以上的是默认的配置，如果要添加jieba文字的话要另外配置</p>
-<h3 id="生成索引文件"><a href="#生成索引文件" class="headerlink" title="生成索引文件"></a>生成索引文件</h3><p>在你要检索的模型类的那个包中，添加一个文件</p>
-<p>如我要检索的是所有的商品文件：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/19.png" alt></p>
-<p>里面的search_indexes.py就是我写的文件</p>
-<p>内容如下：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> haystack <span class="token keyword">import</span> indexes
-<span class="token keyword">from</span> goods<span class="token punctuation">.</span>models <span class="token keyword">import</span> GoodsSKU
-
-<span class="token keyword">class</span> <span class="token class-name">GoodsSKUIndex</span><span class="token punctuation">(</span>indexes<span class="token punctuation">.</span>SearchIndex<span class="token punctuation">,</span> indexes<span class="token punctuation">.</span>Indexable<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment" spellcheck="true">#索引字段document=True指定根据表的哪些字段简历索引文件制定在一个文件中</span>
-    text <span class="token operator">=</span> indexes<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>document<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> use_template<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># author = indexes.CharField(model_attr='user')</span>
-    <span class="token comment" spellcheck="true"># pub_date = indexes.DateTimeField(model_attr='pub_date')</span>
-
-    <span class="token keyword">def</span> <span class="token function">get_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> GoodsSKU
-
-    <span class="token comment" spellcheck="true"># 建立索引数据</span>
-    <span class="token keyword">def</span> <span class="token function">index_queryset</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> using<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>get_model<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true">#返回所有数据就是对所有的数据进行索引</span></code></pre>
-<p>然后要定义你检索出来的那个界面</p>
-<p>创建如下文件：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20.png" alt></p>
-<p>goodssku_text.txt就是定义你可以检索的字段，我的检索字段如下：</p>
-<pre><code># 指定根据表中的哪些字段建立索引数据
-{{ object.name }}  # 根据商品的名称建立索引
-{{ object.desc }}  # 根据商品的简介建立索引
-{{ object.goods.detail }}  # 根据商品的详情建立索引</code></pre><p>然后使用命令</p>
-<pre><code>python manage.py rebuild_index</code></pre><p>这样会生成索引文件</p>
-<p>如图：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/21.png" alt></p>
-<h3 id="使用搜索功能"><a href="#使用搜索功能" class="headerlink" title="使用搜索功能"></a>使用搜索功能</h3><p>在搜索的那个表单上，填写内容如下</p>
-<pre><code>&lt;form action=&quot;/search&quot; method=&quot;get&quot;&gt;
-
-&lt;/form&gt;</code></pre><p>然后要添加url路径</p>
-<pre><code>url(&#39;search/&#39;, include(&#39;haystack.urls&#39;)),  # 全文检索框架</code></pre><p>搜索完后结果会提交到一个search.html页面，会传递这几个变量</p>
-<pre><code>query：搜索关键字
-page：当前页的page对象 –&gt;遍历page对象，获取到的是SearchResult类的实例对象，对象的属性object才是模型类的对象。
-paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列表的模板，将这三个变量使用Django传递变量的方式添加进去即可</p>
-<h3 id="汉语分词检索"><a href="#汉语分词检索" class="headerlink" title="汉语分词检索"></a>汉语分词检索</h3><p>如果是英文的话一个单词就是一个商品，但是汉语远远比英语复杂的多，比如搜索你好，可以分为你和好</p>
-<p>Python有个jieba包可以帮助我们进行汉语分词</p>
-<p>首先先安装jieba包</p>
-<pre><code>pip install jieba</code></pre><p>要对原来的分词结果使用汉语分词的话就要对下载下来的包进行jieba分词</p>
-<p>进入对pip下载的haystack包里面添加ChineseTokenizer.py文件，内容如下</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> jieba
-<span class="token keyword">from</span> whoosh<span class="token punctuation">.</span>analysis <span class="token keyword">import</span> Tokenizer<span class="token punctuation">,</span> Token
-
-<span class="token keyword">class</span> <span class="token class-name">ChineseTokenizer</span><span class="token punctuation">(</span>Tokenizer<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">,</span> positions<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> chars<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
-                 keeporiginal<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> removestops<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
-                 start_pos<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> start_char<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        t <span class="token operator">=</span> Token<span class="token punctuation">(</span>positions<span class="token punctuation">,</span> chars<span class="token punctuation">,</span> removestops<span class="token operator">=</span>removestops<span class="token punctuation">,</span> mode<span class="token operator">=</span>mode<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-        seglist <span class="token operator">=</span> jieba<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>value<span class="token punctuation">,</span> cut_all<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> w <span class="token keyword">in</span> seglist<span class="token punctuation">:</span>
-            t<span class="token punctuation">.</span>original <span class="token operator">=</span> t<span class="token punctuation">.</span>text <span class="token operator">=</span> w
-            t<span class="token punctuation">.</span>boost <span class="token operator">=</span> <span class="token number">1.0</span>
-            <span class="token keyword">if</span> positions<span class="token punctuation">:</span>
-                t<span class="token punctuation">.</span>pos <span class="token operator">=</span> start_pos <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
-            <span class="token keyword">if</span> chars<span class="token punctuation">:</span>
-                t<span class="token punctuation">.</span>startchar <span class="token operator">=</span> start_char <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
-                t<span class="token punctuation">.</span>endchar <span class="token operator">=</span> start_char <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token operator">+</span> len<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
-            <span class="token keyword">yield</span> t
-
-<span class="token keyword">def</span> <span class="token function">ChineseAnalyzer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> ChineseTokenizer<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>然后拷贝原来的whoosh_backend.py文件，改名为whoosh_cn_backend.py</p>
-<p>添加如下字段：</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#对原来导入的包添加</span>
-<span class="token keyword">from</span> <span class="token punctuation">.</span>ChineseAnalyzer <span class="token keyword">import</span> ChineseAnalyzer
-
-<span class="token comment" spellcheck="true"># 第163行的</span>
-<span class="token comment" spellcheck="true"># schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=StemmingAnalyzer(),      </span>
-<span class="token comment" spellcheck="true"># field_boost=field_class.boost, sortable=True)</span>
-<span class="token comment" spellcheck="true"># 改为</span>
+                <h2 id="使用Redis作为Django的缓存来存储用户登录状态"><a href="#使用Redis作为Django的缓存来存储用户登录状态" class="headerlink" title="使用Redis作为Django的缓存来存储用户登录状态"></a>使用Redis作为Django的缓存来存储用户登录状态</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常网站用的都是session和cookie作为记录用户信息的存储，Django默认是把session存储在数据库中，每一次用户使用网站，都要从数据库从读取session，但是直接读取数据库的速度是比较慢的。其次，网站如果每次用户访问都是从数据库进行读取，那么对服务器的压力也是不小的。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在小网站可以这样子做，如果大型网站人流量一大，每一个人访问网站都会对数据库进行一次读取，对服务器是个不小的压力，而如果使用Redis作为缓存存储数据就不会出现这类问题。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Django使用Redis作为缓存的使用手册如下：<a href="https://django-redis-chs.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">https://django-redis-chs.readthedocs.io/zh_CN/latest/</a>，这里只简述使用方法:</p>
+<p>安装Django-redis</p>
+<pre class=" language-python"><code class="language-python">pip install django<span class="token operator">-</span>redis</code></pre>
+<p>然后在setting文件里面添加配置项</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#Django的缓存配置</span>
+CACHES <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"default"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"BACKEND"</span><span class="token punctuation">:</span> <span class="token string">"django_redis.cache.RedisCache"</span><span class="token punctuation">,</span>
+        <span class="token string">"LOCATION"</span><span class="token punctuation">:</span> <span class="token string">"redis://127.0.0.1:6379/9"</span><span class="token punctuation">,</span>
+        <span class="token string">"OPTIONS"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"CLIENT_CLASS"</span><span class="token punctuation">:</span> <span class="token string">"django_redis.client.DefaultClient"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>&emsp;</p>
+<p>其次Django默认的存储方式有如下三种：</p>
+<ol>
+<li><p>存储在数据库中，如下设置可以写，也可以不写，这是默认存储方式</p>
+<pre class=" language-python"><code class="language-python">SESSION_ENGINE<span class="token operator">=</span><span class="token string">'django.contrib.sessions.backends.db'</span></code></pre>
+<p>Django默认的存储方式就是在数据中存储，所以在<code>setting</code>字段里面有个</p>
+<pre class=" language-python"><code class="language-python">INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuation">[</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token string">'django.contrib.sessions'</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">]</span></code></pre>
+<p>在使用命令<code>migrate</code>和<code>makemigrations</code>后在数据库就会生成一个django_session字段，如图所示：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571198881213.png" alt></p>
+</li>
+<li><p>存储在缓存中：存储在本机内存中，如果丢失则不能找回，比数据库的方式读写更快</p>
+<pre class=" language-python"><code class="language-python">SESSION_ENGINE<span class="token operator">=</span><span class="token string">'django.contrib.sessions.backends.cache'</span></code></pre>
+</li>
+<li><p>混合存储：优先从本机内存中存取，如果没有则从数据库中存取。</p>
+<pre class=" language-python"><code class="language-python"> SESSION_ENGINE<span class="token operator">=</span><span class="token string">'django.contrib.sessions.backends.cached_db'</span></code></pre>
+</li>
+</ol>
+<p>&emsp;</p>
+<p>项目需要的是把redis缓存替换默认方法，依照官方文档的方法：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571199075048.png" alt></p>
+<p>在setting里面添加如下两个字段：</p>
+<pre class=" language-python"><code class="language-python">SESSION_ENGINE <span class="token operator">=</span> <span class="token string">"django.contrib.sessions.backends.cache"</span>
+SESSION_CACHE_ALIAS <span class="token operator">=</span> <span class="token string">"default"</span></code></pre>
+<p>这样就可以完成使用Redis来存储session了</p>
+<p>&emsp;</p>
+<h2 id="个人中心页面登陆限制"><a href="#个人中心页面登陆限制" class="headerlink" title="个人中心页面登陆限制"></a>个人中心页面登陆限制</h2><p>按照逻辑来说，个人中心的信息在没登录的时候即使输入了URL地址也是直接跳转到登陆信息的，当登陆完成之后再返回登陆之前访问的页面。本项目就按照这个逻辑去写。</p>
+<p>Django有一套验证系统，可以记录用户访问前的地址和可以让登陆后再返回之前访问的地址</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571214022489.png" alt></p>
+<p>上述验证方法有两个方法可以实现：</p>
+<h3 id="方法一：在路由里面添加"><a href="#方法一：在路由里面添加" class="headerlink" title="方法一：在路由里面添加"></a>方法一：在路由里面添加</h3><p>在每个单独的包的路由里面设置一个<code>login_required</code>，如图所示：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571214344034.png" alt></p>
+<p>配置完之后，紧接着要在setting里面添加你的登陆地址，当访问个人中心页面自动跳转到登陆页面</p>
+<pre class=" language-python"><code class="language-python">LOGIN_URL <span class="token operator">=</span> <span class="token string">'/login'</span></code></pre>
+<p>重启项目，输入地址栏访问个人中心查看</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571215011716.png" alt></p>
+<p>最重要的一步来了，就是表单继续提交的时候会发现情况不对，返回的还是首页页面，这个原因是因为form表单action提交的还是原来的地址，这里注意要删掉action字段，因为form表单如果不加上action就是提交到url地址的那栏，也就是<code>127.0.0.1:8000/user/login?next=/user/</code>，这个时候我们就要去修改登陆的方法类，也就是post请求要修改一下</p>
+<p>这是我原来的代码：</p>
+<pre class=" language-python"><code class="language-python">login<span class="token punctuation">(</span>request<span class="token punctuation">,</span>user<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token comment" spellcheck="true">#在登陆成功之后跳转到首页</span>
+<span class="token keyword">return</span> redirect<span class="token punctuation">(</span>reverse<span class="token punctuation">(</span><span class="token string">'goods:index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p><code>127.0.0.1:8000/user/login?next=/user/</code>这个地址一看就是get方法请求的，我们直接在Request里面获取即可</p>
+<pre class=" language-python"><code class="language-python">login<span class="token punctuation">(</span>request<span class="token punctuation">,</span>user<span class="token punctuation">)</span>
+next_url<span class="token operator">=</span>request<span class="token punctuation">.</span>GET<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'next'</span><span class="token punctuation">,</span>reverse<span class="token punctuation">(</span><span class="token string">'goods:index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#如果拿不到next，就默认赋值为goods:index，也就是默认跳转到首页</span>
+response<span class="token operator">=</span>redirect<span class="token punctuation">(</span>next_url<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">return</span> response
+<span class="token comment" spellcheck="true">#这里我修改了下我的写法，原理是一样的，都是跳转到要响应的页面</span></code></pre>
+<p>经过上述配置，就可以完成开头所说的逻辑了</p>
+<p>&emsp;</p>
+<h3 id="方法二：使用LoginRequiredMixin类"><a href="#方法二：使用LoginRequiredMixin类" class="headerlink" title="方法二：使用LoginRequiredMixin类"></a>方法二：使用LoginRequiredMixin类</h3><p>在方法一里面，虽然是可以完成逻辑上的方法，但是这样未免很麻烦，每需要一个要限制登陆的页面，都要在路由里面添加限制，一两个无所谓，但是如果很多歌页面都需要限制登陆那未免就显得十分的麻烦。对于这种情况，我们应该封装在一个类里面做而不是在路由里面写。详细实现方法如下：</p>
+<p>&emsp;</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571216461437.png" alt="官方文档"></p>
+<p>官方文档写的也是十分的详细，虽然是全英文<del>~</del>整体而言方法是定义一个类，在类里面进行判断即可</p>
+<p>对于这种对于全局都有作用的函数我封装到一个<code>utils</code>的文件夹里，并且取名为<code>Mixin.py</code></p>
+<p>我们自定义一个类，类名我取名为<code>LoginRequiredMixin</code></p>
+<p>先点击ctrl+as_view()查看类的实现方法</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/1571216810096.png" alt></p>
+<p>这个方法我看了看，使用的是类方法来执行的</p>
+<p>不管他，我直接copy过来</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>auth<span class="token punctuation">.</span>decorators <span class="token keyword">import</span> login_required
 
 
-<span class="token comment" spellcheck="true"># schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=ChineseAnalyzer(),  </span>
-<span class="token comment" spellcheck="true"># field_boost=field_class.boost, sortable=True)</span></code></pre>
-<p>然后回去setting.py修改成’ENGINE’: ‘haystack.backends.whoosh_cn_backend.WhooshEngine’</p>
-<p>然后再进行一次索引就可以使用汉语的jieba分词了</p>
+<span class="token keyword">class</span> <span class="token class-name">LoginRequiredMixin</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    @classmethod
+    <span class="token keyword">def</span> <span class="token function">as_view</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">**</span>initkwargs<span class="token punctuation">)</span><span class="token punctuation">:</span></code></pre>
+<p>然后继承父类的方法，完整的代码如下</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>auth<span class="token punctuation">.</span>decorators <span class="token keyword">import</span> login_required
+
+
+<span class="token keyword">class</span> <span class="token class-name">LoginRequiredMixin</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    @classmethod
+    <span class="token keyword">def</span> <span class="token function">as_view</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">**</span>initkwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        view <span class="token operator">=</span> super<span class="token punctuation">(</span>LoginRequiredMixin<span class="token punctuation">,</span> cls<span class="token punctuation">)</span><span class="token punctuation">.</span>as_view<span class="token punctuation">(</span><span class="token operator">**</span>initkwargs<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> login_required<span class="token punctuation">(</span>view<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">#这样我就可以定义一个是否需要被限制登陆的类了</span></code></pre>
+<p>然后在定义个人中心、订单、地址的类方法中继承这个方法即可，详情如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">UserInfoView</span><span class="token punctuation">(</span>LoginRequiredMixin<span class="token punctuation">,</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">class</span> <span class="token class-name">UserOrderView</span><span class="token punctuation">(</span>LoginRequiredMixin<span class="token punctuation">,</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">class</span> <span class="token class-name">UserAddressView</span><span class="token punctuation">(</span>LoginRequiredMixin<span class="token punctuation">,</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span></code></pre>
+<p>这样就可以实现更为简便的方法了</p>
+<p>这个方法的原理还是跟方法一一模一样的，<code>return login_required(view)</code>还是在view外面包装了一个<code>login_required</code>，只是这样写会没那么乱</p>
 
             </div>
             <hr/>
@@ -689,7 +679,7 @@ paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列�
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/26/sou-suo-fang-fa/" class="b-link-green">全文搜索方法的使用</a>
+                    <a href="/2019/10/16/tian-tian-sheng-xian-zong-jie-er/" class="b-link-green">天天生鲜项目总结（二）</a>
                 </p>
             </div>
         </div>
@@ -711,7 +701,7 @@ paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列�
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-09-26T14-24-43',
+        id: '2019-10-16T10-10-45',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -732,39 +722,73 @@ paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/27/redis1/">
+                <a href="/2019/10/16/tian-tian-sheng-xian-zong-jie-er/">
                     <div class="card-image">
                         
-                        <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/redis.jpg" class="responsive-img" alt="redis初步认识">
                         
-                        <span class="card-title">redis初步认识</span>
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="天天生鲜项目总结（二）">
+                        
+                        <span class="card-title">天天生鲜项目总结（二）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Redis的五大数据结构
-String
-hash
-list
-set
-zset
-
-Redis的特性
-速度快：因为redis是保存在内存当中的
-持久化：Redis的数据保存在内存中，一般的保存在内存中突然断电内存就会丢失，所以redis在保存数</div>
+                    <div class="summary">使用Redis作为Django的缓存来存储用户登录状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常网站用的都是session和cookie作为记录用户信息的存储，Django默认是把s</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/数据库/" class="post-category" target="_blank">
-                                    数据库
+                            <a href="/categories/日常总结/" class="post-category" target="_blank">
+                                    日常总结
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/10/15/redis-yu-rabbitmq/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Redis和RabbitMQ作为消息队列的对比">
+                        
+                        <span class="card-title">Redis和RabbitMQ作为消息队列的对比</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+  这篇博客是属于一个总结，我在天天生鲜这个项目用到了消息中间件，所以就查阅了这方面的知识，对网上大部分的博客做一个总结
+参考文章：
+https://blog.csdn.net/fengxiaolu311/article/details/</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/日常总结/" class="post-category" target="_blank">
+                                    日常总结
                                 </a>
                             
                             
@@ -776,63 +800,6 @@ Redis的特性
                     
                     <a href="/tags/Redis/" target="_blank">
                         <span class="chip bg-color">Redis</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="fastDFS安装及在Django中的部署">
-                        
-                        <span class="card-title">fastDFS安装及在Django中的部署</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">FastDFS在阿里云服务器的安装和配置FastDFS安装在这篇博客讲解的很清楚了，这里我就不再赘述，只作为补充
-如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则端口
-
-开启了防火墙端口还不够
-在进入服务</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                    后端
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/Django/" target="_blank">
-                        <span class="chip bg-color">Django</span>
-                    </a>
-                    
-                    <a href="/tags/分布式/" target="_blank">
-                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>

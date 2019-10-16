@@ -4,9 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="全文搜索方法的使用, 懒惰小L的博客">
-    <meta name="description" content="基于 haystack来使用whoosh检索引擎这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就可以自由切换引擎
-">
+    <meta name="keywords" content="Redis和RabbitMQ作为消息队列的对比, 懒惰小L的博客">
+    <meta name="description" content="
+  这篇博客是属于一个总结，我在天天生鲜这个项目用到了消息中间件，所以就查阅了这方面的知识，对网上大部分的博客做一个总结
+参考文章：
+https://blog.csdn.net/fengxiaolu311/article/details/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>全文搜索方法的使用 | 懒惰小L的博客</title>
+    <title>Redis和RabbitMQ作为消息队列的对比 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -287,13 +289,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        全文搜索方法的使用
+                        Redis和RabbitMQ作为消息队列的对比
                     </div>
                 </div>
             </div>
@@ -385,16 +387,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/" target="_blank">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/Django/" target="_blank">
-                                <span class="chip bg-color">Django</span>
-                            </a>
-                        
-                            <a href="/tags/全文检索/" target="_blank">
-                                <span class="chip bg-color">全文检索</span>
+                            <a href="/tags/Redis/" target="_blank">
+                                <span class="chip bg-color">Redis</span>
                             </a>
                         
                     </div>
@@ -405,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                后端
+                            <a href="/categories/日常总结/" class="post-category" target="_blank">
+                                日常总结
                             </a>
                         
                     </div>
@@ -417,14 +411,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-26
+                    2019-10-15
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        975
+                        1.2k
                     </div>
                     
 
@@ -447,108 +441,55 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="基于-haystack来使用whoosh检索引擎"><a href="#基于-haystack来使用whoosh检索引擎" class="headerlink" title="基于 haystack来使用whoosh检索引擎"></a>基于 haystack来使用whoosh检索引擎</h2><p>这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就可以自由切换引擎</p>
-<p>这里拿haystack使用whoosh引擎来作为案例</p>
-<h3 id="基本安装和配置"><a href="#基本安装和配置" class="headerlink" title="基本安装和配置"></a>基本安装和配置</h3><p>首先先安装这两个包</p>
-<pre><code>pip install django-haystack
-pip install whoosh</code></pre><p>然后在setting.py注册应用haystack</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/18.png" alt></p>
-<p>并且在setting.py文件添加如下字段：</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 全文检索框架配置</span>
-HAYSTACK_CONNECTIONS <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">'default'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true"># 使用whoosh引擎</span>
-        <span class="token comment" spellcheck="true"># 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',</span>
-        <span class="token string">'ENGINE'</span><span class="token punctuation">:</span> <span class="token string">'haystack.backends.whoosh_backend.WhooshEngine'</span><span class="token punctuation">,</span>   
-        <span class="token comment" spellcheck="true"># 索引文件路径</span>
-        <span class="token string">'PATH'</span><span class="token punctuation">:</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'whoosh_index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true"># 当添加、修改、删除数据时，自动生成索引</span>
-HAYSTACK_SIGNAL_PROCESSOR <span class="token operator">=</span> <span class="token string">'haystack.signals.RealtimeSignalProcessor'</span></code></pre>
-<p>以上的是默认的配置，如果要添加jieba文字的话要另外配置</p>
-<h3 id="生成索引文件"><a href="#生成索引文件" class="headerlink" title="生成索引文件"></a>生成索引文件</h3><p>在你要检索的模型类的那个包中，添加一个文件</p>
-<p>如我要检索的是所有的商品文件：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/19.png" alt></p>
-<p>里面的search_indexes.py就是我写的文件</p>
-<p>内容如下：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> haystack <span class="token keyword">import</span> indexes
-<span class="token keyword">from</span> goods<span class="token punctuation">.</span>models <span class="token keyword">import</span> GoodsSKU
-
-<span class="token keyword">class</span> <span class="token class-name">GoodsSKUIndex</span><span class="token punctuation">(</span>indexes<span class="token punctuation">.</span>SearchIndex<span class="token punctuation">,</span> indexes<span class="token punctuation">.</span>Indexable<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment" spellcheck="true">#索引字段document=True指定根据表的哪些字段简历索引文件制定在一个文件中</span>
-    text <span class="token operator">=</span> indexes<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>document<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> use_template<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># author = indexes.CharField(model_attr='user')</span>
-    <span class="token comment" spellcheck="true"># pub_date = indexes.DateTimeField(model_attr='pub_date')</span>
-
-    <span class="token keyword">def</span> <span class="token function">get_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> GoodsSKU
-
-    <span class="token comment" spellcheck="true"># 建立索引数据</span>
-    <span class="token keyword">def</span> <span class="token function">index_queryset</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> using<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>get_model<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true">#返回所有数据就是对所有的数据进行索引</span></code></pre>
-<p>然后要定义你检索出来的那个界面</p>
-<p>创建如下文件：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20.png" alt></p>
-<p>goodssku_text.txt就是定义你可以检索的字段，我的检索字段如下：</p>
-<pre><code># 指定根据表中的哪些字段建立索引数据
-{{ object.name }}  # 根据商品的名称建立索引
-{{ object.desc }}  # 根据商品的简介建立索引
-{{ object.goods.detail }}  # 根据商品的详情建立索引</code></pre><p>然后使用命令</p>
-<pre><code>python manage.py rebuild_index</code></pre><p>这样会生成索引文件</p>
-<p>如图：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/21.png" alt></p>
-<h3 id="使用搜索功能"><a href="#使用搜索功能" class="headerlink" title="使用搜索功能"></a>使用搜索功能</h3><p>在搜索的那个表单上，填写内容如下</p>
-<pre><code>&lt;form action=&quot;/search&quot; method=&quot;get&quot;&gt;
-
-&lt;/form&gt;</code></pre><p>然后要添加url路径</p>
-<pre><code>url(&#39;search/&#39;, include(&#39;haystack.urls&#39;)),  # 全文检索框架</code></pre><p>搜索完后结果会提交到一个search.html页面，会传递这几个变量</p>
-<pre><code>query：搜索关键字
-page：当前页的page对象 –&gt;遍历page对象，获取到的是SearchResult类的实例对象，对象的属性object才是模型类的对象。
-paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列表的模板，将这三个变量使用Django传递变量的方式添加进去即可</p>
-<h3 id="汉语分词检索"><a href="#汉语分词检索" class="headerlink" title="汉语分词检索"></a>汉语分词检索</h3><p>如果是英文的话一个单词就是一个商品，但是汉语远远比英语复杂的多，比如搜索你好，可以分为你和好</p>
-<p>Python有个jieba包可以帮助我们进行汉语分词</p>
-<p>首先先安装jieba包</p>
-<pre><code>pip install jieba</code></pre><p>要对原来的分词结果使用汉语分词的话就要对下载下来的包进行jieba分词</p>
-<p>进入对pip下载的haystack包里面添加ChineseTokenizer.py文件，内容如下</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> jieba
-<span class="token keyword">from</span> whoosh<span class="token punctuation">.</span>analysis <span class="token keyword">import</span> Tokenizer<span class="token punctuation">,</span> Token
-
-<span class="token keyword">class</span> <span class="token class-name">ChineseTokenizer</span><span class="token punctuation">(</span>Tokenizer<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">,</span> positions<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> chars<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
-                 keeporiginal<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> removestops<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
-                 start_pos<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> start_char<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        t <span class="token operator">=</span> Token<span class="token punctuation">(</span>positions<span class="token punctuation">,</span> chars<span class="token punctuation">,</span> removestops<span class="token operator">=</span>removestops<span class="token punctuation">,</span> mode<span class="token operator">=</span>mode<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-        seglist <span class="token operator">=</span> jieba<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>value<span class="token punctuation">,</span> cut_all<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> w <span class="token keyword">in</span> seglist<span class="token punctuation">:</span>
-            t<span class="token punctuation">.</span>original <span class="token operator">=</span> t<span class="token punctuation">.</span>text <span class="token operator">=</span> w
-            t<span class="token punctuation">.</span>boost <span class="token operator">=</span> <span class="token number">1.0</span>
-            <span class="token keyword">if</span> positions<span class="token punctuation">:</span>
-                t<span class="token punctuation">.</span>pos <span class="token operator">=</span> start_pos <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
-            <span class="token keyword">if</span> chars<span class="token punctuation">:</span>
-                t<span class="token punctuation">.</span>startchar <span class="token operator">=</span> start_char <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
-                t<span class="token punctuation">.</span>endchar <span class="token operator">=</span> start_char <span class="token operator">+</span> value<span class="token punctuation">.</span>find<span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token operator">+</span> len<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
-            <span class="token keyword">yield</span> t
-
-<span class="token keyword">def</span> <span class="token function">ChineseAnalyzer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> ChineseTokenizer<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>然后拷贝原来的whoosh_backend.py文件，改名为whoosh_cn_backend.py</p>
-<p>添加如下字段：</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#对原来导入的包添加</span>
-<span class="token keyword">from</span> <span class="token punctuation">.</span>ChineseAnalyzer <span class="token keyword">import</span> ChineseAnalyzer
-
-<span class="token comment" spellcheck="true"># 第163行的</span>
-<span class="token comment" spellcheck="true"># schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=StemmingAnalyzer(),      </span>
-<span class="token comment" spellcheck="true"># field_boost=field_class.boost, sortable=True)</span>
-<span class="token comment" spellcheck="true"># 改为</span>
-
-
-<span class="token comment" spellcheck="true"># schema_fields[field_class.index_fieldname] = TEXT(stored=True, analyzer=ChineseAnalyzer(),  </span>
-<span class="token comment" spellcheck="true"># field_boost=field_class.boost, sortable=True)</span></code></pre>
-<p>然后回去setting.py修改成’ENGINE’: ‘haystack.backends.whoosh_cn_backend.WhooshEngine’</p>
-<p>然后再进行一次索引就可以使用汉语的jieba分词了</p>
+                <blockquote>
+<p>  这篇博客是属于一个总结，我在天天生鲜这个项目用到了消息中间件，所以就查阅了这方面的知识，对网上大部分的博客做一个总结</p>
+<p>参考文章：</p>
+<p><a href="https://blog.csdn.net/fengxiaolu311/article/details/82904217" target="_blank" rel="noopener">https://blog.csdn.net/fengxiaolu311/article/details/82904217</a></p>
+<p><a href="https://blog.csdn.net/qq_42253147/article/details/93327939" target="_blank" rel="noopener">https://blog.csdn.net/qq_42253147/article/details/93327939</a></p>
+<p><a href="https://blog.csdn.net/dd18709200301/article/details/79077839" target="_blank" rel="noopener">https://blog.csdn.net/dd18709200301/article/details/79077839</a></p>
+</blockquote>
+<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><p>RabbitMQ是一个专门的AMQP协议队列，用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗，他的优势就在于提供可靠的队列服务，使得不同的应用可以通过同一个协议去共享数据，并且可做到异步。</p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>Redis众所周知是一个内存级别的数据库，通过键值对的方式才存储数据，但虽然Redis本身是一个数据库，但是Redis本身是支持MQ（Message Queue，即消息队列）的，而且MQ的一些常用功能使用Redis也能实现，如果要求没那么高的话使用Redis作为中间件是一个不错的选择，完全可以当做一个轻量级的队列服务来使用。</p>
+<h2 id="两者间具体的对比"><a href="#两者间具体的对比" class="headerlink" title="两者间具体的对比"></a>两者间具体的对比</h2><h3 id="可靠性"><a href="#可靠性" class="headerlink" title="可靠性"></a>可靠性</h3><p>Redis：</p>
+<ol>
+<li>没有相应的机制保证消息的可靠消费，如果发布者发布一条消息，而没有对应的订阅者的话，这条消息将丢失，不会存在内存中；</li>
+<li>如果订阅者消费失败，消息丢失，这个时候就需要开发者手动处理；</li>
+</ol>
+<p>RabbitMQ：</p>
+<ol>
+<li>具有消息消费确认机制，如果发布一条消息，还没有消费者消费该队列，那么这条消息将一直存放在队列中，直到有消费者消费了该条消息，以此可以保证消息的可靠消费；</li>
+<li>即使消费者消费失败，也会自动使消息体返回原队列，同时可全程持久化，保证消息体被正确消费；</li>
+</ol>
+<p>&emsp;</p>
+<h3 id="可靠发布"><a href="#可靠发布" class="headerlink" title="可靠发布"></a>可靠发布</h3><p>Redis：Redis是不提供这方面的服务的，需要开发者自行实现；</p>
+<p>RabbitMQ：具有发布确认功能，保证消息被发布到服务器；</p>
+<p>&emsp;</p>
+<h3 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h3><p>Redis：Redis的持久化是针对于整个redis缓存的内容，它有RDB和AOF两种持久化方式，可以将整个redis实例持久化到磁盘，以此来做数据备份，防止异常情况下导致数据丢失；</p>
+<p>RabbitMQ：队列，每一条消息，都可以选择是否持久化；</p>
+<p>&emsp;</p>
+<h3 id="队列监控"><a href="#队列监控" class="headerlink" title="队列监控"></a>队列监控</h3><p>Redis：不提供，需自行实现；</p>
+<p>RabbitMQ：后台可以监控所有创建的队列的所有信息（内存，磁盘，消费者，生产者，速率等），良好的后台管理平台可以方面我们更好的使用；</p>
+<p>&emsp;</p>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>RabbitMQ：RabbitMQ队列可以被多个消费者同时监控消费，但是每一条消息只能被消费一次，由于RabbitMQ的消费确认机制，因此它能够根据消费者的消费能力而调整它的负载；</p>
+<p>Redis：Redis发布订阅模式，一个队列可以被多个消费者同时订阅，当有消息到达时，会将该消息依次发送给每个订阅者，她是一种消息的广播形式，redis本身不做消费者的负载均衡，因此消费效率存在瓶颈；</p>
+<p>&emsp;</p>
+<h3 id="高可用性"><a href="#高可用性" class="headerlink" title="高可用性"></a>高可用性</h3><p>Redis：采用主从模式，读写分离，但是故障转移还没有非常完善的官方解决方案；</p>
+<p>RabbitMQ：集群采用磁盘、内存节点，任意单点故障都不会影响整个队列的操作；</p>
+<p>&emsp;</p>
+<h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><p>Redis：不提供，需自行实现；</p>
+<p>RabbitMQ：服务器过载的情况，对生产者速率会进行限制，保证服务可靠性；</p>
+<p>&emsp;</p>
+<h3 id="实时性"><a href="#实时性" class="headerlink" title="实时性"></a>实时性</h3><p>Redis：Redis是一个高效的缓存服务器，所有数据都保存在内存当中，所以它具备更高的实时性；</p>
+<p>&emsp;</p>
+<h3 id="出入队性能"><a href="#出入队性能" class="headerlink" title="出入队性能"></a>出入队性能</h3><p>对于RabbitMQ和Redis的入队和出队操作，各执行100万次，每10万次记录一次执行时间。测试数据分为128Bytes、512Bytes、1K和10K四个不同大小的数据。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltYWdlcy5jbml0YmxvZy5jb20vaS80NTI2NzEvMjAxNDA3LzAyMTQ0ODM5MzI0ODU3OC5wbmc" alt></p>
+<p>实验表明：入队时，当数据比较小时Redis的性能要高于RabbitMQ，而如果数据大小超过了10K，Redis则慢的无法忍受；出队时，无论数据大小，Redis都表现出非常好的性能，而RabbitMQ的出队性能则远低于Redis。</p>
+<p>&emsp;</p>
+<h2 id="两者的应用场景"><a href="#两者的应用场景" class="headerlink" title="两者的应用场景"></a>两者的应用场景</h2><p>Redis：轻量级，高并发，延迟敏感，即时数据分析、秒杀计数器、缓存等</p>
+<p>RabbitMQ：重量级，高并发，异步批量数据异步处理、并行任务串行化，高负载任务的负载均衡等</p>
+<blockquote>
+<p>这篇博客的内容待继续完善，现在这里主要是总结了网上的经验，等我完全熟悉这两个数据库的时候我会拿案例来说明</p>
+</blockquote>
 
             </div>
             <hr/>
@@ -689,7 +630,7 @@ paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列�
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/26/sou-suo-fang-fa/" class="b-link-green">全文搜索方法的使用</a>
+                    <a href="/2019/10/15/redis-yu-rabbitmq/" class="b-link-green">Redis和RabbitMQ作为消息队列的对比</a>
                 </p>
             </div>
         </div>
@@ -711,7 +652,7 @@ paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列�
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-09-26T14-24-43',
+        id: '2019-10-15T23-26-53',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -736,48 +677,32 @@ paginator：分页paginator对象</code></pre><p>然后自定义一个搜索列�
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/27/redis1/">
+                <a href="/2019/10/16/tian-tian-sheng-xian-zong-jie-er/">
                     <div class="card-image">
                         
-                        <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/redis.jpg" class="responsive-img" alt="redis初步认识">
                         
-                        <span class="card-title">redis初步认识</span>
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="天天生鲜项目总结（二）">
+                        
+                        <span class="card-title">天天生鲜项目总结（二）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Redis的五大数据结构
-String
-hash
-list
-set
-zset
-
-Redis的特性
-速度快：因为redis是保存在内存当中的
-持久化：Redis的数据保存在内存中，一般的保存在内存中突然断电内存就会丢失，所以redis在保存数</div>
+                    <div class="summary">使用Redis作为Django的缓存来存储用户登录状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常网站用的都是session和cookie作为记录用户信息的存储，Django默认是把s</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-27
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-16
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/数据库/" class="post-category" target="_blank">
-                                    数据库
+                            <a href="/categories/日常总结/" class="post-category" target="_blank">
+                                    日常总结
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -789,52 +714,35 @@ Redis的特性
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/">
+                <a href="/2019/10/14/tian-tian-sheng-xian-zong-jie-yi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="fastDFS安装及在Django中的部署">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="天天生鲜项目总结（一）">
                         
-                        <span class="card-title">fastDFS安装及在Django中的部署</span>
+                        <span class="card-title">天天生鲜项目总结（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">FastDFS在阿里云服务器的安装和配置FastDFS安装在这篇博客讲解的很清楚了，这里我就不再赘述，只作为补充
-如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则端口
+                    <div class="summary">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;做天天生鲜项目的时候使用了太多的技术，很多不会的我参考了很多的博客才做出来，这里记录这个项目的常用技术点，以便于我开发第二个系统
 
-开启了防火墙端口还不够
-在进入服务</div>
+使用Dja</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                    后端
+                            <a href="/categories/日常总结/" class="post-category" target="_blank">
+                                    日常总结
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/Django/" target="_blank">
-                        <span class="chip bg-color">Django</span>
-                    </a>
-                    
-                    <a href="/tags/分布式/" target="_blank">
-                        <span class="chip bg-color">分布式</span>
-                    </a>
-                    
                 </div>
                 
             </div>

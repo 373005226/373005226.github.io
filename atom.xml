@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-10-15T03:11:12.621Z</updated>
+  <updated>2019-10-16T11:31:59.572Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -17,11 +17,66 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>天天生鲜项目总结</title>
-    <link href="https://373005226.github.io/2019/10/14/tian-tian-sheng-xian-zong-jie/"/>
-    <id>https://373005226.github.io/2019/10/14/tian-tian-sheng-xian-zong-jie/</id>
+    <title>天天生鲜项目总结（二）</title>
+    <link href="https://373005226.github.io/2019/10/16/tian-tian-sheng-xian-zong-jie-er/"/>
+    <id>https://373005226.github.io/2019/10/16/tian-tian-sheng-xian-zong-jie-er/</id>
+    <published>2019-10-16T02:10:45.140Z</published>
+    <updated>2019-10-16T11:31:59.572Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;使用Redis作为Django的缓存来存储用户登录状态&quot;&gt;&lt;a href=&quot;#使用Redis作为Django的缓存来存储用户登录状态&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="日常总结" scheme="https://373005226.github.io/categories/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Redis和RabbitMQ作为消息队列的对比</title>
+    <link href="https://373005226.github.io/2019/10/15/redis-yu-rabbitmq/"/>
+    <id>https://373005226.github.io/2019/10/15/redis-yu-rabbitmq/</id>
+    <published>2019-10-15T15:26:53.746Z</published>
+    <updated>2019-10-16T02:07:06.447Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;  这篇博客是属于一个总结，我在天天生鲜这个项目用到了消息中间件，所以就查阅了这方面的知识，对网上大部分的博客做一个总结&lt;/p&gt;
+&lt;p&gt;参考文章：&lt;/p&gt;
+&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="日常总结" scheme="https://373005226.github.io/categories/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="Redis" scheme="https://373005226.github.io/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>天天生鲜项目总结（一）</title>
+    <link href="https://373005226.github.io/2019/10/14/tian-tian-sheng-xian-zong-jie-yi/"/>
+    <id>https://373005226.github.io/2019/10/14/tian-tian-sheng-xian-zong-jie-yi/</id>
     <published>2019-10-14T07:29:32.931Z</published>
-    <updated>2019-10-15T03:11:12.621Z</updated>
+    <updated>2019-10-16T11:28:05.463Z</updated>
     
     <summary type="html">
     
