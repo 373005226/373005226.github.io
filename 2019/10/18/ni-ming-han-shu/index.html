@@ -4,11 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="天天生鲜项目总结, 懒惰小L的博客">
-    <meta name="description" content="
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做天天生鲜项目的时候使用了太多的技术，很多不会的我参考了很多的博客才做出来，这里记录这个项目的常用技术点，以便于我开发第二个系统
-
-使用Dja">
+    <meta name="keywords" content="Python匿名函数, 懒惰小L的博客">
+    <meta name="description" content="匿名函数概念有些时候我们使用函数的时候不一定要显示的定义函数，可以直接传输匿名函数来定义
+案例：
+#计算所有数的平方
+print(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+#[1,">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>天天生鲜项目总结 | 懒惰小L的博客</title>
+    <title>Python匿名函数 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -289,13 +290,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        天天生鲜项目总结
+                        Python匿名函数
                     </div>
                 </div>
             </div>
@@ -385,9 +386,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python语法/" target="_blank">
+                                <span class="chip bg-color">python语法</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -395,8 +400,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/日常总结/" class="post-category" target="_blank">
-                                日常总结
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                python
                             </a>
                         
                     </div>
@@ -407,21 +412,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-14
+                    2019-10-18
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        508
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        2 分
                     </div>
                     
                 
@@ -437,122 +442,55 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;做天天生鲜项目的时候使用了太多的技术，很多不会的我参考了很多的博客才做出来，这里记录这个项目的常用技术点，以便于我开发第二个系统</p>
+                <h2 id="匿名函数概念"><a href="#匿名函数概念" class="headerlink" title="匿名函数概念"></a>匿名函数概念</h2><p>有些时候我们使用函数的时候不一定要显示的定义函数，可以直接传输匿名函数来定义</p>
+<p>案例：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#计算所有数的平方</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>map<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">*</span> x<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#[1, 4, 9, 16, 25, 36, 49, 64, 81]</span></code></pre>
+<p>上面的这个匿名函数实际上是</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x <span class="token operator">*</span> x</code></pre>
+<p><strong>关键字lambda 表示匿名函数，冒号前面的 x 表示函数参数。</strong></p>
+<p><strong>匿名函数有个限制，就是只能有一个表达式，不写return，返回值就是该表达式的结果。</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#假如要对字典的名字进行排序，一般的sort函数是无法完成这个任务的，此时就可以用到匿名函数</span>
+a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"ly"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">21</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"aa"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"zz"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">19</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+a<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span>x<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#[{'name': 'aa', 'age': 22}, {'name': 'ly', 'age': 21}, {'name': 'zz', 'age': 19}]</span>
+
+<span class="token comment" spellcheck="true">#第一个x是遍历列表的三个字典，第二个x是把字典里面的'name'这个变量取出来，所以相当于key='name'</span></code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#倒叙排序列表</span>
+sorted<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">lambda</span> x<span class="token punctuation">,</span>y<span class="token punctuation">:</span> <span class="token operator">-</span>cmp<span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#[9, 5, 3, 1, 0]</span></code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#把数值转换为正数</span>
+myabs <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token operator">-</span>x <span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token keyword">else</span> x 
+myabs<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#1</span>
+myabs<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#1</span></code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#比如要简化filter()的示例代码</span>
+<span class="token comment" spellcheck="true">#def is_not_empty(s):</span>
+<span class="token comment" spellcheck="true">#    return s and len(s.strip()) > 0</span>
+<span class="token comment" spellcheck="true">#filter(is_not_empty, ['test', None, '', 'str', '  ', #'END'])</span>
+<span class="token keyword">print</span> filter<span class="token punctuation">(</span><span class="token keyword">lambda</span> s<span class="token punctuation">:</span> s <span class="token operator">and</span> len<span class="token punctuation">(</span>s<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'test'</span><span class="token punctuation">,</span> None<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'str'</span><span class="token punctuation">,</span> <span class="token string">'  '</span><span class="token punctuation">,</span> <span class="token string">'END'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#结果</span>
+<span class="token comment" spellcheck="true">#['test', 'str', 'END']</span></code></pre>
+<h2 id="匿名函数小应用"><a href="#匿名函数小应用" class="headerlink" title="匿名函数小应用"></a>匿名函数小应用</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    result<span class="token operator">=</span>func<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> result
+num<span class="token operator">=</span>test<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span>y<span class="token punctuation">:</span>x<span class="token operator">+</span>y<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#3</span></code></pre>
+<p>这样就可以自定义想要实现的函数了</p>
+<h2 id="匿名函数面试题"><a href="#匿名函数面试题" class="headerlink" title="匿名函数面试题"></a>匿名函数面试题</h2><p>只用一行代码就对字典的age进行排序</p>
+<p><code>a=[{&quot;name&quot;:&quot;ly&quot;,&quot;age&quot;:21},{&quot;name&quot;:&quot;aa&quot;,&quot;age&quot;:22},{&quot;name&quot;:&quot;zz&quot;,&quot;age&quot;:19}]</code></p>
+<p>答案：</p>
+<pre class=" language-python"><code class="language-python">a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"ly"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">21</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"aa"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"zz"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">19</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+a<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span>x<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p>这里留个坑，等我到时候拿更多的面试题来详细讲解匿名函数</p>
 </blockquote>
-<h2 id="使用Django内置的方法发送邮件"><a href="#使用Django内置的方法发送邮件" class="headerlink" title="使用Django内置的方法发送邮件"></a>使用Django内置的方法发送邮件</h2><p>首先先在setting.py文件里面配置你的邮件服务器，邮件服务器在QQ邮箱、网易163邮箱可以免费注册。</p>
-<p>将SMTP服务器的配置信息放到setting.py文件里面，配置信息如以下格式：</p>
-<pre class=" language-python"><code class="language-python">EMAIL_HOST <span class="token operator">=</span> <span class="token string">"smtp.qq.com"</span>
-EMAIL_PORT <span class="token operator">=</span> <span class="token number">25</span>
-EMAIL_HOST_USER <span class="token operator">=</span> <span class="token string">"373005226@qq.com"</span>
-EMAIL_HOST_PASSWORD <span class="token operator">=</span> <span class="token string">"***************"</span>
-EMAIL_USE_TLS<span class="token operator">=</span> <span class="token boolean">False</span>
-EMAIL_FROM <span class="token operator">=</span> <span class="token string">"373005226@qq.com"</span></code></pre>
-<p>然后在需要发送邮件的方法内导入需要的包就可以使用Django内置的发送邮件函数了</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#导入setting刚刚配置的文件</span>
-<span class="token keyword">from</span> dailyfreshshop<span class="token punctuation">.</span>settings <span class="token keyword">import</span> SECRET_KEY<span class="token punctuation">,</span>EMAIL_FROM
-<span class="token comment" spellcheck="true">#使用Django内置的发送方法</span>
-<span class="token keyword">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>mail <span class="token keyword">import</span> send_mail
-
-email_title <span class="token operator">=</span> <span class="token string">"天天生鲜注册激活链接"</span>
-email_body <span class="token operator">=</span> <span class="token string">''</span>
-sender <span class="token operator">=</span> EMAIL_FROM
-receiver <span class="token operator">=</span> <span class="token punctuation">[</span>email<span class="token punctuation">]</span>
-html_message <span class="token operator">=</span> <span class="token string">"&lt;h1>%s，欢迎您注册天天生鲜商城，请点击下面的连接激活你的账号&lt;/h1>"</span> \
-<span class="token string">"&lt;a href='http://127.0.0.1:8000/active/%s'>http://127.0.0.1:8000/active/%s&lt;/a>"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>
-    username<span class="token punctuation">,</span> token<span class="token punctuation">,</span> token<span class="token punctuation">)</span>
-send_mail<span class="token punctuation">(</span>email_title<span class="token punctuation">,</span> email_body<span class="token punctuation">,</span> sender<span class="token punctuation">,</span> receiver<span class="token punctuation">,</span> html_message<span class="token operator">=</span>html_message<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#发送函数的参数</span>
-<span class="token comment" spellcheck="true">#第一个参数email_title是标题</span>
-<span class="token comment" spellcheck="true">#第二个参数email_body是内容，但是这个内容只能是字符串，如果再html_message写了这里就可以不写</span>
-<span class="token comment" spellcheck="true">#第三个参数sender是setting配置好的SMTP服务器内容</span>
-<span class="token comment" spellcheck="true">#第四个参数receiver是要发送的人的邮箱账号</span>
-<span class="token comment" spellcheck="true">#第五个参数html_message=html_message，这个是如果你的内容共有html标签的话可以解析成html内容</span></code></pre>
-<h2 id="邮箱注册，用户信息加密"><a href="#邮箱注册，用户信息加密" class="headerlink" title="邮箱注册，用户信息加密"></a>邮箱注册，用户信息加密</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在发送邮件注册验证码的时候，为了防止有心人注册之后使用发送过来的激活码调整激活码中用户的ID，不停地输入修改后的激活码就会给服务器带来压力，所以在发送邮箱激活码的时候一定要加密，并且设置时间</p>
-<p>&emsp;</p>
-<p>使用文档：<a href="https://itsdangerous.readthedocs.io/en/1.1.x/" target="_blank" rel="noopener">https://itsdangerous.readthedocs.io/en/1.1.x/</a></p>
-<p>安装加密库：</p>
-<pre><code>pip install -U itsdangerous</code></pre><p>&emsp;</p>
-<p>打开python shell模拟使用方法：</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> itsdangerous <span class="token keyword">import</span> TimedJSONWebSignatureSerializer <span class="token keyword">as</span> Serializer
-<span class="token operator">>></span><span class="token operator">></span> serializer<span class="token operator">=</span>Serializer<span class="token punctuation">(</span><span class="token string">'secretkey'</span><span class="token punctuation">,</span><span class="token number">3600</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> info<span class="token operator">=</span><span class="token string">"123"</span>
-<span class="token operator">>></span><span class="token operator">></span> res<span class="token operator">=</span>serializer<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>info<span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> res
-b<span class="token string">'eyJhbGciOiJIUzUxMiIsImlhdCI6MTU3MTA0MDYyNCwiZXhwIjoxNTcxMDQ0MjI0fQ.IjEyMyI.jvwwArkwJP0sBMDyO8ydqIndyd1EqvrvsHAYah4sMqWhR4PFvaoQJ3rpybXmJMjbX4GTHNf1Fw_cCCFfuaixpQ'</span>
-<span class="token operator">>></span><span class="token operator">></span> serializer<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-<span class="token string">'123'</span>
-<span class="token operator">>></span><span class="token operator">></span>
-
-<span class="token string">"------------------把过期时间设置成2秒-------------------------"</span>
-<span class="token operator">>></span><span class="token operator">></span> serializer<span class="token operator">=</span>Serializer<span class="token punctuation">(</span><span class="token string">'secretkey'</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> info2<span class="token operator">=</span><span class="token string">"123"</span>
-<span class="token operator">>></span><span class="token operator">></span> res<span class="token operator">=</span>serializer<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>info2<span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> res
-b<span class="token string">'eyJhbGciOiJIUzUxMiIsImlhdCI6MTU3MTA0MDc2NiwiZXhwIjoxNTcxMDQwNzY4fQ.IjEyMyI.ePHmZzoJN1bPNhfI-QOM22ZcqUXjdYLuReDSd2AMu3Sgn1zCwcWTjTSTZq5ZD97WnzVou8J65qgb2fRh_Elpgg'</span>
-<span class="token operator">>></span><span class="token operator">></span> 两秒后
-<span class="token operator">>></span><span class="token operator">></span> serializer<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
-  File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
-  File <span class="token string">"C:\Users\LY\Envs\dailyfresh\lib\site-packages\itsdangerous\jws.py"</span><span class="token punctuation">,</span> line <span class="token number">205</span><span class="token punctuation">,</span> <span class="token keyword">in</span> loads
-    date_signed<span class="token operator">=</span>self<span class="token punctuation">.</span>get_issue_date<span class="token punctuation">(</span>header<span class="token punctuation">)</span><span class="token punctuation">,</span>
-itsdangerous<span class="token punctuation">.</span>exc<span class="token punctuation">.</span>SignatureExpired<span class="token punctuation">:</span> Signature expired</code></pre>
-<p>以如上的测试依据，添加代码</p>
-<p><strong>注册发送邮箱激活码的类：</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#邮箱的激活码是由用户的ID去加密而成的</span>
-serializer <span class="token operator">=</span> Serializer<span class="token punctuation">(</span>SECRET_KEY<span class="token punctuation">,</span> <span class="token number">180</span><span class="token punctuation">)</span>
-info <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'confirm'</span><span class="token punctuation">:</span>user<span class="token punctuation">.</span>id<span class="token punctuation">}</span>
-token<span class="token operator">=</span>serializer<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>info<span class="token punctuation">)</span>
-token <span class="token operator">=</span> token<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span></code></pre>
-<p>&emsp;</p>
-<p><strong>激活验证码的类</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">AciveUserView</span><span class="token punctuation">(</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">get</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>request<span class="token punctuation">,</span>token<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        serializer <span class="token operator">=</span> Serializer<span class="token punctuation">(</span>SECRET_KEY<span class="token punctuation">,</span> <span class="token number">180</span><span class="token punctuation">)</span>
-        <span class="token keyword">try</span><span class="token punctuation">:</span>
-            info<span class="token operator">=</span>serializer<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>token<span class="token punctuation">)</span>
-            <span class="token comment" spellcheck="true">#获取info的用户id</span>
-            user_id<span class="token operator">=</span>info<span class="token punctuation">[</span><span class="token string">'confirm'</span><span class="token punctuation">]</span>
-            <span class="token comment" spellcheck="true">#根据id来获取用户信息</span>
-            user<span class="token operator">=</span>User<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span>id<span class="token operator">=</span>user_id<span class="token punctuation">)</span>
-            user<span class="token punctuation">.</span>is_active<span class="token operator">=</span><span class="token number">1</span>
-            user<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>reverse<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">except</span> SignatureExpired <span class="token keyword">as</span> e<span class="token punctuation">:</span>
-            <span class="token comment" spellcheck="true">#激活链接过期了</span>
-            <span class="token keyword">return</span> HttpResponse<span class="token punctuation">(</span><span class="token string">'激活链接过期，请重新提交'</span><span class="token punctuation">)</span></code></pre>
-<p>这样就可以保证每一次发送的激活码都唯一，这样就保证了激活码的安全性</p>
-<h2 id="异步方式"><a href="#异步方式" class="headerlink" title="异步方式"></a>异步方式</h2><p><img src="C:%5CUsers%5CLY%5CPictures%5C%E5%8D%9A%E5%AE%A2%E7%85%A7%E7%89%87%5C3.png" alt="Celery流程图"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; broker可以选择RabbitMQ和Redis作为消息中间人去处理耗时任务，RabbitMQ是生产环境中最佳的选择，使用文档如下：<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq" target="_blank" rel="noopener">http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq</a>，Redis也是一款功能完备的broker选项，但是Redis是一个内存级别的数据库，如果突然断电或者电源故障，Redis在内存中的数据就可以避免这种情况。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在网站设计中，邮件发送等操作还算是比较耗时的，如果发送邮件和完成跳转是同步进行的话，要等邮件发送完成再跳转到指定页面，停顿的那几秒就会给用户带来很不好的体验，所以异步耗时操作最好是交给异步方法去执行。这个项目我拿的是redis作为中间件来执行</p>
-<h2 id="异步发送邮件"><a href="#异步发送邮件" class="headerlink" title="异步发送邮件"></a>异步发送邮件</h2><p>第一步当然是redis服务器能够正常启动啦，我的redis服务器是部署到本地先的</p>
-<p>第二步是把需要异步操作的任务封装成函数，然后把原来同步操作的步骤使用异步的函数代替</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>mail <span class="token keyword">import</span> send_mail
-<span class="token keyword">from</span> django<span class="token punctuation">.</span>conf <span class="token keyword">import</span> settings
-<span class="token keyword">from</span> celery <span class="token keyword">import</span> Celery
-
-<span class="token comment" spellcheck="true">#--------------这一段是异步任务执行端必须加入以下代码--------------------</span>
-<span class="token keyword">import</span> os
-<span class="token keyword">import</span> django
-os<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>setdefault<span class="token punctuation">(</span><span class="token string">'DJANGO_SETTINGS_MODULE'</span><span class="token punctuation">,</span> <span class="token string">'dailyfreshshop.settings'</span><span class="token punctuation">)</span>
-django<span class="token punctuation">.</span>setup<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#------------------------------------------------------------------</span>
-
-<span class="token comment" spellcheck="true">#celery_tasks是我存放异步任务的文件夹</span>
-app <span class="token operator">=</span> Celery<span class="token punctuation">(</span><span class="token string">'celery_tasks.tasks'</span><span class="token punctuation">,</span> broker<span class="token operator">=</span><span class="token string">'redis://127.0.0.1/8'</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">#必须加上装饰器才可以变成异步任务</span>
-@app<span class="token punctuation">.</span>task
-<span class="token keyword">def</span> <span class="token function">send_register_active_email</span><span class="token punctuation">(</span>to_email<span class="token punctuation">,</span> username<span class="token punctuation">,</span> token<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""发送激活邮件"""</span>
-    <span class="token comment" spellcheck="true"># 组织邮件信息</span>
-    subject <span class="token operator">=</span> <span class="token string">'天天生鲜欢迎信息'</span>
-    message <span class="token operator">=</span> <span class="token string">''</span>
-    sender <span class="token operator">=</span> settings<span class="token punctuation">.</span>EMAIL_FROM  <span class="token comment" spellcheck="true"># 发送人</span>
-    receiver <span class="token operator">=</span> <span class="token punctuation">[</span>to_email<span class="token punctuation">]</span>
-    html_message <span class="token operator">=</span> <span class="token string">'&lt;h1>%s, 欢迎您成为天天生鲜注册会员&lt;/h1>请点击下面链接激活您的账户&lt;br/>&lt;a href="http://127.0.0.1:8000/user/active/%s">http://127.0.0.1:8000/user/active/%s&lt;/a>'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>username<span class="token punctuation">,</span> token<span class="token punctuation">,</span> token<span class="token punctuation">)</span>
-
-    send_mail<span class="token punctuation">(</span>subject<span class="token punctuation">,</span> message<span class="token punctuation">,</span> sender<span class="token punctuation">,</span> receiver<span class="token punctuation">,</span> html_message<span class="token operator">=</span>html_message<span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr/>
@@ -693,7 +631,7 @@ app <span class="token operator">=</span> Celery<span class="token punctuation">
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/10/14/tian-tian-sheng-xian-zong-jie/" class="b-link-green">天天生鲜项目总结</a>
+                    <a href="/2019/10/18/ni-ming-han-shu/" class="b-link-green">Python匿名函数</a>
                 </p>
             </div>
         </div>
@@ -715,7 +653,7 @@ app <span class="token operator">=</span> Celery<span class="token punctuation">
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-10-14T15-29-32',
+        id: '2019-10-18T00-15-54',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -736,42 +674,48 @@ app <span class="token operator">=</span> Celery<span class="token punctuation">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/14/tian-tian-sheng-xian-zong-jie/">
+                <a href="/2019/10/18/bi-bao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="天天生鲜项目总结">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Python闭包">
                         
-                        <span class="card-title">天天生鲜项目总结</span>
+                        <span class="card-title">Python闭包</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;做天天生鲜项目的时候使用了太多的技术，很多不会的我参考了很多的博客才做出来，这里记录这个项目的常用技术点，以便于我开发第二个系统
-
-使用Dja</div>
+                    <div class="summary">闭包定义闭包的作用通俗的来说就是强调，闭包可以用来在一个函数与一组“私有”变量之间创建关联关系。在给定函数被多次调用的过程中，这些私有变量能够保持其持久性
+闭包的基本形式如下：
+def demoA(number):
+    print('-</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-18
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/日常总结/" class="post-category" target="_blank">
-                                    日常总结
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                    python
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python语法/" target="_blank">
+                        <span class="chip bg-color">python语法</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -782,32 +726,27 @@ app <span class="token operator">=</span> Celery<span class="token punctuation">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/11/ruan-jian-ce-shi/">
+                <a href="/2019/10/16/tian-tian-sheng-xian-zong-jie-er/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="软件测试之常用模型">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="天天生鲜项目总结（二）">
                         
-                        <span class="card-title">软件测试之常用模型</span>
+                        <span class="card-title">天天生鲜项目总结（二）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">软件测试分类总览
-单元测试：集中编码和单元测试中，大多数时候用来开发自测、自我校验的一个手段
-冒烟测试：在后续需求中，对主要流程进行测试
-集成测试：模块与模块之间的测试
-系统测试：通过测试用例的执行来完成过程
-α测试：α测试就是让用户、开发</div>
+                    <div class="summary">使用Redis作为Django的缓存来存储用户登录状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常网站用的都是session和cookie作为记录用户信息的存储，Django默认是把s</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-11
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/软件测试/" class="post-category" target="_blank">
-                                    软件测试
+                            <a href="/categories/日常总结/" class="post-category" target="_blank">
+                                    日常总结
                                 </a>
                             
                             
@@ -884,7 +823,7 @@ app <span class="token operator">=</span> Celery<span class="token punctuation">
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">18.3k</span>
+                <span class="white-color">31.2k</span>
             
 
             

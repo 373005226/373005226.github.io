@@ -4,12 +4,18 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="fastDFS安装及在Django中的部署, 懒惰小L的博客">
-    <meta name="description" content="FastDFS在阿里云服务器的安装和配置FastDFS安装在这篇博客讲解的很清楚了，这里我就不再赘述，只作为补充
-如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则端口
+    <meta name="keywords" content="深拷贝和浅拷贝, 懒惰小L的博客">
+    <meta name="description" content="浅拷贝
+浅拷贝是对于一个对象的顶层拷贝
 
-开启了防火墙端口还不够
-在进入服务">
+通俗的理解是：拷贝了引用，并没有拷贝内容
+a=[11,22,33]
+b=a
+print(id(a))
+print(id(b))
+#92188584
+#92188584
+这里就是b只拷贝了a的引用，而">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +23,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>fastDFS安装及在Django中的部署 | 懒惰小L的博客</title>
+    <title>深拷贝和浅拷贝 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -290,13 +296,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        fastDFS安装及在Django中的部署
+                        深拷贝和浅拷贝
                     </div>
                 </div>
             </div>
@@ -388,16 +394,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/" target="_blank">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/Django/" target="_blank">
-                                <span class="chip bg-color">Django</span>
-                            </a>
-                        
-                            <a href="/tags/分布式/" target="_blank">
-                                <span class="chip bg-color">分布式</span>
+                            <a href="/tags/python面试题/" target="_blank">
+                                <span class="chip bg-color">python面试题</span>
                             </a>
                         
                     </div>
@@ -408,8 +406,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                后端
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                python
                             </a>
                         
                     </div>
@@ -420,21 +418,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-25
+                    2019-10-18
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        951
+                        416
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        1 分
                     </div>
                     
                 
@@ -450,133 +448,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="FastDFS在阿里云服务器的安装和配置"><a href="#FastDFS在阿里云服务器的安装和配置" class="headerlink" title="FastDFS在阿里云服务器的安装和配置"></a>FastDFS在阿里云服务器的安装和配置</h2><p>FastDFS安装在这篇<a href="https://blog.csdn.net/busishenren/article/details/83584885" target="_blank" rel="noopener">博客</a>讲解的很清楚了，这里我就不再赘述，只作为补充</p>
-<p>如果你是在轻量云服务器安装的话，方法跟esc服务器一样的，直接在控制台开启防火墙规则端口</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/15.png" alt></p>
-<p>开启了防火墙端口还不够</p>
-<p>在进入服务器下，使用这条命令查看防火墙的状态</p>
-<pre><code>firewall-cmd --state</code></pre><p>如果防火墙已开启，则看开放的所有端口</p>
-<pre><code>firewall-cmd --zone=public --list-ports</code></pre><p>如果防火墙关闭，那么开启防火墙</p>
-<pre><code>systemctl start firewalld.service</code></pre><p>如果嫌麻烦就把防火墙关了也行，但是不建议这么做</p>
-<p>查看开放的所有端口后，如果没有开启22122和23000端口，那么开启他</p>
-<pre><code>firewall-cmd --zone=public --add-port=22122/tcp --permanent #开启22122端口
-firewall-cmd --zone=public --add-port=23000/tcp --permanent #开启23000端口
-firewall-cmd --reload   # 配置立即生效</code></pre><p>再一次查看端口是否开启</p>
-<pre><code>firewall-cmd --zone=public --list-ports</code></pre><p>在部署完FastDFS并且开启storage和tracker服务后，看一下端口是否被监听</p>
-<pre><code>netstat -lnpt</code></pre><p>能看到23000和22122端口被监听那么就说明成功</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/16.png" alt></p>
-<h2 id="FastDFS在Django中的使用"><a href="#FastDFS在Django中的使用" class="headerlink" title="FastDFS在Django中的使用"></a>FastDFS在Django中的使用</h2><p>在Django中，所有资源都是来自于后台的部署，Django后台数据库采用的是ORM模式，Django默认文件的上传是上传到指定的文件夹下面的，如果要修改的话要在一个文件中自定义文件的存储类，也就是继承django.core.files.storage.Storage</p>
-<p>关于文件存储官网文档有很清楚的描述</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/17.png" alt></p>
-<p>在setting.py配置你服务器的fastDFS的ip和端口号</p>
-<pre><code># 设置Django的文件存储类
-DEFAULT_FILE_STORAGE = &#39;utils.fdfs.storage.FDFSStorage&#39;
-
-# 设置fdfs使用的client.conf文件路径
-FDFS_CLIENT_CONF = &#39;./utils/fdfs/client.conf&#39;
-
-# 设置fdfs存储服务器上nginx的IP和端口号
-FDFS_URL = &#39;&#39;</code></pre><p>然后在一个单独的文件夹(比如utils)里面加入以下两个文件</p>
-<p>storage.py</p>
-<pre><code>from django.core.files.storage import Storage
-from django.conf import settings
-from fdfs_client.client import *
-
-
-class FDFSStorage(Storage):
-    def __init__(self, client_conf=None, base_url=None):
-        &quot;&quot;&quot;初始化&quot;&quot;&quot;
-        if client_conf is None:
-            client_conf = settings.FDFS_CLIENT_CONF
-        self.client_conf = client_conf
-
-        if base_url is None:
-            base_url = settings.FDFS_URL
-        self.base_url = base_url
-
-    def _open(self, name, mode=&#39;rb&#39;):
-        # 打开文件时使用
-        pass
-    def _save(self, name, content):
-        client=Fdfs_client(&#39;./utils/fdfs/client.conf&#39;)
-
-        res = client.upload_by_buffer(content.read())
-        if res.get(&#39;Status&#39;) != &#39;Upload successed.&#39;:
-            raise Exception(&#39;上传文件到FastDFS失败&#39;)
-
-        filename = res.get(&#39;Remote file_id&#39;)
-
-        return filename
-
-    def exists(self, name):
-        &quot;&quot;&quot;Django判断文件名是否可用&quot;&quot;&quot;
-        return False
-
-    def url(self, name):
-        &quot;&quot;&quot;返回访问文件url路径，不然后台保存的时候会报错&quot;&quot;&quot;
-        return self.base_url + name</code></pre><p>client.conf(修改相应的字段)</p>
-<pre><code># connect timeout in seconds
-# default value is 30s
-connect_timeout=30
-
-# network timeout in seconds
-# default value is 30s
-network_timeout=60
-
-# the base path to store log files
-# 你的个人电脑的存储日志，必须要有这个路径
-base_path=/Users/LY/Python_log
-
-# tracker_server can ocur more than once, and tracker_server format is
-#  &quot;host:port&quot;, host can be hostname or ip address
-tracker_server=你服务器的IP:22122
-
-#standard log level as syslog, case insensitive, value list:
-### emerg for emergency
-### alert
-### crit for critical
-### error
-### warn for warning
-### notice
-### info
-### debug
-log_level=info
-
-# if use connection pool
-# default value is false
-# since V4.05
-use_connection_pool = false
-
-# connections whose the idle time exceeds this time will be closed
-# unit: second
-# default value is 3600
-# since V4.05
-connection_pool_max_idle_time = 3600
-
-# if load FastDFS parameters from tracker server
-# since V4.05
-# default value is false
-load_fdfs_parameters_from_tracker=false
-
-# if use storage ID instead of IP address
-# same as tracker.conf
-# valid only when load_fdfs_parameters_from_tracker is false
-# default value is false
-# since V4.05
-use_storage_id = false
-
-# specify storage ids filename, can use relative or absolute path
-# same as tracker.conf
-# valid only when load_fdfs_parameters_from_tracker is false
-# since V4.05
-storage_ids_filename = storage_ids.conf
-
-
-#HTTP settings
-http.tracker_server_port=80
-
-#use &quot;#include&quot; directive to include HTTP other settiongs
-##include http.conf</code></pre><p>文件上传的路径可以随便写，因为这个都没用，上传后Django会自动按照你自己写的自定义存储方法去上传文件</p>
+                <h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><ul>
+<li>浅拷贝是对于一个对象的顶层拷贝</li>
+</ul>
+<p>通俗的理解是：拷贝了引用，并没有拷贝内容</p>
+<pre class=" language-python"><code class="language-python">a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">33</span><span class="token punctuation">]</span>
+b<span class="token operator">=</span>a
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#92188584</span>
+<span class="token comment" spellcheck="true">#92188584</span></code></pre>
+<p>这里就是b只拷贝了a的引用，而不是直接拷贝那个值</p>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> copy
+a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">33</span><span class="token punctuation">]</span>
+c<span class="token operator">=</span>copy<span class="token punctuation">.</span>deepcopy<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#[11,22,33]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#[11,22,33]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#87652792</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#87206488</span></code></pre>
+<p>两者只是拷贝了值，而不是拷贝引用，c开辟了自己的一个内存空间，但是值和a一样</p>
+<h2 id="copy-copy在面对可变类型和不可变类型是不同的"><a href="#copy-copy在面对可变类型和不可变类型是不同的" class="headerlink" title="copy.copy在面对可变类型和不可变类型是不同的"></a>copy.copy在面对可变类型和不可变类型是不同的</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> copy
+a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">33</span><span class="token punctuation">]</span>
+b<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">44</span><span class="token punctuation">,</span><span class="token number">55</span><span class="token punctuation">,</span><span class="token number">66</span><span class="token punctuation">]</span>
+c<span class="token operator">=</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'c1为'</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span>
+e<span class="token operator">=</span>copy<span class="token punctuation">.</span>copy<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'e1为'</span><span class="token punctuation">,</span>e<span class="token punctuation">)</span>
+a<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">77</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'c2为'</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'e2为'</span><span class="token punctuation">,</span>e<span class="token punctuation">)</span></code></pre>
+<pre><code>c1为 [[11, 22, 33], [44, 55, 66]]
+e1为 [[11, 22, 33], [44, 55, 66]]
+c2为 [[11, 22, 33, 77], [44, 55, 66]]
+e2为 [[11, 22, 33, 77], [44, 55, 66]]
+93185248
+93185248</code></pre><p>copy.copy面对一个不可变类型，直接就是一个浅拷贝</p>
+<p>如果是可变类型</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> copy
+a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">33</span><span class="token punctuation">]</span>
+b<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">44</span><span class="token punctuation">,</span><span class="token number">55</span><span class="token punctuation">,</span><span class="token number">66</span><span class="token punctuation">]</span>
+c<span class="token operator">=</span><span class="token punctuation">[</span>a<span class="token punctuation">,</span>b<span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'c1为'</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span>
+e<span class="token operator">=</span>copy<span class="token punctuation">.</span>copy<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'e1为'</span><span class="token punctuation">,</span>e<span class="token punctuation">)</span>
+a<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">77</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'c2为'</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'e2为'</span><span class="token punctuation">,</span>e<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<pre><code>c1为 [[11, 22, 33], [44, 55, 66]]
+e1为 [[11, 22, 33], [44, 55, 66]]
+c2为 [[11, 22, 33, 77], [44, 55, 66]]
+e2为 [[11, 22, 33, 77], [44, 55, 66]]
+83590840
+83590880</code></pre><p><strong>虽然值是相同的，但是c和e两个内存是不同的。c是把a和b引用组合成一个元组，而e copy了c的引用，就像一个递归一样，e copy了c，c引用了a和b，所以最后也是同样的引用了a和b，所以a和b变化的时候e同样也会变化</strong></p>
 
             </div>
             <hr/>
@@ -717,7 +642,7 @@ http.tracker_server_port=80
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/" class="b-link-green">fastDFS安装及在Django中的部署</a>
+                    <a href="/2019/10/18/shen-kao-bei-he-qian-kao-bei/" class="b-link-green">深拷贝和浅拷贝</a>
                 </p>
             </div>
         </div>
@@ -739,7 +664,7 @@ http.tracker_server_port=80
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-09-25T22-53-30',
+        id: '2019-10-18T01-14-11',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -760,51 +685,54 @@ http.tracker_server_port=80
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/26/sou-suo-fang-fa/">
+                <a href="/2019/10/18/shen-kao-bei-he-qian-kao-bei/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="全文搜索方法的使用">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="深拷贝和浅拷贝">
                         
-                        <span class="card-title">全文搜索方法的使用</span>
+                        <span class="card-title">深拷贝和浅拷贝</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">基于 haystack来使用whoosh检索引擎这篇博客是基于Django来编写的案例，haystack可以自定义搜索，开发者可以通过haystack间接使用搜索引擎，并且他可以像DJango的ORM一样，只需改少量代码就可以自由切换引擎
-</div>
+                    <div class="summary">浅拷贝
+浅拷贝是对于一个对象的顶层拷贝
+
+通俗的理解是：拷贝了引用，并没有拷贝内容
+a=[11,22,33]
+b=a
+print(id(a))
+print(id(b))
+#92188584
+#92188584
+这里就是b只拷贝了a的引用，而</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                    后端
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                    python
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/Django/" target="_blank">
-                        <span class="chip bg-color">Django</span>
-                    </a>
-                    
-                    <a href="/tags/全文检索/" target="_blank">
-                        <span class="chip bg-color">全文检索</span>
+                    <a href="/tags/python面试题/" target="_blank">
+                        <span class="chip bg-color">python面试题</span>
                     </a>
                     
                 </div>
@@ -818,28 +746,31 @@ http.tracker_server_port=80
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/24/celery/">
+                <a href="/2019/10/18/zhuang-shi-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Celery异步框架的使用">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="装饰器">
                         
-                        <span class="card-title">Celery异步框架的使用</span>
+                        <span class="card-title">装饰器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Celery是什么​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在队列中执行。
-​    C</div>
+                    <div class="summary">装饰器的概念装饰器从理论上讲，就是它可以在让其他函数在不需要做任何代码的变动的前提下增加额外的功能
+这里拿个案例来讲：
+开发公司原本是每个部门都调用同样的一个底层函数，后来要在使用函数前加上一个权限验证代码
+很多人一开始可能都是这样想的
+d</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-24
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                    后端
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                    python
                                 </a>
                             
                             
@@ -849,16 +780,8 @@ http.tracker_server_port=80
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/异步/" target="_blank">
-                        <span class="chip bg-color">异步</span>
-                    </a>
-                    
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/Django/" target="_blank">
-                        <span class="chip bg-color">Django</span>
+                    <a href="/tags/python语法/" target="_blank">
+                        <span class="chip bg-color">python语法</span>
                     </a>
                     
                 </div>
