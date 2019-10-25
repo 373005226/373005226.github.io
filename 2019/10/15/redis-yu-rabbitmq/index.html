@@ -286,6 +286,19 @@ https://blog.csdn.net/fengxiaolu311/article/details/">
 </header>
 
 
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -696,13 +709,21 @@ https://blog.csdn.net/fengxiaolu311/article/details/">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/日常总结/" class="post-category" target="_blank">
-                                    日常总结
+                            <a href="/categories/项目总结/" class="post-category" target="_blank">
+                                    项目总结
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Django/" target="_blank">
+                        <span class="chip bg-color">Django</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -736,13 +757,21 @@ https://blog.csdn.net/fengxiaolu311/article/details/">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/日常总结/" class="post-category" target="_blank">
-                                    日常总结
+                            <a href="/categories/项目总结/" class="post-category" target="_blank">
+                                    项目总结
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Django/" target="_blank">
+                        <span class="chip bg-color">Django</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -814,7 +843,7 @@ https://blog.csdn.net/fengxiaolu311/article/details/">
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">31.2k</span>
+                <span class="white-color">33.3k</span>
             
 
             

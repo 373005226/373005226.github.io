@@ -293,6 +293,19 @@ print(id(b))
 </header>
 
 
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -393,6 +406,10 @@ print(id(b))
                 <div class="col s7">
                     
                     <div class="article-tag">
+                        
+                            <a href="/tags/python语法/" target="_blank">
+                                <span class="chip bg-color">python语法</span>
+                            </a>
                         
                             <a href="/tags/python面试题/" target="_blank">
                                 <span class="chip bg-color">python面试题</span>
@@ -685,56 +702,39 @@ e2为 [[11, 22, 33, 77], [44, 55, 66]]
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/18/shen-kao-bei-he-qian-kao-bei/">
+                <a href="/2019/10/23/ti-zi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="深拷贝和浅拷贝">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="梯子的安装和使用">
                         
-                        <span class="card-title">深拷贝和浅拷贝</span>
+                        <span class="card-title">梯子的安装和使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">浅拷贝
-浅拷贝是对于一个对象的顶层拷贝
-
-通俗的理解是：拷贝了引用，并没有拷贝内容
-a=[11,22,33]
-b=a
-print(id(a))
-print(id(b))
-#92188584
-#92188584
-这里就是b只拷贝了a的引用，而</div>
+                    <div class="summary">ubuntu下的SSR安装方法
+参考博客：
+http://www.pianshen.com/article/3905142094/
+https://blog.csdn.net/weixin_38313047/article/details/</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-18
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/python面试题/" target="_blank">
-                        <span class="chip bg-color">python面试题</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -855,7 +855,7 @@ d</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">31.2k</span>
+                <span class="white-color">33.3k</span>
             
 
             

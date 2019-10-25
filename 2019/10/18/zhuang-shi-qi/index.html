@@ -287,6 +287,19 @@ d">
 </header>
 
 
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -820,6 +833,10 @@ print(id(b))
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/python语法/" target="_blank">
+                        <span class="chip bg-color">python语法</span>
+                    </a>
+                    
                     <a href="/tags/python面试题/" target="_blank">
                         <span class="chip bg-color">python面试题</span>
                     </a>
@@ -835,27 +852,18 @@ print(id(b))
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/18/python-shu-ju-lei-xing/">
+                <a href="/2019/10/18/gao-jie-han-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="python的四种数据结构">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="python高阶函数">
                         
-                        <span class="card-title">python的四种数据结构</span>
+                        <span class="card-title">python高阶函数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">列表（list）list=[val1,val2,val3,val4]
-列表的每一个元素都可变
-
-列表的元素都是有序的
-
-列表可以容纳Python的任何对象
-
-
-列表的循环遍历
-    #for循环遍历
-    namesList = ['x</div>
+                    <div class="summary">filter()函数简单的说就是过滤函数
+filter()是python内置的高阶函数，filter()函数接收一个函数 f 和一list，这个函数 f 的作用是对每个元素进行判断，返回 True或 False，filter()根据判断结果</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-18
@@ -950,7 +958,7 @@ print(id(b))
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">31.2k</span>
+                <span class="white-color">33.3k</span>
             
 
             

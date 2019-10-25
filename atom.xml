@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-10-17T17:20:03.740Z</updated>
+  <updated>2019-10-25T02:15:53.130Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>梯子的安装和使用</title>
+    <link href="https://373005226.github.io/2019/10/23/ti-zi/"/>
+    <id>https://373005226.github.io/2019/10/23/ti-zi/</id>
+    <published>2019-10-23T02:13:59.136Z</published>
+    <updated>2019-10-25T02:15:53.130Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;ubuntu下的SSR安装方法&quot;&gt;&lt;a href=&quot;#ubuntu下的SSR安装方法&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>深拷贝和浅拷贝</title>
     <link href="https://373005226.github.io/2019/10/18/shen-kao-bei-he-qian-kao-bei/"/>
     <id>https://373005226.github.io/2019/10/18/shen-kao-bei-he-qian-kao-bei/</id>
     <published>2019-10-17T17:14:11.056Z</published>
-    <updated>2019-10-17T17:20:03.740Z</updated>
+    <updated>2019-10-25T05:55:14.094Z</updated>
     
     <summary type="html">
     
@@ -43,6 +68,8 @@
       <category term="python" scheme="https://373005226.github.io/categories/python/"/>
     
     
+      <category term="python语法" scheme="https://373005226.github.io/tags/python%E8%AF%AD%E6%B3%95/"/>
+    
       <category term="python面试题" scheme="https://373005226.github.io/tags/python%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
@@ -61,33 +88,6 @@
         
         
           &lt;h2 id=&quot;装饰器的概念&quot;&gt;&lt;a href=&quot;#装饰器的概念&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://373005226.github.io/categories/python/"/>
-    
-    
-      <category term="python语法" scheme="https://373005226.github.io/tags/python%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python的四种数据结构</title>
-    <link href="https://373005226.github.io/2019/10/18/python-shu-ju-lei-xing/"/>
-    <id>https://373005226.github.io/2019/10/18/python-shu-ju-lei-xing/</id>
-    <published>2019-10-17T16:44:45.933Z</published>
-    <updated>2019-10-17T17:03:57.058Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;列表（list）&quot;&gt;&lt;a href=&quot;#列表（list）&quot; class=&quot;headerlink&quot;
         
       
     
@@ -187,7 +187,7 @@
     <link href="https://373005226.github.io/2019/10/18/ni-ming-han-shu/"/>
     <id>https://373005226.github.io/2019/10/18/ni-ming-han-shu/</id>
     <published>2019-10-17T16:15:54.553Z</published>
-    <updated>2019-10-17T16:28:53.290Z</updated>
+    <updated>2019-10-17T17:55:33.342Z</updated>
     
     <summary type="html">
     
@@ -210,11 +210,38 @@
   </entry>
   
   <entry>
+    <title>collections模块</title>
+    <link href="https://373005226.github.io/2019/10/17/collections-mo-kuai/"/>
+    <id>https://373005226.github.io/2019/10/17/collections-mo-kuai/</id>
+    <published>2019-10-17T15:59:47.155Z</published>
+    <updated>2019-10-17T17:42:20.216Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;ChainMap&quot;&gt;&lt;a href=&quot;#ChainMap&quot; class=&quot;headerlink&quot; title=&quot;ChainMap&quot;&gt;&lt;/a&gt;ChainMap&lt;/h2&gt;&lt;pre class=&quot; language-python&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://373005226.github.io/categories/python/"/>
+    
+    
+      <category term="数据结构与算法" scheme="https://373005226.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>天天生鲜项目总结（二）</title>
     <link href="https://373005226.github.io/2019/10/16/tian-tian-sheng-xian-zong-jie-er/"/>
     <id>https://373005226.github.io/2019/10/16/tian-tian-sheng-xian-zong-jie-er/</id>
     <published>2019-10-16T02:10:45.140Z</published>
-    <updated>2019-10-16T16:28:45.658Z</updated>
+    <updated>2019-10-24T02:38:08.010Z</updated>
     
     <summary type="html">
     
@@ -229,8 +256,10 @@
     </summary>
     
     
-      <category term="日常总结" scheme="https://373005226.github.io/categories/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/"/>
+      <category term="项目总结" scheme="https://373005226.github.io/categories/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
     
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
     
   </entry>
   
@@ -269,7 +298,7 @@
     <link href="https://373005226.github.io/2019/10/14/tian-tian-sheng-xian-zong-jie-yi/"/>
     <id>https://373005226.github.io/2019/10/14/tian-tian-sheng-xian-zong-jie-yi/</id>
     <published>2019-10-14T07:29:32.931Z</published>
-    <updated>2019-10-16T11:28:05.463Z</updated>
+    <updated>2019-10-24T02:38:12.993Z</updated>
     
     <summary type="html">
     
@@ -286,8 +315,10 @@
     </summary>
     
     
-      <category term="日常总结" scheme="https://373005226.github.io/categories/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/"/>
+      <category term="项目总结" scheme="https://373005226.github.io/categories/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
     
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
     
   </entry>
   
@@ -340,9 +371,9 @@
       <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
     
   </entry>
   
@@ -372,9 +403,9 @@
       <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
     
   </entry>
   
@@ -404,9 +435,9 @@
       <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
     
   </entry>
   
@@ -435,9 +466,9 @@
       <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
+    
+      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
     
   </entry>
   
@@ -554,37 +585,6 @@
       <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
     
       <category term="分布式" scheme="https://373005226.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Celery异步框架的使用</title>
-    <link href="https://373005226.github.io/2019/09/24/celery/"/>
-    <id>https://373005226.github.io/2019/09/24/celery/</id>
-    <published>2019-09-24T12:04:42.233Z</published>
-    <updated>2019-10-14T18:00:31.992Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Celery是什么&quot;&gt;&lt;a href=&quot;#Celery是什么&quot; class=&quot;headerlink&quot; title=&quot;Celery是什么&quot;&gt;&lt;/a&gt;Celery是什么&lt;/h2&gt;&lt;p&gt;​   
-        
-      
-    
-    </summary>
-    
-    
-      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="异步" scheme="https://373005226.github.io/tags/%E5%BC%82%E6%AD%A5/"/>
-    
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
-      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
     
   </entry>
   

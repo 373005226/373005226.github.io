@@ -284,6 +284,19 @@ filter()是python内置的高阶函数，filter()函数接收一个函数 f 和�
 </header>
 
 
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -773,27 +786,21 @@ sorted<span class="token punctuation">(</span><span class="token punctuation">[<
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/18/python-shu-ju-lei-xing/">
+                <a href="/2019/10/18/zhuang-shi-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="python的四种数据结构">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="装饰器">
                         
-                        <span class="card-title">python的四种数据结构</span>
+                        <span class="card-title">装饰器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">列表（list）list=[val1,val2,val3,val4]
-列表的每一个元素都可变
-
-列表的元素都是有序的
-
-列表可以容纳Python的任何对象
-
-
-列表的循环遍历
-    #for循环遍历
-    namesList = ['x</div>
+                    <div class="summary">装饰器的概念装饰器从理论上讲，就是它可以在让其他函数在不需要做任何代码的变动的前提下增加额外的功能
+这里拿个案例来讲：
+开发公司原本是每个部门都调用同样的一个底层函数，后来要在使用函数前加上一个权限验证代码
+很多人一开始可能都是这样想的
+d</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-18
@@ -937,7 +944,7 @@ sorted<span class="token punctuation">(</span><span class="token punctuation">[<
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">31.2k</span>
+                <span class="white-color">33.3k</span>
             
 
             

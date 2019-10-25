@@ -291,6 +291,19 @@ https://git-sc">
 </header>
 
 
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -392,12 +405,12 @@ https://git-sc">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Hexo/" target="_blank">
-                                <span class="chip bg-color">Hexo</span>
-                            </a>
-                        
                             <a href="/tags/github/" target="_blank">
                                 <span class="chip bg-color">github</span>
+                            </a>
+                        
+                            <a href="/tags/Hexo/" target="_blank">
+                                <span class="chip bg-color">Hexo</span>
                             </a>
                         
                     </div>
@@ -427,7 +440,7 @@ https://git-sc">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.1k
+                        2.2k
                     </div>
                     
 
@@ -644,7 +657,10 @@ hexo d</code></pre><p>根据上述步骤就可以上传到github了</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/21.png" alt></p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/hexo/22.png" alt></p>
 <p>然后就可以绑定自己的域名了</p>
-<h2 id="写markdown注意事项"><a href="#写markdown注意事项" class="headerlink" title="写markdown注意事项"></a>写markdown注意事项</h2><p>写markdown有时候本地编辑没问题，但是上传到服务器的图片有时候是失效的，所以最好图片之类的媒体资源放到腾讯云、七牛云等服务商上面。他们都有对象存储功能，可以把媒体文件上传到他们的服务器，然后再通过URL地址来访问，这样就不用怕自己本地写的markdown文件上传到服务器的图片资源访问不了的问题了</p>
+<h2 id="markdown图片的存储"><a href="#markdown图片的存储" class="headerlink" title="markdown图片的存储"></a>markdown图片的存储</h2><p>写markdown有时候本地编辑没问题，但是上传到服务器的图片有时候是失效的，所以最好图片之类的媒体资源放到<strong>腾讯云、七牛云</strong>等服务商上面。因为typora黏贴文件默认是在本地的，所以<code>hexo -s</code>一看图片都是失效的，这里我推荐使用<strong>腾讯云的OSS存储</strong>作为图片存储方法，<strong>腾讯云</strong>有免费的6个月给你使用，而且过了6个月的费用还不贵。这里我介绍一款自动上传到腾讯云等平台的软件：<code>picGo</code>，下载地址： <a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener">https://github.com/Molunerfinn/PicGo/releases</a> </p>
+<p>如图，直接拖动图片就可以立即上传了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191025120326.png" alt></p>
+<p>关于这个图床工具的使用，这篇博客有详细介绍： <a href="https://www.jianshu.com/p/9d91355e8418" target="_blank" rel="noopener">https://www.jianshu.com/p/9d91355e8418</a> </p>
 
             </div>
             <hr/>
@@ -865,12 +881,12 @@ $ g</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/github/" target="_blank">
-                        <span class="chip bg-color">github</span>
-                    </a>
-                    
                     <a href="/tags/gitbook/" target="_blank">
                         <span class="chip bg-color">gitbook</span>
+                    </a>
+                    
+                    <a href="/tags/github/" target="_blank">
+                        <span class="chip bg-color">github</span>
                     </a>
                     
                 </div>
@@ -923,12 +939,12 @@ https://git-sc</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/" target="_blank">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
                     <a href="/tags/github/" target="_blank">
                         <span class="chip bg-color">github</span>
+                    </a>
+                    
+                    <a href="/tags/Hexo/" target="_blank">
+                        <span class="chip bg-color">Hexo</span>
                     </a>
                     
                 </div>
@@ -1002,7 +1018,7 @@ https://git-sc</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">31.2k</span>
+                <span class="white-color">33.3k</span>
             
 
             
