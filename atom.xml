@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-10-25T02:15:53.130Z</updated>
+  <updated>2019-10-30T07:41:06.266Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>梯子的安装和使用</title>
-    <link href="https://373005226.github.io/2019/10/23/ti-zi/"/>
-    <id>https://373005226.github.io/2019/10/23/ti-zi/</id>
-    <published>2019-10-23T02:13:59.136Z</published>
-    <updated>2019-10-25T02:15:53.130Z</updated>
+    <title>Restframework之入门</title>
+    <link href="https://373005226.github.io/2019/10/29/django-restframework-ru-men/"/>
+    <id>https://373005226.github.io/2019/10/29/django-restframework-ru-men/</id>
+    <published>2019-10-29T05:44:59.679Z</published>
+    <updated>2019-10-30T07:41:06.266Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,62 @@
       
         
         
-          &lt;h2 id=&quot;ubuntu下的SSR安装方法&quot;&gt;&lt;a href=&quot;#ubuntu下的SSR安装方法&quot; class=&quot;headerlink&quot;
+          &lt;blockquote&gt;
+&lt;p&gt;官方文档（英文）： &lt;a href=&quot;https://www.django-rest-framework.org/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx反向代理</title>
+    <link href="https://373005226.github.io/2019/10/24/nginx-fan-xiang-dai-li/"/>
+    <id>https://373005226.github.io/2019/10/24/nginx-fan-xiang-dai-li/</id>
+    <published>2019-10-24T07:36:23.093Z</published>
+    <updated>2019-10-24T08:53:07.625Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Nginx" scheme="https://373005226.github.io/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>梯子的安装和使用</title>
+    <link href="https://373005226.github.io/2019/10/23/ti-zi/"/>
+    <id>https://373005226.github.io/2019/10/23/ti-zi/</id>
+    <published>2019-10-23T02:13:59.136Z</published>
+    <updated>2019-10-29T01:53:27.194Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;ubuntu的SSR部署和使用&quot;&gt;&lt;a href=&quot;#ubuntu的SSR部署和使用&quot; class=&quot;headerlink&quot;
         
       
     
@@ -42,11 +97,39 @@
   </entry>
   
   <entry>
+    <title>docker的简单入门</title>
+    <link href="https://373005226.github.io/2019/10/22/docker/"/>
+    <id>https://373005226.github.io/2019/10/22/docker/</id>
+    <published>2019-10-22T07:38:02.613Z</published>
+    <updated>2019-10-30T08:01:28.319Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;docker是什么&quot;&gt;&lt;a href=&quot;#docker是什么&quot; class=&quot;headerlink&quot; title=&quot;docker是什么&quot;&gt;&lt;/a&gt;docker是什么&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;参考文章地址： &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="docker" scheme="https://373005226.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>深拷贝和浅拷贝</title>
     <link href="https://373005226.github.io/2019/10/18/shen-kao-bei-he-qian-kao-bei/"/>
     <id>https://373005226.github.io/2019/10/18/shen-kao-bei-he-qian-kao-bei/</id>
     <published>2019-10-17T17:14:11.056Z</published>
-    <updated>2019-10-25T05:55:14.094Z</updated>
+    <updated>2019-10-30T04:46:32.320Z</updated>
     
     <summary type="html">
     
@@ -352,7 +435,7 @@
     <link href="https://373005226.github.io/2019/10/11/scrapy4/"/>
     <id>https://373005226.github.io/2019/10/11/scrapy4/</id>
     <published>2019-10-11T07:22:12.652Z</published>
-    <updated>2019-10-14T07:19:42.996Z</updated>
+    <updated>2019-10-29T09:17:54.557Z</updated>
     
     <summary type="html">
     
@@ -373,8 +456,6 @@
     
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
   </entry>
   
   <entry>
@@ -382,7 +463,7 @@
     <link href="https://373005226.github.io/2019/10/10/scrapy3/"/>
     <id>https://373005226.github.io/2019/10/10/scrapy3/</id>
     <published>2019-10-10T15:35:25.582Z</published>
-    <updated>2019-10-14T07:23:09.548Z</updated>
+    <updated>2019-10-29T09:17:58.464Z</updated>
     
     <summary type="html">
     
@@ -405,8 +486,6 @@
     
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
   </entry>
   
   <entry>
@@ -414,7 +493,7 @@
     <link href="https://373005226.github.io/2019/10/09/crawlspider/"/>
     <id>https://373005226.github.io/2019/10/09/crawlspider/</id>
     <published>2019-10-09T14:46:29.561Z</published>
-    <updated>2019-10-14T07:18:31.573Z</updated>
+    <updated>2019-10-29T09:18:15.850Z</updated>
     
     <summary type="html">
     
@@ -437,8 +516,6 @@
     
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
     
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
   </entry>
   
   <entry>
@@ -446,7 +523,7 @@
     <link href="https://373005226.github.io/2019/10/07/scrapy/"/>
     <id>https://373005226.github.io/2019/10/07/scrapy/</id>
     <published>2019-10-07T02:38:06.252Z</published>
-    <updated>2019-10-12T07:30:30.976Z</updated>
+    <updated>2019-10-29T09:18:02.576Z</updated>
     
     <summary type="html">
     
@@ -467,8 +544,6 @@
     
     
       <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
-    
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
     
   </entry>
   
@@ -496,95 +571,6 @@
     
     
       <category term="Redis" scheme="https://373005226.github.io/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis初步认识</title>
-    <link href="https://373005226.github.io/2019/09/27/redis1/"/>
-    <id>https://373005226.github.io/2019/09/27/redis1/</id>
-    <published>2019-09-27T11:44:17.092Z</published>
-    <updated>2019-10-13T01:54:05.098Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Redis的五大数据结构&quot;&gt;&lt;a href=&quot;#Redis的五大数据结构&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="https://373005226.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="Redis" scheme="https://373005226.github.io/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>全文搜索方法的使用</title>
-    <link href="https://373005226.github.io/2019/09/26/sou-suo-fang-fa/"/>
-    <id>https://373005226.github.io/2019/09/26/sou-suo-fang-fa/</id>
-    <published>2019-09-26T06:24:43.215Z</published>
-    <updated>2019-10-13T10:25:43.804Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;基于-haystack来使用whoosh检索引擎&quot;&gt;&lt;a href=&quot;#基于-haystack来使用whoosh检索引擎&quot; class=&quot;headerlink&quot; title=&quot;基于 haystack来使用whoosh检索引擎&quot;&gt;&lt;/a&gt;基于
-        
-      
-    
-    </summary>
-    
-    
-      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
-      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
-    
-      <category term="全文检索" scheme="https://373005226.github.io/tags/%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>fastDFS安装及在Django中的部署</title>
-    <link href="https://373005226.github.io/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/"/>
-    <id>https://373005226.github.io/2019/09/25/fastdfs-de-an-zhuang-ji-shi-yong/</id>
-    <published>2019-09-25T14:53:30.460Z</published>
-    <updated>2019-10-13T10:25:01.455Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;FastDFS在阿里云服务器的安装和配置&quot;&gt;&lt;a href=&quot;#FastDFS在阿里云服务器的安装和配置&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="python" scheme="https://373005226.github.io/tags/python/"/>
-    
-      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
-    
-      <category term="分布式" scheme="https://373005226.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   

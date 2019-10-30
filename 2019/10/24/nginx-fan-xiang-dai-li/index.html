@@ -4,12 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Python匿名函数, 懒惰小L的博客">
-    <meta name="description" content="匿名函数概念有些时候我们使用函数的时候不一定要显示的定义函数，可以直接传输匿名函数来定义
-案例：
-#计算所有数的平方
-print(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
-#[1,">
+    <meta name="keywords" content="Nginx反向代理, 懒惰小L的博客">
+    <meta name="description" content="目的
+本文使用Nginx来模拟第三方云平台的运行，通过Nginx来去调用内网的接口，从而实现保护内网的真实IP又可以提供对外访问的服务的目的
+
+架构思路音乐、电影、书籍信息接口都是部署在服务器1里面，来模拟在内网的接口
+Nginx作为中间件">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@ print(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Python匿名函数 | 懒惰小L的博客</title>
+    <title>Nginx反向代理 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -303,13 +303,13 @@ print(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Python匿名函数
+                        Nginx反向代理
                     </div>
                 </div>
             </div>
@@ -401,8 +401,8 @@ print(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python语法/" target="_blank">
-                                <span class="chip bg-color">python语法</span>
+                            <a href="/tags/Nginx/" target="_blank">
+                                <span class="chip bg-color">Nginx</span>
                             </a>
                         
                     </div>
@@ -413,8 +413,8 @@ print(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                python
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                工具
                             </a>
                         
                     </div>
@@ -425,21 +425,21 @@ print(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-18
+                    2019-10-24
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        538
+                        480
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        1 分
                     </div>
                     
                 
@@ -455,58 +455,26 @@ print(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="匿名函数概念"><a href="#匿名函数概念" class="headerlink" title="匿名函数概念"></a>匿名函数概念</h2><p>有些时候我们使用函数的时候不一定要显示的定义函数，可以直接传输匿名函数来定义</p>
-<p>案例：</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#计算所有数的平方</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>map<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">*</span> x<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#[1, 4, 9, 16, 25, 36, 49, 64, 81]</span></code></pre>
-<p>上面的这个匿名函数实际上是</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> x <span class="token operator">*</span> x</code></pre>
-<p><strong>关键字lambda 表示匿名函数，冒号前面的 x 表示函数参数。</strong></p>
-<p><strong>匿名函数有个限制，就是只能有一个表达式，不写return，返回值就是该表达式的结果。</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#假如要对字典的名字进行排序，一般的sort函数是无法完成这个任务的，此时就可以用到匿名函数</span>
-a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"ly"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">21</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"aa"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"zz"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">19</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
-a<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span>x<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#[{'name': 'aa', 'age': 22}, {'name': 'ly', 'age': 21}, {'name': 'zz', 'age': 19}]</span>
-
-<span class="token comment" spellcheck="true">#第一个x是遍历列表的三个字典，第二个x是把字典里面的'name'这个变量取出来，所以相当于key='name'</span></code></pre>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#倒叙排序列表</span>
-sorted<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">lambda</span> x<span class="token punctuation">,</span>y<span class="token punctuation">:</span> <span class="token operator">-</span>cmp<span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#[9, 5, 3, 1, 0]</span></code></pre>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#把数值转换为正数</span>
-myabs <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token operator">-</span>x <span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token keyword">else</span> x 
-myabs<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#1</span>
-myabs<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#1</span></code></pre>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#比如要简化filter()的示例代码</span>
-<span class="token comment" spellcheck="true">#def is_not_empty(s):</span>
-<span class="token comment" spellcheck="true">#    return s and len(s.strip()) > 0</span>
-<span class="token comment" spellcheck="true">#filter(is_not_empty, ['test', None, '', 'str', '  ', #'END'])</span>
-<span class="token keyword">print</span> filter<span class="token punctuation">(</span><span class="token keyword">lambda</span> s<span class="token punctuation">:</span> s <span class="token operator">and</span> len<span class="token punctuation">(</span>s<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'test'</span><span class="token punctuation">,</span> None<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'str'</span><span class="token punctuation">,</span> <span class="token string">'  '</span><span class="token punctuation">,</span> <span class="token string">'END'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#结果</span>
-<span class="token comment" spellcheck="true">#['test', 'str', 'END']</span></code></pre>
-<h2 id="匿名函数小应用"><a href="#匿名函数小应用" class="headerlink" title="匿名函数小应用"></a>匿名函数小应用</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    result<span class="token operator">=</span>func<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> result
-num<span class="token operator">=</span>test<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span>y<span class="token punctuation">:</span>x<span class="token operator">+</span>y<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#3</span></code></pre>
-<p>这样就可以自定义想要实现的函数了</p>
-<h2 id="匿名函数面试题"><a href="#匿名函数面试题" class="headerlink" title="匿名函数面试题"></a>匿名函数面试题</h2><p><strong>只用一行代码就对字典的age进行排序</strong></p>
-<p><code>a=[{&quot;name&quot;:&quot;ly&quot;,&quot;age&quot;:21},{&quot;name&quot;:&quot;aa&quot;,&quot;age&quot;:22},{&quot;name&quot;:&quot;zz&quot;,&quot;age&quot;:19}]</code></p>
-<p>答案：</p>
-<pre class=" language-python"><code class="language-python">a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"ly"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">21</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"aa"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"zz"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">:</span><span class="token number">19</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
-a<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span>x<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
-<p><strong>对字典 d={‘a’:27，‘f’:42，‘w’:12，‘u’:37} 中的 value 值进行排序？</strong></p>
-<p>答案：</p>
-<pre class=" language-python"><code class="language-python">sorted<span class="token punctuation">(</span>d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span>，key <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span>x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> </code></pre>
-<blockquote>
-<p>这里留个坑，等我到时候拿更多的面试题来详细讲解匿名函数</p>
+                <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><blockquote>
+<p>本文使用Nginx来模拟第三方云平台的运行，通过Nginx来去调用内网的接口，从而实现保护内网的真实IP又可以提供对外访问的服务的目的</p>
 </blockquote>
+<h2 id="架构思路"><a href="#架构思路" class="headerlink" title="架构思路"></a>架构思路</h2><p>音乐、电影、书籍信息接口都是部署在服务器1里面，来模拟在内网的接口</p>
+<p><code>Nginx</code>作为中间件来模拟第三方的云服务器端，小程序等APP调用的时候是直接去调用<code>Nginx</code>服务器，而不是直接去调用内网的接口，达到一种隐藏内网的地址而又可以间接去调用内网的接口</p>
+<p>我的第一个模拟内网的服务器IP是<a href="http://39.106.12.6/" target="_blank" rel="noopener">39.106.12.6</a>，第二个模拟云平台的服务器IP是<a href="http://47.93.184.113/" target="_blank" rel="noopener">47.93.184.113</a></p>
+<p>下面我拿个<code>Django API</code>提供对外调用来模拟内网的接口，拿小程序去对接口的出来的结果进行增删改查</p>
+<h2 id="Nginx架构图"><a href="#Nginx架构图" class="headerlink" title="Nginx架构图"></a>Nginx架构图</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/Nginx/1571905522931.png" alt="架构图"></p>
+<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p>以下三个是我在服务器1里面写的Django的查询API，是我通过Nginx去访问的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/Nginx/1571903983358.png" alt="音乐信息"></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/Nginx/1571903998646.png" alt="书籍信息"></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/Nginx/1571904033699.png" alt="电影信息"></p>
+<p>如果我直接访问我的内网API则会被拒绝，如图所示</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/Nginx/1571904490645.png" alt="直接访问服务器1"></p>
+<p>因为我在Nginx配置了只允许<a href="http://47.93.184.113/" target="_blank" rel="noopener">47.93.184.113</a>访问，其余IP访问都会报403错误，只有我指定的Nginx服务器IP才能 访问内网的接口，如图所示</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/Nginx/1571904572264.png" alt="使用Nginx间接访问内网"></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/Nginx/1571906670097.png" alt="小程序去调用Nginx的IP"></p>
+<p>使用小程序等移动端APP也一样，直接去调用Nginx服务器的IP就可以调用内网的API</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>使用Nginx作为中间件可以免去多余的第三方服务，而且还可以借助Nginx去实现多余的功能，比如负载均衡，反爬虫等</p>
+<p>如果使用云平台和第三方的服务商进行内网穿透，会导致访问服务的速度变慢，而使用Nginx一步就可以达到原有的功能而且还更方便</p>
 
             </div>
             <hr/>
@@ -647,7 +615,7 @@ a<span class="token punctuation">.</span>sort<span class="token punctuation">(</
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/10/18/ni-ming-han-shu/" class="b-link-green">Python匿名函数</a>
+                    <a href="/2019/10/24/nginx-fan-xiang-dai-li/" class="b-link-green">Nginx反向代理</a>
                 </p>
             </div>
         </div>
@@ -669,7 +637,7 @@ a<span class="token punctuation">.</span>sort<span class="token punctuation">(</
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-10-18T00-15-54',
+        id: '2019-10-24T15-36-23',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -694,30 +662,30 @@ a<span class="token punctuation">.</span>sort<span class="token punctuation">(</
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/18/bi-bao/">
+                <a href="/2019/10/29/django-restframework-ru-men/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Python闭包">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Restframework之入门">
                         
-                        <span class="card-title">Python闭包</span>
+                        <span class="card-title">Restframework之入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">闭包定义闭包的作用通俗的来说就是强调，闭包可以用来在一个函数与一组“私有”变量之间创建关联关系。在给定函数被多次调用的过程中，这些私有变量能够保持其持久性
-闭包的基本形式如下：
-def demoA(number):
-    print('-</div>
+                    <div class="summary">
+官方文档（英文）： https://www.django-rest-framework.org/ 
+官方文档（翻译）： http://www.sinodocs.cn/ 
+官网文档（未翻译全）（推荐）： https://q1mi.githu</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-18
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-29
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
+                            <a href="/categories/后端/" class="post-category" target="_blank">
+                                    后端
                                 </a>
                             
                             
@@ -727,8 +695,8 @@ def demoA(number):
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python语法/" target="_blank">
-                        <span class="chip bg-color">python语法</span>
+                    <a href="/tags/Django/" target="_blank">
+                        <span class="chip bg-color">Django</span>
                     </a>
                     
                 </div>
@@ -742,44 +710,35 @@ def demoA(number):
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/17/collections-mo-kuai/">
+                <a href="/2019/10/23/ti-zi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="collections模块">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="梯子的安装和使用">
                         
-                        <span class="card-title">collections模块</span>
+                        <span class="card-title">梯子的安装和使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">ChainMapfrom collections import ChainMap
-
-user_dict1={"a":12,"b":15}
-user_dict2={"c":16,"d":19}
-new_dict=ChainMap(user_d</div>
+                    <div class="summary">ubuntu的SSR部署和使用
+参考博客：
+http://www.pianshen.com/article/3905142094/
+https://blog.csdn.net/weixin_38313047/article/details/</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-17
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/数据结构与算法/" target="_blank">
-                        <span class="chip bg-color">数据结构与算法</span>
-                    </a>
-                    
                 </div>
                 
             </div>

@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="梯子的安装和使用, 懒惰小L的博客">
-    <meta name="description" content="ubuntu下的SSR安装方法
+    <meta name="description" content="ubuntu的SSR部署和使用
 参考博客：
 http://www.pianshen.com/article/3905142094/
 https://blog.csdn.net/weixin_38313047/article/details/">
@@ -450,7 +450,7 @@ https://blog.csdn.net/weixin_38313047/article/details/">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ubuntu下的SSR安装方法"><a href="#ubuntu下的SSR安装方法" class="headerlink" title="ubuntu下的SSR安装方法"></a>ubuntu下的SSR安装方法</h2><blockquote>
+                <h2 id="ubuntu的SSR部署和使用"><a href="#ubuntu的SSR部署和使用" class="headerlink" title="ubuntu的SSR部署和使用"></a>ubuntu的SSR部署和使用</h2><blockquote>
 <p>参考博客：</p>
 <p><a href="http://www.pianshen.com/article/3905142094/" target="_blank" rel="noopener">http://www.pianshen.com/article/3905142094/</a></p>
 <p><a href="https://blog.csdn.net/weixin_38313047/article/details/85125082" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38313047/article/details/85125082</a></p>
@@ -500,7 +500,7 @@ chmod +x bbr.sh
 <p>出现上面这个图按回车</p>
 <p><img src="http://www.pianshen.com/images/740/41b774e68b723af7fd624bc41589b764.png" alt></p>
 <p>最后输入y重启服务器或者手动输入代码：reboot</p>
-<h2 id="Centos下SSR的安装方法"><a href="#Centos下SSR的安装方法" class="headerlink" title="Centos下SSR的安装方法"></a>Centos下SSR的安装方法</h2><blockquote>
+<h2 id="Centos的SSR部署和使用"><a href="#Centos的SSR部署和使用" class="headerlink" title="Centos的SSR部署和使用"></a>Centos的SSR部署和使用</h2><blockquote>
 <p>本文转载于：<a href="https://www.stackcc.com/2019/04/04/ssrstep/" target="_blank" rel="noopener">https://www.stackcc.com/2019/04/04/ssrstep/</a></p>
 <p>本文只做部分解释说明，为防止梯子教程被封所以先来这里记着</p>
 </blockquote>
@@ -608,7 +608,7 @@ chmod <span class="token operator">+</span>x shadowsocksR<span class="token punc
 停止：/serverspeeder/bin/serverSpeeder.sh stop
 状态：service serverSpeeder status
 检查是否有appex0模块：lsmod</code></pre>
-<h2 id="Centos下SS的安装方法"><a href="#Centos下SS的安装方法" class="headerlink" title="Centos下SS的安装方法"></a>Centos下SS的安装方法</h2><blockquote>
+<h2 id="Centos的SS部署和使用"><a href="#Centos的SS部署和使用" class="headerlink" title="Centos的SS部署和使用"></a>Centos的SS部署和使用</h2><blockquote>
 <p>参考博客：<a href="https://blog.51cto.com/14184268/2424093" target="_blank" rel="noopener">https://blog.51cto.com/14184268/2424093</a></p>
 </blockquote>
 <h3 id="SS安装"><a href="#SS安装" class="headerlink" title="SS安装"></a>SS安装</h3><p>在购买到国外的服务器后，直接黏贴这条命令就可以安装了</p>
@@ -840,28 +840,75 @@ chmod <span class="token operator">+</span>x shadowsocksR<span class="token punc
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/23/ti-zi/">
+                <a href="/2019/10/24/nginx-fan-xiang-dai-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="梯子的安装和使用">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Nginx反向代理">
                         
-                        <span class="card-title">梯子的安装和使用</span>
+                        <span class="card-title">Nginx反向代理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">ubuntu下的SSR安装方法
-参考博客：
-http://www.pianshen.com/article/3905142094/
-https://blog.csdn.net/weixin_38313047/article/details/</div>
+                    <div class="summary">目的
+本文使用Nginx来模拟第三方云平台的运行，通过Nginx来去调用内网的接口，从而实现保护内网的真实IP又可以提供对外访问的服务的目的
+
+架构思路音乐、电影、书籍信息接口都是部署在服务器1里面，来模拟在内网的接口
+Nginx作为中间件</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Nginx/" target="_blank">
+                        <span class="chip bg-color">Nginx</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/10/22/docker/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="docker的简单入门">
+                        
+                        <span class="card-title">docker的简单入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">docker是什么
+参考文章地址： https://yeasy.gitbooks.io/docker_practice/introduction/what.html 
+docker下载地址：https://hub.docker.com/?o</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-23
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-22
                             </span>
                         <span class="publish-author">
                             
@@ -875,63 +922,11 @@ https://blog.csdn.net/weixin_38313047/article/details/</div>
                         </span>
                     </div>
                 </div>
-
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/10/18/shen-kao-bei-he-qian-kao-bei/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="深拷贝和浅拷贝">
-                        
-                        <span class="card-title">深拷贝和浅拷贝</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">浅拷贝
-浅拷贝是对于一个对象的顶层拷贝
-
-通俗的理解是：拷贝了引用，并没有拷贝内容
-a=[11,22,33]
-b=a
-print(id(a))
-print(id(b))
-#92188584
-#92188584
-这里就是b只拷贝了a的引用，而</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-18
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python语法/" target="_blank">
-                        <span class="chip bg-color">python语法</span>
-                    </a>
-                    
-                    <a href="/tags/python面试题/" target="_blank">
-                        <span class="chip bg-color">python面试题</span>
+                    <a href="/tags/docker/" target="_blank">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
@@ -1005,7 +1000,7 @@ print(id(b))
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">33.3k</span>
+                <span class="white-color">36.5k</span>
             
 
             
