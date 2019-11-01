@@ -699,9 +699,9 @@
       
         <tags>
             
-            <tag> 分布式 </tag>
-            
             <tag> Django </tag>
+            
+            <tag> 分布式 </tag>
             
         </tags>
       
@@ -726,9 +726,9 @@
       
         <tags>
             
-            <tag> Django </tag>
-            
             <tag> 异步 </tag>
+            
+            <tag> Django </tag>
             
         </tags>
       
