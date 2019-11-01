@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-10-30T07:41:06.266Z</updated>
+  <updated>2019-11-01T06:06:56.601Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -17,11 +17,160 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Restframework之编写API文档</title>
+    <link href="https://373005226.github.io/2019/10/31/restframework-bian-xie-api-wen-dang/"/>
+    <id>https://373005226.github.io/2019/10/31/restframework-bian-xie-api-wen-dang/</id>
+    <published>2019-10-31T09:55:40.372Z</published>
+    <updated>2019-11-01T06:06:56.601Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概要文档&quot;&gt;&lt;a href=&quot;#概要文档&quot; class=&quot;headerlink&quot; title=&quot;概要文档&quot;&gt;&lt;/a&gt;概要文档&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Restframework&lt;/code&gt;有一个显示概要文档的功能，根据文档显示&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
+    
+      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Restframework之视图集</title>
+    <link href="https://373005226.github.io/2019/10/31/restframework-shi-tu-ji/"/>
+    <id>https://373005226.github.io/2019/10/31/restframework-shi-tu-ji/</id>
+    <published>2019-10-31T08:29:49.650Z</published>
+    <updated>2019-10-31T09:55:28.635Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;视图集这个其实用不用意义不大，文档中做了一个亲切的比喻，就像编写视图函数的时候是使用函数的形式去编写还是通过类视图的形式去编写一样，主要还是为了减少代码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;视图集&quot;&gt;&lt;a href=&quot;#视图集&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
+    
+      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Restframework之超链接API</title>
+    <link href="https://373005226.github.io/2019/10/31/restframework-chao-lian-jie-api/"/>
+    <id>https://373005226.github.io/2019/10/31/restframework-chao-lian-jie-api/</id>
+    <published>2019-10-31T03:58:09.612Z</published>
+    <updated>2019-10-31T08:32:05.965Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;演示前配置&quot;&gt;&lt;a href=&quot;#演示前配置&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
+    
+      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Restframework之权限设置</title>
+    <link href="https://373005226.github.io/2019/10/31/restframework-shen-fen-yan-zheng/"/>
+    <id>https://373005226.github.io/2019/10/31/restframework-shen-fen-yan-zheng/</id>
+    <published>2019-10-31T03:14:31.653Z</published>
+    <updated>2019-10-31T06:13:50.553Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;第一步：增加显示操作人&quot;&gt;&lt;a href=&quot;#第一步：增加显示操作人&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
+    
+      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Restframework之类视图的编写</title>
+    <link href="https://373005226.github.io/2019/10/30/restframework-lei-shi-tu-bian-xie/"/>
+    <id>https://373005226.github.io/2019/10/30/restframework-lei-shi-tu-bian-xie/</id>
+    <published>2019-10-30T08:00:26.594Z</published>
+    <updated>2019-10-31T06:50:38.874Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Restframework请求和响应&quot;&gt;&lt;a href=&quot;#Restframework请求和响应&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
+    
+      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Restframework之入门</title>
-    <link href="https://373005226.github.io/2019/10/29/django-restframework-ru-men/"/>
-    <id>https://373005226.github.io/2019/10/29/django-restframework-ru-men/</id>
+    <link href="https://373005226.github.io/2019/10/29/restframework-ru-men/"/>
+    <id>https://373005226.github.io/2019/10/29/restframework-ru-men/</id>
     <published>2019-10-29T05:44:59.679Z</published>
-    <updated>2019-10-30T07:41:06.266Z</updated>
+    <updated>2019-10-31T08:37:49.089Z</updated>
     
     <summary type="html">
     
@@ -41,6 +190,8 @@
     
     
       <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
+    
+      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
     
   </entry>
   
@@ -427,150 +578,6 @@
     
       <category term="软件测试" scheme="https://373005226.github.io/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>死磕爬虫之scrapy下载中间件使用和配置</title>
-    <link href="https://373005226.github.io/2019/10/11/scrapy4/"/>
-    <id>https://373005226.github.io/2019/10/11/scrapy4/</id>
-    <published>2019-10-11T07:22:12.652Z</published>
-    <updated>2019-10-29T09:17:54.557Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>死磕爬虫之scrapy模拟登陆的方法</title>
-    <link href="https://373005226.github.io/2019/10/10/scrapy3/"/>
-    <id>https://373005226.github.io/2019/10/10/scrapy3/</id>
-    <published>2019-10-10T15:35:25.582Z</published>
-    <updated>2019-10-29T09:17:58.464Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt; 以下三个策略以人人网作为案例来描述&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;策略一：使用保存的cookie登陆（100-成功）&quot;&gt;&lt;a href=&quot;#策略一：使用保存的cookie登陆（100-成功）&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>死磕爬虫之CrawlSpider类</title>
-    <link href="https://373005226.github.io/2019/10/09/crawlspider/"/>
-    <id>https://373005226.github.io/2019/10/09/crawlspider/</id>
-    <published>2019-10-09T14:46:29.561Z</published>
-    <updated>2019-10-29T09:18:15.850Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;爬虫文件继承的类不仅只有scrapy.Spider类，还有很多类，但是Spider是所有爬虫类的基类。这里我介绍一下CrawlSpider类的使用、说明和spider类和CrawlSpider类的对比&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>死磕爬虫之scrapy框架初识</title>
-    <link href="https://373005226.github.io/2019/10/07/scrapy/"/>
-    <id>https://373005226.github.io/2019/10/07/scrapy/</id>
-    <published>2019-10-07T02:38:06.252Z</published>
-    <updated>2019-10-29T09:18:02.576Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;前言&lt;/p&gt;
-&lt;p&gt;​       
-        
-      
-    
-    </summary>
-    
-    
-      <category term="爬虫" scheme="https://373005226.github.io/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="scrapy" scheme="https://373005226.github.io/tags/scrapy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis五大数据结构的介绍及基本命令使用</title>
-    <link href="https://373005226.github.io/2019/09/28/redis2/"/>
-    <id>https://373005226.github.io/2019/09/28/redis2/</id>
-    <published>2019-09-27T16:11:29.447Z</published>
-    <updated>2019-10-13T01:54:41.471Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;String-字符串&quot;&gt;&lt;a href=&quot;#String-字符串&quot; class=&quot;headerlink&quot; title=&quot;String(字符串)&quot;&gt;&lt;/a&gt;String(字符串)&lt;/h2&gt;&lt;h3 id=&quot;String的限制&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="https://373005226.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="Redis" scheme="https://373005226.github.io/tags/Redis/"/>
     
   </entry>
   

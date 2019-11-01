@@ -404,6 +404,10 @@
                                 <span class="chip bg-color">Django</span>
                             </a>
                         
+                            <a href="/tags/Restful/" target="_blank">
+                                <span class="chip bg-color">Restful</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -431,7 +435,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.1k
+                        2.2k
                     </div>
                     
 
@@ -459,6 +463,9 @@
 <p>官方文档（翻译）： <a href="http://www.sinodocs.cn/" target="_blank" rel="noopener">http://www.sinodocs.cn/</a> </p>
 <p>官网文档（未翻译全）（推荐）： <a href="https://q1mi.github.io/Django-REST-framework-documentation/" target="_blank" rel="noopener">https://q1mi.github.io/Django-REST-framework-documentation/</a> </p>
 <p>参考文档： <a href="https://www.cnblogs.com/chenxuming/articles/9370009.html#_label2" target="_blank" rel="noopener">https://www.cnblogs.com/chenxuming/articles/9370009.html#_label2</a> </p>
+</blockquote>
+<blockquote>
+<p>restful系列博客是在学习51cto的课程和在观看完官方文章之后的学习总结，自己重新做了一个案例来说明</p>
 </blockquote>
 <h2 id="Django-Restframework是什么"><a href="#Django-Restframework是什么" class="headerlink" title="Django Restframework是什么"></a>Django Restframework是什么</h2><p><code>Django Restframework</code>是<code>Django</code>中可以 帮助我们快速的开发符合<code>RESTful</code>规范的接口的框架 ，<code>RESTful</code>是如今开发基本都会采用的规范</p>
 <h3 id="Restful规范"><a href="#Restful规范" class="headerlink" title="Restful规范"></a>Restful规范</h3><ul>
@@ -712,7 +719,7 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
 <p>其中的<code>is_vaild</code>方法都跟<code>form</code>表单使用方法一样，然后再刷新网页看看数据</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/image-20191030143900759.png" alt></p>
 <p>如图所示，就增加了我刚刚写的数据</p>
-<h3 id="使用：在view里面添加序列化方法"><a href="#使用：在view里面添加序列化方法" class="headerlink" title="使用：在view里面添加序列化方法"></a>使用：在view里面添加序列化方法</h3><p><strong>view.py</strong></p>
+<h3 id="使用：在view里面添加序列化方法"><a href="#使用：在view里面添加序列化方法" class="headerlink" title="使用：在view里面添加序列化方法"></a>使用：在view里面添加序列化方法</h3><p><strong>views.py</strong></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render
 <span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse
 <span class="token keyword">from</span> django<span class="token punctuation">.</span>views<span class="token punctuation">.</span>generic<span class="token punctuation">.</span>base <span class="token keyword">import</span> View
@@ -896,7 +903,7 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/10/29/django-restframework-ru-men/" class="b-link-green">Restframework之入门</a>
+                    <a href="/2019/10/29/restframework-ru-men/" class="b-link-green">Restframework之入门</a>
                 </p>
             </div>
         </div>
@@ -939,29 +946,27 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/29/django-restframework-ru-men/">
+                <a href="/2019/10/30/restframework-lei-shi-tu-bian-xie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Restframework之入门">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Restframework之类视图的编写">
                         
-                        <span class="card-title">Restframework之入门</span>
+                        <span class="card-title">Restframework之类视图的编写</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-官方文档（英文）： https://www.django-rest-framework.org/ 
-官方文档（翻译）： http://www.sinodocs.cn/ 
-官网文档（未翻译全）（推荐）： https://q1mi.githu</div>
+                    <div class="summary">Restframework请求和响应Restframework扩展了Django默认的 Request 对象，提供了更加的灵活解析，除此之外Restframework还引入了一个 Response响应对象和状态码，如翻译文档截图所示：
+
+状</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-29
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -974,12 +979,15 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/Django/" target="_blank">
                         <span class="chip bg-color">Django</span>
+                    </a>
+                    
+                    <a href="/tags/Restful/" target="_blank">
+                        <span class="chip bg-color">Restful</span>
                     </a>
                     
                 </div>
@@ -1102,7 +1110,7 @@ Nginx作为中间件</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">36.5k</span>
+                <span class="white-color">40.7k</span>
             
 
             
@@ -1192,5 +1200,5 @@ Nginx作为中间件</div>
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>
