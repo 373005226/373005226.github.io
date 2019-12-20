@@ -435,7 +435,7 @@ class Book(mod">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        612
+                        657
                     </div>
                     
 
@@ -477,7 +477,7 @@ class Book(mod">
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> Publish<span class="token punctuation">,</span>Book
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token keyword">class</span> <span class="token class-name">Bookserializer</span><span class="token punctuation">(</span>serializers<span class="token punctuation">.</span>ModelSerializer<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment" spellcheck="true">#通过publish这个外键去找到publish这个表的name</span>
+    <span class="token comment" spellcheck="true">#通过publish这个外键去找到publish这个表的name，把原本的那个显示的数字改成出版社的名字</span>
     publish<span class="token operator">=</span>serializers<span class="token punctuation">.</span>StringRelatedField<span class="token punctuation">(</span>source<span class="token operator">=</span><span class="token string">"publish.name"</span><span class="token punctuation">)</span>
     <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
         model <span class="token operator">=</span> Book
@@ -528,6 +528,7 @@ class Book(mod">
             <span class="token string">"publish"</span>
         <span class="token punctuation">)</span></code></pre>
 <p><strong>urls.py</strong></p>
+<p><strong>这里一定要编写name配置，因为如果不配置就不能反向查找到API</strong></p>
 <pre class=" language-python"><code class="language-python">urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
     url<span class="token punctuation">(</span>r<span class="token string">'^admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
     url<span class="token punctuation">(</span>r<span class="token string">'^$'</span><span class="token punctuation">,</span>api_root<span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -912,7 +913,7 @@ class Book(mod">
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">45k</span>
+                <span class="white-color">50.3k</span>
             
 
             

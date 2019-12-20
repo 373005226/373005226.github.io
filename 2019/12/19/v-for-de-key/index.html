@@ -4,10 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="docker的简单入门, 懒惰小L的博客">
-    <meta name="description" content="docker是什么
-参考文章地址： https://yeasy.gitbooks.io/docker_practice/introduction/what.html 
-docker下载地址：https://hub.docker.com/?o">
+    <meta name="keywords" content="v-for里面的:key作用, 懒惰小L的博客">
+    <meta name="description" content="性能优化问题v-for里面有个key属性，这里拿个案例来说明
+&amp;lt;!DOCTYPE html&gt;
+&amp;lt;html&gt;
+    &amp;lt;head&gt;
+        &amp;lt;meta charset=&#34;utf-8&#34;&gt;
+        &amp;lt;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +18,7 @@ docker下载地址：https://hub.docker.com/?o">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>docker的简单入门 | 懒惰小L的博客</title>
+    <title>v-for里面的:key作用 | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -301,13 +304,13 @@ docker下载地址：https://hub.docker.com/?o">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        docker的简单入门
+                        v-for里面的:key作用
                     </div>
                 </div>
             </div>
@@ -399,8 +402,8 @@ docker下载地址：https://hub.docker.com/?o">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/docker/" target="_blank">
-                                <span class="chip bg-color">docker</span>
+                            <a href="/tags/Vue/" target="_blank">
+                                <span class="chip bg-color">Vue</span>
                             </a>
                         
                     </div>
@@ -411,8 +414,8 @@ docker下载地址：https://hub.docker.com/?o">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/工具/" class="post-category" target="_blank">
-                                工具
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                前端
                             </a>
                         
                     </div>
@@ -423,14 +426,14 @@ docker下载地址：https://hub.docker.com/?o">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-22
+                    2019-12-19
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        636
+                        728
                     </div>
                     
 
@@ -453,17 +456,77 @@ docker下载地址：https://hub.docker.com/?o">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="docker是什么"><a href="#docker是什么" class="headerlink" title="docker是什么"></a>docker是什么</h2><blockquote>
-<p>参考文章地址： <a href="https://yeasy.gitbooks.io/docker_practice/introduction/what.html" target="_blank" rel="noopener">https://yeasy.gitbooks.io/docker_practice/introduction/what.html</a> </p>
-<p>docker下载地址：<a href="https://hub.docker.com/?overlay=onboarding" target="_blank" rel="noopener">https://hub.docker.com/?overlay=onboarding</a></p>
-</blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>docker</code>相当于一个容器，里面封装了你开发的环境和应用。打个比方来说，我写了一个<code>python</code>项目，但是如果我直接把这个项目放到<code>github</code>上，很多人可能下载下来部署十分的麻烦，甚至可能出现运行不了的情况，最好的方法就是使用我开发的环境去部署这个项目，这个方法是直接而且是最方便的，而<code>docker</code>就帮助了我们实现了这个步骤。我直接打包我的项目环境和应用，直接给你们，你们就可以直接去运行，而且<code>docker</code>是一个沙箱环境，每个不同的应用之间不会有任何的影响。</p>
-<p>&emsp;</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧版本的<code>docker</code>是基于<code>linux</code>系统的<a href="https://linuxcontainers.org/lxc/introduction/" target="_blank" rel="noopener">LXC</a>来实现的，在1.1以后使用自行开发的 <a href="https://github.com/docker/libcontainer" target="_blank" rel="noopener">libcontainer</a> 开发的。<code>docker</code>虽然跟虚拟机的使用目的很相似，但是跟虚拟机有很大的不同。<code>docker</code>和虚拟机本质上都是在虚拟环境上运行，但是<code>docker</code>对比与<code>虚拟机</code>更为轻量，<code>docker</code>可以共享操作系统的内核，也能更快的启动、占用更少的内存去运行，你可能要花五分钟去运行一个<code>虚拟机</code>，如果使用的是<code>docker</code>估计也就几秒就事，其他更多的优势随便百度搜索一下都有一大堆详细的说明，这里我就不再更多的赘述。最重要的一点就是不会再出现这个代码在我的环境没问题，怎么到你的电脑就怎样怎样的，使用<code>docker</code>可以解决大部分开发的问题，总之….总之用他就对了，而且docker社区很丰富，就拿阿里云来说，很多人都把自己部署好的环境放到云平台上供人下载。</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191025115438.png" alt></p>
-<h2 id="docker的安装"><a href="#docker的安装" class="headerlink" title="docker的安装"></a>docker的安装</h2><p>如果你的电脑是<code>win10</code>，那我不建议去下载<code>toolbox</code>版，因为<code>win10</code>自带了<code>Hyper-v</code>的虚拟化，而<code>toolbox</code>版本是通过<code>VirtualBox</code>来建立<code>linux</code>虚拟机，<code>docker</code>下载地址为<a href="https://hub.docker.com/?overlay=onboarding" target="_blank" rel="noopener">https://hub.docker.com/?overlay=onboarding</a></p>
-<p>我试过很多个下载链接地址，但是下载后要么是不能更改下载路径，要么就是一直显示登陆中，唯有这个是最正确的，所以推荐使用这个下载</p>
-<p>…….待更新</p>
+                <h2 id="性能优化问题"><a href="#性能优化问题" class="headerlink" title="性能优化问题"></a>性能优化问题</h2><p>v-for里面有个key属性，这里拿个案例来说明</p>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>app<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
+            <span class="token comment" spellcheck="true">&lt;!-- app.movie.splice(2,0,'异度空间')  --></span>
+            <span class="token comment" spellcheck="true">&lt;!-- 默认的插入算法是如果要在第二个插入新的值，就把新的值的ID改成2，第三个原来的ID改为原来的第二个值，依次替换下去，效率极低 --></span>
+            <span class="token comment" spellcheck="true">&lt;!-- 使用diff算法效率才是最高的，也就是在第二个插入的数据他的ID是7，时间复杂度就是O(1) --></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+                <span class="token comment" spellcheck="true">&lt;!-- key里面数据一定要保证唯一性，要与值一一对应 --></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>(item,index) in movie<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                    {{item}}
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>../js/vue.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+                data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                    movie<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'霸王别姬'</span><span class="token punctuation">,</span> <span class="token string">'阿飞正传'</span><span class="token punctuation">,</span> <span class="token string">'胭脂扣'</span><span class="token punctuation">,</span> <span class="token string">'英雄本色'</span><span class="token punctuation">,</span> <span class="token string">'新上海滩'</span><span class="token punctuation">,</span> <span class="token string">'东邪西毒'</span><span class="token punctuation">,</span> <span class="token string">'倩女幽魂'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    cindex<span class="token punctuation">:</span> <span class="token number">0</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>splice(2,0,’异度空间’)的意思就是从下标为2后面插入异度空间</p>
+<p>Vue渲染页面是通过一个虚拟DOM间接去去渲染页面的，大概的结构图如下：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191219220248.png" alt></p>
+<p><strong>中间的就是虚拟DOM，如果要从下标2开始直接插入的话，那么从第二个开始的下标就会发生改变，新插入的值变成下标3，剩下的下标依次往下重新排序，这样的时间复杂度极大。</strong></p>
+<p>最理想的排序应该是新插入的值以新的下标去排序，如图：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191219220526.png" alt></p>
+<p>这样时间复杂度就为1，这个可以通过diff算法来实现这个目的，在代码中实现也就是要在每个for循环里面添加一个<code>:key</code>，这个值要为遍历循环的值，比如代码所示：</p>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>app<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
+            <span class="token comment" spellcheck="true">&lt;!-- app.movie.splice(2,0,'异度空间')  --></span>
+            <span class="token comment" spellcheck="true">&lt;!-- 默认的插入算法是如果要在第二个插入新的值，就把新的值的ID改成2，第三个原来的ID改为原来的第二个值，依次替换下去，效率极低 --></span>
+            <span class="token comment" spellcheck="true">&lt;!-- 使用diff算法效率才是最高的，也就是在第二个插入的数据他的ID是7，时间复杂度就是O(1) --></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+                <span class="token comment" spellcheck="true">&lt;!-- key里面数据一定要保证唯一性，要与值一一对应 --></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>(item,index) in movie<span class="token punctuation">"</span></span> <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                    {{item}}
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>../js/vue.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+                data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                    movie<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'霸王别姬'</span><span class="token punctuation">,</span> <span class="token string">'阿飞正传'</span><span class="token punctuation">,</span> <span class="token string">'胭脂扣'</span><span class="token punctuation">,</span> <span class="token string">'英雄本色'</span><span class="token punctuation">,</span> <span class="token string">'新上海滩'</span><span class="token punctuation">,</span> <span class="token string">'东邪西毒'</span><span class="token punctuation">,</span> <span class="token string">'倩女幽魂'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    cindex<span class="token punctuation">:</span> <span class="token number">0</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p><code>:key</code>里面的值要跟双括号里面的值一样，因为遍历的是item，所以<code>:key</code>的值也应该为item。这样就可以使用<code>diff</code>算法来优化代码了</p>
 
             </div>
             <hr/>
@@ -604,7 +667,7 @@ docker下载地址：https://hub.docker.com/?o">
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/10/22/docker/" class="b-link-green">docker的简单入门</a>
+                    <a href="/2019/12/19/v-for-de-key/" class="b-link-green">v-for里面的:key作用</a>
                 </p>
             </div>
         </div>
@@ -626,7 +689,7 @@ docker下载地址：https://hub.docker.com/?o">
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-10-22T15-38-02',
+        id: '2019-12-19T17-21-49',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -651,35 +714,46 @@ docker下载地址：https://hub.docker.com/?o">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/23/ti-zi/">
+                <a href="/2019/12/19/shu-zu-zhong-de-xiang-ying-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="梯子的安装和使用">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Vue数组中的响应式">
                         
-                        <span class="card-title">梯子的安装和使用</span>
+                        <span class="card-title">Vue数组中的响应式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">ubuntu的SSR部署和使用
-参考博客：
-http://www.pianshen.com/article/3905142094/
-https://blog.csdn.net/weixin_38313047/article/details/</div>
+                    <div class="summary">有响应式的方法Vue里面并不是所有修改值都有一个响应式
+这里先介绍有响应式的方法：
+&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;meta charset="utf-8">
+ </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-23
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-19
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/工具/" class="post-category" target="_blank">
-                                    工具
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                    前端
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/" target="_blank">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -691,37 +765,32 @@ https://blog.csdn.net/weixin_38313047/article/details/</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/18/shen-kao-bei-he-qian-kao-bei/">
+                <a href="/2019/12/19/computed/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="深拷贝和浅拷贝">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="为什么要使用computed">
                         
-                        <span class="card-title">深拷贝和浅拷贝</span>
+                        <span class="card-title">为什么要使用computed</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">浅拷贝
-浅拷贝是对于一个对象的顶层拷贝
-
-通俗的理解是：拷贝了引用，并没有拷贝内容
-a=[11,22,33]
-b=a
-print(id(a))
-print(id(b))
-#92188584
-#92188584
-这里就是b只拷贝了a的引用，而</div>
+                    <div class="summary">计算属性的基本使用计算属性在我们要拼接属性的时候可以用到，比如要拼接两个姓氏和名字
+&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;meta charset="utf-8">
+ </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-18
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                    前端
                                 </a>
                             
                             
@@ -731,12 +800,8 @@ print(id(b))
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python语法/" target="_blank">
-                        <span class="chip bg-color">python语法</span>
-                    </a>
-                    
-                    <a href="/tags/python面试题/" target="_blank">
-                        <span class="chip bg-color">python面试题</span>
+                    <a href="/tags/Vue/" target="_blank">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>
@@ -810,7 +875,7 @@ print(id(b))
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">40.7k</span>
+                <span class="white-color">50.3k</span>
             
 
             
