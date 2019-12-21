@@ -494,7 +494,7 @@
 <p><strong>中间的就是虚拟DOM，如果要从下标2开始直接插入的话，那么从第二个开始的下标就会发生改变，新插入的值变成下标3，剩下的下标依次往下重新排序，这样的时间复杂度极大。</strong></p>
 <p>最理想的排序应该是新插入的值以新的下标去排序，如图：</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191219220526.png" alt></p>
-<p>这样时间复杂度就为1，这个可以通过diff算法来实现这个目的，在代码中实现也就是要在每个for循环里面添加一个<code>:key</code>，这个值要为遍历循环的值，比如代码所示：</p>
+<p>这样时间复杂度就为1，这个可以通过<code>diff</code>算法来实现这个目的，在代码中实现也就是要在每个for循环里面添加一个<code>:key</code>，这个值要为遍历循环的值，比如代码所示：</p>
 <pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -875,7 +875,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">50.3k</span>
+                <span class="white-color">55.9k</span>
             
 
             

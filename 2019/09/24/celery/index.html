@@ -456,12 +456,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Celery是什么"><a href="#Celery是什么" class="headerlink" title="Celery是什么"></a>Celery是什么</h2><p>​    Celery是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在队列中执行。</p>
-<p>​    Celery本身只是一个任务队列，或者严格的说是管理分布式任务队列的工具，封装了常用的任务队列操作，通过Celery来管理任务队列的执行和管理，celery本身不含消息服务，它使用第三方消息服务来传递任务，目前，celery支持的消息服务RabbitMQ,redis甚至是数据库，redis是最佳选择，RabbitMQ(<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq" target="_blank" rel="noopener">http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq</a>)、Redis(<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis" target="_blank" rel="noopener">http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis</a>)处理任务队列的方式，两者的使用文档写的很清楚</p>
-<p>​    在实际应用中，可以把一些比如邮件注册、手机注册、网站页面静态化等耗时操作交给Celery队列中，然后让Redis或者RabbitMQ去执行。下面我拿我项目中的案例来演示一下，也便于自己加深印象</p>
-<h2 id="Celery演示"><a href="#Celery演示" class="headerlink" title="Celery演示"></a>Celery演示</h2><p>这里我拿的都是我最熟悉的Django框架和redis来演示</p>
-<p>首先要导入Celery包</p>
-<p>一般第三方的处理文件都会专门放到一个文件夹里面，我的直接命名Celery_tasks</p>
+                <h2 id="Celery是什么"><a href="#Celery是什么" class="headerlink" title="Celery是什么"></a>Celery是什么</h2><p>​    <code>Celery</code>是一个实时处理和任务调度的分布式任务队列，简单的说所就是分布式应用队列，队列的意思就是把任务放在队列中执行，通常应用是把一些耗时的任务放在队列里面，主任务继续执行，耗时任务在队列中执行。</p>
+<p>​    <code>Celery</code>本身只是一个任务队列，或者严格的说是管理分布式任务队列的工具，封装了常用的任务队列操作，通过<code>Celery</code>来管理任务队列的执行和管理，<code>celery</code>本身不含消息服务，它使用第三方消息服务来传递任务，目前，<code>celery</code>支持的消息服务<code>RabbitMQ</code>,<code>redis</code>甚至是数据库，<code>redis</code>是最佳选择，RabbitMQ(<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq" target="_blank" rel="noopener">http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq</a>)、Redis(<a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis" target="_blank" rel="noopener">http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis</a>)处理任务队列的方式，两者的使用文档写的很清楚</p>
+<p>​    在实际应用中，可以把一些比如邮件注册、手机注册、网站页面静态化等耗时操作交给<code>Celery</code>队列中，然后让<code>Redis</code>或者<code>RabbitMQ</code>去执行。下面我拿我项目中的案例来演示一下，也便于自己加深印象</p>
+<h2 id="Celery演示"><a href="#Celery演示" class="headerlink" title="Celery演示"></a>Celery演示</h2><p>这里我拿的都是我最熟悉的<code>Django</code>框架和<code>redis</code>来演示</p>
+<p><code>首先要导入Celery包</code></p>
+<p>一般第三方的处理文件都会专门放到一个文件夹里面，我的直接命名<code>Celery_tasks</code></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> celery <span class="token keyword">import</span> Celery
 app <span class="token operator">=</span> Celery<span class="token punctuation">(</span><span class="token string">'任务名字'</span><span class="token punctuation">,</span> broker<span class="token operator">=</span><span class="token string">'redis://你的服务器IP/数据库名'</span><span class="token punctuation">)</span>
 
@@ -481,7 +481,7 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
 @app<span class="token punctuation">.</span>task
 <span class="token keyword">def</span> 你的要运行的耗时任务<span class="token punctuation">:</span>
     <span class="token keyword">pass</span></code></pre>
-<p>把原本的同步的方法转换为Celery异步的代码运行即可</p>
+<p>把原本的同步的方法转换为<code>Celery</code>异步的代码运行即可</p>
 <p>如果你在linux系统上运行Celery代码，就在linux服务器端运行<code>celery -A celery_tasks.tasks worker -l info</code></p>
 <p>如果是windows系统上运行Celery代码，就运行<code>celery -A celery_tasks.tasks worker -l info -P eventlet</code></p>
 
@@ -833,7 +833,7 @@ django<span class="token punctuation">.</span>setup<span class="token punctuatio
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">50.3k</span>
+                <span class="white-color">55.9k</span>
             
 
             
