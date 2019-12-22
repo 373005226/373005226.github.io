@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-12-21T04:36:40.704Z</updated>
+  <updated>2019-12-21T08:32:21.920Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>插槽slot</title>
+    <link href="https://373005226.github.io/2019/12/21/cha-cao/"/>
+    <id>https://373005226.github.io/2019/12/21/cha-cao/</id>
+    <published>2019-12-21T07:21:02.336Z</published>
+    <updated>2019-12-21T08:32:21.920Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;插槽的使用&quot;&gt;&lt;a href=&quot;#插槽的使用&quot; class=&quot;headerlink&quot; title=&quot;插槽的使用&quot;&gt;&lt;/a&gt;插槽的使用&lt;/h2&gt;&lt;p&gt;插槽就像我们日常生活中的U盘什么的接口，可以使用来个性化定制。拿京东的导航栏为例：&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://373005226.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Vue" scheme="https://373005226.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Vue组件化的使用</title>
     <link href="https://373005226.github.io/2019/12/20/vue-zhong-de-zu-jian-hua/"/>
     <id>https://373005226.github.io/2019/12/20/vue-zhong-de-zu-jian-hua/</id>
     <published>2019-12-20T07:25:15.770Z</published>
-    <updated>2019-12-21T04:36:40.704Z</updated>
+    <updated>2019-12-21T07:20:57.235Z</updated>
     
     <summary type="html">
     
@@ -552,39 +580,6 @@
     
     
       <category term="docker" scheme="https://373005226.github.io/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深拷贝和浅拷贝</title>
-    <link href="https://373005226.github.io/2019/10/18/shen-kao-bei-he-qian-kao-bei/"/>
-    <id>https://373005226.github.io/2019/10/18/shen-kao-bei-he-qian-kao-bei/</id>
-    <published>2019-10-17T17:14:11.056Z</published>
-    <updated>2019-10-30T04:46:32.320Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;浅拷贝&quot;&gt;&lt;a href=&quot;#浅拷贝&quot; class=&quot;headerlink&quot; title=&quot;浅拷贝&quot;&gt;&lt;/a&gt;浅拷贝&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;浅拷贝是对于一个对象的顶层拷贝&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;通俗的理解是：拷贝了引用，并没有拷贝内容&lt;/p&gt;
-&lt;pre
-        
-      
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://373005226.github.io/categories/python/"/>
-    
-    
-      <category term="python语法" scheme="https://373005226.github.io/tags/python%E8%AF%AD%E6%B3%95/"/>
-    
-      <category term="python面试题" scheme="https://373005226.github.io/tags/python%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
