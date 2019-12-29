@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-12-21T08:32:21.920Z</updated>
+  <updated>2019-12-29T04:52:32.302Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>v-router详解</title>
+    <link href="https://373005226.github.io/2019/12/27/vue-router/"/>
+    <id>https://373005226.github.io/2019/12/27/vue-router/</id>
+    <published>2019-12-27T07:06:35.531Z</published>
+    <updated>2019-12-29T04:52:32.302Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;如下代码全部是在vue-cli2版本编写&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;vue-router的安装&quot;&gt;&lt;a href=&quot;#vue-router的安装&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://373005226.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Vue" scheme="https://373005226.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习随笔</title>
+    <link href="https://373005226.github.io/2019/12/22/sui-bi/"/>
+    <id>https://373005226.github.io/2019/12/22/sui-bi/</id>
+    <published>2019-12-22T12:24:31.342Z</published>
+    <updated>2019-12-28T14:42:07.367Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;html5中改变URL和页面不刷新的方法&quot;&gt;&lt;a href=&quot;#html5中改变URL和页面不刷新的方法&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="日常总结" scheme="https://373005226.github.io/categories/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>插槽slot</title>
@@ -527,59 +582,6 @@
     
     
       <category term="Nginx" scheme="https://373005226.github.io/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>梯子的安装和使用</title>
-    <link href="https://373005226.github.io/2019/10/23/ti-zi/"/>
-    <id>https://373005226.github.io/2019/10/23/ti-zi/</id>
-    <published>2019-10-23T02:13:59.136Z</published>
-    <updated>2019-10-29T01:53:27.194Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;ubuntu的SSR部署和使用&quot;&gt;&lt;a href=&quot;#ubuntu的SSR部署和使用&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>docker的安装</title>
-    <link href="https://373005226.github.io/2019/10/22/docker-de-an-zhuang/"/>
-    <id>https://373005226.github.io/2019/10/22/docker-de-an-zhuang/</id>
-    <published>2019-10-22T07:38:02.613Z</published>
-    <updated>2019-11-01T08:19:06.986Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;docker是什么&quot;&gt;&lt;a href=&quot;#docker是什么&quot; class=&quot;headerlink&quot; title=&quot;docker是什么&quot;&gt;&lt;/a&gt;docker是什么&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;参考文章地址： &lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="docker" scheme="https://373005226.github.io/tags/docker/"/>
     
   </entry>
   
