@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2019-12-29T04:52:32.302Z</updated>
+  <updated>2020-01-04T06:09:58.663Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Vuex</title>
+    <link href="https://373005226.github.io/2020/01/01/vuex/"/>
+    <id>https://373005226.github.io/2020/01/01/vuex/</id>
+    <published>2020-01-01T14:07:39.983Z</published>
+    <updated>2020-01-04T06:09:58.663Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Vuex是什么&quot;&gt;&lt;a href=&quot;#Vuex是什么&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://373005226.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Vue" scheme="https://373005226.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
     <title>v-router详解</title>
     <link href="https://373005226.github.io/2019/12/27/vue-router/"/>
     <id>https://373005226.github.io/2019/12/27/vue-router/</id>
     <published>2019-12-27T07:06:35.531Z</published>
-    <updated>2019-12-29T04:52:32.302Z</updated>
+    <updated>2020-01-01T14:16:26.378Z</updated>
     
     <summary type="html">
     
@@ -555,33 +582,6 @@
       <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
     
       <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx反向代理</title>
-    <link href="https://373005226.github.io/2019/10/24/nginx-fan-xiang-dai-li/"/>
-    <id>https://373005226.github.io/2019/10/24/nginx-fan-xiang-dai-li/</id>
-    <published>2019-10-24T07:36:23.093Z</published>
-    <updated>2019-10-24T08:53:07.625Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Nginx" scheme="https://373005226.github.io/tags/Nginx/"/>
     
   </entry>
   

@@ -4,9 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Restframework之权限设置, 懒惰小L的博客">
-    <meta name="description" content="第一步：增加显示操作人查看API的这个界面默认是要登陆的，因为我上面我使用了admin账号去登陆，所以i才可以显示这个页面
-但是默认的是所有账号登陆进去都可以对API进行增删改查，这个完全不符合逻辑。正常的逻辑是谁创建的才能谁去改，没有身份">
+    <meta name="keywords" content="Vuex, 懒惰小L的博客">
+    <meta name="description" content="Vuex是什么Vuex在很多网站讲解都是状态管理工具，这个说白了其实就是如果有很多个组件需要传递变量，可以通过Vuex来存储这些变量，也就是说Vuex就是存储全局变量的地方
+如果两个组件之间变量状态传递，那么可以通过props传递，如果是有">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Restframework之权限设置 | 懒惰小L的博客</title>
+    <title>Vuex | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -300,13 +300,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Restframework之权限设置
+                        Vuex
                     </div>
                 </div>
             </div>
@@ -398,12 +398,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Django/" target="_blank">
-                                <span class="chip bg-color">Django</span>
-                            </a>
-                        
-                            <a href="/tags/Restful/" target="_blank">
-                                <span class="chip bg-color">Restful</span>
+                            <a href="/tags/Vue/" target="_blank">
+                                <span class="chip bg-color">Vue</span>
                             </a>
                         
                     </div>
@@ -414,8 +410,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                后端
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                前端
                             </a>
                         
                     </div>
@@ -426,21 +422,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-31
+                    2020-01-01
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.2k
+                        2.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        7 分
                     </div>
                     
                 
@@ -456,111 +452,235 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="第一步：增加显示操作人"><a href="#第一步：增加显示操作人" class="headerlink" title="第一步：增加显示操作人"></a>第一步：增加显示操作人</h2><p>查看<code>API</code>的这个界面默认是要登陆的，因为我上面我使用了<code>admin</code>账号去登陆，所以i才可以显示这个页面</p>
-<p>但是默认的是所有账号登陆进去都可以对<code>API</code>进行增删改查，这个完全不符合逻辑。正常的逻辑是谁创建的才能谁去改，没有身份验证进去的只能读取操作。 </p>
-<p>如图，是我去数据库把我的<code>session</code>信息删掉之后再查看API的结果</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/image-20191031103421125.png" alt></p>
-<p>依照官网的文档演示步骤，要先在<code>model</code>创建一个外键字段</p>
-<pre class=" language-python"><code class="language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token keyword">class</span> <span class="token class-name">Publish</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    name<span class="token operator">=</span>models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span>verbose_name<span class="token operator">=</span><span class="token string">"出版社名称"</span><span class="token punctuation">,</span>unique<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-    address<span class="token operator">=</span>models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">128</span><span class="token punctuation">,</span>verbose_name<span class="token operator">=</span><span class="token string">"地址"</span><span class="token punctuation">)</span>
-    operator <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span><span class="token string">'auth.User'</span><span class="token punctuation">,</span> on_delete<span class="token operator">=</span>models<span class="token punctuation">.</span>CASCADE<span class="token punctuation">)</span>
-
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<p>因为添加了一个字段，所以要进行数据库的迁移：<code>makemigrations</code> -&gt; <code>migrate</code></p>
-<p>这里因为添加了一个字段，而之前的字段没有这个字段的默认值，所以会出现错误，要把默认值赋值为1即可</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/image-20191031104219944.png" alt></p>
-<p>使用如上操作之后在数据库就已经生成了新的<code>operator</code>字段了，所以接下来要对序列化的文件也添加这个字段</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Publishserializer</span><span class="token punctuation">(</span>serializers<span class="token punctuation">.</span>ModelSerializer<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
-        model<span class="token operator">=</span>Publish
-        fields<span class="token operator">=</span><span class="token punctuation">(</span>
-            <span class="token string">"id"</span><span class="token punctuation">,</span>
-            <span class="token string">"name"</span><span class="token punctuation">,</span>
-            <span class="token string">"address"</span><span class="token punctuation">,</span>
-            <span class="token string">"operator"</span>
-        <span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<p>再登陆<code>admin</code>账号查看<code>API</code>得到的结果应该如下：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/image-20191031104640419.png" alt></p>
-<p>这个得到的<code>operator</code>的结果都为<code>1</code>是当然没问题的，<code>ID</code>为<code>1</code>就是代表<code>admin</code>账号，但是我们要显示的是这个<code>ID</code>的用户名</p>
-<p>所以我们要在序列化文件里面添加字段：<code>operator=serializers.ReadOnlyField(source=&quot;operator.username&quot;)</code></p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Publishserializer</span><span class="token punctuation">(</span>serializers<span class="token punctuation">.</span>ModelSerializer<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    operator<span class="token operator">=</span>serializers<span class="token punctuation">.</span>ReadOnlyField<span class="token punctuation">(</span>source<span class="token operator">=</span><span class="token string">"operator.username"</span><span class="token punctuation">)</span>
-    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
-        model<span class="token operator">=</span>Publish
-        fields<span class="token operator">=</span><span class="token punctuation">(</span>
-            <span class="token string">"id"</span><span class="token punctuation">,</span>
-            <span class="token string">"name"</span><span class="token punctuation">,</span>
-            <span class="token string">"address"</span><span class="token punctuation">,</span>
-            <span class="token string">"operator"</span>
-        <span class="token punctuation">)</span></code></pre>
-<h2 id="第二步：权限设置"><a href="#第二步：权限设置" class="headerlink" title="第二步：权限设置"></a>第二步：权限设置</h2><p>关于权限设置在官网都有详细的说明</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/image-20191031105427042.png" alt="权限说明文档"></p>
-<p>依照文档的说法，我们要在视图文件里面添加一个字段，使得未登录的用户只具有读取权限，登录的用户才具有读写权限：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> rest_framework <span class="token keyword">import</span> permissions
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token keyword">class</span> <span class="token class-name">Publish_list</span><span class="token punctuation">(</span>generics<span class="token punctuation">.</span>ListCreateAPIView<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    queryset <span class="token operator">=</span> Publish<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    serializer_class <span class="token operator">=</span> Publishserializer
-    permission_classes <span class="token operator">=</span> <span class="token punctuation">(</span>permissions<span class="token punctuation">.</span>IsAuthenticatedOrReadOnly<span class="token punctuation">,</span><span class="token punctuation">)</span>
-
-<span class="token keyword">class</span> <span class="token class-name">PublisherDetail</span><span class="token punctuation">(</span>generics<span class="token punctuation">.</span>RetrieveUpdateDestroyAPIView<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    queryset <span class="token operator">=</span> Publish<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    serializer_class <span class="token operator">=</span> Publishserializer
-    permission_classes <span class="token operator">=</span> <span class="token punctuation">(</span>permissions<span class="token punctuation">.</span>IsAuthenticatedOrReadOnly<span class="token punctuation">,</span><span class="token punctuation">)</span></code></pre>
-<p>去演示一下，会发现未登录用户只有读取权限，登陆的用户才有写权限</p>
-<p>这个<code>permissions</code>字段有好几种，在文档的API的权限设置详细文档里面有说明</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/image-20191031110534344.png" alt="权限设置详细文档"></p>
-<p>在这里因为我要设置的是谁录入的<code>API</code>谁才具有读写权限，所以这里我要用的是<a href="http://www.sinodocs.cn/tutorial/4-authentication-and-permissions.html#object-level-permissions" target="_blank" rel="noopener">对象级别权限</a></p>
+                <h2 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h2><p><code>Vuex</code>在很多网站讲解都是状态管理工具，这个说白了其实就是如果有很多个组件需要传递变量，可以通过<code>Vuex</code>来存储这些变量，<strong>也就是说Vuex就是存储全局变量的地方</strong></p>
+<p>如果两个组件之间变量状态传递，那么可以通过<code>props</code>传递，如果是有很多个组件或者组件之间没有联系的话，通过<code>props</code>传递就会很麻烦</p>
+<p>这个一般是创建一个文件夹，里面创建一个<code>js</code>文件去填写配置</p>
 <p>如图所示：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/image-20191031111206500.png" alt></p>
-<p>依照文档的说法，我们要新建一个<code>permissions.py</code>文件</p>
-<p><strong>permissions.py</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> rest_framework <span class="token keyword">import</span> permissions
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101224536.png" alt></p>
+<p>然后在编写文件之后要去<strong>main.js</strong>挂载才能正常使用</p>
+<p>顺带一提，在<strong>main.js</strong>挂载其实本质就是在<strong>main.js</strong>执行</p>
+<pre><code>Vue.prototype.$store = store</code></pre><h2 id="Vue的单一状态树"><a href="#Vue的单一状态树" class="headerlink" title="Vue的单一状态树"></a>Vue的单一状态树</h2><p>Vue单一状态树其实就是个单一数据源，通俗的讲就是所有数据都只有一个数据源提交。</p>
+<p>如果拿生活中的例子就是，按照以前的公积金政策，每个档案的信息都是分布的，个人档案分到个人档案管理中心，社保分在社保局。但是如果要换个城市入户的话，就要在哪个城市每个地方都提交一份档案，最后再去一个地方提交所有信息，如果有一个部门的信息错误就要回去重新提交一份，原本的方法显得十分的低效。如果换成代码的话，那么就是如果状态信息都保存到多个Store对象中，那么之后的维护和管理都是十分的困难的。</p>
+<p>这也就是我们国家正在完善公积金系统，无论是有多少个城市的公积金，都可以在一个城市里面办理，放在state里面也就是说，无论是有多少个仓库信息，都只调用一个state。无论多少个方法属性都只在一个store存放</p>
+<p>也就是说无论有多少个数据，都只建议创建一个store</p>
+<h2 id="Vuex的结构"><a href="#Vuex的结构" class="headerlink" title="Vuex的结构"></a>Vuex的结构</h2><p>一般的话默认是有如下结构的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101231128.png" style="zoom:67%;">
 
 
-<span class="token keyword">class</span> <span class="token class-name">IsOwnerOrReadOnly</span><span class="token punctuation">(</span>permissions<span class="token punctuation">.</span>BasePermission<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
-    自定义权限只允许对象的权限来去编辑他
-    """</span>
 
-    <span class="token keyword">def</span> <span class="token function">has_object_permission</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> request<span class="token punctuation">,</span> view<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment" spellcheck="true"># 读取权限允许任何请求</span>
-        <span class="token comment" spellcheck="true"># 所以我们总是允许Get，HEAD和OPTIONS请求</span>
-        <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token keyword">in</span> permissions<span class="token punctuation">.</span>SAFE_METHODS<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">True</span>
+<h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><p>这个就是存储全局变量的地方了</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101231403.png" style="zoom:67%;">
 
-        <span class="token comment" spellcheck="true"># 只有该出版社的所有者才允许去读写</span>
-        <span class="token keyword">return</span> obj<span class="token punctuation">.</span>operator <span class="token operator">==</span> request<span class="token punctuation">.</span>user</code></pre>
-<p>然后再去视图函数里面继承<code>permissions</code>的这个类</p>
-<p> 之后我们再去创建一个管理员账号<code>admin2</code>看看能不能修改<code>admin</code>的API</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191121111047.png" alt="随便找的图"></p>
-<p>哦吼，大功告成</p>
-<h2 id="第三步：新建保存operator值的方法"><a href="#第三步：新建保存operator值的方法" class="headerlink" title="第三步：新建保存operator值的方法"></a>第三步：新建保存operator值的方法</h2><p>还有最后的一个问题，假如我们新建一个用户，就拿刚刚创建的<code>admin2</code>来说，我创建一个新的<code>API</code>数据，但是我的<code>operator</code>的<code>ID</code>是没有的。</p>
-<p>我之前创建的<code>admin</code>账号是我模型迁移之前设置了默认的值<code>1</code>，但是我新创建的<code>admin2</code>没有<code>operator</code>的值，所以我们还要创建一个类方法去编写</p>
-<p>我通俗的将不太好懂，这个原理如下：</p>
-<p>使用<code>post</code>去创建一个新的<code>API</code>的时候是通过序列化去添加的，而我的序列化代码如下</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191031113938.png" alt></p>
-<p>序列化没有自己的<code>save</code>方法，默认存储方法是在<code>ModelSerializer</code>里面的，也就是在<code>Model</code>里面保存，但是我新建的用户<code>admin2</code>添加一个字段，他的<code>operator_id</code>都不知道去哪里找，如果使用<code>admin2</code>去添加<code>API</code>数据的话，会出现如下情况：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/image-20191031114249204.png" alt></p>
-<p>对于这种情况，文档的说明如下：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191031114508.png" alt></p>
-<p>即是让我们在视图文件创建一个<code>.perform_create</code>方法</p>
-<p><strong>views.py</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Publish_list</span><span class="token punctuation">(</span>generics<span class="token punctuation">.</span>ListCreateAPIView<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    queryset <span class="token operator">=</span> Publish<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    serializer_class <span class="token operator">=</span> Publishserializer
-    permission_classes <span class="token operator">=</span> <span class="token punctuation">(</span>permissions<span class="token punctuation">.</span>IsAuthenticatedOrReadOnly<span class="token punctuation">,</span>IsOwnerOrReadOnly<span class="token punctuation">)</span>
+<p>如果在这里定义变量的话，那么如果要调用它的话，那么就要使用到<code>$store.state.变量</code></p>
+<p>调用方法如图所示：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101232112.png" style="zoom:67%;">
 
-    <span class="token keyword">def</span> <span class="token function">perform_create</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> serializer<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        serializer<span class="token punctuation">.</span>save<span class="token punctuation">(</span>operator<span class="token operator">=</span>self<span class="token punctuation">.</span>request<span class="token punctuation">.</span>user<span class="token punctuation">)</span></code></pre>
-<p>好了现在再去试一下使用admin2去post请求</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191031114833.png" alt></p>
-<p>完美，搞定</p>
-<h2 id="留坑"><a href="#留坑" class="headerlink" title="留坑"></a>留坑</h2><p>项目开发可能更多用到的是token验证，所以这里留个坑，到时候我做个项目案例回来填</p>
-<p>在项目开发中，实际上用到的是比如购物车结算，没有登录的用户是无法进行结算的，所以一般要使用json.token去编写</p>
+<h3 id="mutations"><a href="#mutations" class="headerlink" title="mutations"></a>mutations</h3><p>这个其实就相当于vue里面的methods方法</p>
+<h4 id="使用-store-state-counter改变值（错误写法）"><a href="#使用-store-state-counter改变值（错误写法）" class="headerlink" title="使用$store.state.counter改变值（错误写法）"></a>使用$store.state.counter改变值（错误写法）</h4><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101232500.png" alt="官方给出的图" style="zoom:67%;">
+
+<p>这个<code>devtools</code>是官方推出的插件，<strong>只要使用如上图的流程</strong>，使用这个插件可以跟踪到属性的更改</p>
+<p>比如一个案例：要使用<code>vuex</code>的属性去在页面显示加减法，如果使用如下方法的话，那么达到目的是肯定可以的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101233545.png" style="zoom:67%;">
+
+<p><code>vuex</code>的变量也可以跟着去修改</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101233519.png" style="zoom:67%;">
+
+
+
+<p>这个方法其实就是<code>state</code>和<code>Vue Components</code>之间互相改变，虽然是可以达到目的，但是这样就无法使用<code>devtools</code>工具去监听数据的改变了</p>
+<p>所以这个时候要使用<code>mutations</code>去改变<code>vuex</code>属性的值</p>
+<h4 id="使用mutations去改变值（正确写法）"><a href="#使用mutations去改变值（正确写法）" class="headerlink" title="使用mutations去改变值（正确写法）"></a>使用mutations去改变值（正确写法）</h4><p>先在Vuex里面定义方法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101234657.png" style="zoom:67%;">
+
+<p>然后在组件的使用方法如图</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101235100.png" style="zoom:67%;">
+
+<p>在组件内使用要使用到<code>this.$store.commit</code>去调用vuex的方法</p>
+<p>此时在<strong>devtools</strong>工具也能监听到属性的改变了</p>
+<h4 id="mutations传入一个参数"><a href="#mutations传入一个参数" class="headerlink" title="mutations传入一个参数"></a>mutations传入一个参数</h4><p>这里拿个案例来说明，这里需要在组件里面传入值的话，那么就可以在mutations里面添加一个形参</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102231831.png" style="zoom:67%;">
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102232128.png" style="zoom:67%;">
+
+
+
+<p>在组件内使用mutations方法的话跟emit方法一样的</p>
+<h4 id="mutations传入多个参数"><a href="#mutations传入多个参数" class="headerlink" title="mutations传入多个参数"></a>mutations传入多个参数</h4><p>传入对象的话方法还是一样的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102232705.png" style="zoom:67%;">
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102232735.png" style="zoom:67%;">
+
+<p>在组件的methods传入的值有个专属的名词叫<strong>payload：负载</strong></p>
+<h4 id="mutations的另外一种提交风格"><a href="#mutations的另外一种提交风格" class="headerlink" title="mutations的另外一种提交风格"></a>mutations的另外一种提交风格</h4><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102233351.png" style="zoom:67%;">
+
+<p>但是这种方法传递到vuex的值就不一样了，就不仅仅是一个数字了，而是一个对象，因为这个时候传入过去的就是一个payload对象了</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102233533.png" style="zoom:67%;">
+
+
+
+<h4 id="mutations响应规则"><a href="#mutations响应规则" class="headerlink" title="mutations响应规则"></a>mutations响应规则</h4><p>Vuex里面所有的state方法都是响应式的，只要state的数据发生了改变，那么Vue组件就会自动更新</p>
+<p>但是做到响应式有两个前提：</p>
+<ul>
+<li>在store里面定义好所需要的属性</li>
+<li>在state中对象添加属性的时候，使用如下的方式<ul>
+<li>方法1：使用Vue.set(obj,’newProp’,123)</li>
+<li>方法2：用新的对象给旧对象重新赋值</li>
+</ul>
+</li>
+</ul>
+<p>这里拿个案例来说明</p>
+<p>先定义一个新属性</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102234336.png" style="zoom:67%;">
+
+<p>在mutations中添加方法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102234527.png" style="zoom:67%;">
+
+
+
+
+
+<p>最后在组件内添加方法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102234741.png" style="zoom:50%;">
+
+<p>这样子的方法是属于响应式的，这个是每个对象都有一个Dep，一个Dep定义着好多个watcher，Dep来监听属性的变化</p>
+<p>Dep就是个观察者模式，先观看数据有没有变化，如果属性发生了变化，就会通知使用到该属性的地方发生改变</p>
+<p>如果里面修改的不是在state里面定义好的属性</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102235443.png" style="zoom:50%;">
+
+<p>position属性在state里面没有被定义，所以即便是添加了这个属性能在<strong>devtools</strong>工具监听到，也不能提交到响应式系统里面</p>
+<p>所以如果是要添加属性的话，最好是使用<code>Vue.set</code>方法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102235826.png" style="zoom:67%;">
+
+<p>相对应的，如果是要删除方法就使用<code>Vue.delete</code>方法</p>
+<h3 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h3><p>这个就相当于vue中的计算属性</p>
+<h4 id="只需要一个形参state"><a href="#只需要一个形参state" class="headerlink" title="只需要一个形参state"></a>只需要一个形参state</h4><p>这里做个案例，比如说是要做一个<code>counter</code>的平方</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102214303.png" style="zoom:67%;">
+
+<p>然后在组件中要引用的话，那么就直接使用</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104124900.png" alt></p>
+<p><code>getters</code>还可以做一些过滤功能，比如要过滤年龄大于20岁的数据</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102214939.png" style="zoom:67%;">
+
+
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102215037.png" style="zoom:67%;">
+
+
+
+<h4 id="有两个形参：state和getters"><a href="#有两个形参：state和getters" class="headerlink" title="有两个形参：state和getters"></a>有两个形参：state和getters</h4><p><code>getters</code>方法是有第二个形参的，第二个形参实际指向的是自己的<code>getters</code>方法</p>
+<p>比如要调用上述<code>more20stu</code>方法的个数</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102225448.png" style="zoom:67%;">
+
+
+
+<h4 id="需要在方法中传入值而非定义好的"><a href="#需要在方法中传入值而非定义好的" class="headerlink" title="需要在方法中传入值而非定义好的"></a>需要在方法中传入值而非定义好的</h4><p>如果是需要在组件中传入值，而非在getters里面写死的，那么这个需要在返回值里面定义一个函数，也就是闭包</p>
+<p>如果是需要改变通过组件里面传入数据来筛选大于年龄的范围的话，可以使用如下写法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102230326.png" style="zoom:67%;">
+
+
+
+<p>这个其实是可以简化为箭头函数的写法的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102230406.png" style="zoom:67%;">
+
+
+
+<h3 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h3><p><code>actions</code>就是异步方法，简单的说就是如果<code>mutations</code>里面有要异步操作的方法，比如网路请求等是异步操作的，官网给出的图是<code>actions</code>异步操作在<code>mutations</code>之前</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101232500.png" style="zoom:67%;">
+
+<p>如果在<code>mutations</code>直接去执行异步操作的话，因为不确定执行完的时间，所以如果是异步操作需要时间久的话就不会被<strong>devtools</strong>监听到，所以就有了<code>actions</code>方法，<code>mutations</code>会等待<code>actions</code>的操作执行完毕之后再继续往下走。</p>
+<p>其用法如下：</p>
+<h4 id="普通写法"><a href="#普通写法" class="headerlink" title="普通写法"></a>普通写法</h4><p><code>actions</code>里面默认的第一个形参就是<code>context</code></p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104123038.png" style="zoom:67%;">
+
+<p>在<code>actions</code>里面调用<code>mutations</code>里面的方法</p>
+<p>然后在组建中使用<code>dispatch</code>方法调用<code>actions</code>的方法就好了</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104123148.png" style="zoom:67%;">
+
+
+
+<h4 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h4><p>当然<code>actions</code>也是可以传递参数的，默认的第二个参数名是<code>payload</code></p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104123608.png" style="zoom:67%;">
+
+
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104123639.png" style="zoom:67%;">
+
+
+
+<h4 id="获取异步操作成功后的信息"><a href="#获取异步操作成功后的信息" class="headerlink" title="获取异步操作成功后的信息"></a>获取异步操作成功后的信息</h4><p>如果是要获取异步操作成功的信息的话</p>
+<p>使用如下写法也是可以的：</p>
+<h5 id="写法1："><a href="#写法1：" class="headerlink" title="写法1："></a>写法1：</h5><p>Vuex里面的方法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104125413.png" style="zoom:67%;">
+
+
+
+<p>组件中的方法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104125505.png" style="zoom:67%;">
+
+<p>但是上面的方法有点不好</p>
+<h5 id="写法2："><a href="#写法2：" class="headerlink" title="写法2："></a>写法2：</h5><p>vuex的写法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104125909.png" style="zoom:67%;">
+
+<p>组件中的写法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104125952.png" style="zoom:67%;">
+
+
+
+<h5 id="方法3（使用promise）："><a href="#方法3（使用promise）：" class="headerlink" title="方法3（使用promise）："></a>方法3（使用promise）：</h5><p>但是方法2的写法不够优雅</p>
+<p>Vuex的写法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104130901.png" style="zoom:67%;">
+
+
+
+<p>组件内的写法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104130714.png" style="zoom:67%;">
+
+<h3 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h3><p>modules方法就是如果所有的东西都往store里面塞，那么数量多的话就会显得很臃肿，但是因为单一状态树的原因只能创建一个store，所以vuex可以在store里面继续划分模块</p>
+<h4 id="使用modelA里面的state"><a href="#使用modelA里面的state" class="headerlink" title="使用modelA里面的state"></a>使用modelA里面的state</h4><p>使用方法如下：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104132122.png" style="zoom:67%;">
+
+<p>如果是<code>modelA</code>里面有个state属性的话，那么在组件中调用的方法如下：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104132311.png" style="zoom:67%;">
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104132437.png" style="zoom:67%;">
+
+<p>因为<code>modelA</code>最终会放在<code>store</code>的<code>state</code>里面</p>
+<h4 id="使用modelA里面的mutations"><a href="#使用modelA里面的mutations" class="headerlink" title="使用modelA里面的mutations"></a>使用modelA里面的mutations</h4><p>如果是在modelA里面定义一个方法的话</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104133005.png" style="zoom:67%;">
+
+
+
+<p>组件中的方法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104133247.png" style="zoom:67%;">
+
+<p>这个还是用以前的方法就好了，因为只要名字不是重复的，<code>commit</code>会去从<code>store</code>里面找，如果找不到再去看看<code>models</code>里面有没有这个方法</p>
+<h4 id="modelA里面的getter"><a href="#modelA里面的getter" class="headerlink" title="modelA里面的getter"></a>modelA里面的getter</h4><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104133556.png" style="zoom:67%;">
+
+<p>组件内的写法：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104133815.png" alt></p>
+<p>但是如<code>stote</code>的<code>getters</code>的话，是有一个<code>getters</code>形参的，这个形参是可以调用自己的<code>getters</code>方法的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104134106.png" style="zoom:67%;">
+
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104134142.png" alt></p>
+<p>如果是想引用<code>store</code>的<code>state</code>属性的话，那么可以引用第三个参数<code>rootState</code></p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104134539.png" style="zoom: 67%;">
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104134617.png" style="zoom:67%;">
+
+<h4 id="modelA里面的actions"><a href="#modelA里面的actions" class="headerlink" title="modelA里面的actions"></a>modelA里面的actions</h4><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104135150.png" style="zoom:67%;">
+
+
+
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104135350.png" alt></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><code>modelA</code>里面的所有方法的形参都是指向自己<code>modelA</code>里面的方法的</p>
+<h2 id="Vuex的文件结构"><a href="#Vuex的文件结构" class="headerlink" title="Vuex的文件结构"></a>Vuex的文件结构</h2><p><code>Vuex</code>的文件结构是一般都会把<code>state</code>的参数用对象传进去</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104140640.png" style="zoom:67%;">
+
+<p>然后<code>mutations</code>、<code>actions</code>、<code>getters</code>里面的方法，把方法写在新的一个文件导入即可</p>
+<p>比如<code>mutations</code></p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104140810.png" style="zoom:67%;">
+
+<p>如果是<code>model</code>里面的方法，就新建一个<code>model</code>文件夹，里面存放<code>store</code>的<code>model</code>方法即可</p>
 
             </div>
             <hr/>
@@ -701,7 +821,7 @@
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/10/31/restframework-shen-fen-yan-zheng/" class="b-link-green">Restframework之权限设置</a>
+                    <a href="/2020/01/01/vuex/" class="b-link-green">Vuex</a>
                 </p>
             </div>
         </div>
@@ -723,7 +843,7 @@
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-10-31T11-14-31',
+        id: '2020-01-01T22-07-39',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -744,49 +864,45 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/31/restframework-chao-lian-jie-api/">
+                <a href="/2020/01/01/vuex/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Restframework之超链接API">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Vuex">
                         
-                        <span class="card-title">Restframework之超链接API</span>
+                        <span class="card-title">Vuex</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">演示前配置拿外键的例子来说，Book的外键是Publish，点击Book的超链接API就可以访问到外键的Publish
-为了方便演示，我这里我就创建一个新的表Book，添加一个model字段
-models.py
-class Book(mod</div>
+                    <div class="summary">Vuex是什么Vuex在很多网站讲解都是状态管理工具，这个说白了其实就是如果有很多个组件需要传递变量，可以通过Vuex来存储这些变量，也就是说Vuex就是存储全局变量的地方
+如果两个组件之间变量状态传递，那么可以通过props传递，如果是有</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                    后端
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                    前端
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Django/" target="_blank">
-                        <span class="chip bg-color">Django</span>
-                    </a>
-                    
-                    <a href="/tags/Restful/" target="_blank">
-                        <span class="chip bg-color">Restful</span>
+                    <a href="/tags/Vue/" target="_blank">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>
@@ -800,29 +916,32 @@ class Book(mod</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/30/restframework-lei-shi-tu-bian-xie/">
+                <a href="/2019/12/27/vue-router/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Restframework之类视图的编写">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="v-router详解">
                         
-                        <span class="card-title">Restframework之类视图的编写</span>
+                        <span class="card-title">v-router详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Restframework请求和响应Restframework扩展了Django默认的 Request 对象，提供了更加的灵活解析，除此之外Restframework还引入了一个 Response响应对象和状态码，如翻译文档截图所示：
+                    <div class="summary">
+如下代码全部是在vue-cli2版本编写
 
-状</div>
+vue-router的安装vue-router是官方推荐的路由插件，官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌
+使用命令
+npm install vue-</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-30
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/后端/" class="post-category" target="_blank">
-                                    后端
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                    前端
                                 </a>
                             
                             
@@ -832,12 +951,8 @@ class Book(mod</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Django/" target="_blank">
-                        <span class="chip bg-color">Django</span>
-                    </a>
-                    
-                    <a href="/tags/Restful/" target="_blank">
-                        <span class="chip bg-color">Restful</span>
+                    <a href="/tags/Vue/" target="_blank">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>
