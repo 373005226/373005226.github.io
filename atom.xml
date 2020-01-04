@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2020-01-04T06:09:58.663Z</updated>
+  <updated>2020-01-04T10:17:16.331Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>axios</title>
+    <link href="https://373005226.github.io/2020/01/04/axios/"/>
+    <id>https://373005226.github.io/2020/01/04/axios/</id>
+    <published>2020-01-04T08:07:59.256Z</published>
+    <updated>2020-01-04T10:17:16.331Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;axios&quot;&gt;&lt;a href=&quot;#axios&quot; class=&quot;headerlink&quot; title=&quot;axios&quot;&gt;&lt;/a&gt;axios&lt;/h2&gt;&lt;p&gt;axios这个方法十分的简单，都是如如下形式&lt;/p&gt;
+&lt;pre class=&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://373005226.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Vue" scheme="https://373005226.github.io/tags/Vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Vuex</title>
@@ -540,36 +568,6 @@
         
         
           &lt;h2 id=&quot;Restframework请求和响应&quot;&gt;&lt;a href=&quot;#Restframework请求和响应&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
-    
-      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Restframework之入门</title>
-    <link href="https://373005226.github.io/2019/10/29/restframework-ru-men/"/>
-    <id>https://373005226.github.io/2019/10/29/restframework-ru-men/</id>
-    <published>2019-10-29T05:44:59.679Z</published>
-    <updated>2019-10-31T08:37:49.089Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;官方文档（英文）： &lt;a href=&quot;https://www.django-rest-framework.org/&quot; target=&quot;_blank&quot;
         
       
     

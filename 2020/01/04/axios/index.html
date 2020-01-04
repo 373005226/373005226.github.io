@@ -4,13 +4,18 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="v-for里面的:key作用, 懒惰小L的博客">
-    <meta name="description" content="性能优化问题v-for里面有个key属性，这里拿个案例来说明
-&amp;lt;!DOCTYPE html&gt;
-&amp;lt;html&gt;
-    &amp;lt;head&gt;
-        &amp;lt;meta charset=&#34;utf-8&#34;&gt;
-        &amp;lt;">
+    <meta name="keywords" content="axios, 懒惰小L的博客">
+    <meta name="description" content="axiosaxios这个方法十分的简单，都是如如下形式
+axios({
+  url:&#39;&#39;,
+  method:&#39;get&#39;,
+  params:{
+
+  }
+}).then(res=&gt;{
+  console.log(res)
+})
+axios">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +23,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>v-for里面的:key作用 | 懒惰小L的博客</title>
+    <title>axios | 懒惰小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -304,13 +309,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        v-for里面的:key作用
+                        axios
                     </div>
                 </div>
             </div>
@@ -426,21 +431,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-19
+                    2020-01-04
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        728
+                        823
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -456,77 +461,158 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="性能优化问题"><a href="#性能优化问题" class="headerlink" title="性能优化问题"></a>性能优化问题</h2><p>v-for里面有个key属性，这里拿个案例来说明</p>
-<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>app<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
-            <span class="token comment" spellcheck="true">&lt;!-- app.movie.splice(2,0,'异度空间')  --></span>
-            <span class="token comment" spellcheck="true">&lt;!-- 默认的插入算法是如果要在第二个插入新的值，就把新的值的ID改成2，第三个原来的ID改为原来的第二个值，依次替换下去，效率极低 --></span>
-            <span class="token comment" spellcheck="true">&lt;!-- 使用diff算法效率才是最高的，也就是在第二个插入的数据他的ID是7，时间复杂度就是O(1) --></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
-                <span class="token comment" spellcheck="true">&lt;!-- key里面数据一定要保证唯一性，要与值一一对应 --></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>(item,index) in movie<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-                    {{item}}
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>../js/vue.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
-            <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-                el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
-                data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-                    movie<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'霸王别姬'</span><span class="token punctuation">,</span> <span class="token string">'阿飞正传'</span><span class="token punctuation">,</span> <span class="token string">'胭脂扣'</span><span class="token punctuation">,</span> <span class="token string">'英雄本色'</span><span class="token punctuation">,</span> <span class="token string">'新上海滩'</span><span class="token punctuation">,</span> <span class="token string">'东邪西毒'</span><span class="token punctuation">,</span> <span class="token string">'倩女幽魂'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                    cindex<span class="token punctuation">:</span> <span class="token number">0</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span>
-        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+                <h2 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h2><p>axios这个方法十分的简单，都是如如下形式</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">''</span><span class="token punctuation">,</span>
+  method<span class="token punctuation">:</span><span class="token string">'get'</span><span class="token punctuation">,</span>
+  params<span class="token punctuation">:</span><span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>axios默认是get请求，params是get请求附带的参数，如果是post请求的话参数就放在data里面</p>
+<h2 id="axios-all"><a href="#axios-all" class="headerlink" title="axios.all"></a>axios.all</h2><p>这个是如果要两个或者以上的请求都完成后再进行下一步</p>
+<pre class=" language-js"><code class="language-js">axios<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span> <span class="token string">''</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">''</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>splice(2,0,’异度空间’)的意思就是从下标为2后面插入异度空间</p>
-<p>Vue渲染页面是通过一个虚拟DOM间接去去渲染页面的，大概的结构图如下：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191219220248.png" alt></p>
-<p><strong>中间的就是虚拟DOM，如果要从下标2开始直接插入的话，那么从第二个开始的下标就会发生改变，新插入的值变成下标3，剩下的下标依次往下重新排序，这样的时间复杂度极大。</strong></p>
-<p>最理想的排序应该是新插入的值以新的下标去排序，如图：</p>
-<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191219220526.png" alt></p>
-<p>这样时间复杂度就为1，这个可以通过<code>diff</code>算法来实现这个目的，在代码中实现也就是要在每个for循环里面添加一个<code>:key</code>，这个值要为遍历循环的值，比如代码所示：</p>
-<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>app<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
-            <span class="token comment" spellcheck="true">&lt;!-- app.movie.splice(2,0,'异度空间')  --></span>
-            <span class="token comment" spellcheck="true">&lt;!-- 默认的插入算法是如果要在第二个插入新的值，就把新的值的ID改成2，第三个原来的ID改为原来的第二个值，依次替换下去，效率极低 --></span>
-            <span class="token comment" spellcheck="true">&lt;!-- 使用diff算法效率才是最高的，也就是在第二个插入的数据他的ID是7，时间复杂度就是O(1) --></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
-                <span class="token comment" spellcheck="true">&lt;!-- key里面数据一定要保证唯一性，要与值一一对应 --></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>(item,index) in movie<span class="token punctuation">"</span></span> <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-                    {{item}}
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>../js/vue.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
-            <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-                el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
-                data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-                    movie<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'霸王别姬'</span><span class="token punctuation">,</span> <span class="token string">'阿飞正传'</span><span class="token punctuation">,</span> <span class="token string">'胭脂扣'</span><span class="token punctuation">,</span> <span class="token string">'英雄本色'</span><span class="token punctuation">,</span> <span class="token string">'新上海滩'</span><span class="token punctuation">,</span> <span class="token string">'东邪西毒'</span><span class="token punctuation">,</span> <span class="token string">'倩女幽魂'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                    cindex<span class="token punctuation">:</span> <span class="token number">0</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span>
-        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+<h2 id="axios-spread"><a href="#axios-spread" class="headerlink" title="axios.spread"></a>axios.spread</h2><p>spread是对结果的延展</p>
+<p>这里写一个案例</p>
+<pre class=" language-js"><code class="language-js">axios<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'http://101.200.180.194:8000/goods/'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'http://101.200.180.194:8000/category/'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>如果是如上的写法的话，得到的结果是</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104170932.png" alt></p>
+<p>spread的功能就是</p>
+<pre class=" language-js"><code class="language-js">axios<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'http://101.200.180.194:8000/goods/'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'http://101.200.180.194:8000/category/'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>axios<span class="token punctuation">.</span><span class="token function">spread</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res1<span class="token punctuation">,</span>res2<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res1<span class="token punctuation">)</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res2<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104171348.png" alt></p>
+<h2 id="axios全局配置"><a href="#axios全局配置" class="headerlink" title="axios全局配置"></a>axios全局配置</h2><p>比如axios在配置的时候有很多是重复的，比如超时时间、请求头、地址的重复字段如http:127.0.0.1等</p>
+<p>如果都重复写很臃肿，所以可以用default属性</p>
+<pre class=" language-js"><code class="language-js">axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>baseURL<span class="token operator">=</span><span class="token string">'http://101.200.180.194:8000/'</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>timeout<span class="token operator">=</span><span class="token number">5000</span>
+axios<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'goods'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'category'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>axios<span class="token punctuation">.</span><span class="token function">spread</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res1<span class="token punctuation">,</span>res2<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res1<span class="token punctuation">)</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res2<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>这样还是可以请求到结果的</p>
+<h2 id="axios的实例"><a href="#axios的实例" class="headerlink" title="axios的实例"></a>axios的实例</h2><p>这个还是上面的那个全局配置问题，如果项目里面有两个或者以上的不同配置，比如请求头的地址不一样，那么如果不用全局配置写法的话，那么就会很多重复，如果用了全局配置的话，那么剩下的不同配置的文件就会报错</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> instance1 <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseURL<span class="token punctuation">:</span><span class="token string">'http://101.200.180.194:8000/'</span><span class="token punctuation">,</span>
+  timeout<span class="token punctuation">:</span><span class="token number">5000</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">instance1</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'goods'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">instance1</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'category'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> instance2 <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseURL<span class="token punctuation">:</span><span class="token string">'http://127.0.0.1/'</span><span class="token punctuation">,</span>
+  timeout<span class="token punctuation">:</span><span class="token number">5000</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">instance2</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'person'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p><code>:key</code>里面的值要跟双括号里面的值一样，因为遍历的是item，所以<code>:key</code>的值也应该为item。这样就可以使用<code>diff</code>算法来优化代码了</p>
+<p>这样就可以有两个不同的配置了</p>
+<h2 id="axios的封装"><a href="#axios的封装" class="headerlink" title="axios的封装"></a>axios的封装</h2><p>axios如果是要使用的话要封装在一个包里面，如果使用的是如下的写法的话，那么如果axios不更新了或者是出现了什么大的bug，那么就要一个文件一个文件的修改</p>
+<h3 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h3><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104173614.png" style="zoom:67%;">
+
+<p>如上的写法是可以，而且很常见，比如在uniapp里面的写法什么的…….</p>
+<p>这些请求最好还是封装在一个包里面去调用，如果需要修改了，那么就可以只修改一个地方，就可以修改全局了</p>
+<p>通常用的都是如下的写法：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104174417.png" alt></p>
+<p>然后在组件中调用就是</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>request<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./API"</span>
+
+<span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'goods'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>res<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>err<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="方法2："><a href="#方法2：" class="headerlink" title="方法2："></a>方法2：</h3><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104174828.png" style="zoom:67%;">
+
+<p>组件内的方法：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>request<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./API"</span>
+
+<span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseConfig<span class="token punctuation">:</span><span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">failure</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h3 id="方法3："><a href="#方法3：" class="headerlink" title="方法3："></a>方法3：</h3><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104175237.png" style="zoom:67%;">
+
+<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>request<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./API"</span>
+
+<span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'goods'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>因为axios本身就是由promise构造的</p>
+<h3 id="最终写法："><a href="#最终写法：" class="headerlink" title="最终写法："></a>最终写法：</h3><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104175721.png" style="zoom:67%;">
+
+<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>request<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./API"</span>
+
+<span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span><span class="token string">'goods'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>因为在axios里面的<code>.then</code>、<code>.catch</code>都是多余的，instance的返回值本身就是promise</p>
+<h2 id="axios拦截器"><a href="#axios拦截器" class="headerlink" title="axios拦截器"></a>axios拦截器</h2><p>拦截器有<strong>在请求之前进行拦截、请求之后进行拦截、响应成功之前拦截、响应之后拦截</strong>这四种方法</p>
+<p>请求前拦截和请求后拦截：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104181544.png" style="zoom:67%;">
+
+<p>响应前拦截和响应后拦截：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104181630.png" style="zoom:67%;">
+
+<p>这个用于比如只需要返回res.data的值，就可以在响应前拦截中返回需要的值即可</p>
 
             </div>
             <hr/>
@@ -667,7 +753,7 @@
                     </span>
                     <a href="https://373005226.github.io" class="b-link-green">懒惰小L的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/12/19/v-for-de-key/" class="b-link-green">v-for里面的:key作用</a>
+                    <a href="/2020/01/04/axios/" class="b-link-green">axios</a>
                 </p>
             </div>
         </div>
@@ -689,7 +775,7 @@
         repo: '373005226.github.io',
         owner: '373005226',
         admin: "373005226",
-        id: '2019-12-19T17-21-49',
+        id: '2020-01-04T16-07-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -710,31 +796,36 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/12/19/shu-zu-zhong-de-xiang-ying-shi/">
+                <a href="/2020/01/04/axios/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Vue数组中的响应式">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="axios">
                         
-                        <span class="card-title">Vue数组中的响应式</span>
+                        <span class="card-title">axios</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">有响应式的方法Vue里面并不是所有修改值都有一个响应式
-这里先介绍有响应式的方法：
-&lt;!DOCTYPE html>
-&lt;html>
-    &lt;head>
-        &lt;meta charset="utf-8">
- </div>
+                    <div class="summary">axiosaxios这个方法十分的简单，都是如如下形式
+axios({
+  url:'',
+  method:'get',
+  params:{
+
+  }
+}).then(res=>{
+  console.log(res)
+})
+axios</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -747,6 +838,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -765,25 +857,21 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/19/computed/">
+                <a href="/2020/01/01/vuex/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="为什么要使用computed">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Vuex">
                         
-                        <span class="card-title">为什么要使用computed</span>
+                        <span class="card-title">Vuex</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">计算属性的基本使用计算属性在我们要拼接属性的时候可以用到，比如要拼接两个姓氏和名字
-&lt;!DOCTYPE html>
-&lt;html>
-    &lt;head>
-        &lt;meta charset="utf-8">
- </div>
+                    <div class="summary">Vuex是什么Vuex在很多网站讲解都是状态管理工具，这个说白了其实就是如果有很多个组件需要传递变量，可以通过Vuex来存储这些变量，也就是说Vuex就是存储全局变量的地方
+如果两个组件之间变量状态传递，那么可以通过props传递，如果是有</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-19
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-01
                             </span>
                         <span class="publish-author">
                             
