@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://373005226.github.io/"/>
-  <updated>2020-01-04T14:27:26.584Z</updated>
+  <updated>2020-01-12T08:50:14.965Z</updated>
   <id>https://373005226.github.io/</id>
   
   <author>
@@ -15,6 +15,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux服务器安装node环境</title>
+    <link href="https://373005226.github.io/2020/01/12/linux-fu-wu-qi-an-zhuang-node/"/>
+    <id>https://373005226.github.io/2020/01/12/linux-fu-wu-qi-an-zhuang-node/</id>
+    <published>2020-01-12T08:49:13.842Z</published>
+    <updated>2020-01-12T08:50:14.965Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;centos7安装node环境&quot;&gt;&lt;a href=&quot;#centos7安装node环境&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>mysql配置</title>
+    <link href="https://373005226.github.io/2020/01/12/mysql/"/>
+    <id>https://373005226.github.io/2020/01/12/mysql/</id>
+    <published>2020-01-12T08:43:12.291Z</published>
+    <updated>2020-01-12T08:43:13.587Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;linux服务器重置mysql命令：&quot;&gt;&lt;a href=&quot;#linux服务器重置mysql命令：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>redis开启远程连接</title>
+    <link href="https://373005226.github.io/2020/01/12/redis-pei-zhi/"/>
+    <id>https://373005226.github.io/2020/01/12/redis-pei-zhi/</id>
+    <published>2020-01-12T08:43:12.280Z</published>
+    <updated>2020-01-12T08:44:34.239Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;redis配置远程连接&quot;&gt;&lt;a href=&quot;#redis配置远程连接&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://373005226.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>axios</title>
@@ -487,93 +562,6 @@
 &lt;p&gt;视图集这个其实用不用意义不大，文档中做了一个亲切的比喻，就像编写视图函数的时候是使用函数的形式去编写还是通过类视图的形式去编写一样，主要还是为了减少代码&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;视图集&quot;&gt;&lt;a href=&quot;#视图集&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
-    
-      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Restframework之超链接API</title>
-    <link href="https://373005226.github.io/2019/10/31/restframework-chao-lian-jie-api/"/>
-    <id>https://373005226.github.io/2019/10/31/restframework-chao-lian-jie-api/</id>
-    <published>2019-10-31T03:58:09.612Z</published>
-    <updated>2019-11-21T03:40:46.734Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;演示前配置&quot;&gt;&lt;a href=&quot;#演示前配置&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
-    
-      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Restframework之权限设置</title>
-    <link href="https://373005226.github.io/2019/10/31/restframework-shen-fen-yan-zheng/"/>
-    <id>https://373005226.github.io/2019/10/31/restframework-shen-fen-yan-zheng/</id>
-    <published>2019-10-31T03:14:31.653Z</published>
-    <updated>2019-11-21T03:21:27.654Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;第一步：增加显示操作人&quot;&gt;&lt;a href=&quot;#第一步：增加显示操作人&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="后端" scheme="https://373005226.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="Django" scheme="https://373005226.github.io/tags/Django/"/>
-    
-      <category term="Restful" scheme="https://373005226.github.io/tags/Restful/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Restframework之类视图的编写</title>
-    <link href="https://373005226.github.io/2019/10/30/restframework-lei-shi-tu-bian-xie/"/>
-    <id>https://373005226.github.io/2019/10/30/restframework-lei-shi-tu-bian-xie/</id>
-    <published>2019-10-30T08:00:26.594Z</published>
-    <updated>2019-10-31T06:50:38.874Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Restframework请求和响应&quot;&gt;&lt;a href=&quot;#Restframework请求和响应&quot; class=&quot;headerlink&quot;
         
       
     
