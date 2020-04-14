@@ -4,7 +4,7 @@ summary: collections模块里面有很多种python常用的数据结构
 date: 2019-10-18
 author: LY
 categories:
-    - python
+    - 后端
 tags:
     - 数据结构与算法
 ---

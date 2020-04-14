@@ -4,7 +4,7 @@ summary: enumerate函数就是为列表添加索引
 date: 2019-10-18
 author: LY
 categories:
-    - python
+    - 后端
 tags:
     - python语法
 ---
