@@ -21,7 +21,7 @@ tags:
 pip install djangorestframework 
 pip install markdown # Markdown 
 pip install django-filter # 可选 
-ip install coreapi # 可选
+pip install coreapi # 可选
 ```
 
 其次需要在`INSTALLED_APPS`添加`'rest_framework'`，因为`rest_framework`其实就是一个app，是把原本的http请求封装成一个自己的方式
@@ -100,25 +100,27 @@ ip install coreapi # 可选
 
 这里`is_vaild`方法是跟`Django`的`forms`表单验证一样的
 
-这里的request.data其实在Django里面是没有的，但是DRF进行了封装，无论用户是POST过来的数据还是什么，都会放在data里面，这样取的数据就会很统一，不用再去判断什么get、post方法
+这里的`request.data`其实在`Django`里面是没有的，但是`DRF`进行了封装，无论用户是`POST`过来的数据还是什么，都会放在`data`里面，这样取的数据就会很统一，不用再去判断什么`get、post`方法
 
 ### USing mixins
 
 ![图12](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415173818.png)
 
-这里是官方文档介绍的方法，其中`GenericAPIView`的源码如图：
+这里是官方文档介绍的方法，这里先介绍`generics.GenericAPIVie`的源码，源码如图：
 
 ![图13](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415174124.png)
 
-他是继承于`APIView`的，`APIView`是DRF的东西，其中`APIView`又继承与Django的`View`
+他是继承于`APIView`的，`APIView`是`DRF`的东西，其中`APIView`又继承与`Django`的`View`
+
+此外这一层封装了很多东西，在下文有详细说明
 
 ![图14](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415180029.png)
 
-如图12所示，为什么还要重写get方法和post方法呢，因为点击`ListModelMixin`的源码可知：
+如图12所示，为什么还要重写`get`方法和`post`方法呢，因为点击`ListModelMixin`的源码可知：
 
 ![图15](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415174606.png)
 
-里面有一个list方法，所以在使用的时候是需要重写的单单定义一个`serializers_class`是没有用的，还需要重写对应的方法才可以使用，如果重写`get`方法的话就会出现如下错误：
+里面有一个list方法，所以在使用的时候是需要重写的单单定义一个`serializers_class`是没有用的，还需要重写对应的方法才可以使用，如果不重写`get`方法的话就会出现如下错误：
 
 ![不重写get方法的错误提示](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415174922.png)
 
@@ -126,7 +128,7 @@ ip install coreapi # 可选
 
 
 
-至此这里的方法已经很简单了，但是还是每个接口都需要调用一下get、psot等重复的字段，那么以下的方法更为的间接
+至此这里的方法已经很简单了，但是还是每个接口都需要调用一下`get、psot`等重复的字段，那么以下的方法更为的间接
 
 这里可以看一下源码的结构，打开源码后点开这里：
 
@@ -134,81 +136,87 @@ ip install coreapi # 可选
 
 ![图17:ListAPIView源码](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415180624.png)
 
-这里DRF又做了进一步的封装，原本需要重写get的方法，在这里已经重写了。这里就可以在views直接继承这个方法，而不用去重写原来的字段了，其余的post、put、delete三种方法也是一样的，即cbv的写法
+这里`DRF`又做了进一步的封装，原本需要重写`get`的方法，在这里已经重写了。这里就可以在`views`直接继承这个方法，而不用去重写原来的字段了，其余的`post、put、delete`三种方法也是一样的，即`cbv`的写法
 
 ### Using generic class-based views
 
-采用了图17的ListAPIView的写法后，只需要很少的代码就可以显示所有的结果了，如下图所示：
+采用了图17的`ListAPIView`的写法后，只需要很少的代码就可以显示所有的结果了，如下图所示：
 
 ![图18](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415181213.png)
 
 ## generics和ViewSets的结构区别
 
-generics的方法和viewsets的方法其实本质上是一样的，这里我来部署一下结构图：
+`generics`的方法和`viewsets`的方法其实本质上是一样的，这里我来部署一下结构图：
 
 ### generics结构图
 
-![viewsets第一层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095113.png)
-
-![viewsets第二层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095200.png)
-
-![viewsets第三层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095245.png)
-
-![viewsets第四层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095317.png)
-
-![viewsets第五层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095340.png)
-
-其中viewsets的前四层结构都是DRF封装好的，只有最后一层View是Django的，这里摆一下generics的结构图
-
-如果是要使用GenericAPIView，那么就跟图12一样，需要自己去重写get和post等方法，太多的重复，如下图所示：
-
-![GenericAPIView结构图](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416101327.png)
-
-如果是这样的话就要跟图12一样重写get和post方法。
+![generics第一层：引入generics](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416163708.png)
 
 
 
-如果是继承其他的方法的话，使用对应的方法就可以不用重写对应的代码，如下图所示：
+![generics第二层：重点！](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416163754.png)
 
-![ListAPIView结构图](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416103114.png)
+第二层是重点，因为这一层引入了很多功能，比如图中的`api_settings`，这个就是官网文档的默认的`DRF`配置，如下图所示：
 
-如图18一样只写`generics.ListAPIView`不用再去重写get方法就可以调用
+![DRF的默认配置](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416164327.png)
 
-当然每一个方法都要写一次的话代码肯定还是很多，这里也对方法做了一个整合
+此外可以看向`generics`第二层的其他结构
 
-![ListAPIView方法的整合](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416104417.png)
+![generics.GenericAPIView](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416164458.png)
 
-需要get、put、partch就可以使用这种集和的类
+这里先可以看到`generics`也是继承与`APIView`的
 
-然后最后在urls里面用正则表达式配置路径即可，如果是需要重写get等的方法，就可以使用generics
+此外因为`generics.GenericAPIView`是没有`get、post`等方法的，所以如果只是继承于`generics.GenericAPIView`，就要在`views`视图文件里面重写`get、post`等方法
+
+但是`generics`的其他方法就已经做好了这个功能，比如`generics.ListAPIView`如下图所示：
+
+![generics.ListAPIView](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416164701.png)
+
+这里`ListAPIView`就已经重写了`get`方法，所以在视图文件中就可以直接调用，如图18所示
+
+此外，还有其他的组合方法，需要什么方法都直接继承于一个组合类即可
+
+​	![组合方法](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416165258.png)
+
+这里继续看到第三层
+
+![generics第三层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416165427.png)
+
+![generics第四层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416165456.png)
+
+可以看出，最终的继承的类还是`django`的`view`
 
 ### ViewSets结构图
 
-generics是内部实现了get、post等方法，但是viewset不同，因为他内部没有去实现那些get、post等方法
+`generics`是内部除了`GenericAPIView`之外都实现了`get、post`等方法，但是`viewset`不同，因为他内部没有去实现那些`get、post`等方法
 
-这里直接摆viewsets结构图
+这里直接摆`viewsets`结构图
 
 ![viewsets第一层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416105906.png)
 
 ![重点！viewsets第二层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416105921.png)
 
-![重点！viewsets第二层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416110022.png)
+![重点！viewsets第二层的ViewSetMixin方法，详情见下文](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416110022.png)
 
 ![viewsets第三层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416105947.png)
 
 ![viewsets第四层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416105959.png)
 
-重点是viewsets第二层的ViewSetMixin方法，里面是没有实现get、post等方法的，具体如下：
+![viewsets第五层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416165651.png)
+
+无论`viewsets`还是generics，最终继承的都是Django的View
+
+重点是`viewsets`第二层的`ViewSetMixin`方法，里面是没有实现get、post等方法的，具体如下：
 
 ![ViewSetMixin方法详情](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416110129.png)
 
-所以如果是没有http的那五个方法的话，就需要在路由上设置，这里要重点看向as_view方法
+所以如果是没有`http`的那五个方法的话，就需要在路由上设置，这里要重点看向`as_view`方法，这个方法是编辑路由文件的重点
 
-至此都是使用视图的方法来创建API的，但是如果是要显示在url上的话，还需要进行路由的配置，这里有两种不同的方法
+上面所述都是使用视图的方法来创建`API`的，但是如果是要显示在`url`上的话，还需要进行路由的配置，这里有两种不同的方法
 
 #### 方法1：配置api_view来显示api
 
-在配置完viewset或者generics的视图代码后，我们要在路由显示可用的API，具体局部的实现看我[Restframework之超链接API]()这篇文章
+在配置完`viewset`或者`generics`的视图代码后，我们要在路由显示可用的API，具体局部的实现看我[Restframework之超链接API]()这篇文章
 
 #### 方法2：as_view配置API
 
