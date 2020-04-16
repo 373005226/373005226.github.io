@@ -1,19 +1,17 @@
 ---
-title: Restframework之基本配置
+title: 详解Restframework
 author: LY
-date: 2020-3-21
-summary: 介绍了Restframework的跨域、限速、缓存、自动生成文档、APIROOT等基本配置
+date: 2020-4-16
+summary: 介绍了Restframework的序列化、视图的结构
 categories:
     - 后端
 tags:
     - Django
     - Restful
-
 ---
 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里是对之前的restframwork的简述和对restframwork的部分功能配置做一个总结
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文的案例、讲解均为慕课网天天生鲜项目后的总结
-> 
 
 ## Restframwork的通用配置
 
@@ -144,80 +142,94 @@ ip install coreapi # 可选
 
 ![图18](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415181213.png)
 
-如果单单是只要get方法等，到这里就已经足够了，但是如果是需要分页等需求。
+## generics和ViewSets的结构区别
+
+generics的方法和viewsets的方法其实本质上是一样的，这里我来部署一下结构图：
+
+### generics结构图
+
+![viewsets第一层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095113.png)
+
+![viewsets第二层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095200.png)
+
+![viewsets第三层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095245.png)
+
+![viewsets第四层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095317.png)
+
+![viewsets第五层结构](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416095340.png)
+
+其中viewsets的前四层结构都是DRF封装好的，只有最后一层View是Django的，这里摆一下generics的结构图
+
+如果是要使用GenericAPIView，那么就跟图12一样，需要自己去重写get和post等方法，太多的重复，如下图所示：
+
+![GenericAPIView结构图](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416101327.png)
+
+如果是这样的话就要跟图12一样重写get和post方法。
 
 
 
+如果是继承其他的方法的话，使用对应的方法就可以不用重写对应的代码，如下图所示：
 
+![ListAPIView结构图](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416103114.png)
 
-## 分页
+如图18一样只写`generics.ListAPIView`不用再去重写get方法就可以调用
 
-### 全局分页配置
+当然每一个方法都要写一次的话代码肯定还是很多，这里也对方法做了一个整合
 
-点击restframwork的源码的setting.py文件，可以看到DRF的所有的配置，如下图所示：
+![ListAPIView方法的整合](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416104417.png)
 
-![图19：DRF的所有配置](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415182030.png)
+需要get、put、partch就可以使用这种集和的类
 
-这里可以看到分页的配置，如下图所示：
+然后最后在urls里面用正则表达式配置路径即可，如果是需要重写get等的方法，就可以使用generics
 
-![图20，分页配置](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415182236.png)
+### ViewSets结构图
 
-然后在项目的setting.py里面重新配置就可以配置全局分页了
+generics是内部实现了get、post等方法，但是viewset不同，因为他内部没有去实现那些get、post等方法
 
-![图21，全局分页配置](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415182332.png)
+这里直接摆viewsets结构图
 
-### 局部分页
+![viewsets第一层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416105906.png)
 
-但是不是所有的数据都是需要分页的，而且默认的分页的字段是叫`page`，分页是可以局部配置的，比如下图
+![重点！viewsets第二层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416105921.png)
 
-![图22 官网分页案例](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415184435.png)
+![重点！viewsets第二层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416110022.png)
 
-如案例的下图：
+![viewsets第三层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416105947.png)
 
-![使用案例图](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415201140.png)
+![viewsets第四层](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416105959.png)
 
-其中`page_size_query_param`就是配置显示多少条数据
+重点是viewsets第二层的ViewSetMixin方法，里面是没有实现get、post等方法的，具体如下：
 
-## viewsets
+![ViewSetMixin方法详情](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416110129.png)
 
-viewsets是比mixins更高级的写法，也是我经常使用的写法
+所以如果是没有http的那五个方法的话，就需要在路由上设置，这里要重点看向as_view方法
 
-点击查看里面结构的源码，如下图
+至此都是使用视图的方法来创建API的，但是如果是要显示在url上的话，还需要进行路由的配置，这里有两种不同的方法
 
-![图33 viewset.GenericViewSet源码](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415202205.png)
+#### 方法1：配置api_view来显示api
 
-点击`ViewSetMixin`一看，里面最重要的部分就是重写了`as_view`方法
+在配置完viewset或者generics的视图代码后，我们要在路由显示可用的API，具体局部的实现看我[Restframework之超链接API]()这篇文章
 
-![ViewSetMixin源码](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415202332.png)
+#### 方法2：as_view配置API
 
-如果是使用viewset的话，继承的`generics.GenericAPIView`里面没有get方法，所以这里要用回mixins的方法
+如图所示：
 
-如果只是把GenericAPIVIew和mixins写上去的话，是没办法吧两者绑定起来的：
+![as_view配置API](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416114450.png)
 
-![案例图](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415203721.png)
+这里需要一个方法一个视图的来配置，代码极为的复杂
 
+#### 方法3：使用路由器的方法来配置API
 
+这个才是最主要的写法，直接看图：
 
-把两者绑定起来有个很关键的步骤，这里看向官方文档：
+![路由器的写法](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416112831.png)
 
-这里需要在urls里面配置，这里配置有两种写法：
+这里就可以实现跟方法1和方法2同样的功能，但是却可以使用更少的代码来实现。
 
-### 方法1：一个个方法的绑定
+#### 总结
 
-即get对应list方法、post对应create方法
+这里就跟官网说的一样
 
-![官网文档方法1](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415204040.png)
+![官网文档总结](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200416113025.png)
 
-但是如果是这样写，那么在urls里面就会堆积大量的重复代码
-
-### 方法2：使用路由器的写法
-
-![官网文档方法2：路由器的写法](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415203928.png)
-
-
-
-所以最终的写法如下：
-
-![最终写法](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415203119.png)
-
-## ViewSets的好处
+如果是使用路由器的写法，代码更少；如果是使用as_view的写法的话结构更为清晰，只不过这里建议如果是要清晰的话建议使用swgger来编写开发文档呢，我认为开发速度和代码的简洁对于开发者来说是比较重要的，对于团队协作的话使用swgger来编写文档还可以写上自己的开发思路。
