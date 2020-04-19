@@ -208,11 +208,26 @@ profile:
 myProjects:
   enable: true
   data:
-    dailyfresh+xadmin	:
+    dailyfresh+xadmin:
       icon: fas fa-file-alt
       iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
       url: https://github.com/373005226/dailyfresh-xadmin
       desc: 这是一个基于Django的分布式网上商城,内容正在完善
+    shopping_admin:
+      icon: fas fa-shopping-cart	
+      iconBackground: 'linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)'
+      url: https://github.com/373005226/shopping_admin
+      desc: 这是一个超市的完整的后台管理界面，可以对商品进行增删改查、商品富文本的添加、优惠券的增加、评论的管理、员工信息的查看、目前正在完善和开发中
+    shop_online_backend:
+      icon: fas fa-shopping-cart
+      iconBackground: 'linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%)'
+      url: https://github.com/373005226/shop_online_backend
+      desc: 此项目为商城的后台系统，采用了Django+Django restframwork+Redis+Mysql来开发的，目前正在完善优惠券、历史浏览记录、websocket设置
+    shop_online_front:
+      icon: fas fa-shopping-cart	
+      iconBackground: 'linear-gradient(147deg, #FFE53B 0%, #FF2525 74%)'
+      url: https://github.com/373005226/shop_online_front
+      desc: 此项目为商城的前台，配合商城的后台、后台管理界面一起使用；使用了Vue cli3+elementui来设计
 
 # config my skills informations in about page.
 # If you don't want to display this `My Skills` content, you can deactivate or delete this configuration.
