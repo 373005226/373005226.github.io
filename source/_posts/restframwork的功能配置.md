@@ -347,7 +347,7 @@ DRF的文档倒是有详细的说明
 
 文档里面的sender指的是User，created指的是是否是新建的时候修改，这里肯定是新建用户的时候修改密码
 
-先创建一个signals.py的文件，依照文档的说明写
+先创建一个`signals.py`的文件，依照文档的说明写
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200419212958.png)
 
@@ -358,4 +358,294 @@ DRF的文档倒是有详细的说明
 
 
 
+
+## 用户收藏
+
+### 收藏功能
+
+用户收藏的话应该是只需要填写商品即可，用户的ID默认为当前登录的用户，文档有说明
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420115456.png)
+
+此时选择商品添加即可，不用再去选择是哪个用户
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420115545.png)
+
+### 判断是否已收藏
+
+一般情况下做出来的接口会是如下情况
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420120111.png)
+
+此时需要在model里面把用户和商品做一个联合唯一索引
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420120313.png)
+
+这条代码的意思就是如果记录重复了，数据库就会抛出异常，数据表的设计如下：
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420142521.png)
+
+再继续收藏的话那么就会报如下错误：
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420142610.png)
+
+在DRF里面也可以自定义
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420142906.png)
+
+两者可以都用也可以只用一个，DRF还可以自定义错误
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420143104.png)
+
+再继续收藏已收藏的商品就会报错
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420143204.png)
+
+此外，因为是联合查询，就要定义retrieve的查询字段，lookup_field，默认的查询是pk，这里指定为goods的id
+
+![](D:\workplace\blog\source\_posts\upload\image-20200421092529564.png)
+
+## 权限认证
+
+DRF有丰富的权限认证
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420144145.png)
+
+这里的第一个验证IsAuthenticated是验证用户是否登录，如果没有登录的话那么就返回一个401错误
+
+但是只有这个的话远远不够，需要自定义权限来判断删除的东西是属于自己的
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420145252.png)
+
+图中的第一个是白名单设置，第二个是自定义权限设置，这里直接采用第二个即可
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420145609.png)
+
+
+
+##  动态权限设置
+
+这里是用户注册的时候，这里可以有两种写法，一种是动态权限设置，一种是写两种的方法
+
+这里我选择的是第一种
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420153531.png)
+
+这里因为注册的话，那么肯定是不能要登录后才能注册的，如果是查看个人信息的话肯定是要登录后的，于是就是这样设置
+
+他源码的方法在`viewsets.GenericViewSet->GenericViewSet->GenericAPIView->APIView->get_permissions`
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200420153838.png)
+
+依照源码的方法所示：
+
+![](D:\workplace\blog\source\_posts\upload\image-20200420214016211.png)
+
+## 动态序列化设置
+
+源码地址为：`viewsets.GenericViewSet->generics.GenericAPIView->GenericAPIView->get_serializer_class`
+
+![image-20200420215012918](D:\workplace\blog\source\_posts\upload\image-20200420215012918.png)
+
+所以就可以重载这个函数
+
+![](D:\workplace\blog\source\_posts\upload\image-20200421091453768.png)
+
+这里的`self.actiion`是只有`viewsets`才有的
+
+## 购物车
+
+购物车其实是比较复杂的，如果使用之前的viewset和serializers的方法，那么如果购物车已存在商品，那么再加入购物车， 就会报错说商品已经存在，这里需要重写部分的方法来改变原来的功能
+
+比如说更新数据就是update、没有商品创建就是create，删除就是delete，展示就是list，已经把所有的方法都用上了
+
+首先用户和商品应构成一个联合唯一索引
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421134148.png)
+
+其次应该要进行验证，商品已存在应该是+1，而不是报错
+
+此时用的应该是serializers.Serializer方法
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421135024.png)
+
+这里goods是外键，但是官方文档那里写的是没有queryset的，因为官网文档使用的是ModelSerializer
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421135300.png)
+
+接下来要重写create方法，create方法分为两种情况，一种是从无到有，一种是有了继续增加
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421135910.png)
+
+这里create方法的validated_data，是序列化后的数据，initial_data就是没序列化之前的数据，这里的context["request"]是请求过来的数据
+
+接下来要判断数据是否已经存在于购物车表中
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421142326.png)
+
+先是判断如果存在，就取得第一条的数据，然后把数量+1
+
+如果是不存在，那么就创建一个新数据
+
+接下来视图函数也要加上
+
+```
+lookup_field = "goods_id"
+```
+
+因为详情修改的时候不是传入pk而是传入商品的ID才行
+
+此时还是不能进行更新操作的，会报错
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421143053.png)
+
+因为还没有重载update方法 ，为什么ModelSerializer不需要呢
+
+这里看向源码`Serializer->BaseSerializer->update`
+
+![image-20200421143630232](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421143631.png)
+
+而在ModelSerializer中`ModelSerializer->update`
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421143815.png)
+
+是重写了update各种方法的
+
+所以这里重写update方法
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421143914.png)
+
+instance就是ShoppingCart这个model的实例
+
+update方法在重写后就可以正常使用了
+
+delete方法是不需要自己去重写的
+
+## 订单
+
+订单的话首先考虑的是如何清除购物车的商品，现在视频设计的是把购物车全部清空，这个等我有空我要改回来
+
+视频中首先是把购物车的商品加到订单上，然后再把购物车的商品清空这两步
+
+这里首先设计的是要生成订单号，订单号不能冲突，不然的话支付宝返回的支付地址就会出错
+
+所以这里设计的是当前时间+随机数
+
+ 视频中建议在序列化文件中写
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421153047.png)
+
+ 
+
+然后使用validate方法
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421153703.png)
+
+在使用validate方法后
+
+![image-20200421153840088](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421153841.png)
+
+调用save就可以拿到order的实例了
+
+接下来就可以把购物车的数据加入到订单的商品表，并且在最后清除掉购物车的数据
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421154138.png)
+
+## 支付系统
+
+因为支付宝的文档规定了很多的东西，所以这里就需要使用APIView来开发
+
+get方法要处理支付宝返回的支付链接，post方法要处理支付宝的notift_url
+
+这里要先去验证函数是否能接收返回的信息
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421160930.png)
+
+这里要把app_notify_url和return_url都改成设置好的返回函数，也就是如下图
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421161244.png)
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421161315.png)
+
+先打断点看看函数是否可以接收到返回信息，再去写具体的业务逻辑
+
+支付后返回的断点查看信息，所有的数据都在post里面
+
+![image-20200421161514048](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421161514.png)
+
+## 商品的点击数的修改
+
+ 点击数的话，因为商品视图表继承了RetrieveModelMixin，只需要重写这个方法即可
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421164229.png)
+
+
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421164300.png)
+
+## 收藏数的修改
+
+方法1：
+
+在收藏商品操作中，重写mixins.CreateModelMixin的perform_create方法
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421183451.png)
+
+instance就是UserFav的实例
+
+方法2：
+
+其次还有一个信号量这个方法可以用，这个方法的代码分离性比较好
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421185927.png)
+
+## 修改购物车商品数量
+
+这里先要记录保存之前的数据，再和现在的数据进行比对
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421210750.png)
+
+## 商品销量增加
+
+商品销量增加肯定是在购买后才可以增加的，所以要在订单视图函数里面配置
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421211026.png)
+
+这里是反向查询数据的
+
+## 缓存设置
+
+部分页面的话不必要每次都查询数据库，Django本身是有个缓存机制的，DRF的缓存也是基于DJango的缓存机制开发的，但是这里不能直接拿Django的去用，因为Django的模板语言开发和前后端分离开发是有区别的，这里可以看向别人拓展的包
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421212938.png)
+
+只需要
+
+```
+from rest_framework_extensions.cache.mixins import CacheResponseMixin
+```
+
+然后把CacheResponseMixin放到继承的第一个类中即可
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421213250.png)
+
+这里已经是可以使用缓存了，但是这里最好还要配置一下redis作为缓存，因为这个默认方法是基于内存来缓存的，但是项目重启之后就失效了。这里还可以设置过期时间
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421213716.png)
+
+## 使用redis缓存
+
+ redis有更多的好处，比如如果只是在内存中存储，我们是看不到存储了什么的，如果是redis来存储的话可以看到更多的细节问题，比如请求列表的时候，缓存的是html还是json，比如说请求的参数不同对应的缓存是什么，通过redis的key就可以来看到
+
+ 使用Django redis的话需要用到一个第三方的库，是专门用来做Django的redis的
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421214333.png)
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421214805.png)
+
+第一步当然是安装Django-redis，然后开启redis
+
+接下来只需要把下面这段代码加入到setting里面就可以了
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421215003.png)
 
