@@ -649,3 +649,34 @@ from rest_framework_extensions.cache.mixins import CacheResponseMixin
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200421215003.png)
 
+## 限速问题
+
+为了防止恶意爬虫和DDOS攻击，要对数据进行一个限速，限速这个功能是DRF自带的
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200422091201.png)
+
+把这段代码加到restframwork的配置中
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200422091303.png)
+
+第一个是不登录也可以请求，第二个是登录后的请求
+
+这里可以定义单位为分钟、秒、小时、日期等
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200422091508.png)
+
+然后只需要导入包
+
+```python
+from rest_framework.throttling import UserRateThrottle,AnonRateThrottle #配置访问的速率
+```
+
+再配置throttle_classes即可
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200422091658.png)
+
+其内部实现原理如下：
+
+`AnonRateThrottle->SimpleRateThrottle->parse_rate`
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200422091810.png)
