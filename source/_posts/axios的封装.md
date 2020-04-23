@@ -2,10 +2,12 @@
 title: axios的封装
 summary: 根据看开源项目的代码来把axios封装成方法，可以大幅度的减少代码的复用
 date: 2020-03-21 15:06:00
+author: LY1
 categories:
     - 前端
 tags:
     - Vue
+reprintPolicy: 
 ---
 
 ## axios的封装

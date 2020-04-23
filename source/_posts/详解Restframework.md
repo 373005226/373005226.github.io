@@ -66,7 +66,7 @@ pip install coreapi # 可选
 
 这里的`objects`其实是`Model`的一个管理器，`create`只是其中的一个方法。`ModelSerializer`则是把常用的方法固定，如果要重写方法的话还是得用`serializers.Serializer`
 
-其中`create`方法和`update`方法里面的字段都是固定的写法的，重复代码太多
+其中`create`方法和`update`方法里面的字段都是固定的写法的，重复代码太多，这里的原理就跟`Django`的`forms`验证是一样的，重复的代码那么多可以简写，也就是`ModelSerializers`
 
 如果只是寻常的增删改查的功能的序列化的话，那么就可以把这些的配置转换为`ModelSerializer`
 
@@ -78,11 +78,11 @@ pip install coreapi # 可选
 
 一般的话是不需要使用`serializers.Serializer`的方式的，因为重复的代码太多。如果是一些需要特定的验证，比如：
 
-验证购物车：
+验证购物车（**需要获取到购物车的数据，如果商品存在于数据库，就取得第一个数据；商品如果没有存在于购物车中，就按照正常的存储**）：
 
 ![图8](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415164933.png)
 
-验证手机号：
+验证手机号（需要验证手机号发送的频率）：
 
 ![图9](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415165723.png)
 
@@ -106,6 +106,8 @@ pip install coreapi # 可选
 
 ![图12](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415173818.png)
 
+
+
 这里是官方文档介绍的方法，这里先介绍`generics.GenericAPIVie`的源码，源码如图：
 
 ![图13](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200415174124.png)
@@ -128,7 +130,7 @@ pip install coreapi # 可选
 
 
 
-至此这里的方法已经很简单了，但是还是每个接口都需要调用一下`get、psot`等重复的字段，那么以下的方法更为的间接
+至此这里的方法已经很简单了，但是还是每个接口都需要调用一下`get、psot`等重复的字段，那么以下的方法更为的简洁
 
 这里可以看一下源码的结构，打开源码后点开这里：
 
@@ -214,9 +216,11 @@ pip install coreapi # 可选
 
 上面所述都是使用视图的方法来创建`API`的，但是如果是要显示在`url`上的话，还需要进行路由的配置，这里有两种不同的方法
 
-#### 方法1：配置api_view来显示api
+### 配置路由的三种方法
 
-在配置完`viewset`或者`generics`的视图代码后，我们要在路由显示可用的API，具体局部的实现看我[Restframework之超链接API]()这篇文章
+#### 方法1：配置@api_view来显示api
+
+在配置完`viewset`或者`generics`的视图代码后，我们要在路由显示可用的API，具体局部的实现看我[gitee-Restframework之超链接API](https://liuyuan636.gitee.io/2019/10/31/restframework-chao-lian-jie-api/)或者是[github-Restframework之超链接API](https://373005226.github.io/2019/10/31/restframework-chao-lian-jie-api/)之超链接API这篇文章
 
 #### 方法2：as_view配置API
 

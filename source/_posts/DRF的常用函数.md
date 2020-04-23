@@ -1,7 +1,7 @@
 ---
-title: 毕业设计总结
+title: DRF的常用函数总结
 author: LY
-date: 2020-4-16
+date: 2020-4-22
 summary: 介绍了Restframework的各种细节
 categories:
     - 项目总结
