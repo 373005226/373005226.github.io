@@ -10,6 +10,8 @@ tags:
 ---
 
 > 本文转载于：https://github.com/haiiiiiyun/awesome-django-cn
+>
+> 需要采用最新的资源请到原文章查看
 
 # Django 优秀资源大全。
 

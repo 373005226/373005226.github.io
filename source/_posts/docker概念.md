@@ -1,6 +1,5 @@
 ---
 title: docker基本概念（翻译）
-author: LY
 date: 2019-11-01
 summary: 详细的介绍docker的镜像、容器、仓库三个基本概念
 categories:
