@@ -395,4 +395,4 @@ modules方法就是如果所有的东西都往store里面塞，那么数量多�
 
 <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104140810.png" style="zoom:67%;" />
 
-如果是`model`里面的方法，就新建一个`model`文件夹，里面存放`store`的`model`方法即可
+如果是`model`里面的方法，就新建一个`model`文件夹，里面存放`store`的`model`方法即可 

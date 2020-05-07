@@ -4,7 +4,7 @@ author: 匿蟒
 summary: 转载Cookiecutter文章，详解了Cookiecutter的创建
 date: 2020-4-24 10:37:00
 categories:
-    - 优质文章
+    - 转载
 tags:
     - python工具包
     - 后端文章转载

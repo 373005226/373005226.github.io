@@ -4,7 +4,7 @@ author: 匿蟒
 summary: 转载Cookiecutter文章，详解了Cookiecutter的安装及使用
 date: 2020-4-24 10:42:00
 categories:
-    - 优质文章
+    - 转载
 tags:
     - python
     - 后端文章转载

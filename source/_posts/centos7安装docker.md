@@ -20,6 +20,45 @@ tags:
 
 ## docker的安装
 
+### 官网的安装方法
+
+> 官网地址：https://docs.docker.com/engine/install/centos/
+
+第一步：
+
+```
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+```
+
+第二步：
+
+```
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+第三步：
+
+```
+sudo yum install docker-ce docker-ce-cli containerd.io
+```
+
+第四步：
+
+```
+sudo systemctl start docker
+```
+
+### 一般的安装方法
+
 ......这里省略docker是什么
 
 1. root账户登录，查看内核版本如下
