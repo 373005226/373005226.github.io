@@ -1,4 +1,5 @@
 ---
+
 title: docker学习笔记五
 author: LY
 date: 2020-5-07-21:50
@@ -35,6 +36,8 @@ swarm是一套集群的架构，有集群里面肯定是有节点，有节点的
 第一种角色就是manager，manager是整个集群的大脑，既然是大脑，而且是生产环境，为了避免单点故障，大脑至少要有两个，如果是多个的话，那么就设计到状态的同步问题，这个就涉及到一个内置的分布式存储的数据库，这个数据呢是通过Raft协议去做的一个数据同步，Raft能够确保manager节点之间的信息是对称同步的
 
 第二种角色就是worker，worker就是一个干活的节点，大部分的容器要部署，都要运行到worker节点上面，当然manger节点上也是可以运行的，但是主要还是在worker节点上面，因为worker节点比较多一点。worker节点也有数据需要同步，他们就通过一个叫Gossip的网络去做信息的同步
+
+Swarm manager和worker节点之间通信是通过TLS去加密的，加密的信息的都是寸在于manager的节点的内置分布式存储数据库里面的，而且是通过加密存储在硬盘里面的
 
 整体架构如下图所示：
 
@@ -218,7 +221,7 @@ docker service rm demo
 
 然后`docker ps` 马上看节点上的容器还是在运行的，要等几秒才能够删除完毕
 
-docker service remove这个过程是很快的，但是后台需要有一个比较复杂的操作，要看service有多少个容器在cluster里面，并且在哪台机器上面，然后再去把container删除，这个过程比较复杂，所以比较慢一点，但是service本身的删除是很快的
+`docker service remove`这个过程是很快的，但是后台需要有一个比较复杂的操作，要看`service`有多少个容器在`cluster`里面，并且在哪台机器上面，然后再去把`container`删除，这个过程比较复杂，所以比较慢一点，但是`service`本身的删除是很快的
 
 ## WordPress实战
 
@@ -292,7 +295,9 @@ docker service create --name wordpress -p 80:80 --env WORDPRESS_DB_PASSWORD=root
 
 在创建两个容器之前，创建了一个名为demo的network，但是在manager节点的服务器创建完之后并没有在worker服务器能够实时查看的到，但是创建完service以后，worker上的名为demo的network就可以显示了，这个过程是swarm去完成的，WordPress这个节点被分配到worker这个节点以后，要保证和manager节点进行通信的话，这个overlay的网络一定要同步，swarm这个底层的机制会自己去同步网络的创建，因为要实现多个节点之间的网络通信，肯定要通过overlay这个网络去实现
 
-## 集群之间的网络通信
+## 集群之间的网络通信Rouing Mesh之Internal
+
+![Rouing Mesh的两种体现方式](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509110347.png)
 
 上面的那个实战`WordPress`有两个`service`组成，一个`WordPress`，一个`mysql`，通过`service`的创建，把它部署到`swarm  cluster`里面
 
@@ -304,19 +309,19 @@ docker service create --name wordpress -p 80:80 --env WORDPRESS_DB_PASSWORD=root
 
 ###  确定不是真实的IP地址
 
-首先要要确保有一个名为`demo`的`overlay`的`network`，如果没有就通过以下的命令去创建一个
+（1） 首先要要确保有一个名为`demo`的`overlay`的`network`，如果没有就通过以下的命令去创建一个
 
 ```
 docker network create -d overlay demo
 ```
 
-接着创建一个名为whoami的service（是一个web服务，访问会返回容器的host name）
+（2） 接着创建一个名为whoami的service（是一个web服务，访问会返回容器的host name）
 
 ```
 docker service create --name whoami -p 8000:8000 --network demo -d jwilder/whoami
 ```
 
-然后看一下这个服务运行在哪个容器
+（3） 看一下这个服务运行在哪个容器
 
 ```
 docker service ps whoami
@@ -324,29 +329,45 @@ docker service ps whoami
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508171352.png)
 
-然后可以看到是在manager的容器上面
+（4） 可以看到是在manager的容器上面
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508171449.png)
 
-然后输入这个ip地址+端口看看
+（5） 输入这个ip地址+端口看看
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508171546.png)
 
- 然后再创建一个service也连接到这个名为demo的network上面
+ （6）再创建一个service也连接到这个名为demo的network上面
 
 ```
 docker service create --name client -d --network demo busybox sh -c "while true;do sleep 3600;done"
 ```
 
-创建好之后查看client这个service的信息
+（7）创建好之后查看client这个service的信息
+
+```
+docker service ls
+```
+
+```
+docker service client
+```
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172017.png)
 
-然后查看这个服务的节点服务器
+（8）查看这个服务的节点服务器
+
+```
+docker ps
+```
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172042.png)
 
-然后进入这个容器`ping` `whoami`的这个`service`
+（9）进入这个容器`ping` `whoami`的这个`service`
+
+```
+docker exec --it 6ead sh
+```
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172218.png)
 
@@ -356,23 +377,29 @@ docker service create --name client -d --network demo busybox sh -c "while true;
 
 上面已经得出结论ping的IP地址不是真实的IP
 
-这里再使用scale进行一次横向拓展
+（1）这里再使用`scale`进行一次横向拓展
 
 ```
-docker service scale whoami=2
+ docker service scale whoami=2
 ```
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172559.png)
 
-然后回再部署一个whoami的service
+（2）查看部署到哪个节点了
 
-等待部署完毕后查看部署到哪个节点了
+```
+docker service ps whoami
+```
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172646.png)
 
-可以从图中看到已经部署了两个容器
+（3）进入容器查看真实的DNS地址
 
-然后再进入容器里面
+可以从图中看到已经部署了两个容器,然后再进入容器里面
+
+```
+docker exec -it 6ead sh
+```
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508173351.png)
 
@@ -392,22 +419,564 @@ docker service scale whoami=2
 
 这两个才是真实的容器地址
 
-同理，如果scale横向拓展成三个，再取得scale tasks.whoami，就会返回三个记录
+同理，如果`scale`横向拓展成三个，再取得`scale tasks.whoami`，就会返回三个记录
 
 <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508183327.png" style="zoom:67%;" />
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508183306.png)
 
-这三个就是真实的ip
+这三个就是真实的`ip`
 
-如果是ping whoami的话返回的肯定只是唯一的结果，是视频中service的VIP`10.0.0.7`
+如果是`ping whoami`的话返回的肯定只是唯一的结果，是视频中`service`的`VIP``10.0.0.7`
 
-而虚拟的IP会跟真实的IP有一个web关系，就通过这个web关系去找到service的实际ip地址
+而虚拟的IP会跟真实的IP有一个web关系，就通过这个web关系去找到`service`的实际ip地址
 
-然后再去访问一下whoami的服务，会发现每一次访问得到的结果都是不一样的
+然后再去访问一下`whoami`的服务，会发现每一次访问得到的结果都是不一样的
 
 原因如下：
 
-首先whoami在三个节点上都有运行
+首先`whoami`在三个节点上都有运行
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508202144.png)
+
+然后访问`whoami`的DNS
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508202313.png)
+
+背后是有三个IP地址的
+
+（4）测试负载均衡
+
+进入容器后下载一下whoami，查看每次的host是否相同
+
+每次访问视频里面的10.0.0.7，都会做一次负载均衡
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509100252.png)
+
+从图中可知，每次的访问的得到的结果都不一样，是因为`swarm`部署到三个节点，再访问的话每三次返回的值都是不一样的
+
+其中负载均衡都是通过`LVS`去实现的 ，整体架构如下图
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509111935.png)
+
+访问web的时候访问的是那个VIP，VIP如何映射到具体的container的IP呢，这个就是通过LVS去实现的，LVS的全称为Linux Virtual Server，如果在谷歌搜索LVS Keepalived配置，这两个东西可以部署一个高可用的负载均衡配置
+
+两台web service和一台client service都连接到同一个overlay的网络，他们分别位于不同的swarm节点上面，client访问web的时候是通过VIP去访问的，VIP会自动负载均衡到每一个service节点上面，这个就是internal Load Balancing，具体过程如下图
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509112515.png)
+
+这张图的意思就是在client访问外边的service的时候，过程是DNS把service name解析成一个具体的VIP，VIP的话比如VIP去访问8000端口，那么具体会通过iptables以及IPVS（LVS）去做负载均衡，负载均衡到不同的service节点上去
+
+## 集群之间的网络通信Rouing Mesh之Ingress
+
+Ingress网络呢，就是service有绑定端口，比如说WordPress是绑定的80端口，whoami绑定的是8000端口。，但是呢service虽然只是在swarm的部分cluster节点上运行，但是呢可以在swarm的任何节点上通过端口去访问到这个服务，这个是就是Ingress
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509113821.png)
+
+ 这个ingress network其实之前的实验是有个现象的：把WordPress这个服务部署到swarm cluster里面，也就是只在一个cluster节点上，web服务暴露一个端口8080，但是在swarm cluster的任何节点上访问8080，都可以访问到WordPress ，这个就是ingress network去实现的
+
+ingress network的作用就是，当去任何一台swarm节点上访问端口服务的时候，会把服务通过本节点的 IPVS（IPV6）去通过LVS去load balance到真正具有service的节点上面，比如图中的访问docker host3上的8080，但是docker host3上面肯定是没有这个service
+
+但是可以通过ipvs把请求转发到另外两台具有service的docker host上面去，然后再把response返回，这个就是ingress network的一个主要的现象
+
+ 就想curl whoami，每次访问得到的结果都是不一样的，即便是在没有whoami的service的服务器，curl whoami也是照样可以返回结果
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509150834.png)
+
+
+
+那么是为什么即使是在没有部署whoami的host上面，还是可以继续访问8000端口得到结果呢，这里可以通过看看iptables看看转化规则
+
+```
+sudo iptables -nL -t nat
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509152459.png)
+
+红线这行的意思就是访问8000端口，就可以把端口转发到172.19.0.2:8000地址上
+
+然后先看看本地端口的情况
+
+```
+ip a
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509152800.png)
+
+可以看到两个标注的地方是同一个地址的
+
+```
+brctl show
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509152916.png)
+
+可以看到这个docker_gwbridge连接的interface有两个
+
+看一下network的情况
+
+```
+docker network ls
+docker network inspect docker_gwbridge
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153118.png)
+
+而得到的结果中可以看到这个就是刚刚转发后的地址
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153225.png)
+
+但是端口转发后ingress-sbox后悔怎么样呢，这里就要先进到ingress-sbox里面看看
+
+```
+sudo ls /var/run/docker/netns
+nsenter --net=/var/run/docker/netns/ingress_sbox
+```
+
+ ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153511.png)
+
+这里是因为我用的是paly with docker，所以是进不去，正常情况下进去的情况是这样的
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153755.png)
+
+进去后角色就变成了root
+
+整体情况如下图
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153916.png)
+
+数据包 通过default_gwbridge转发到了一个叫做ingress-sbox里面，ingress-sbox这个其实是一个network inspect
+
+在ingress-sbox里面通过iptables和IPVS（LVS）就可以看到数据被正确的转发到了另外一个host上面去，通过的网络就是ingress 的overlay的这个网络，经过vxlan的这个封装去到另一台机器上面
+
+数据包进入到淡绿色框框里面了，要通过防火墙去看一下数据包的数据运行情况
+
+```
+iptables -nL -t mangle
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509160221.png)
+
+标注的地方就是给8000端口做了一个mark，这个其实就是做负载均衡的，是要通过lvs把去往8000端口的数据包呢做一个load balance来转换到具体实际的ip地址
+
+继续去演示一下LVS
+
+```
+yum install ipvsadm
+ipvsadm -l
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509161455.png)
+
+可以从图中看到做了一次load balance，选择了这两个地址，这两个地址就是真实IP地址
+
+## DockerStack部署wordpress
+
+Docker-compose是在本机上进行开发的工具和只能在本地进行部署的，在swarm里面不是单机的，是一个cluster，这里演示如何在swarm上面部署一个WordPress
+
+docker- compose3版本中只增加了一个deploy命令
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509164117.png)	deploy支持的写法如下
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509164220.png)
+
+deploy之下有很多个子命令
+
+### ENDPOINT_MODE
+
+这个是指明endpoint的模式
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509164338.png)
+
+这个有两种的取值方式，默认是使用VIp
+
+第一种是VIP，也就是虚拟的IP，也就是上面提到的
+
+第二种是dnsrr，也就是不使用虚拟的IP了，直接使用service的IP地址，但是service的IP地址肯定是有很多个 ，特别是使用scale拓展之后，每个service都有自己的IP地址，使用dnsrr的时候，就不通过ip地址去访问，通过dns的时候会帮我们去做一个robin（负载均衡的一种策略，如果是service有三个IP地址去循环使用）
+
+### LABELS
+
+这个是一个帮助描述的一个信息，类似一个key-value的形式
+
+### MODE
+
+这个有两种，一种是global，一种是replicated，区别在于global的cluster只有一个（即不能做横向拓展，就是不能用scale命令去拓展）。第二种是replicated，这个刚刚好相反，这个是mode的默认值
+
+### PLACEMENT
+
+这个主要是为了限制service的条件，比如限制节点的角色为manager
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509170547.png)
+
+如图限制角色为managr，则db这个service就只会部署到manager上面
+
+### REPLICAS
+
+这个是mode设置成replicated的时候，就可以在初始化的时候指定需要几个replicas，比如说图中的6个，那么就会部署6个service
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509170938.png)
+
+### RESOURCES
+
+这个很简单就是做一些资源的限制，比如cpu啊memory啊。或者是做一个保留，去做一个优先保留cpu、memory，可以优先的去使用这些资源
+
+### RESTART_POLICY
+
+这个如果是某个service因为某种原因停止了，那么是否需要去重启，重启的条件是什么，比如延时啊、最大重启的次数什么的
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509171221.png)
+
+### UPDATE_CONFIG
+
+做一些配置，这个配置可以用于对service进行更新的时候遵循的原则，比如并行的数量
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509171343.png)
+
+如上图，对service进行update的时候，有两个replicas，如果parallelism为1，delay为10s，那么意思就是每个更新的间隔都是10s
+
+###  实战
+
+对比之前单机版的compose文件
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509171806.png)
+
+首先如果是在swarm上面因为可能不在一台机器上面，所以就不能使用bridge网络了，要改成overlay
+
+其次对mysql是有要求的，mysql只能有一台机器，不能够去做横向拓展，所以mode要改成global，而且还有额外的要求只能部署在manager节点上面
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509172058.png)
+
+对于WordPress呢，首先是要可以横向拓展的，并且初始化replicated要等于3
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509172320.png)
+
+第三个参数是RESTART_POLICY，重启或者是失败的情况下要设置一些参数
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509172517.png)
+
+最后是要设置更新的策略
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509172624.png)
+
+ 
+
+这里进入正题，在swarm模式下使用docker-compose去部署，命令是不同的
+
+```
+docker stacks
+```
+
+![docker stacks命令](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509173213.png)
+
+`docker stack`的命令比较简单
+
+`deploy`是通过命令去部署一个`stack`，这个`stack`就是一个`service`，`service`是`docker.compose.yml`的文件里面去自定义的
+
+看看`stack`的命令，可以看出是要给一个`stack`取一个名字
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509173424.png)
+
+这里把`stack`取名为`WordPress`
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509173611.png)
+
+紧接着是`--compose-file`后面要接一个文件
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509173927.png)
+
+如图创建成功
+
+`wordpress_my-network`这个前缀`wordpress_`就是前面取的`stack`的名字
+
+然后查看一下`stack`
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509174050.png)
+
+再看一下细节
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509174121.png)
+
+## 部署投票应用
+
+使用swarm部署投票应用的话是跟compose不同的
+
+这里的image一定拉取才行不能通过build
+
+## Docker Secret管理和使用
+
+ 上面的docker-compose.yml文件，如果要连接数据库的之类的话， 就需要添加密码，但是如果是生产环境的话，肯定是不可以把密码这么明显的信息放到文件里面的
+
+所以肯定是希望docker可以访问到这个密码
+
+Secret有如下几种类型
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200510202037.png" style="zoom: 50%;" />
+
+![Docker Swarm架构图](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200510202108.png)
+
+架构图如上图所示
+
+Swarm manager和worker节点之间通信是通过TLS去加密的，加密的信息的都是寸在于manager的节点的内置分布式存储数据库里面的，而且是通过加密存储在硬盘里面的。基于这个环境之下，如果有个service想去用这个Secret的话，就比如说数据库想用一个密码，可以分配给这个service一个权限，能让他访问的到Secret就可以了
+
+Docker Secret有如下那么几点
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200510202844.png" style="zoom:50%;" />
+
+接下来查看一下secret的创建
+
+```
+docker secret create
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511104344.png)
+
+意思就是secret可以是从文件里面创建，也可以从标准的输入里面创建
+
+这里先看一下从文件里面创建
+
+### 文件创建密码
+
+```
+vim password 
+```
+
+在里面随便写一个密码，比如我的是admin123，文件名字为password
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511105703.png)
+
+然后再创建一个密码，password就是文件
+
+```
+docker secret create my-pw password 
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511105958.png)
+
+就可以创建一个secret，然后再去把这个文件删掉
+
+然后就可以看到secret上有哪些密码了
+
+```
+docker secret ls
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511110230.png)
+
+### 输入流创建密码
+
+```
+echo "adminadmin" | docker secret create my-pw2 -
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511110409.png)
+
+然后再看一下secret密码
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511110501.png)
+
+### 使用secret
+
+先看一下secret create的参数
+
+```
+docker service create --help
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511112726.png)
+
+这个行也就是说可以把secret暴露给一个service
+
+```
+docker service create --name client --secret my-pw busybox sh -c "while true;do sleep 3600;done"
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511112955.png)
+
+然后查看一下这个服务运行在哪个端口
+
+```
+docker service ls
+docker service ps client
+docker ps
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511113209.png)
+
+看到到服务是在这台服务器上运行后，进入里面查看一下
+
+```
+docker exec -it 容器ID sh
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511113405.png)
+
+可以看到里面的密码就是我刚刚创建的
+
+当然密码可以创建一个也可以创建多个，比如mysql有个root密码和普通用户的密码
+
+这里拿mysql的看一下
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511113731.png)
+
+从图中看出是有这么一行参数来指定root密码的
+
+然后再创建一下service
+
+```
+docker service create --name db --secret my-pw -e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my-pw mysql
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511113951.png)
+
+等待几分钟，创建好并且查询到之后找到这个容器
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511114355.png)
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511114406.png)
+
+进入这个容器查询密码
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511114700.png)
+
+密码没错就是刚刚我创建的，然后再去执行进入mysql
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511114752.png)
+
+密码我输入的就是admin123，如图是可以进入的，说明password生效了
+
+### 如何在docker-compose.yml文件使用secret
+
+![docker-compose.yml](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511115258.png)
+
+这里图中标注的就是指定secret的名字和指定密码的存储位置
+
+secret的来源有两种
+
+一种是事先创建好了my-pw，也就是图中的写法，写好docker-compose.yml文件后，通过命令去创建即可
+
+```
+docker stack deploy WordPress -c=docker-compose.yml
+```
+
+
+
+另外一种是如果没有事先创建好，也可以在docker-compose.yml文件里面指定一个部分去专门定义secret
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511115521.png)
+
+在当前的文件中也创建一个名为password的文件，在里面去指定密码，当然这种方式是肯定不推荐的，因为密码都已经保存在文件里面了
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511115618.png)
+
+
+
+### image更新
+
+这个更新的意思是在运行的时候都进行更新，因为swarm是作用于生产环境的，也就是在swarm运行的是实际业务，当然是不可以停止几分钟去更新
+
+这里进行一次简单的更新演示
+
+实验前首先要确定有demo这个overlay的network
+
+```
+docker network ls
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511150149.png)
+
+如果没有就去创建一个
+
+```
+docker network create -d overlay demo
+```
+
+然后创建一个服务
+
+```
+docker service create --name web --publish 8080:5000 --network demo xiaopeng163/python-flask-demo:1.0
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511151023.png)
+
+注意这个只是1.0的版本，下面是演示如何更新到2.0版本
+
+ （1） 首先要对业务进行一个拓展，因为要停掉一个去重新创建，但是又不能让业务中止
+
+```
+docker service scale web=2
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511152101.png)
+
+
+
+（2） 为了证明服务没有中断，这里在work节点上写一个脚本不停地访问8080端口
+
+```
+sh -c "while true;do curl 127.0.0.1:8080&&sleep 1;done"
+```
+
+
+
+（3） 在manager使用service update
+
+先看一下参数
+
+```
+docker service update --help
+```
+
+可以更新很多
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511152922.png)
+
+比如说可以更新密码、更新端口、更新镜像等，这里就是要更新镜像
+
+```
+docker service update --image xiaopeng163/python-flask-demo:2.0 web
+```
+
+然后服务就已经开始更新了，这个时候就可以回去work节点查看是否更新成功
+
+这个时候会出现如下状况
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511155028.png)
+
+因为只更新了一个，另外一个是正在更新，等全部更新完之后就可以看到全部都是2.0了
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511155130.png)
+
+
+
+此时看看web服务的详情，会发现1.0的版本已经shutdown
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511155229.png)
+
+说明更新是成功的
+
+但是这个有个很严重的问题就是1.0和2.0的版本在更新的时候是并存的，这个是很有问题的
+
+### 端口更新
+
+```
+docker service update --publish-rm 8080:5000 --publish-add 8088:5000 web
+```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511155838.png)
+
+这个时候发现原来的端口不能用了，端口改成8088了
+
+### docker-compose.yml更新
+
+如果是用过docker stack去更新的话，只需要改掉对应的地方即可，因为docker stack是没有update参数的
+
+改完之后再docker stack deploy -c=docker-compose.yml即可
+
+
+
+
+
+
+
+
+
