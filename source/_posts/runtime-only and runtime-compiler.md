@@ -176,7 +176,7 @@ new Vue({
 
 <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191112110219.png" style="zoom:50%;" />
 
-#### 方法4（使用App的组件去注册）：
+### 方法4（使用App的组件去注册）：
 
 这个是使用创建项目自带App.vue的hello world的界面，直接导入这个界面的模板
 

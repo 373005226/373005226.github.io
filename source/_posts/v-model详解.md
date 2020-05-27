@@ -333,7 +333,7 @@ CheckBox分为单选框和多选框
 
 
 
-#### v-model.number
+### v-model.number
 
 input输入框输入的值，默认都是string类型，v-model-number可以把string类型转换为number类型
 
@@ -370,7 +370,7 @@ input输入框输入的值，默认都是string类型，v-model-number可以把s
 
 
 
-#### v-model trim修饰符
+### v-model trim修饰符
 
 trim去除两边的空格
 

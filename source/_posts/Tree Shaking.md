@@ -12,7 +12,7 @@ tags:
 
 在打包的时候会出现如下字段
 
-![image-20200523193505234](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200523193510.png)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200523193510.png)
 
 这个的意思是在preset-env设置了`useBuiltIns`后，就已经达到了按需引入ES6语法的目的了，不用再去写`import "@babel/polyfill";`
 

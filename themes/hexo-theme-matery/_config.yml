@@ -273,7 +273,7 @@ postCalendar: true
 gitalk:
   enable: true
   owner: 373005226
-  repo: https://373005226.github.io
+  repo: https://www.ly-blog.top/
   oauth:
     clientId: 597160abfabdd55a9c87
     clientSecret: 3affb541c52580286f0366b2ff8719e256b2d147

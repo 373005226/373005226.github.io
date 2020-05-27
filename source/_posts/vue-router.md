@@ -558,7 +558,7 @@ create方法只有在组件被创建的时候调用，如果是按照之前的�
 
 只需要先把原来全局路由的`Home`下面的`redirect`去掉，然后添加`activated`**（组件活跃时候的回调函数）**
 
-然后再掉用**组件内守卫**
+然后再调用**组件内守卫**
 
 <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20191229122901.png" style="zoom:67%;" />
 
