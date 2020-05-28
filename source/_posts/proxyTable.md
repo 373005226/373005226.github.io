@@ -25,13 +25,13 @@ vue init webpack my-project-vue
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528142725.png)
 
-image.png
+
 
 在这个 `index.js` 文件里,会有一个 `proxyTable` 的空节点.
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528142736)
 
-image.png
+
 
 理解这个节点的作用需要有两个前置知识
 
@@ -54,7 +54,7 @@ image.png
 
 ![img](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528142751)
 
-image.png
+
 
 正常情况下,我们无法通过`ajax`向后台请求到数据.因为跨域了.浏览器的同源策略,截获了这次数据的返回,没有给vue.
 
@@ -92,9 +92,9 @@ http.createServer((request, response) => {
 
 测试一下:
 
-![img](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528142801)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528142801)
 
-image.png
+
 
 然后使用 `vue-cli` 创建一个 `vue` 项目
 
@@ -115,11 +115,11 @@ created() {
     },  
 ```
 
-不出意外,肯定会提示跨域了.(vue:8080) & (json.data:54321)
+不出意外,肯定会提示跨域了
 
-![img](https:////upload-images.jianshu.io/upload_images/2701794-32182a73ce93f8e5.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528183538)
 
-image.png
+
 
 假设现在这个后台是别人写的,或者是一个压根你就不认识的人或公司写的.你无法让他们去后台追加 `cors` 来进行跨域支持.
 
@@ -136,7 +136,7 @@ image.png
 >  在由这个代理服务器请求真是的数据服务器.
 >  最后数据经由`webpack`代理服务器,最后转交给我们的`vue`程序.
 
-![img](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528142811)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528142811)
 
 为什么加个代理服务器就可以了?
 

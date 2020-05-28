@@ -103,7 +103,34 @@ $("#testdiv ul").on("click","div", function() {
  });
 ```
 
+#### 如何阻止冒泡事件和默认事件
 
+（1） 阻止冒泡事件
+
+```javascript
+function stopBubble(e) {  
+  if(e && e.stopPropagation){  
+      e.stopPropagation();  
+  } else {  
+    window.event.cancelBubble = true;  
+  }  
+}; 
+```
+
+（2） 阻止默认事件
+
+```javascript
+function stopDefault(e){  
+  if(e && e.preventDefault) {  
+    e.preventDefault();  
+  } else {  
+    window.event.returnValue = false;  
+  }  
+  return false;  
+}; 
+```
+
+> 此题详解 http://caibaojian.com/javascript-stoppropagation-preventdefault.html
 
 ## 面试必问
 
@@ -269,3 +296,218 @@ vue3中会找出变化的项，只更新改变项；
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528172924)
 
+### 你能描述一下渐进增强和优雅降级之间的不同吗?
+
+**优雅降级**：Web站点在所有新式浏览器中都能正常工作，如果用户使用的是老式浏览器，则代码会检查以确认它们是否能正常工作。由于IE独特的盒模型布局问题，针对不同版本的IE的hack实践过优雅降级了,为那些无法支持功能的浏览器增加候选方案，使之在旧式浏览器上以某种形式降级体验却不至于完全失效.
+**渐进增强**：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新式浏览器才支持的功能,向页面增加无害于基础浏览器的额外样式和功能的。当浏览器支持时，它们会自动地呈现出来并发挥作用。
+
+### 线程与进程的区别
+
+一个程序至少有一个进程，一个进程至少有一个线程。线程的划分尺度小于进程，使得多线程程序的并发性高。
+
+另外，进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率。
+
+线程在执行过程中与进程还是有区别的。每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。
+
+从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。这就是进程和线程的重要区别。
+
+### 为什么利用多个域名来提供网站资源会更有效？
+
+- 1.CDN缓存更方便
+- 2.突破浏览器并发限制（一般每个域名建立的链接不超过6个）
+- 3.Cookieless，节省带宽，尤其是上行带宽一般比下行要慢
+- 4.对于UGC的内容和主站隔离，防止不必要的安全问题(上传js窃取主站cookie之类的)。正是这个原因要求用户内容的域名必须不是自己主站的子域名，而是一个完全独立的第三方域名。
+- 5.数据做了划分，甚至切到了不同的物理集群，通过子域名来分流比较省事。这个可能被用的不多。
+
+PS:关于Cookie的问题，带宽是次要的，安全隔离才是主要的。关于多域名，也不是越多越好，虽然服务器端可以做泛解释，浏览器做dns解释也是耗时间的，而且太多域名，如果要走https的话，还有要多买证书和部署的问题。
+
+### 请说出三种减少页面加载时间的方法。（加载时间指感知的时间或者实际加载时间）
+
+1. CDN加速
+2. 减少不必要的打包文件，如使用tree shaking
+3. 优化css
+4. 提高带宽
+5. 精灵切图
+
+### 什么是FOUC（无样式内容闪烁）？你如何来避免FOUC？
+
+FOUC(Flash Of Unstyled Content)--文档样式闪烁
+
+<style type="text/css"media="all">@import"../fouc.css";</style>而引用CSS文件的@import就是造成这个问题的罪魁祸首。IE会先加载整个HTML文档的DOM，然后再去导入外部的CSS文件，因此，在页面DOM加载完成到CSS导入完成中间会有一段时间页面上的内容是没有样式的，这段时间的长短跟网速，电脑速度都有关系。解决方法简单的出奇，只要在<head>之间加入一个<link>或者<script>元素就可以了。
+
+### data-属性的作用是什么？
+
+data-* 属性用于存储页面或应用程序的私有自定义数据。data-* 属性赋予我们在所有 HTML 元素上嵌入自定义 data 属性的能力。存储的（自定义）数据能够被页面的 JavaScript 中利用，以创建更好的用户体验（不进行 Ajax 调用或服务器端数据库查询）。
+
+data-* 属性包括两部分：
+
+- 属性名不应该包含任何大写字母，并且在前缀 "data-" 之后必须有至少一个字符
+- 属性值可以是任意字符串
+
+### 请描述一下cookies，sessionStorage和localStorage的区别？
+
+sessionStorage和localStorage是HTML5 Web Storage API提供的，可以方便的在web请求之间保存数据。有了本地数据，就可以避免数据在浏览器和服务器间不必要地来回传递。sessionStorage、localStorage、cookie都是在浏览器端存储的数据，其中sessionStorage的概念很特别，引入了一个“浏览器窗口”的概念。sessionStorage是在同源的同窗口（或tab）中，始终存在的数据。也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一页面，数据仍然存在。关闭窗口后，sessionStorage即被销毁。同时“独立”打开的不同窗口，即使是同一页面，sessionStorage对象也是不同的cookies会发送到服务器端。其余两个不会。Microsoft指出InternetExplorer8增加cookie限制为每个域名50个，但IE7似乎也允许每个域名50个cookie。
+
+- Firefox每个域名cookie限制为50个。
+- Opera每个域名cookie限制为30个。
+- Firefox和Safari允许cookie多达4097个字节，包括名（name）、值（value）和等号。
+- Opera允许cookie多达4096个字节，包括：名（name）、值（value）和等号。
+- Internet Explorer允许cookie多达4095个字节，包括：名（name）、值（value）和等号。
+
+## 凡科面试
+
+> 本文引用于https://www.cnblogs.com/ypppt/p/12868392.html
+
+### css样式覆盖问题
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528213206)
+
+答案都是blue
+
+因为无论是red blue 还是blue red，都是一样的，只看css样式的先后顺序，越后面优先级越高
+
+### 5种以上垂直居中的css样式
+
+#### 第一种，table样式
+
+这个方法把一些 div 的显示方式设置为表格，因此我们可以使用表格的 vertical-align property 属性。
+
+```html
+<div id="wrapper">
+	<div id="cell">
+		<div class="content">Content goes here</div>
+	</div>
+</div>
+#wrapper {
+	display: table;
+}
+
+#cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+```
+
+**优点：**
+
+- content 可以动态改变高度(不需在 CSS 中定义)。当 wrapper 里没有足够空间时， content 不会被截断
+
+**缺点：**
+
+- Internet Explorer(甚至 IE8 beta)中无效，许多嵌套标签(其实没那么糟糕，另一个专题)
+
+
+
+#### 方法二：
+
+这个方法使用绝对定位的 div，把它的 top 设置为 50％，top margin 设置为负的 content 高度。这意味着对象必须在 CSS 中指定固定的高度。
+
+因为有固定高度，或许你想给 content 指定 overflow:auto，这样如果 content 太多的话，就会出现滚动条，以免content 溢出。
+
+```html
+<div class="content"> Content goes here</div>
+#content {
+	position: absolute;
+	top: 50%;
+	height: 240px;
+	margin-top: -120px; /* negative half of the height */
+}
+```
+
+**优点：**
+
+- 适用于所有浏览器
+- 不需要嵌套标签
+
+**缺点：**
+
+- 没有足够空间时，content 会消失(类似div 在 body 内，当用户缩小浏览器窗口，滚动条不出现的情况)
+
+
+
+#### 方法三
+
+这种方法，在 content 元素外插入一个 div。设置此 div height:50%; margin-bottom:-contentheight;。
+content 清除浮动，并显示在中间。
+
+```html
+<div id="floater">
+	<div id="content">Content here</div>
+</div>
+
+#floater {
+	float: left;
+	height: 50%;
+	margin-bottom: -120px;
+}
+
+#content {
+	clear: both;
+	height: 240px;
+	position: relative;
+}
+```
+
+**优点：**
+
+- 适用于所有浏览器
+- 没有足够空间时(例如：窗口缩小) content 不会被截断，滚动条出现
+
+**缺点：**
+
+- 唯一我能想到的就是需要额外的空元素了(也没那么糟，又是另外一个话题)
+
+
+
+#### 方法四
+
+这个方法使用了一个 position:absolute，有固定宽度和高度的 div。这个 div 被设置为 top:0; bottom:0;。但是因为它有固定高度，其实并不能和上下都间距为 0，因此 margin:auto; 会使它居中。使用 margin:auto;使块级元素垂直居中是很简单的。
+
+```html
+<div id="content"> Content here</div>
+#content {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	height: 240px;
+	width: 70%;
+}
+```
+
+**优点：**
+
+- 简单
+
+**缺点：**
+
+- IE(IE8 beta)中无效
+- 无足够空间时，content 被截断，但是不会有滚动条出现
+
+
+
+#### 方法五
+
+这个方法只能将单行文本置中。只需要简单地把 line-height 设置为那个对象的 height 值就可以使文本居中了。
+
+```html
+<div id="content"> Content here</div>
+#content {
+	height: 100px;
+	line-height: 100px;
+}
+```
+
+**优点：**
+
+- 适用于所有浏览器
+- 无足够空间时不会被截断
+
+**缺点：**
+
+- 只对文本有效(块级元素无效)
+- 多行时，断词比较糟糕
+
+这个方法在小元素上非常有用，例如使按钮文本或者单行文本居中。
