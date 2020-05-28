@@ -68,9 +68,11 @@ module.exports = {
 
   上面配置中，我们根据实际情况只需要修改proxyTable对于配置即可。假设我后端请求地址是http://localhost:7001 ，所有api的接口url都以/api开头。所以首先需要匹配所有以/api开头的.然后修改target的地址为http://localhost:7001 。最后修改pathRewrite地址。将前缀 '^api' 转为 '/api'。如果本身的接口地址就有 '/api' 这种通用前缀，就可以把 pathRewrite 删掉。注意这个方式只能在开发环境中使用。
 
+
+
 ### CORS
 
-  CORS即跨源资源共享，它定义了一种浏览器和服务器交互的方式来确定是否允许跨域请求。它是一个妥协，有更大的灵活性，但比起简单地允许所有这些的要求来说更加安全。但是CORS也具有一定的风险性，比如请求中只能说明来自于一个特定的域但不能验证是否可信，而且也容易被第三方入侵。 这里一般需要后端配合,开启cors。一般各种语言都有类似的包。比如NodeJS的[koa2-cors](https://www.npmjs.com/package/koa2-cors)，Django的[CORSheaders](https://github.com/adamchainz/django-cors-headers)
+  CORS即跨源资源共享，它定义了一种浏览器和服务器交互的方式来确定是否允许跨域请求。它是一个妥协，有更大的灵活性，但比起简单地允许所有这些的要求来说更加安全。但是CORS也具有一定的风险性，比如请求中只能说明来自于一个特定的域但不能验证是否可信，而且也容易被第三方入侵。 这里一般需要后端配合,开启CORS。一般各种语言都有类似的包。比如Node.JS的[koa2-cors](https://www.npmjs.com/package/koa2-cors)，Django的[CORSheaders](https://github.com/adamchainz/django-cors-headers)
 
 ```javascript
 var koa = require('koa');
