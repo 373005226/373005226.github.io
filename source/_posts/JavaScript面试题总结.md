@@ -334,7 +334,6 @@ PS:关于Cookie的问题，带宽是次要的，安全隔离才是主要的。�
 FOUC(Flash Of Unstyled Content)--文档样式闪烁
 
 <style type="text/css"media="all">@import"../fouc.css";</style>而引用CSS文件的@import就是造成这个问题的罪魁祸首。IE会先加载整个HTML文档的DOM，然后再去导入外部的CSS文件，因此，在页面DOM加载完成到CSS导入完成中间会有一段时间页面上的内容是没有样式的，这段时间的长短跟网速，电脑速度都有关系。解决方法简单的出奇，只要在<head>之间加入一个<link>或者<script>元素就可以了。
-
 ### data-属性的作用是什么？
 
 data-* 属性用于存储页面或应用程序的私有自定义数据。data-* 属性赋予我们在所有 HTML 元素上嵌入自定义 data 属性的能力。存储的（自定义）数据能够被页面的 JavaScript 中利用，以创建更好的用户体验（不进行 Ajax 调用或服务器端数据库查询）。
@@ -367,6 +366,8 @@ sessionStorage和localStorage是HTML5 Web Storage API提供的，可以方便的
 因为无论是red blue 还是blue red，都是一样的，只看css样式的先后顺序，越后面优先级越高
 
 ### 5种以上垂直居中的css样式
+
+> 垂直方法远远不止5中，可以参考这篇博客https://www.cnblogs.com/hutuzhu/p/4450850.html
 
 #### 第一种，table样式
 
@@ -511,3 +512,299 @@ content 清除浮动，并显示在中间。
 - 多行时，断词比较糟糕
 
 这个方法在小元素上非常有用，例如使按钮文本或者单行文本居中。
+
+### JS判断数据类型的方法和区别
+
+JavaScript总共有7种数据类型
+
+string、Boolean、Array、Object、Number、Null、undefined
+
+#### typeof
+
+```javascript
+console.log(typeof "");
+console.log(typeof 1);
+console.log(typeof true);
+console.log(typeof null);
+console.log(typeof undefined);
+console.log(typeof []);
+console.log(typeof function(){});
+console.log(typeof {});
+```
+
+看看控制台输出什么
+
+![img](https://images2017.cnblogs.com/blog/1248022/201710/1248022-20171003140910630-149117849.png)
+
+可以看到，typeof对于基本数据类型判断是没有问题的，但是遇到引用数据类型（如：Array）是不起作用的。
+
+#### instanceof
+
+```javascript
+console.log("1" instanceof String);
+console.log(1 instanceof Number);
+console.log(true instanceof Boolean);
+//            console.log(null instanceof Null);
+//            console.log(undefined instanceof Undefined);
+console.log([] instanceof Array);
+console.log(function(){} instanceof Function);
+console.log({} instanceof Object);
+```
+
+暂且不考虑null和undefined（这两个比较特殊），看看控制台输出什么
+
+![img](https://images2017.cnblogs.com/blog/1248022/201710/1248022-20171003141627521-927563737.png)
+
+可以看到前三个都是以对象字面量创建的基本数据类型，但是却不是所属类的实例，这个就有点怪了。后面三个是引用数据类型，可以得到正确的结果。如果我们通过new关键字去创建基本数据类型，你会发现，这时就会输出true,如下:
+
+![img](https://images2017.cnblogs.com/blog/1248022/201710/1248022-20171003142217802-1412540288.png)
+
+接下再来说说为什么null和undefined为什么比较特殊，实际上按理来说，null的所属类就是Null，undefined就是Undefined，但事实并非如此：控制台输出如下结果：
+
+![img](https://images2017.cnblogs.com/blog/1248022/201710/1248022-20171003142534599-1150711103.png)
+
+l浏览器压根不认识这两货，直接报错。在第一个例子你可能已经发现了，typeof null的结果是object，typeof undefined的结果是undefined
+
+![img](https://images2017.cnblogs.com/blog/1248022/201710/1248022-20171003142840724-2044428988.png)
+
+尤其是null，其实这是js设计的一个败笔，早期准备更改null的类型为null，由于当时已经有大量网站使用了null，如果更改，将导致很多网站的逻辑出现漏洞问题，就没有更改过来，于是一直遗留到现在。作为学习者，我们只需要记住就好。
+
+#### constructor
+
+```javascript
+console.log(("1").constructor === String);
+console.log((1).constructor === Number);
+console.log((true).constructor === Boolean);
+//console.log((null).constructor === Null);
+//console.log((undefined).constructor === Undefined);
+console.log(([]).constructor === Array);
+console.log((function() {}).constructor === Function);
+console.log(({}).constructor === Object);
+```
+
+![img](https://images2017.cnblogs.com/blog/1248022/201710/1248022-20171003143707771-1810672206.png)
+
+（这里依然抛开null和undefined）乍一看，constructor似乎完全可以应对基本数据类型和引用数据类型，都能检测出数据类型，事实上并不是如此，来看看为什么：
+
+```javascript
+function Fn(){};
+
+Fn.prototype=new Array();
+
+var f=new Fn();
+
+console.log(f.constructor===Fn);
+console.log(f.constructor===Array);
+```
+
+![img](https://images2017.cnblogs.com/blog/1248022/201710/1248022-20171003144258646-2100132702.png)
+
+我声明了一个构造函数，并且把他的原型指向了Array的原型，所以这种情况下，constructor也显得力不从心了。
+
+看到这里，是不是觉得绝望了。没关系，终极解决办法就是第四种办法，看过jQuery源码的人都知道，jQuery实际上就是采用这个方法进行数据类型检测的。
+
+#### Object.prototype.toString.call()
+
+```javascript
+var a = Object.prototype.toString;
+
+console.log(a.call("aaa"));
+console.log(a.call(1));
+console.log(a.call(true));
+console.log(a.call(null));
+console.log(a.call(undefined));
+console.log(a.call([]));
+console.log(a.call(function() {}));
+console.log(a.call({}));
+```
+
+![img](https://images2017.cnblogs.com/blog/1248022/201710/1248022-20171003145117021-1708327412.png)
+
+可以看到，所有的数据类型，这个办法都可以判断出来。那就有人质疑了，假如我把他的原型改动一下呢？如你所愿，我们看一下：
+
+![img](https://images2017.cnblogs.com/blog/1248022/201710/1248022-20171003145523786-1597998789.png)
+
+可以看到，依然可以得到正确的结果。好了，今天就说到这里，欢迎关注我的博客，一起交流学习前端知识。
+
+### 闭包
+
+#### 什么是闭包
+
+高级程序设计三中:闭包是指有权访问另外一个函数作用域中的变量的函数.可以理解为(**能够读取其他函数内部变量的函数**)
+
+**闭包的作用:** 正常函数执行完毕后,里面声明的变量被垃圾回收处理掉,但是闭包可以让作用域里的 变量,在函数执行完之后依旧保持没有被垃圾回收处理掉
+
+#### 闭包的实例
+
+```javascript
+// 创建闭包最常见的方式函数作为返回值
+function foo() {
+  var name = "kebi";
+  return function() {
+    console.log(name);
+  };
+}
+var bar = foo();
+bar(); //打印kebi    --外部函数访问内部变量
+```
+
+**接下来通过一个实例来感受一下闭包的作用:**
+
+接下来实现一个计数器大家肯定会觉得这不是很简单吗
+
+```javascript
+var count = 0;
+
+function add() {
+  count = count + 1;
+  console.log(count);
+}
+add(); //确实实现了需求
+//但是如果需要第二个计数器呢?
+//难道要如下这样写吗?
+var count1 = 0;
+
+function add1() {
+  count1 = count1 + 1;
+  console.log(count1);
+}
+add1(); //确实实现了需求
+```
+
+**当我们需要更多地时候,这样明显是不现实的,这里我们就需要用到闭包.**
+
+```javascript
+function addCount() {
+  var conut = 0;
+  return function() {
+    count = count + 1;
+    console.log(count);
+  };
+}
+```
+
+这里解释一下上边的过程: addCount() 执行的时候, **返回一个函数**, 函数是可以**创建自己的作用域的**, 但是此时返回的这个函数内部需要引用 addCount() **作用域下的变量 count**, **因此这个 count 是不能被销毁的**.接下来需要几个计数器我们就定义几个变量就可以,**并且他们都不会互相影响,每个函数作用域中还会保存 count 变量不被销毁,进行不断的累加**
+
+```javascript
+var fun1 = addCount();
+fun1(); //1
+fun1(); //2
+var fun2 = addCount();
+fun2(); //1
+fun2(); //2
+```
+
+#### 闭包常见面试题
+
+```javascript
+//闭包for循环
+for (var i = 0; i < 4; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 300);
+}
+```
+
+上边打印出来的都是 4, 可能部分人会认为打印的是 0,1,2,3
+
+**原因**:js 执行的时候首先**会先执行主线程,异步相关的会存到异步队列里**,当主线程执行**完毕开始执行异步队列**, 主线程执行完毕后,此时 i 的值为 4,说以在执行异步队列的时候,打印出来的都是 4(这里需要大家对 **event loop 有所了解(js 的事件循环机制)**)
+
+**1.如何修改使其正常打印:(使用闭包使其正常打印)**
+
+```javascript
+//方法一:
+for (var i = 0; i < 4; i++) {
+  setTimeout(
+    (function(i) {
+      return function() {
+        console.log(i);
+      };
+    })(i),
+    300
+  );
+}
+// 或者
+for (var i = 0; i < 4; i++) {
+  setTimeout(
+    (function() {
+      var temp = i;
+      return function() {
+        console.log(temp);
+      };
+    })(),
+    300
+  );
+}
+//这个是通过自执行函数返回一个函数,然后在调用返回的函数去获取自执行函数内部的变量,此为闭包
+
+//方法发二:
+for (var i = 0; i < 4; i++) {
+  (function(i) {
+    setTimeout(function() {
+      console.log(i);
+    }, 300);
+  })(i);
+}
+// 大部分都认为方法一和方法二都是闭包,我认为方法一是闭包,而方法二是通过创建一个自执行函数,使变量存在这个自执行函数的作用域里
+```
+
+**2.真实的获取多个元素并添加点击事件**
+
+```javascript
+var op = document.querySelectorAll("p");
+for (var j = 0; j < op.length; j++) {
+  op[j].onclick = function() {
+    alert(j);
+  };
+}
+//alert出来的值是一样的
+// 解决办法一:
+for (var j = 0; j < op.length; j++) {
+  (function(j) {
+    op[j].onclick = function() {
+      alert(j);
+    };
+  })(j);
+}
+// 解决办法二:
+for (var j = 0; j < op.length; j++) {
+  op[j].onclick = (function(j) {
+    return function() {
+      alert(j);
+    };
+  })(j);
+}
+//解决方法三其实和二类似
+for (var j = 0; j < op.length; j++) {
+  op[j].onclick = (function() {
+    var temp = j;
+    return function() {
+      alert(j);
+    };
+  })();
+}
+
+//这个例子和例子一几乎是一样的大家可以参考例子一
+```
+
+**3.闭包的缺陷:**
+
+通过上边的例子也发现, 闭包会导致内存占用过高,因为变量都没有释放内存
+
+### promise有哪几种状态，promise.all怎么用
+
+promise有三种状态：pending/reslove/reject 。pending就是未决，resolve可以理解为成功，reject可以理解为拒绝。
+
+promise.all一般是需要好几个异步请求返回后才正常显示才会用到的
+
+```javascript
+let p1 = wake(3000)
+let p2 = wake(2000)
+
+Promise.all([p1, p2]).then((result) => {
+  console.log(result)       // [ '3秒后醒来', '2秒后醒来' ]
+}).catch((error) => {
+  console.log(error)
+})
+```
+
