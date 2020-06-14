@@ -7,6 +7,7 @@ categories:
     - 设计模式
 tags:
     - JavaScript设计模式
+    - JavaScript
 ---
 
 > 本篇以及JavaScript设计模式系列的代码和大概理论都是出自由张容铭所著的《JavaScript设计模式》，本博客只再阅读后加上自己的理解

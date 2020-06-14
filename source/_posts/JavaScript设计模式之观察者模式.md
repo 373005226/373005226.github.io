@@ -7,6 +7,7 @@ categories:
 tags:
     - 前端面试题
     - JavaScript设计模式
+    - JavaScript
 ---
 
 > 本文引用于[https://srtian96.gitee.io/blog/2018/05/21/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/](https://srtian96.gitee.io/blog/2018/05/21/JavaScript设计模式之观察者模式/)
