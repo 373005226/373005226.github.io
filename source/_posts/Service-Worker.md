@@ -1,6 +1,5 @@
 ---
-layout: Service Worker
-title: Worker
+title: Service Worker
 date: 2020-06-12 17:52:55
 summary: Service Worker：让你的 Web 应用牛逼起来
 author: LY
