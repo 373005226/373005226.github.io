@@ -3,9 +3,10 @@ title: Vue的computed与watch的理解
 date: 2020-05-27 17:10:49
 summary: 对vue中的computed属性，watch监听，计算属性理解
 categories:
-    - 转载
+    - 前端
 tags:
     - Vue
+    - 转载
 ---
 
 > 本文转载于https://www.cnblogs.com/wasbg/p/11416477.html

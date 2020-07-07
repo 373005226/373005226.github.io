@@ -4,7 +4,7 @@ author: Tacey Wong
 summary: 转载Cookiecutter文章，详解了Cookiecutter的高级用法
 date: 2020-4-24 10:30:00
 categories:
-    - 转载
+    - 后端
 tags:
     - python工具包
     - 后端文章转载

@@ -3,10 +3,11 @@ title: JS继承的实现方法
 date: 2020-07-02 16:20:53
 summary: 详JS的ES5和ES6继承方法
 categories:
-    - 转载
+    - 前端
 tags:
     - JavaScript
     - ES6语法
+    - 转载
 ---
 
 > 本文转载于：https://www.cnblogs.com/cythia/p/11175343.html

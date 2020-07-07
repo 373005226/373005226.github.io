@@ -4,10 +4,10 @@ date: 2020-05-23 19:15:14
 author: chainho
 summary: 转载于知乎的一篇文章，详细介绍github搜索方式
 categories:
-    - 转载
+    - 工具
 tags:
     - 实用技巧
-    - 文章转载
+    - 转载
 ---
 
 > 本文转载于：https://zhuanlan.zhihu.com/p/55294261

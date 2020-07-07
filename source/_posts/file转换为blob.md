@@ -2,9 +2,10 @@
 title: file转换为blob
 date: 2020-06-09 19:55:33
 categories:
-    - 转载
+    - 前端
 tags:
     - 日常总结
+    - 转载
 ---
 
 > 本文转载于https://segmentfault.com/a/1190000020153597

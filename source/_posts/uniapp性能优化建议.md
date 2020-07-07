@@ -3,9 +3,10 @@ title: uniapp性能优化建议
 date: 2020-06-23 17:12:15
 author: LY
 categories:
-    - 转载
+    - 前端
 tags:
     - Vue
+    - 转载
 ---
 
 > 本文引用于http://www.javanx.cn/20191022/uni-app/

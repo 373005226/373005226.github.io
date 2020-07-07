@@ -3,9 +3,11 @@ title: JavaScript事件委托
 date: 2020-06-06 13:50:55
 summary: 详细讲解JavaScript事件委托
 categories:
-    - 转载
+    - 前端
 tags:
     - 前端面试题
+    - JavaScript
+    - 转载
 ---
 
 > 作者：小进进不将就

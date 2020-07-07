@@ -5,10 +5,11 @@ summary: 由浅入深讲解proxyTable跨域的作用和特点
 updated: 2020-5-19 17:00
 author: LY
 categories:
-    - 转载
+    - 前端
 tags:
     - webpack
     - Vue
+    - 转载
 ---
 
 > 本文转载于https://www.jianshu.com/p/a2e3147c2af2

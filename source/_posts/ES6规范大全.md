@@ -3,9 +3,10 @@ title: ES6规范大全
 date: 2020-06-06 13:50:16
 summary: 详细讲解ES6规范
 categories:
-    - 转载
+    - 前端
 tags:
     - ES6语法
+    - 转载
 ---
 
 > 本文转载于https://blog.csdn.net/chenjuan1993/article/details/80952918

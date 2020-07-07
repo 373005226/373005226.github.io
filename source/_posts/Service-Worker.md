@@ -4,10 +4,11 @@ date: 2020-06-12 17:52:55
 summary: Service Worker：让你的 Web 应用牛逼起来
 author: LY
 categories:
-    - 转载
+    - 前端
 tags:
     - JavaScript
     - 前端优化
+    - 转载
 ---
 
 > 本文出自公众号：前端瓶子君

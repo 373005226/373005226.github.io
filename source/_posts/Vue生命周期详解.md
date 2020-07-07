@@ -3,9 +3,10 @@ title: Vue生命周期详解
 date: 2020-05-27 16:48:33
 summary: 讲解Vue的生命手气
 categories:
-    - 转载
+    - 前端
 tags:
     - Vue
+    - 转载
 ---
 
 > 本文章大部分引用于https://www.cnblogs.com/chenyablog/p/9095677.html
@@ -20,4 +21,8 @@ tags:
 2. **mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染**
 
 
+
+**父子组件的生命周期：**
+
+**子组件的所有生命周期都会在父组件的beforemounted之前加载完毕**
 

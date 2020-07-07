@@ -3,9 +3,10 @@ title: gitbook插件
 date: 2020-05-31 19:45:26
 summary: 讲解gitbook的插件
 categories:
-    - 转载
+    - 工具
 tags:
     - gitbook
+    - 转载
 ---
 
 > **作　　者**：**[明月](https://www.cnblogs.com/mingyue5826)**

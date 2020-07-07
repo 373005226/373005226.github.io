@@ -3,9 +3,10 @@ title: Vue跨域
 date: 2020-05-27 16:58:49
 summary: 讲解Vue跨域的问题
 categories:
-    - 转载
+    - 前端
 tags:
     - Vue
+    - 转载
 ---
 
 > 本文转载于https://www.cnblogs.com/wasbg/p/10973880.html
@@ -112,7 +113,7 @@ CSDN：https://www.csdn.net/api/articles?type=more&category=home&shown_offset=15
 
  ===============  以下为npm run dev 跨域的解决方法  ===============
 
-![img](https://images2018.cnblogs.com/blog/1180395/201804/1180395-20180421172816214-612268121.png)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707144338.png)
 
 脚手架Vue-cli已经帮我们留好了接口
 
@@ -124,7 +125,7 @@ proxyTable:{}
 
 所以，我把参数添加成：
 
-![img](https://images2018.cnblogs.com/blog/1180395/201804/1180395-20180421173308108-1728593951.png)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707144346.png)
 
 原来接口：
 
@@ -134,13 +135,13 @@ CSDN：https://www.csdn.net/api/articles?type=more&category=home&shown_offset=15
 
 请求链接就变成这样了：
 
-![img](https://images2018.cnblogs.com/blog/1180395/201804/1180395-20180421173405626-1245942528.png)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707144353.png)
 
-![img](https://images2018.cnblogs.com/blog/1180395/201804/1180395-20180421173447763-1398900761.png)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707144359.png)
 
 最后，把数据打印出来，就可以了。。
 
-![img](https://images2018.cnblogs.com/blog/1180395/201804/1180395-20180421173606705-1558230752.png)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707144406.png)
 
 ===============  以上为npm run dev 跨域的解决方法  ===============
 
@@ -175,12 +176,10 @@ https://blog.csdn.net/biaoge0310/article/details/78900538
 
 添加如下配置：
 
-![img](https://images2018.cnblogs.com/blog/1180395/201804/1180395-20180421175000045-2066705480.png)
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707144412.png)
 
 启动ngix服务器： start nginx
 
 输入网址：http://localhost:8099
 
 完美！！！！打包后也解决了。。
-
-===============  以上为npm run build 跨域的解决方法  ===============

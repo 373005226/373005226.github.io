@@ -3,7 +3,7 @@ title: Django优秀资源大全
 summary: Django优秀资源汇总
 date: 2020-4-24 20:20:00
 categories:
-    - 转载
+    - 工具
 tags:
     - python工具包
     - 后端文章转载

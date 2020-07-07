@@ -3,10 +3,11 @@ title: 为什么你的网页需要 CSP?
 date: 2020-06-10 20:36:23
 summary: 内容安全策略（CSP）是一个 HTTP Header
 categories:
-    - 转载
+    - 前端
 tags:
     - 前端面试题
     - JavaScript
+    - 转载
 ---
 
 > 以下文章来源于code秘密花园 ，作者ConardLi

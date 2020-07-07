@@ -2,10 +2,11 @@
 title: CSR、SSR、NSR、ESR傻傻分不清楚，一文帮你理清前端渲染方案！
 date: 2020-06-10 20:39:43
 categories:
-    - 转载
+    - 前端
 tags:
     - 前端面试题
     - JavaScript
+    - 转载
 ---
 
 > 以下文章来源于奶爸码农 ，作者奶爸码农

@@ -3,11 +3,12 @@ title: JavaScript原型链
 date: 2020-05-28 17:43:11
 summary: 三张图搞定JavaScript的原型对象于原型链
 categories:
-    - 转载
+    - 前端
 tags:
     - Vue
     - JavaScript
     - 前端面试题
+    - 转载
 ---
 
 > 作者：前小白

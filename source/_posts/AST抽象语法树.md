@@ -3,12 +3,13 @@ title: AST抽象语法树
 date: 2020-05-28 17:15:46
 summary: 讲解AST抽象语法树
 categories:
-    - 转载
+    - 前端
 tags:
     - Vue
     - webpack
     - AST
     - JavaScript
+    - 转载
 ---
 
 > 本文转载于https://segmentfault.com/a/1190000016231512?utm_source=tag-newest
