@@ -16,21 +16,30 @@ tags:
 > 来源：简书
 > 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
-JS中原型链，说简单也简单。
+> 原型链是前端面试里一个经久不衰的问题了，自己也查阅了很多的资料，像红宝书、JavaScript忍者秘籍上都有对这一方面的描述和概括，今天就像自己归纳一下这个问题：
+>
 
-首先明确： 函数（Function）才有prototype属性，对象（除Object）拥有__proto__。
+**首先，我们先来看一张图：**
 
-首先，我画了一张图。都可以有一个原型_proto_，这个原型还可以有它自己的原型，以此类推，形成一个原型链。查找特定属性的时候，我们先去这个对象里去找，如果没有的话就去它的原型对象里面去，如果还是没有的话再去向原型对象的原型对象里去寻找...... 这个操作被委托在整个原型链上，这个就是我们说的原型链了。
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707182552)
 
-**二、原型指针**
+这个绕来绕去的线是不是很恶心呢？那就先别管这些了，等整个逻辑我们梳理完就自然而然的会明白了~
+
+## 详解原型链
+
+### 一、 什么是原型链？
+
+> ​    每个对象都可以有一个原型_proto_，这个原型还可以有它自己的原型，以此类推，形成一个原型链。查找特定属性的时候，我们先去这个对象里去找，如果没有的话就去它的原型对象里面去，如果还是没有的话再去向原型对象的原型对象里去寻找...... 这个操作被委托在整个原型链上，这个就是我们说的原型链了。
+
+### 二、原型指针
 
   我们知道了原型的概念，接下来我们就照着上面的图来具体分析一下原型的指针；中间最上面蓝色模块标注的构造函数Foo, 里面有两个属性： _proto_ 和 prototype, 这两个很容易使人混淆，先说说prototype:
 
-**prototype:**
+`prototype:`
 
   prototype属性，它是**函数所独有的**，它是从**一个函数指向一个对象**。它的含义是**函数的原型对象**，也就是这个函数（其实所有函数都可以作为构造函数）所创建的实例的原型对象; 这个属性是一个指针，指向一个对象，这个对象的用途就是包含所有实例共享的属性和方法（我们把这个对象叫做原型对象）;
 
-`__proto__`:
+`__proto__:`
 
   `__proto__`是原型链查询中实际用到的，它总是指向 prototype，换句话说就是指向构造函数的原型对象，它是**对象独有的。**注意，为什么Foo构造也有这个属性呢，因为再js的宇宙里万物皆对象，包括函数；
 
@@ -38,7 +47,7 @@ JS中原型链，说简单也简单。
 
 
 
-**constructor：**
+`constructor：`
 
   我们看到途中最中间灰色模块有一个constructor属性，这个又是做什么用的呢？
 
@@ -63,6 +72,13 @@ JS中原型链，说简单也简单。
 
 所有对象都有__proto__属性，函数这个特殊对象除了具有__proto__属性，还有特有的原型属性prototype。prototype对象默认有两个属性，constructor属性和__proto__属性。prototype属性可以给函数和对象添加可共享（继承）的方法、属性，而__proto__是查找某函数或对象的原型链方式。constructor，这个属性包含了一个指针，指回原构造函数。
 
+## 图解原型链
+
+> 作者：前小白
+> 链接：https://www.jianshu.com/p/9085998d8158
+> 来源：简书
+> 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 ![img](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200528180124)
 
 所谓原型链，指的就是图中的**proto**这一条指针链！
@@ -85,7 +101,7 @@ functionEmpty(){}
 
 我们知道原型是一个对象，其他对象可以通过它实现属性继承。但是尼玛除了prototype，又有一个__proto__是用来干嘛的？长那么像，让人怎么区分呢？它们都指向谁，那么混乱怎么记啊？原型链又是什么鬼？相信不少初学者甚至有一定经验的老鸟都不一定能完全说清楚，下面用三张简单的图，配合一些示例代码来理解一下。
 
-## 一、prototype和__proto__的区别
+### prototype和__proto__的区别
 
 ![img](https://images2015.cnblogs.com/blog/787416/201603/787416-20160323103557261-114570044.png)
 
@@ -98,6 +114,8 @@ var b = function(){}
 console.log(b.prototype);  //b {}
 console.log(b.__proto__);  //function() {}
 ```
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200708103739)
 
 
 
@@ -133,3 +151,91 @@ console.log(a.__proto__.__proto__); //Object {}（即构造器function Object �
 console.log(a.__proto__.__proto__.__proto__); //null
 ```
 
+### 额外知识
+
+我在写一篇图解prototype和__proto__的区别时，搜资料搜到了一个有意思的现象，下面这两个运算返回的结果是一样的：
+
+Function instanceof Object;//true
+
+Object instanceof Function;//true
+
+这个是怎么一回事呢？要从运算符instanceof说起。
+
+## 简述原型链
+
+> 作者：柚子硕
+> 链接：https://www.jianshu.com/p/f8c7c55025fc
+> 来源：简书
+> 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+基础：
+ `只有构造函数有原型属性 - prototype，它是一个对象`
+ `原型对象中有个constructor属性，constructor指向构造函数本身，也只有原型对象具有constructor属性`
+ `所有的对象都有 __protp__属性，它也是个对象`
+
+###### 1.构造函数
+
+```js
+ // 构造函数
+    function Student(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+      // 多个对象，会存储多个sayHi方法
+      this.sayHi = function () {
+        console.log('大家好，我是' + this.name);
+      }
+    } 
+
+    var s1 = new Student('lilei', 18, '男');
+    var s2 = new Student('hmm', 18, '女');
+
+    s1.sayHi();
+    s2.sayHi();
+
+    console.log(s1.sayHi === s2.sayHi); // false 两个独立的sayHi方法
+```
+
+我们可以通过构造函数批量创建具有相同属性的对象，但当构造函数内有静态方法的时候，每创建一个实例都会为静态方法在内存中开辟一块空间，而这些方法都是一样的，浪费内存。
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200708172032)
+
+解决方案是将静态方法放在构造函数的原型prototype上，构造函数的原型不会被实例拷贝，所有的实例对象都可以访问构造函数的原型，这样节省了内存空间。
+
+```js
+    function Student(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+    } 
+
+    Student.prototype.sayHi = function () {
+      console.log('大家好，我是' + this.name);
+    }
+
+    // 通过Student构造函数，创建的对象，可以访问Student.prototype中的成员
+    var s1 = new Student('lilei', 18, '男');
+    var s2 = new Student('hmm', 18, '女');
+
+    s1.sayHi();
+    s2.sayHi();
+
+    console.log(s1.sayHi === s2.sayHi);// true
+```
+
+###### 2.原型链
+
+把构造函数、构造函数的原型、构造函数的实例之前的关系成为原型链
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200708172052)
+
+image.png
+
+###### 3.查找规则
+
+实例对象访问一个方法或者属性的步骤
+ 1.在本身对象内查找
+ 2.通过`__proto__`访问构造函数的原型prototype内查找
+ 3.通过构造函数的原型prototype内的`__proto__`访问Object构造函数的原型prototype查找，结果是 null
+
+![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200708172104)

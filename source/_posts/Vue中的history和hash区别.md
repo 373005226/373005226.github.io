@@ -7,6 +7,7 @@ categories:
     - 前端
 tags:
     - Vue
+    - 前端面试题
 ---
 
 ## hash和history的区别

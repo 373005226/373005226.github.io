@@ -7,6 +7,7 @@ categories:
     - 前端
 tags:
     - Vue
+    - 前端面试题
 ---
 
 > 在使用Vue cli2创建项目的时候，会出现选择runtime-compiler和runtime-only的选项，这里我介绍这两者的区别

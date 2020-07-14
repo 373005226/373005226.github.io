@@ -7,6 +7,7 @@ categories:
 tags:
     - JavaScript
     - 转载
+    - 前端面试题
 ---
 
 > 这两个是我看到的比较全面讲解事件委托机制的文章：

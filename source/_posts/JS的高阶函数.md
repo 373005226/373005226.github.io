@@ -8,6 +8,7 @@ categories:
 tags:
     - JavaScript
     - ES6语法
+    - 前端面试题
 ---
 
 > 以下皆是由https://www.bilibili.com/video/av59594689?from=search&seid=2169751232721048853
