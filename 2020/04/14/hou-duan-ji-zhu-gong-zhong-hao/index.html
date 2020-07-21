@@ -1,0 +1,1166 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="后端技术公众号, 勤奋小L的博客">
+    <meta name="description" content="这里是我看的python优质公众号的集和，因为没有时间看手机，所以把这些优质公众号集和在这里等有时间仔细研究">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>后端技术公众号 | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">后端技术公众号</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AE%9E%E7%94%A8%E6%96%87%E7%AB%A0%E5%AD%98%E5%82%A8/" class="post-category">
+                                实用文章存储
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    12 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="python技巧"><a href="#python技巧" class="headerlink" title="python技巧"></a>python技巧</h3><p><a href="https://mp.weixin.qq.com/s/jIeQGYqJztUZEsLg9bGPUw" target="_blank" rel="noopener">使用WSL在Windows上搭建Python开发环境</a></p>
+<p><a href="https://mp.weixin.qq.com/s/4zXnXpZaYcoZMg_HonuXyg" target="_blank" rel="noopener">入坑 Python 后强烈推荐的一套工具库</a></p>
+<p><a href="https://mp.weixin.qq.com/s/bYNnbDATOs_1_vFD7QU4wQ" target="_blank" rel="noopener">很冷门，但非常实用的 Python 库</a></p>
+<p><a href="https://mp.weixin.qq.com/s/eFYDW20YPynjsW_jcp-QWw" target="_blank" rel="noopener">Python要点总结，我使用了100个小例子！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/wlqvAvKvqPCclZm8AvkUSw" target="_blank" rel="noopener">Python 中更优雅的异常处理方案</a></p>
+<p><a href="https://mp.weixin.qq.com/s/-sjLzKWrEOl4rFCKrn1GEw" target="_blank" rel="noopener">Pandas 4 个小 trick，都很实用！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/i0Dd_EHoR4VMdQdEvRo12A" target="_blank" rel="noopener">推荐一些能能提高生产力的 Python 库</a></p>
+<p><a href="https://mp.weixin.qq.com/s/7bNljisifcF4l_xbRiKp4A" target="_blank" rel="noopener">Python 中各种下划线的骚操作：<em>、</em>xx、xx_、<strong>xx、</strong>xx__、<em>classname</em></a></p>
+<p><a href="https://mp.weixin.qq.com/s/ojg04FHxF5f6-3zTqasBsQ" target="_blank" rel="noopener">7个Python特殊技巧，助力你的数据分析工作之路</a></p>
+<p><a href="https://mp.weixin.qq.com/s/B-gzfyQpK2ojSAV0ince-w" target="_blank" rel="noopener">开源 sk-dist，超参数调优仅需 3.4 秒，sk-learn 训练速度提升 100 倍！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/CGYoUi3GjQdJsPITcQzAQw" target="_blank" rel="noopener">30倍！使用Cython加速Python代码</a></p>
+<p><a href="https://mp.weixin.qq.com/s/2ZFZ8olllPnrQ4wtCPPkMA" target="_blank" rel="noopener">Python 69个内置函数分8类总结，这样记更方便！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/zXzv52SyRRx-Ia0DOMtjsg" target="_blank" rel="noopener">代码整洁之道-编写 Pythonic 代码</a></p>
+<p><a href="https://mp.weixin.qq.com/s/upy3HVQhcO29kXPEd4vYwQ" target="_blank" rel="noopener">你常常看到的 <strong>init</strong>.py 到底是个啥？</a></p>
+<h3 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h3><p><a href="https://mp.weixin.qq.com/s/1_miuPAShyAAL3qbWcuhVQ" target="_blank" rel="noopener">商城抢购秒杀服务器架构设计解析</a></p>
+<h3 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h3><p><a href="https://mp.weixin.qq.com/s/gDMGXN_5nj1asNZSBMMX7Q" target="_blank" rel="noopener">相当全面：推荐系统干货总结</a></p>
+<p><a href="https://mp.weixin.qq.com/s/uz26A1_GRiodeO7cKI1LpA" target="_blank" rel="noopener">详解今日头条、抖音的推荐算法原理！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/3QR-QhP4FH1OvhAkwghZPQ" target="_blank" rel="noopener">今日头条、抖音推荐算法原理全文详解！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/1zlyk_XzHxyJ6CfbezxRDg" target="_blank" rel="noopener">现实世界中的推荐系统</a></p>
+<p><a href="https://mp.weixin.qq.com/s/kETcLo5VA9Oi1WV6JRGIyw" target="_blank" rel="noopener">推荐系统结合知识图谱简单总结</a></p>
+<h3 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h3><p><a href="https://mp.weixin.qq.com/s/yYfVM20DamQdJVwdpaQT_Q" target="_blank" rel="noopener">一文理解PyTorch：附代码实例</a></p>
+<p><a href="https://mp.weixin.qq.com/s/TqZIAiyI91ZgaPypaUDc1g" target="_blank" rel="noopener">深度学习必须掌握的 13 种概率分布</a></p>
+<p><a href="https://mp.weixin.qq.com/s/xnDIgaVWefyDpJICKhLyWA" target="_blank" rel="noopener">强烈推荐！GitHub开源项目 手写30多个机器学习主流算法！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/LBGHUOhsSeqPUbJK9PidNg" target="_blank" rel="noopener">深度学习简单开发？这里有一份优秀答案</a></p>
+<p><a href="https://mp.weixin.qq.com/s/x_d0Iw_LdLv2XCthptpWBw" target="_blank" rel="noopener">飞桨火力全开，重磅上线3D模型：PointNet++、PointRCNN！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/5qi3vuGEt8pQmL5C2HCCJQ" target="_blank" rel="noopener">[建精读]阿里前端专家，揭秘职位描述下的潜台词</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Wlhdr9slnA60vuA_gnBCSw" target="_blank" rel="noopener">豆瓣评分9.8！历经三年才完成，复旦教授的《神经网络与深度学习》免费下载了</a></p>
+<p><a href="https://mp.weixin.qq.com/s/J_O84dcQ98IQtzbEFCo5Xw" target="_blank" rel="noopener">五行代码用图提升模型表现，TensorFlow开源NSL神经结构学习框架</a></p>
+<p><a href="https://mp.weixin.qq.com/s/quWxGWxzgy_qVmDBbjATsw" target="_blank" rel="noopener">最通俗的方式解释神经网络的数学过程</a></p>
+<p><a href="https://mp.weixin.qq.com/s/nMRj24nRPQ97bW8YRkVI8w" target="_blank" rel="noopener">字节跳动开源分布式训练框架BytePS，登上GitHub热榜</a></p>
+<p><a href="https://mp.weixin.qq.com/s/LgPUL4OjZuD3_-DhJubz2g" target="_blank" rel="noopener">Pytorch常见的坑汇总</a></p>
+<p><a href="https://mp.weixin.qq.com/s/FPDqupz9vCRDVXHqwbRRGQ" target="_blank" rel="noopener">Pytorch节省内存（显存）的小技巧</a></p>
+<h3 id="数据分析与数据挖掘"><a href="#数据分析与数据挖掘" class="headerlink" title="数据分析与数据挖掘"></a>数据分析与数据挖掘</h3><p><a href="https://mp.weixin.qq.com/s/Rgh9SIKlbBpOzOpZLUSqZA" target="_blank" rel="noopener">Python数据分析学习路线个人总结</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Nx995uTbOSdxRWMq9FL1iQ" target="_blank" rel="noopener">数据挖掘竞赛指南：曾经的数据挖掘少年，如今的阿里算法大佬</a></p>
+<p><a href="https://mp.weixin.qq.com/s/WPMvwCQOCTxlt9KxdSzTAQ" target="_blank" rel="noopener">太赞了！Python 数据科学速查表中文版强势来袭</a></p>
+<p><a href="https://mp.weixin.qq.com/s/NqCz_SOzebibhsYc4BE_6g" target="_blank" rel="noopener">分享10个强大的神器工具，你一定会需要！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/IqBWWcBdHcvO5lXu7Y_niQ" target="_blank" rel="noopener">Pandas、Matplotlib、Pyecharts数据分析实践</a></p>
+<p><a href="https://mp.weixin.qq.com/s/n6e4-VUxLkoOmWgRbQg9UA" target="_blank" rel="noopener">「最全」实至名归，NumPy 官方早有中文教程，结合深度学习，还有防脱发指南</a></p>
+<p><a href="https://mp.weixin.qq.com/s/xh-fiDHvn30XD7bUX5ttVg" target="_blank" rel="noopener">Pandas官方文档中文版PDF下载</a></p>
+<p><a href="https://mp.weixin.qq.com/s/d0xo6UebEhTgPThnJTuLYw" target="_blank" rel="noopener">「数据分析」之零基础入门数据挖掘</a></p>
+<p><a href="https://mp.weixin.qq.com/s/A2vChdNXRqlddyIY0iJ3zQ" target="_blank" rel="noopener">「特征工程」之零基础入门数据挖掘</a></p>
+<p><a href="https://mp.weixin.qq.com/s/gJWLQRLsXn8JNbopDsnaQQ" target="_blank" rel="noopener">加一行注释，让你的 Python 程序提速 10+ 倍！Numba 十分钟上手指南</a></p>
+<p><a href="https://mp.weixin.qq.com/s/MxXQqB0-EnB6mCdneS73pA" target="_blank" rel="noopener">数据小白如何入门数据分析？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/CR_JrvpsRGL__giaggINxw" target="_blank" rel="noopener">快乐学习Pandas！开源教程《Joyful-Pandas》发布</a></p>
+<p><a href="https://mp.weixin.qq.com/s/8Ntp_Lx044azwSPbZ_KjPg" target="_blank" rel="noopener">快乐学习Pandas入门篇：Pandas基础</a></p>
+<p><a href="https://mp.weixin.qq.com/s/7ORyiSRb5OY3CDedZadPfA" target="_blank" rel="noopener">数据挖掘入门指南！！！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/lnfiJzQ3_xiwCjepkJWy-Q" target="_blank" rel="noopener">【可视化】seaborn常用的10种数据分析图表</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Qhb1yDcMti63bZQGFSk3tQ" target="_blank" rel="noopener">Python数据分析实战：获取数据</a></p>
+<p><a href="https://mp.weixin.qq.com/s/UlIeyF1Qk-vOIe-57U0xlA" target="_blank" rel="noopener">NumPy进阶修炼｜你真的了解NumPy吗</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Y_L6QPOQwuUEtt1LVRs4bA" target="_blank" rel="noopener">干货 | 一文让你了解Pandas数据结构</a></p>
+<h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><p><a href="https://mp.weixin.qq.com/s/5lQMlZ_nhs1H5ajd8dD9OA" target="_blank" rel="noopener">数学基础、机器学习经典算法、统计学习方法，这份机器学习在线手册来帮你</a></p>
+<p><a href="https://mp.weixin.qq.com/s/fIHUOyK8KIyuPjGGOMoubQ" target="_blank" rel="noopener">阿里机器学习算法面经（已offer）</a></p>
+<p><a href="https://mp.weixin.qq.com/s/gX174_0CtgnFuqMZXTSHsA" target="_blank" rel="noopener">我爱了！700 页的机器学习笔记火了！完整版开放下载</a></p>
+<p><a href="https://mp.weixin.qq.com/s/O4fPxLJiFJhPQ2_8hfRb7w" target="_blank" rel="noopener">周志华教授谈如何做研究与写论文 完整PPT开放下载！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/rvk6-nOEGrh9l-7JI-tKMQ" target="_blank" rel="noopener">决策树原理学习笔记（一）</a></p>
+<p><a href="https://mp.weixin.qq.com/s/7DSBCDRTAIiv96wKyp6yFA" target="_blank" rel="noopener">【白话机器学习】算法理论+实战之AdaBoost算法</a></p>
+<p><a href="https://mp.weixin.qq.com/s/SZXQqE76NHgFSQQvzsFaTw" target="_blank" rel="noopener">你离开学只差这个视频：李宏毅机器学习2020版正式开放上线2</a></p>
+<p><a href="https://mp.weixin.qq.com/s/46dSfHW-Tei6pxUUZRjamg" target="_blank" rel="noopener">自学机器学习课程怕踩雷？有人帮你选出了top 5优质课</a></p>
+<p><a href="https://mp.weixin.qq.com/s/W7MNDKowPqtyGbSec6rOmA" target="_blank" rel="noopener">90题细品吴恩达《机器学习》，感受被刷题支配的恐惧</a></p>
+<p><a href="https://mp.weixin.qq.com/s/cIhpub2KfYtg0rcJjN92LA" target="_blank" rel="noopener">普林斯顿博士：手写 30 个主流机器学习算法，全都开源了！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/uR0gn3UV7Sojly2soIMUkQ" target="_blank" rel="noopener">有没有必要把机器学习算法自己实现一遍？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/XNDbIL7hwNvdEbjWqHOcdw" target="_blank" rel="noopener">Github 上评价最高的 5 个机器学习项目</a></p>
+<p><a href="https://mp.weixin.qq.com/s/qpJWOjWEPaEyfuDxrMcVZQ" target="_blank" rel="noopener">Python 将时间戳转换为指定格式日期</a></p>
+<p><a href="https://mp.weixin.qq.com/s/m9CpQZ0rpIzehB3M-zk8zA" target="_blank" rel="noopener">GitHub万星资源：强化学习算法实现，教程代码样样全，还有详细学习规划</a></p>
+<p><a href="https://mp.weixin.qq.com/s/k2vm1ZKXI7Nh9xhSPM8VFg" target="_blank" rel="noopener">斯坦福学霸分享的10个自用的免费在线课程</a></p>
+<p><a href="https://mp.weixin.qq.com/s/YGtYJZ19N_LBY7YLUKbUWA" target="_blank" rel="noopener">入门者的机器学习/深度学习自学指南</a></p>
+<p><a href="https://mp.weixin.qq.com/s/_1DTHbaLDhu61GzwkVGegw" target="_blank" rel="noopener">李航《统计学习方法》读书笔记</a></p>
+<p><a href="https://mp.weixin.qq.com/s/DDyjJ75pZ6SoHu2yz37Lrg" target="_blank" rel="noopener">使用Scikit-Learn轻松实现数据缩放</a></p>
+<p><a href="https://mp.weixin.qq.com/s/fc4dmz8nsSoySJHLoRKmzw" target="_blank" rel="noopener">WWW2020推荐系统论文合集(已分类整理，并提供下载)</a></p>
+<p><a href="https://mp.weixin.qq.com/s/puQfDdwnwLbSIpGcrbO4RQ" target="_blank" rel="noopener">近期机器学习系列文章汇总</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Vd69YfY9_5PrHKG_VEvWEg" target="_blank" rel="noopener">机器阅读理解方向有什么值得follow的大佬，网站等等?</a></p>
+<p><a href="https://mp.weixin.qq.com/s/9SfN2nN0wXLXy49oQNzKiA" target="_blank" rel="noopener">【白话机器学习】算法理论+实战之关联规则</a></p>
+<h3 id="运维管理"><a href="#运维管理" class="headerlink" title="运维管理"></a>运维管理</h3><p><a href="https://mp.weixin.qq.com/s/LH7bABN8Lj9vUenI4OVRyA" target="_blank" rel="noopener">Lazydocker：一款功能强大的Docker管理套件</a></p>
+<p><a href="https://mp.weixin.qq.com/s/DhJNXNvC9EM_zz-KyBEZYg" target="_blank" rel="noopener">Kubernetes 还是 DC/OS？实现云原生的路上，选型只是开始！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/kJ54xTF-iM22xSlO-0iaOQ" target="_blank" rel="noopener">原创 | 全网最实在的docker入门教程四</a></p>
+<p><a href="https://mp.weixin.qq.com/s/MUa5FdN_QY-_BGwncP9AYQ" target="_blank" rel="noopener">Linux容器技术原理和使用</a></p>
+<p><a href="https://mp.weixin.qq.com/s/CXUwpTbAVoXEeB7EcrCjAw" target="_blank" rel="noopener">不搞虚的！快速把你拉入Docker 的门里 | 原力计划</a></p>
+<p><a href="https://mp.weixin.qq.com/s/hGKmzyVngqEJGb7wQMnXyg" target="_blank" rel="noopener">Docker 概念很难理解？一文搞定 Docker 端口绑定</a></p>
+<p><a href="https://mp.weixin.qq.com/s/qLsKEn1iEYI-LHeuS1_fOA" target="_blank" rel="noopener">终于有人把 Docker 讲清楚了，万字详解！（建议收藏）</a></p>
+<p><a href="https://mp.weixin.qq.com/s/IR11v7n9uu_sFARt-iEy8w" target="_blank" rel="noopener">从安全到镜像流水线，Docker 最佳实践与反模式一览</a></p>
+<p><a href="https://mp.weixin.qq.com/s/qAleX1onlCyxdeEx-BLCuw" target="_blank" rel="noopener">两小时入门 Docker（好文推荐）</a></p>
+<h3 id="实用网站"><a href="#实用网站" class="headerlink" title="实用网站"></a>实用网站</h3><p><a href="https://mp.weixin.qq.com/s/hJxNLwDl7yTFzPXKBGDOSw" target="_blank" rel="noopener">「秘」那些管UI小姐姐要来的网站</a></p>
+<p><a href="https://mp.weixin.qq.com/s/EAZBXhNhM6aN1KiF134zQw" target="_blank" rel="noopener">60个相见恨晚的神器工具</a></p>
+<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p><a href="https://mp.weixin.qq.com/s/C6xcIZFWag3ou8R0E8Bixg" target="_blank" rel="noopener">支付宝应用的架构到底有多牛？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Fy4x-FrXWuEXeWHoOf8aGA" target="_blank" rel="noopener">面试必问四角关系！QPS、TPS、并发用户数、吞吐量！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/HM-3gs-KP8-js4LHWWxQbA" target="_blank" rel="noopener">五分钟看懂 Nginx 负载均衡</a></p>
+<p><a href="https://mp.weixin.qq.com/s/akBoBjaPLtctdJrs-Hvhtg" target="_blank" rel="noopener">12张手绘图，终于搞懂了微服务架构</a></p>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p><a href="https://mp.weixin.qq.com/s/SBu9XwZZ_qG3nq7vnwfQgg" target="_blank" rel="noopener">面试问我，创建多少个线程合适？我该怎么说</a></p>
+<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><p><a href="https://mp.weixin.qq.com/s/xiVWDnQjhnbBzUJgcdsV-g" target="_blank" rel="noopener">Linux 11个炫酷的终端命令！你知道几个？</a></p>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><p><a href="https://mp.weixin.qq.com/s/IgaRneLCKcBraBF_4_srBg" target="_blank" rel="noopener">厉害了，SQL在线模拟器！还装个毛的环境！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/yxS4tpX_6fz9LBsh0UoHpw" target="_blank" rel="noopener">什么是 MySQL 索引?</a></p>
+<p><a href="https://mp.weixin.qq.com/s/29W0mEkvLgjGG0DkRkm8KQ" target="_blank" rel="noopener">面试问Redis锁，我脸都绿了……</a></p>
+<p><a href="https://mp.weixin.qq.com/s/7pSLPQQyeqRd7SuWGu8oJg" target="_blank" rel="noopener">一文深入了解 Redis 内存模型，Redis 的快是有原因的！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/y0xFct21wIVK8N3cdE7s1w" target="_blank" rel="noopener">超详细的redis入门</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Tta36pxSIGDvnW_Rb-FkQA" target="_blank" rel="noopener">吊打面试官之消息队列基础</a></p>
+<p><a href="https://mp.weixin.qq.com/s/wKZGkxBIac-C1UUaJUlShQ" target="_blank" rel="noopener">平时不努力，面试弟中弟</a></p>
+<p><a href="https://mp.weixin.qq.com/s/MxRVprNoGswL_vWuwt43kg" target="_blank" rel="noopener">一次 SQL 查询优化原理分析（900W+ 数据，从 17s 到 300ms）</a></p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p><a href="https://mp.weixin.qq.com/s/ORpfjtU-EwGZIPrqp1V4uw" target="_blank" rel="noopener">拜托，别再问我什么是B+树 了</a></p>
+<p><a href="https://mp.weixin.qq.com/s/-bI9ien3dGVDDKrDve0qRQ" target="_blank" rel="noopener">用Python手写十大经典排序算法</a></p>
+<p><a href="https://mp.weixin.qq.com/s/NmIUAfoeEw1iw57lC6eylA" target="_blank" rel="noopener">最全Python算法入门</a></p>
+<p><a href="https://mp.weixin.qq.com/s/pIMCxFpiqs85jXAiVuuUxA" target="_blank" rel="noopener">好些粉丝私信我要不要学算法？？帅地决定怒怼那些张口就说算法无用论的人！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/clVnq9tXbSUC1U1kCnA8YA" target="_blank" rel="noopener">当输入 xxxxHub 后，到网页显示，其间发生了什么？这问题被面试官问了五六十次，熬夜赶出这篇文章</a></p>
+<p><a href="https://mp.weixin.qq.com/s/k28aCwdZNe84HaBr6YTS8g" target="_blank" rel="noopener">动画：用动画给面试官解释 KMP 算法</a></p>
+<p><a href="https://mp.weixin.qq.com/s/9oGJJ32Mrxct2sROlZv4sQ" target="_blank" rel="noopener">拒绝跟风，谈谈几种算法岗的区别和体验</a></p>
+<p><a href="https://mp.weixin.qq.com/s/qbGBa6pThRkAmkRZ4Lacgg" target="_blank" rel="noopener">为什么要学数据结构？| 原力计划</a></p>
+<p><a href="https://mp.weixin.qq.com/s/0mK_iZBWuGd85VFtSMkmWQ" target="_blank" rel="noopener">如何科学的打开 Leetcode</a></p>
+<p><a href="https://mp.weixin.qq.com/s/tDzjti8hOEqetFdlns253w" target="_blank" rel="noopener">有了这套模板，女朋友再也不用担心我刷不动 LeetCode 了</a></p>
+<p><a href="https://mp.weixin.qq.com/s/EiJum3-44TqXZN4apuSQUQ" target="_blank" rel="noopener">如何找到字符串中的最长回文子串？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/_m9rG2cvo8xZzt4wyEnvjg" target="_blank" rel="noopener">神一样的随机算法</a></p>
+<p><a href="https://mp.weixin.qq.com/s/mIKk20MaMMAh2p1_fxQPsA" target="_blank" rel="noopener">算法菜鸟的春招之路</a></p>
+<p><a href="https://mp.weixin.qq.com/s/34ZeJPRzBQ3FA8TX_HCl6Q" target="_blank" rel="noopener">游戏中的敏感词过滤算法如何实现的？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/3uCQj0-WBXENZyr1mQ1mZQ" target="_blank" rel="noopener">漫画：“哈夫曼编码” 是什么鬼？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/0f77h18dTe-d9V9eG1vqFQ" target="_blank" rel="noopener">用 Python 挪车、管理农场，这届 PyCon 有点香</a></p>
+<p><a href="https://mp.weixin.qq.com/s/zivOyNWi99r8L7WO3HhByA" target="_blank" rel="noopener">什么是线段树？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/mEFlywVDmAgTFSDr5TSxdA" target="_blank" rel="noopener">呕心泣血算法指导篇（真正的干货，怒怼那些说算法没用的人）</a></p>
+<p><a href="https://mp.weixin.qq.com/s/DLxjVLm419Ecyriv0PB3Fg" target="_blank" rel="noopener">二叉树就是这么简单(面试常考点)</a></p>
+<p><a href="https://mp.weixin.qq.com/s/YPt8FY4hXoEosu3XEBKEZg" target="_blank" rel="noopener">非常详细的 Linux C/C++ 学习路线总结！助我拿下腾讯off</a></p>
+<p><a href="https://mp.weixin.qq.com/s/7hLLl7CXpLfzK2hwURv1Ug" target="_blank" rel="noopener">跟大家聊 10 道考察前端算法基础的高频题</a></p>
+<p><a href="https://mp.weixin.qq.com/s/k4-RaW4ROlo6chSXsO_4AA" target="_blank" rel="noopener">数据结构里各种难啃的“树”，一文搞懂它</a></p>
+<h3 id="后端技巧"><a href="#后端技巧" class="headerlink" title="后端技巧"></a>后端技巧</h3><p><a href="https://mp.weixin.qq.com/s/dIjFzuJYvc7LI4RTBtcNsg" target="_blank" rel="noopener">扫码登录的技术原理好像没那么难</a></p>
+<p><a href="https://mp.weixin.qq.com/s/cohWZy_eUOUqbmUxhXzzNA" target="_blank" rel="noopener">Elasticsearch快速入门，掌握这些刚刚好！</a></p>
+<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><p><a href="https://mp.weixin.qq.com/s/uDUGsD0cr2RUq9JAtht3cA" target="_blank" rel="noopener">程序员必知的 89 个操作系统核心概念</a></p>
+<p><a href="https://mp.weixin.qq.com/s/YBplUgUv2F4-l-unnvZ2_w" target="_blank" rel="noopener">牛逼！有人用漫画带你了解 Linux 内核长啥样</a></p>
+<p><a href="https://mp.weixin.qq.com/s/QjFsrWzekBunIT9GE2GB4Q" target="_blank" rel="noopener">别再说你不懂Linux内存管理了，10张图给你安排的明明白白！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/VsQ7IpP-jnXSjJhOAzl-ew" target="_blank" rel="noopener">硬核科普：程序员必知的 89 个操作系统核心概念</a></p>
+<p><a href="https://mp.weixin.qq.com/s/qNyQn_zef3KyBeW_nWJ7FA" target="_blank" rel="noopener">漫画：什么是openEuler社区？</a></p>
+<h3 id="其余知识"><a href="#其余知识" class="headerlink" title="其余知识"></a>其余知识</h3><p><a href="https://mp.weixin.qq.com/s/s7DSkjV_a9_iOIXPkWr_Nw" target="_blank" rel="noopener">RabbitMQ和Kafka的比较</a></p>
+<p><a href="https://mp.weixin.qq.com/s/8BTx0Wj38Sc8rccKbZktjA" target="_blank" rel="noopener">应该选择RabbitMQ还是Kafka？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/gPiiNmMKb1X2DBW0DilBpA" target="_blank" rel="noopener">面试了15位来自985/211高校的2020届研究生，思考许久，熬夜赶出了这篇文章</a></p>
+<p><a href="https://mp.weixin.qq.com/s/BnbBQGL-S2sGdRtNh7DN1A" target="_blank" rel="noopener">二本无实习上岸滴滴京东58·复盘(中)</a></p>
+<p><a href="https://mp.weixin.qq.com/s/hAE3ket5N_vC-OlV0ISAzQ" target="_blank" rel="noopener">关于NodeJS工作原理的五个误解</a></p>
+<p><a href="https://mp.weixin.qq.com/s/OTFFG0qL6KVDTZgALN30sA" target="_blank" rel="noopener">讲道理，MD5 到底是不是加密算法？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/-ZEhPTQWlJx0GgTiwIm6tA" target="_blank" rel="noopener">如何设计一个高性能短链？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/cvwgDrXcoJrWfHdY2sI6zQ" target="_blank" rel="noopener">面经 | 腾讯NLP实习面经（Offer已拿）</a></p>
+<p><a href="https://mp.weixin.qq.com/s/AOz9GYrBDowZJMgIwi4Aqw" target="_blank" rel="noopener">记一次腾讯社招前端面试（已拿到offer入职）</a></p>
+<p><a href="https://mp.weixin.qq.com/s/XraK63GniDXeJ5aQppEo7A" target="_blank" rel="noopener">凭什么 FastAPI 火成这样？看这篇文章就知道了</a></p>
+<p><a href="https://mp.weixin.qq.com/s/1Jacyz_PwKknZW3-OA2T4A" target="_blank" rel="noopener">630页！帅地把高评分原创文章整理成一份带高清书签的电子书，送给大家</a></p>
+<p><a href="https://mp.weixin.qq.com/s/zOoQBCfJkEWeoSPLTfJYQA" target="_blank" rel="noopener">吐血整理今年 89 道大厂面试题，附答案</a></p>
+<p><a href="https://mp.weixin.qq.com/s/yBQ6SarY3CV4utxweygMDg" target="_blank" rel="noopener">如果没准备这些面试题，找工作还是先缓缓吧</a></p>
+<p><a href="https://mp.weixin.qq.com/s/LoFS4NLbcCpWstFZmbCkxA" target="_blank" rel="noopener">5面终于拿到了字节跳动offer! 鬼知道我经历了啥…</a></p>
+<p><a href="https://mp.weixin.qq.com/s/AyLwYqMhTpAL2qgxYaZOWA" target="_blank" rel="noopener">讲一讲当时春秋招时做过的项目以及推荐几个项目+面试视频</a></p>
+<p><a href="https://mp.weixin.qq.com/s/09u5Au96QUBBRYFd1NVHlA" target="_blank" rel="noopener">卧槽！GitHub 标星 1.6w+，我发现了一个宝藏项目，作为编程新手有福了！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/e24Hc4FguEB1GJl5XZX_7w" target="_blank" rel="noopener">神器推荐！在浏览器中运行 VS Code，随时随地写代码</a></p>
+<p><a href="https://mp.weixin.qq.com/s/-IcKIm15ZcX4t4G3Ur8atQ" target="_blank" rel="noopener">这几个百度搜索技巧，太好用了</a></p>
+<p><a href="https://mp.weixin.qq.com/s/tDzjti8hOEqetFdlns253w" target="_blank" rel="noopener">有了这套模板，女朋友再也不用担心我刷不动 LeetCode 了</a></p>
+<p><a href="https://mp.weixin.qq.com/s/xHxgfsb4rTn77p56GS_bRQ" target="_blank" rel="noopener">2019必学的10大顶级Python库</a></p>
+<p><a href="https://mp.weixin.qq.com/s/DT3lON4_ciEWT4fcxO-TUA" target="_blank" rel="noopener">DeepMind 重磅开源强化学习游戏框架【智能快讯】</a></p>
+<p><a href="https://mp.weixin.qq.com/s/I6on0Q72AD2Qk_a8qhdgNw" target="_blank" rel="noopener">分享几个自用的编程书籍下载网站</a></p>
+<p><a href="https://mp.weixin.qq.com/s/cG7HQCGzhel9JVPPfJ7rNA" target="_blank" rel="noopener">【PPT】Vue.js 团队成员蒋豪群：Vue 高效开发之路</a></p>
+<p><a href="https://mp.weixin.qq.com/s/sjdjVVu6S2LxPsgFxp-sPg" target="_blank" rel="noopener">漫话：如何给女朋友解释什么是撞库、脱库和洗库？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Y0fNty15w0_Y68EJvHTrAw" target="_blank" rel="noopener">Python并发处理：CSP和协程</a></p>
+<p><a href="https://mp.weixin.qq.com/s/tBD92S6zucCLi1LdqNFMiQ" target="_blank" rel="noopener">手把手教你搭建完美的 Android 搞机/逆向环境</a></p>
+<p><a href="https://mp.weixin.qq.com/s/VlnBKbxJR7Eov2gzEOZALw" target="_blank" rel="noopener">利用 Python 深度学习识别滑动验证码缺口</a></p>
+<p><a href="https://mp.weixin.qq.com/s/4AO742nDAX6z2QTqEwDGGA" target="_blank" rel="noopener">如何用一根网线发起攻击？只能对不起被我攻击的室友了</a></p>
+<p><a href="https://mp.weixin.qq.com/s/VWS0mMA3qRSjEAXlqB5n3g" target="_blank" rel="noopener">Elasticsearch 在互联网公司大量真实的应用案例</a></p>
+<h3 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h3><p><a href="https://mp.weixin.qq.com/s/uBqvZ9t23tGm8h84UyXpNA" target="_blank" rel="noopener">如何设计一款地震高岗一派溪山千古秀的反爬虫？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/2M4T4SuGfuGR9Rx9nzL1qA" target="_blank" rel="noopener">哇靠，这些数据疯狂变化，该怎么爬取？</a></p>
+<h3 id="超实用技巧"><a href="#超实用技巧" class="headerlink" title="超实用技巧"></a>超实用技巧</h3><p><a href="https://mp.weixin.qq.com/s/r1nJ_08SYQdba-_vmhgNKw" target="_blank" rel="noopener">如何制作一本在线的电子书或 Python 文档供其他人远程访问</a></p>
+<p><a href="https://mp.weixin.qq.com/s/dBZLcew0YKt2-MnJmaC68Q" target="_blank" rel="noopener">推荐一款软件！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/vWcomUDh7saDNqUOzb9m0g" target="_blank" rel="noopener">用生动有趣的emoij美化你的commit log</a></p>
+<p><a href="https://mp.weixin.qq.com/s/wZN5uveHt2czTP7mvwRscg" target="_blank" rel="noopener">如何在Gihub上面精准搜索开源项目？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/0nMYhqpYHQ3Tiue7R3eMeA" target="_blank" rel="noopener">110道Python面试真题</a></p>
+<p><a href="https://mp.weixin.qq.com/s/B0b6rqmsGQEUG_53nLU48Q" target="_blank" rel="noopener">Python可视化神器Yellowbrick使用</a></p>
+<p><a href="https://mp.weixin.qq.com/s/xerifcGSwVvfgNLFMyfhNA" target="_blank" rel="noopener">Windows全能终端神器，实在是太棒了！再也不用担心会收到律师函！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/KBxO0lNEfRHtGngfCNuj9A" target="_blank" rel="noopener">多账户的统一登录 实现全过程</a></p>
+<p><a href="https://mp.weixin.qq.com/s/-pazqu03A4ejRvFRCfHoZw" target="_blank" rel="noopener">【超全+实用】常用的46个私密Pandas方法首次公开，全网最新！！！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/TUbIJgE9_qAWbGsPPbcvqQ" target="_blank" rel="noopener">资源 | O’Reilly新书：《生成式深度学习》，近5年最先进GAN一网打全！</a></p>
+<p><a href="https://www.cnblogs.com/gfhh/p/12103640.html" target="_blank" rel="noopener">DRF的面试题</a></p>
+<p><a href="https://mp.weixin.qq.com/s/eQZ1gk8fDKXSNvE8vDttGw" target="_blank" rel="noopener">ElasticSearch 使用 Logstash 从 MySQL 中同步数据</a></p>
+<p><a href="https://mp.weixin.qq.com/s/isa2RVGFlhShWqdn102YaQ" target="_blank" rel="noopener">记一次 Python Web 接口优化</a></p>
+<p><a href="https://mp.weixin.qq.com/s/K0ZVI-6p9za4vk-FNhNr3w" target="_blank" rel="noopener">315道Python面试题，欢迎挑战！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Sr2LzdIzY8TKnpCUL0BebA" target="_blank" rel="noopener">骚操作！曾经爱过！用 Python 清理收藏夹里已失效的网站</a></p>
+<p><a href="https://mp.weixin.qq.com/s/T49huSGp8hpwAmwqlhSdog" target="_blank" rel="noopener">吐血推荐，B站最强学习资源汇总（数据科学，机器学习，python）</a></p>
+<p><a href="https://mp.weixin.qq.com/s/21wIJ0upl6jDBaIww_GqqQ" target="_blank" rel="noopener">如何从 Windows 切换到 Linux</a></p>
+<p><a href="https://mp.weixin.qq.com/s/3ODv1XNpLguoK4EdoOnPNg" target="_blank" rel="noopener">训练吞吐量提升6倍！飞桨弹性计算推荐系统ElasticCTR 1.0发布</a></p>
+<p><a href="https://mp.weixin.qq.com/s/6SweKabqM3rnVOpmgDAR2A" target="_blank" rel="noopener">Python六酷技巧</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Yz_6jQOjS71cEs-MwhvPqA" target="_blank" rel="noopener">315道Python面试题，欢迎挑战</a></p>
+<p><a href="https://blog.csdn.net/lmz_lmz/article/details/80986106?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-4&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-4" target="_blank" rel="noopener">DRF第三方继承包</a></p>
+<p><a href="https://blog.csdn.net/weixin_43420337/article/details/100033902#comments" target="_blank" rel="noopener">Django使用蓝鲸技巧</a></p>
+<h3 id="工具技巧"><a href="#工具技巧" class="headerlink" title="工具技巧"></a>工具技巧</h3><p><a href="https://mp.weixin.qq.com/s/nYBiu1ct9WBBODJk8qv-0w" target="_blank" rel="noopener">重磅！首款 Jupyter 官方可视化 Debug 工具，JupyterLab 未来可默认支持 Debug</a></p>
+<p><a href="https://mp.weixin.qq.com/s/VrB5cTYe2J7PgWfb2rEkLg" target="_blank" rel="noopener">Jupyter不为人知的7个超好用功能！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/rikuo_A3lxcoW5cLQGciSA" target="_blank" rel="noopener">5个酷毙的Python神器工具</a></p>
+<p><a href="https://mp.weixin.qq.com/s/rAwMzVKC8AxS1p_zpcnX8g" target="_blank" rel="noopener">GitHub Actions，卧槽！牛批！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/s7wnocXC-DFh4bbX96fCdQ" target="_blank" rel="noopener">决策树原理学习笔记（一）</a></p>
+<p><a href="https://mp.weixin.qq.com/s/MMOWeNhv_zapLOCht-lEug" target="_blank" rel="noopener">130 个相见恨晚的神器网站</a></p>
+<p><a href="https://mp.weixin.qq.com/s/QZhVbezh2PspxUDUKYIbnQ" target="_blank" rel="noopener">我是如何提高工作和研究效率的？分享给大家几个神器</a></p>
+<p><a href="https://mp.weixin.qq.com/s/eB8lE6376WuqgvR2a5lgVg" target="_blank" rel="noopener">十款 Windows 下必装软件，大大增强工作幸福</a></p>
+<p><a href="https://mp.weixin.qq.com/s/MkzwQx1f6NT9OYxCkhOnVQ" target="_blank" rel="noopener">100 多个免费 API 接口分享，调用完全不限次数，以后总用得着</a></p>
+<p><a href="https://mp.weixin.qq.com/s/SlScI7hYRESPT6CoXAGjsQ" target="_blank" rel="noopener">290家公司都在用的任务调度系统，还在Github上开源了</a></p>
+<p><a href="https://mp.weixin.qq.com/s/FJQbX4CRq1pIH9kwHKBRLg" target="_blank" rel="noopener">60个Chrome神器插件大收集：助你快速成为老司机，一键分析网站技术栈</a></p>
+<p><a href="https://mp.weixin.qq.com/s/N_DQ23tJeB7_v9pV25DxVA" target="_blank" rel="noopener">一个应届生拿字节跳动offer的努力</a></p>
+<p><a href="https://mp.weixin.qq.com/s/Tta36pxSIGDvnW_Rb-FkQA" target="_blank" rel="noopener">吊打面试官之消息队列基础</a></p>
+<p><a href="https://mp.weixin.qq.com/s/BJ9ZlVBFXq7qpDhaQfzg0w" target="_blank" rel="noopener">GitHub获3.2W星！史上最全技术面试手册！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/n_bJLrkqaz6aWSNDDfCPqQ" target="_blank" rel="noopener">接私活必备的 10 个开源项目！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/H6PGarCSbPiulcMHGCyBbw" target="_blank" rel="noopener">超50万行代码、GitHub 4200星：腾讯重磅发布全栈机器学习平台Angel 3.0</a></p>
+<p><a href="https://mp.weixin.qq.com/s/kXgo0bTRrMp6gZ4soO28Ew" target="_blank" rel="noopener">GitHub 3W 星，冲击热榜！超实用技术面试手册，看这篇就够了</a></p>
+<p><a href="https://mp.weixin.qq.com/s/HSqZ1PH7zSUKx-2r8FYZ6Q" target="_blank" rel="noopener">如何将Numpy加速700倍？用 CuPy 呀</a></p>
+<p><a href="https://mp.weixin.qq.com/s/9Sow5Q_SCrXhfhcKVYy4Tw" target="_blank" rel="noopener">资料|中文开源书《深度学习》推荐分享</a></p>
+<p><a href="https://mp.weixin.qq.com/s/RVSrqrTHcl-1n0rG9qzMng" target="_blank" rel="noopener">这8个Python 技巧让你的数据分析提升数倍！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/BRQM9lVTYActsMrlHAuG9A" target="_blank" rel="noopener">分享8个强大的黑客技术学习网站</a></p>
+<p><a href="https://mp.weixin.qq.com/s/sbPEhsPWxELI3exYb7rcSg" target="_blank" rel="noopener">收藏！本、硕、博、程序员必备神器</a></p>
+<p><a href="https://mp.weixin.qq.com/s/DMK3gwMKbpsfOrWMxjb5lg" target="_blank" rel="noopener">不到20行代码，用Python做一个智能聊天机器人</a></p>
+<p><a href="https://mp.weixin.qq.com/s/5R3esbIUpjeh76wdxo4fCw" target="_blank" rel="noopener">程序员刷算法题必备神器！不用打开浏览器，就能刷LeetCode</a></p>
+<p><a href="https://mp.weixin.qq.com/s/nS0ps0bHoJWCdIw2FQi6Ow" target="_blank" rel="noopener">如何用 Python 一键搞定 CET 4 最爱考的 5000 个单词？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/bkOPWDqLE-JpE6-1_dIdcQ" target="_blank" rel="noopener">60个相见恨晚的神器工具</a></p>
+<p><a href="https://mp.weixin.qq.com/s/yIZa4rGQ2wVjx2UMff-C3A" target="_blank" rel="noopener">爱了爱了，这个 GitHub 的 Chrome 神仙插件把我整的服服帖帖的</a></p>
+<p><a href="https://mp.weixin.qq.com/s/uzUKZNyejZA664X3dvLpFA" target="_blank" rel="noopener">这5种动态炫酷图，也是用Python画的</a></p>
+<p><a href="https://mp.weixin.qq.com/s/sddkwxWoncBS1KQpk1okAA" target="_blank" rel="noopener">你有哪些deep learning调参经验？</a></p>
+<p><a href="https://mp.weixin.qq.com/s/KmtGrp9dm8lQ5s33BQQHbg" target="_blank" rel="noopener">你是否很想下载这些不能下载的视频，只能傻傻地录屏</a></p>
+<p><a href="https://mp.weixin.qq.com/s/-zeK1EgT3XRY3mgIdvv--w" target="_blank" rel="noopener">整理一份程序员常用的各类工具、技术站点</a></p>
+<h3 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h3><p><a href="https://mp.weixin.qq.com/s/17u66oVrffUBg6bFjxrBkA" target="_blank" rel="noopener">NLP入门之路及学习方法：从任务实践入手！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/D1721uuwxVvSPTmKopI6cA" target="_blank" rel="noopener">一文读懂最强中文NLP预训练模型ERNIE</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzU3NDgxMzI0Mw==&mid=2247485275&amp;idx=1&amp;sn=58ee12ba88ef4562f183b60f5f565f1c&source=41#wechat_redirect" target="_blank" rel="noopener">最新中文NLP开源工具箱来了！支持6大任务，面向工业应用 | 资源</a></p>
+<p><a href="https://mp.weixin.qq.com/s/sGmzWyhJYgOWsma3T8bBFg" target="_blank" rel="noopener">微软开源项目 NeuronBlocks：像搭积木一样构建 NLP 深度学习模型！</a></p>
+<h3 id="区块链"><a href="#区块链" class="headerlink" title="区块链"></a>区块链</h3><p><a href="https://mp.weixin.qq.com/s/90fT-r8yOgW-HR3k1hCFsA" target="_blank" rel="noopener">怎么向女朋友解释什么叫区块链？</a></p>
+<h3 id="量化投资"><a href="#量化投资" class="headerlink" title="量化投资"></a>量化投资</h3><p><a href="https://mp.weixin.qq.com/s/Q82YzANWDMkKWm5k2XmPkA" target="_blank" rel="noopener">严谨解决5种机器学习算法在预测股价的应用（代码+数据）</a></p>
+<h3 id="网络安全"><a href="#网络安全" class="headerlink" title="网络安全"></a>网络安全</h3><p><a href="https://mp.weixin.qq.com/s/xDMPiBdIukbuP7ZA-ItElA" target="_blank" rel="noopener">这份黑客技术成长秘籍终于开源啦！32.7K星不是白给的！</a></p>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-04-14T00-00-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/14/qian-duan-ji-zhu-gong-zhong-hao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="前端优质文章">
+                        
+                        <span class="card-title">前端优质文章</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            这里是我看的前端优质公众号的集和，因为没有时间看手机，所以把这些优质公众号集和在这里等有时间仔细研究
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AE%9E%E7%94%A8%E6%96%87%E7%AB%A0%E5%AD%98%E5%82%A8/" class="post-category">
+                                    实用文章存储
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/14/cheng-xu-yuan-ji-chu-zhi-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="程序员基础知识优质文章">
+                        
+                        <span class="card-title">程序员基础知识优质文章</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            这里是我看的优秀文章的集合，以便于日后观看
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AE%9E%E7%94%A8%E6%96%87%E7%AB%A0%E5%AD%98%E5%82%A8/" class="post-category">
+                                    实用文章存储
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">程序员基本知识</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

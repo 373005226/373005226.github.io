@@ -1,0 +1,1281 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Cookiecutter更好的项目模板工具（1）简介及可用资源汇总, 勤奋小L的博客">
+    <meta name="description" content="转载Cookiecutter文章，详解了Cookiecutter的特点、如何使用、模板大全">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Cookiecutter更好的项目模板工具（1）简介及可用资源汇总 | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Cookiecutter更好的项目模板工具（1）简介及可用资源汇总</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python%E5%B7%A5%E5%85%B7%E5%8C%85/">
+                                <span class="chip bg-color">python工具包</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                                <span class="chip bg-color">后端文章转载</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                后端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-24
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    15 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>本文转载于：<a href="https://www.cnblogs.com/taceywong/p/10506032.html" target="_blank" rel="noopener">https://www.cnblogs.com/taceywong/p/10506032.html</a></p>
+<p>文章作者：Tacey Wong</p>
+</blockquote>
+<p>原文档地址：<a href="https://cookiecutter.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://cookiecutter.readthedocs.io/en/latest/</a></p>
+<p>本系列只介绍cookiecutter的基础使用，而且会删除与功能使用无关的部分。深度使用及了解更多详情请请参考原文档。</p>
+<p>关于Cookiecutter的中文译名，我不知道别人怎么翻译的，我将其翻译为<strong>饼干制造机</strong>。本系列中将不对其作翻译，直接使用英文原名。</p>
+<h2 id="Cookiecutter简介"><a href="#Cookiecutter简介" class="headerlink" title="Cookiecutter简介"></a>Cookiecutter简介</h2><p><img src="https://img2018.cnblogs.com/blog/673170/201903/673170-20190310154708274-19053537.png" alt="img"></p>
+<p>Cookiecutter 是一个通过项目模板创建项目的命令行工具。比如，通过Python Package模板来创建Python package项目。（通过Python代码调用Cookiecutter的API可以扩展为自动化创建服务和带有Web UI的服务程序）</p>
+<h3 id="功能特点"><a href="#功能特点" class="headerlink" title="功能特点"></a>功能特点</h3><ul>
+<li>跨平台：官方支持Windows、Mac和Linux</li>
+<li>可以在Python 2.7, 3.4, 3.5, 3.6, and PyPy.环境中正常使用（此处指的是Cookiecutter的运行环境，而不是你项目的运行环境。使用Cookiecutter不需要你懂得编写Python代码）</li>
+<li>项目模板可以是任何编程语言或标记格式：Python, JavaScript, Ruby, CoffeeScript, RST, Markdown, CSS, HTML等任何你能叫出名字的。你也可以在同一个项目模板中使用多种语言。</li>
+<li>命令行的简单使用：</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"># 从cookiecutter-pypackage.git模板创建项目
+# 你将会被提示输入相应的值。
+# 然后Cookiecutter将基于你的输入在当前工作目录中创建Python包
+$ cookiecutter https://github.com/audreyr/cookiecutter-pypackage
+# 为了简洁起见，repos在GitHub上可以只使用“gh”前缀
+$ cookiecutter gh:audreyr/cookiecutter-pypackage</code></pre>
+<ul>
+<li>在命令行中使用本地模板：</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"># 从本地在当前目录创建项目
+# cookiecutter-pypackage/ template
+$ cookiecutter cookiecutter-pypackage/</code></pre>
+<ul>
+<li>目录名和文件名可以模板化。例如：<code>//.py</code></li>
+<li>支持无限层级的目录嵌套。</li>
+<li>文件和目录名称100%使用Jinja2完成模板化。</li>
+<li>只需在·cookiecutter.json·文件中定义模板变量即可。 例如：</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">{
+    "full_name": "Tacey Wong",
+    "email": "xinyong.wang@qq.com",
+    "project_name": "Complexity",
+    "repo_name": "complexity",
+    "project_short_description": "令人耳目一新的简单的静态网站生成器.",
+    "release_date": "2019-03-10",
+    "year": "2019",
+    "version": "0.0.1"
+}</code></pre>
+<ul>
+<li>没有你用·–no-input·来禁止，系统会提示你输入：<ul>
+<li><code>cookiecutter.json</code>中键/key对应的值/value。</li>
+<li><code>cookiecutter.json</code>中的缺省值</li>
+<li>提示符按顺序显示</li>
+</ul>
+</li>
+<li>跨平台支持<code>~/.cookiecutterrc</code>文件：</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">default_context:
+    full_name: "Tacey Wong"
+    email: "xinyong.wang@qq.com"
+    github_username: "taceywong"
+cookiecutters_dir: "~/.cookiecutters/"</code></pre>
+<ul>
+<li>克隆的Cookiecutter项目模板会缺省放置在<code>~/.cookiecutters/</code>目录下，如果特殊指定，会放置在<code>cookiecutters_dir</code>对应的目录下：</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"># 克隆cookiecutter-pypackage
+$ cookiecutter gh:audreyr/cookiecutter-pypackage
+# 现在你可以根据名字使用对应的模板
+$ cookiecutter cookiecutter-pypackage</code></pre>
+<ul>
+<li>您可以使用你本地模板、远程Git repos</li>
+<li>默认上下文:指定在生成项目时要用作默认值的键/值对</li>
+<li>用命令行参数注入额外的上下文：</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">$ cookiecutter --no-input gh:msabramo/cookiecutter-supervisor program_name<span class="token operator">=</span>foobar startsecs<span class="token operator">=</span>10</code></pre>
+<ul>
+<li>直接访问Cookiecutter API允许注入额外的上下文。</li>
+<li>预生成和后生成挂钩/hook:在生成项目之前或之后运行的Python或shell脚本。</li>
+<li>本地项目的路径可以指定为绝对路径或相对路径。</li>
+<li>项目始终生成到当前目录。</li>
+</ul>
+<h3 id="可用的Cookiecutter模板"><a href="#可用的Cookiecutter模板" class="headerlink" title="可用的Cookiecutter模板"></a>可用的Cookiecutter模板</h3><p>现在在已经有很多开源的Cookiecutter 项目模板可供选择。</p>
+<h4 id="特定的Cookiecutter模板"><a href="#特定的Cookiecutter模板" class="headerlink" title="特定的Cookiecutter模板"></a>特定的Cookiecutter模板</h4><p>这些模板由cookiecutter官方团队进行维护：</p>
+<ul>
+<li><a href="https://github.com/audreyr/cookiecutter-pypackage" target="_blank" rel="noopener">cookiecutter-pypackage</a>:<a href="https://github.com/audreyr" target="_blank" rel="noopener">@audreyr</a>终极Python包项目模板。</li>
+<li><a href="https://github.com/pydanny/cookiecutter-django" target="_blank" rel="noopener">cookiecutter-django</a>: 一个具有Bootstrap 4、可定制用户应用程序、启动器模板、用户注册、celery设置等功能的Django项目模板。</li>
+<li><a href="https://github.com/pytest-dev/cookiecutter-pytest-plugin" target="_blank" rel="noopener">cookiecutter-pytest-plugin</a>: 编写pytest插件的最小Cookiecutter模板，帮助你编写更好的程序。</li>
+</ul>
+<h4 id="Cookiecutter模板分类"><a href="#Cookiecutter模板分类" class="headerlink" title="Cookiecutter模板分类"></a>Cookiecutter模板分类</h4><p>社区驱动的各类Cookiecutter模板（非Cookiecutter官方维护）</p>
+<p><strong>Python</strong></p>
+<ul>
+<li><a href="https://github.com/audreyr/cookiecutter-pypackage" target="_blank" rel="noopener">cookiecutter-pypackage</a>: <a href="https://github.com/audreyr" target="_blank" rel="noopener">@audreyr</a>的终极Python包项目模板。</li>
+<li><a href="https://github.com/wdm0006/cookiecutter-pipproject" target="_blank" rel="noopener">cookiecutter-pipproject</a>: pip可安装项目的最小软件包</li>
+<li><a href="https://github.com/kragniz/cookiecutter-pypackage-minimal" target="_blank" rel="noopener">cookiecutter-pypackage-minimal</a>: 一个最小的Python包模板。</li>
+<li><a href="https://github.com/alexkey/cookiecutter-lux-python" target="_blank" rel="noopener">cookiecutter-lux-python</a>: 一个Python样板项目，旨在利用方便的Makefile工具和额外的辅助工具创建Python包。</li>
+<li><a href="https://github.com/sloria/cookiecutter-flask" target="_blank" rel="noopener">cookiecutter-flask</a> :带有 Bootstrap 3、启动器模板和工作用户注册的Flask模板。</li>
+<li><a href="https://github.com/wdm0006/cookiecutter-flask" target="_blank" rel="noopener">cookiecutter-flask-2</a>: 一个更重的cookiecutter-flask，有更多的样板，包括忘记密码和Heroku集成功能</li>
+<li><a href="https://github.com/JackStouffer/cookiecutter-Flask-Foundation" target="_blank" rel="noopener">cookiecutter-flask-foundation</a> : 带有缓存、表单、sqlalchemy和单元测试的Flask模板。</li>
+<li><a href="https://github.com/candidtim/cookiecutter-flask-minimal" target="_blank" rel="noopener">cookiecutter-flask-minimal</a> : 最小但production就绪的Flask项目模板，除了Flask本身之外，没有其他依赖。</li>
+<li><a href="https://github.com/realpython/cookiecutter-flask-skeleton" target="_blank" rel="noopener">cookiecutter-flask-skeleton</a> : Flask启动项目。</li>
+<li><a href="https://github.com/avelino/cookiecutter-bottle" target="_blank" rel="noopener">cookiecutter-bottle</a> : 用于快速创建可重复使用的Bottle项目的cookiecutter模板。</li>
+<li><a href="https://github.com/openstack-dev/cookiecutter" target="_blank" rel="noopener">cookiecutter-openstack</a>: OpenStack项目的模板。</li>
+<li><a href="https://github.com/sloria/cookiecutter-docopt" target="_blank" rel="noopener">cookiecutter-docopt</a>: Python命令行脚本的模板，使用<a href="http://docopt.org/" target="_blank" rel="noopener">docopt</a>进行参数解析。</li>
+<li><a href="https://github.com/pythonhub/cookiecutter-quokka-module" target="_blank" rel="noopener">cookiecutter-quokka-module</a>: 用于创建Quokka Flask CMS蓝图模块的模板。</li>
+<li><a href="https://github.com/hackebrot/cookiecutter-kivy" target="_blank" rel="noopener">cookiecutter-kivy</a>:基于kivy python-framework构建的NUI应用程序模板。</li>
+<li><a href="https://github.com/hackebrot/cookiedozer" target="_blank" rel="noopener">cookiedozer</a>: Python Kivy应用程序的模板，已准备好使用Buildozer部署到Android设备。</li>
+<li><a href="https://github.com/ionelmc/cookiecutter-pylibrary" target="_blank" rel="noopener">cookiecutter-pylibrary</a>: 一个旨在快速开始进行良好的测试和打包的复杂模板，（Tox，Pytest，Travis-CI，Coveralls，AppVeyor，Sphinx docs，isort，转换，打包、检查等工作配置）。</li>
+<li><a href="https://github.com/robinandeer/cookiecutter-pyvanguard" target="_blank" rel="noopener">cookiecutter-pyvanguard</a>: 用于尖端Python开发的模板。[invoke](<a href="http://docs.pyinvoke.org/en/latest" target="_blank" rel="noopener">http://docs.pyinvoke.org/en/latest</a> /)、pytest、bumpversion和Python 2/3兼容性。</li>
+<li><a href="https://github.com/pybee/Python-iOS-template" target="_blank" rel="noopener">Python-iOS-template</a>: 用于创建在iOS设备上运行的Python项目模板。</li>
+<li><a href="https://github.com/pybee/Python-Android-template" target="_blank" rel="noopener">Python-Android-template</a>: 用于创建在Android设备上运行的Python项目模板。</li>
+<li><a href="https://bitbucket.org/tryton/cookiecutter-tryton" target="_blank" rel="noopener">cookiecutter-tryton</a>用于创建基本和外部Tryton模块的模板。</li>
+<li><a href="https://github.com/fulfilio/cookiecutter-tryton" target="_blank" rel="noopener">cookiecutter-tryton-fulfilio</a>: 用于创建tryton模块的模板。</li>
+<li><a href="https://github.com/pytest-dev/cookiecutter-pytest-plugin" target="_blank" rel="noopener">cookiecutter-pytest-plugin</a>: 用于创作<a href="http://pytest.org/latest/" target="_blank" rel="noopener">pytest</a>插件的最小Cookiecutter模板，可帮助您编写更好的程序。</li>
+<li><a href="https://github.com/tox-dev/cookiecutter-tox-plugin" target="_blank" rel="noopener">cookiecutter-tox-plugin</a>: 编写<a href="https://tox.readthedocs.io/" target="_blank" rel="noopener">tox</a> 插件的最小Cookiecutter模板，用于更改或扩展测试自动化的行为。</li>
+<li><a href="https://github.com/vintasoftware/cookiecutter-tapioca" target="_blank" rel="noopener">cookiecutter-tapioca</a>: 用于构建基于Web API包装器（客户端）的[tapioca-wrapper]（<a href="https://github.com/vintasoftware/tapioca-wrapper）的模板。" target="_blank" rel="noopener">https://github.com/vintasoftware/tapioca-wrapper）的模板。</a></li>
+<li><a href="https://github.com/drgarcia1986/cookiecutter-muffin" target="_blank" rel="noopener">cookiecutter-muffin</a>: 带有Bootstrap 3，启动器模板和工作用户注册的Muffin模板。</li>
+<li><a href="https://github.com/OctoPrint/cookiecutter-octoprint-plugin" target="_blank" rel="noopener">cookiecutter-octoprint-plugin</a>: 用于构建<a href="https://github.com/foosel/OctoPrint" target="_blank" rel="noopener">OctoPrint</a>.插件的模板</li>
+<li><a href="https://github.com/tokibito/cookiecutter-funkload-friendly" target="_blank" rel="noopener">cookiecutter-funkload-friendly</a>: <a href="https://github.com/tokibito/funkload-friendly" target="_blank" rel="noopener">funkload-friendly</a> 项目的Cookiecutter模板。</li>
+<li><a href="https://github.com/mdklatt/cookiecutter-python-app" target="_blank" rel="noopener">cookiecutter-python-app</a>: 用于创建具有子命令、日志记录、YAML配置、pytest测试和Virtualenv部署的Python CLI应用程序的模板。</li>
+<li><a href="https://github.com/morepath/morepath-cookiecutter" target="_blank" rel="noopener">morepath-cookiecutter</a>:超强web微框架Morepath的Cookiecutter模板，。</li>
+<li><a href="https://github.com/Springerle/hovercraft-slides" target="_blank" rel="noopener">Springerle/hovercraft-slides</a>: 新<a href="https://hovercraft.readthedocs.io/" target="_blank" rel="noopener">Hovercraft!</a> 展现项目模板（reStructuredText中嵌入<code>impress.js</code>幻灯片）</li>
+<li><a href="https://github.com/xguse/cookiecutter-snakemake-analysis-pipeline" target="_blank" rel="noopener">cookiecutter-snakemake-analysis-pipeline</a>: 一种轻松设置<a href="https://bitbucket.org/snakemake/snakemake/wiki/Home" target="_blank" rel="noopener">Snakemake</a>分析管道的方法。</li>
+<li><a href="https://github.com/ivanlyon/cookiecutter-py3tkinter" target="_blank" rel="noopener">cookiecutter-py3tkinter</a>: Python 3 Tkinter应用程序gui的模板。</li>
+<li><a href="https://github.com/mandeepbhutani/cookiecutter-pyqt5" target="_blank" rel="noopener">cookiecutter-pyqt5</a>: 预构建的PyQt4 GUI模板，具有日志记录支持、用于测试和分离ui和工作组件的结构。</li>
+<li><a href="https://github.com/aeroaks/cookiecutter-pyqt4" target="_blank" rel="noopener">cookiecutter-pyqt4</a>: A prebuilt PyQt4 GUI template with a logging support, structure for tests and separation of ui and worker components.</li>
+<li><a href="https://github.com/laerus/cookiecutter-xontrib" target="_blank" rel="noopener">cookiecutter-xontrib</a>: 用于构建xontribs的模板，a.k.a <a href="https://github.com/xonsh/xonsh" target="_blank" rel="noopener">xonsh</a>贡献</li>
+<li><a href="https://github.com/conda/cookiecutter-conda-python" target="_blank" rel="noopener">cookiecutter-conda-python</a>: 用于构建Conda Python包的模板</li>
+<li><a href="https://github.com/mckaymatt/cookiecutter-pypackage-rust-cross-platform-publish" target="_blank" rel="noopener">cookiecutter-pypackage-rust-cross-platform-publish</a>: 包含Rust二进制模块的Python wheel 模板，支持在Windows，OSX和Linux上发布。</li>
+<li><a href="https://github.com/Ars2014/cookiecutter-telegram-bot" target="_blank" rel="noopener">cookiecutter-telegram-bot</a>: 一个带有基于CherryPy webhook的Telegram机器人模板项目。</li>
+<li><a href="https://github.com/Kwpolska/python-project-template" target="_blank" rel="noopener">python-project-template</a>: 一个用于Python项目的模板，具有复杂的发布自动化功能。</li>
+<li><a href="https://github.com/AnyBlok/cookiecutter-anyblok-project" target="_blank" rel="noopener">cookiecutter-anyblok-project</a>: 基于Anyblok的项目模板。</li>
+<li><a href="https://github.com/xuanluong/cookiecutter-python-cli" target="_blank" rel="noopener">cookiecutter-python-cli</a>:用于使用“click”创建Python CLI应用程序的cookiecutter模板</li>
+</ul>
+<p><strong>Python-Django</strong></p>
+<ul>
+<li><a href="https://github.com/pydanny/cookiecutter-django" target="_blank" rel="noopener">cookiecutter-django</a>: 带有Bootstrap 4的前沿Django项目模板，可自定义的用户应用程序，入门模板，用户注册，celery设置等等。</li>
+<li><a href="https://github.com/agconti/cookiecutter-django-rest" target="_blank" rel="noopener">cookiecutter-django-rest</a>: 用于为移动和Web应用程序创建REST api。</li>
+<li><a href="https://github.com/marcofucci/cookiecutter-simple-django" target="_blank" rel="noopener">cookiecutter-simple-django</a>: 快速创建可重用Django项目的cookiecutter 模板</li>
+<li><a href="https://github.com/legios89/django-docker-bootstrap" target="_blank" rel="noopener">django-docker-bootstrap</a>: Djangodocker开发/生产环境，并集成了 Postgres, NodeJS(React), Nginx, uWSGI.</li>
+<li><a href="https://github.com/pydanny/cookiecutter-djangopackage" target="_blank" rel="noopener">cookiecutter-djangopackage</a>:用于创建可重用的第三方PyPI友好Django应用程序的cookicutter模板。 用教程格式编写文档</li>
+<li><a href="https://github.com/palazzem/cookiecutter-django-cms" target="_blank" rel="noopener">cookiecutter-django-cms</a>: Django CMS的模板，带有简单的Bootstrap 3模板。 它具有快速启动和部署文档。</li>
+<li><a href="https://github.com/wildfish/cookiecutter-django-crud" target="_blank" rel="noopener">cookiecutter-django-crud</a>: 用于围绕工厂模式和测试的模型创建带有CRUD样板的Django应用程序。</li>
+<li><a href="https://github.com/lborgav/cookiecutter-django" target="_blank" rel="noopener">cookiecutter-django-lborgav</a>:Django项目的另一个cookiecutter模板，带有Bootstrap 3和FontAwesome 4</li>
+<li><a href="https://github.com/pbacterio/cookiecutter-django-paas" target="_blank" rel="noopener">cookiecutter-django-paas</a>: 准备在像Heroku，OpenShift等PAAS平台中使用的Django模板</li>
+<li><a href="https://github.com/jpadilla/cookiecutter-django-rest-framework" target="_blank" rel="noopener">cookiecutter-django-rest-framework</a>: 用于创建可重用Django REST框架包的模板。</li>
+<li><a href="https://github.com/dolphinkiss/cookiecutter-django-aws-eb" target="_blank" rel="noopener">cookiecutter-django-aws-eb</a>: 在AWS Elastic Beanstalk上启动并运行Django。</li>
+<li><a href="https://github.com/torchbox/cookiecutter-wagtail" target="_blank" rel="noopener">cookiecutter-wagtail</a> : 基于<a href="https://github.com/torchbox/wagtail" target="_blank" rel="noopener">Wagtail</a> CMS的网站模板</li>
+<li><a href="https://github.com/chrisdev/wagtail-cookiecutter-foundation" target="_blank" rel="noopener">wagtail-cookiecutter-foundation</a>: Wagtail CMS项目的完整模板，带有 <a href="http://foundation.zurb.com/" target="_blank" rel="noopener">Zurb Foundation</a> 6,ansible资源调配和部署,使用bower进行前端相关性管理，模块化的应用程序，使您的网站启动和运行照片画廊，RSS流等。</li>
+<li><a href="https://github.com/tkjone/django-starter" target="_blank" rel="noopener">django-starter</a>: 包含vagrant和provisioning脚本的Django模板- 灵感来自12factor应用程序和cookiecutter-django。</li>
+<li><a href="https://github.com/valerymelou/cookiecutter-django-gulp" target="_blank" rel="noopener">cookiecutter-django-gulp</a>: 在Django项目中集成前端开发工具的Cookiecutter模板</li>
+<li><a href="https://github.com/tkjone/wagtail-starter-kit" target="_blank" rel="noopener">wagtail-starter-kit</a>: 配有wagtail，django布局，vagrant，配置脚本，前端构建系统等等的cookiecutter模板。</li>
+<li><a href="https://github.com/dulaccc/cookiecutter-django-herokuapp" target="_blank" rel="noopener">cookiecutter-django-herokuapp</a>: 一个为Heroku python3优化的Django 1.7+模板。</li>
+<li><a href="https://github.com/shenyushun/cookiecutter-simple-django-cn" target="_blank" rel="noopener">cookiecutter-simple-django-cn</a>:一个简单的Django中文模板。</li>
+<li><a href="https://bitbucket.org/levit_scs/cc_django_ember_app" target="_blank" rel="noopener">cc_django_ember_app</a>: 用于使用Django和EmberJS创建应用程序</li>
+<li><a href="https://bitbucket.org/levit_scs/cc_project_app_drf" target="_blank" rel="noopener">cc_project_app_drf</a>: 用于基于“project app”项目体系结构创建REST api</li>
+<li><a href="https://bitbucket.org/levit_scs/cc_project_app_full_with_hooks" target="_blank" rel="noopener">cc_project_app_full_with_hooks</a>: 用于基于“project app”项目体系结构创建Django项目</li>
+<li><a href="https://github.com/TAMU-CPT/cc-automated-drf-template" target="_blank" rel="noopener">cc-automated-drf-template</a>: 模板+脚本，根据模型文件作为输入自动创建包含序列化程序，视图，URL和管理文件的Django REST项目。</li>
+<li><a href="https://github.com/Parbhat/cookiecutter-django-foundation" target="_blank" rel="noopener">cookiecutter-django-foundation</a>: <a href="https://github.com/pydanny/cookiecutter-django" target="_blank" rel="noopener">cookiecutter-django</a>分支， 基于 <a href="http://foundation.zurb.com/" target="_blank" rel="noopener">Zurb Foundation</a> 6前端框架。</li>
+<li><a href="https://github.com/HackSoftware/cookiecutter-django-ansible" target="_blank" rel="noopener">cookiecutter-django-ansible</a>: 用于快速启动ansible项目，以便为您的* cookiecutter-django *应用程序提供服务器的框架</li>
+<li><a href="https://github.com/wemake-services/wemake-django-template" target="_blank" rel="noopener">wemake-django-template</a>: 前沿Django模板专注于代码质量和安全性。</li>
+</ul>
+<p><strong>Python-Pyramid</strong></p>
+<ul>
+<li><a href="https://github.com/Pylons/pyramid-cookiecutter-alchemy" target="_blank" rel="noopener">pyramid-cookiecutter-alchemy</a>:Cookiecutter (项目模板)，使用SQLite创建Pyramid项目，SQLAlchemy用于ORM，URL调度用于路由，Jinja2用于模板。</li>
+<li><a href="https://github.com/Pylons/pyramid-cookiecutter-starter" target="_blank" rel="noopener">pyramid-cookiecutter-starter</a>: 使用URL调度进行路由分配，使用Jinjab 2、Chameleon或Mako模板创建Pyramid入门项目的Cookiecutter (项目模板)。</li>
+<li><a href="https://github.com/Pylons/pyramid-cookiecutter-zodb" target="_blank" rel="noopener">pyramid-cookiecutter-zodb</a>:Cookiecutter（项目模板），用于创建Pyramid项目，使用ZODB进行持久存储，遍历路由，使用Chameleon进行模板化。</li>
+<li><a href="https://github.com/Pylons/substanced-cookiecutter" target="_blank" rel="noopener">substanced-cookiecutter</a>: 用于创建Substance D初始项目的cookiecutter（项目模板）。 Substance D是基于Pyramid实现的。</li>
+<li><a href="https://github.com/mikeckennedy/cookiecutter-pyramid-talk-python-starter" target="_blank" rel="noopener">cookiecutter-pyramid-talk-python-starter</a>: 一个自以为是的Cookiecutter模板，用于创建PyramidWeb应用程序，从开发链的下游开始。这个cookiecutter模板将创建一个新的Pyramid Web应用程序，其中包含电子邮件，sqlalchemy，rollbar以及更多的集成。</li>
+</ul>
+<p>*<em>Cookiecutter (meta) *</em></p>
+<p>用于生成Cookiecutter项目模板的元模板。</p>
+<ul>
+<li><a href="https://github.com/eviweb/cookiecutter-template" target="_blank" rel="noopener">cookiecutter-template</a>: 用于创建一个Cookiecutter模板</li>
+</ul>
+<p><strong>Ansible</strong></p>
+<ul>
+<li><a href="https://github.com/retr0h/cookiecutter-molecule" target="_blank" rel="noopener">cookiecutter-molecule</a>: 按照最佳实践创建Create <a href="http://molecule.readthedocs.io/en/v2/" target="_blank" rel="noopener">Molecule</a>角色, 利用Test-kitchen，Docker和InSpec实现已经实施的测试基础架构。<a href="http://molecule.readthedocs.io/en/v2/" target="_blank" rel="noopener">Molecule</a>, Docker and Testinfra.</li>
+<li><a href="https://github.com/iknite/cookiecutter-ansible-role" target="_blank" rel="noopener">cookiecutter-ansible-role</a>: 用于创建ansible角色的模板。 忘记文件创建，专注于操作。</li>
+<li><a href="https://github.com/ferrarimarco/cookiecutter-ansible-role" target="_blank" rel="noopener">cookiecutter-ansible-role-ci</a>: 按照最佳实践创建Ansible角色，利用Test-kitchen，Docker和InSpec实现已经实施的测试基础架构。</li>
+</ul>
+<p><strong>Git</strong></p>
+<ul>
+<li><a href="https://github.com/NathanUrwin/cookiecutter-git" target="_blank" rel="noopener">cookiecutter-git</a>: Git repo项目模板</li>
+</ul>
+<p><strong>C</strong></p>
+<ul>
+<li><a href="https://github.com/vincentbernat/bootstrap.c" target="_blank" rel="noopener">bootstrap.c</a>: 用C语言编写的带有autotools的简单项目模板。</li>
+<li><a href="https://github.com/solarnz/cookiecutter-avr" target="_blank" rel="noopener">cookiecutter-avr</a>: avr开发的模板。</li>
+</ul>
+<p><strong>C++</strong></p>
+<ul>
+<li><a href="https://github.com/Paspartout/BoilerplatePP" target="_blank" rel="noopener">BoilerplatePP</a>: 一个简单的cmake模板，对用C ++编写的项目进行单元测试。</li>
+<li><a href="https://github.com/SpotlightKid/cookiecutter-dpf-effect" target="_blank" rel="noopener">cookiecutter-dpf-effect</a>: DISTRHO插件框架（DPF）的音频插件项目模板</li>
+<li><a href="https://github.com/SpotlightKid/cookiecutter-dpf-audiotk" target="_blank" rel="noopener">cookiecutter-dpf-audiotk</a>: 一个音频插件项目模板，用于发行版插件框架(DPF)和音频工具包(ATK) DSP库</li>
+<li><a href="https://github.com/13coders/cookiecutter-kata-gtest" target="_blank" rel="noopener">cookiecutter-kata-gtest</a>: 使用Google Test框架的C ++测试驱动开发katas模板。</li>
+<li><a href="https://github.com/13coders/cookiecutter-kata-cpputest" target="_blank" rel="noopener">cookiecutter-kata-cpputest</a>: 使用CppUTest框架的C ++测试驱动开发katas的模板。</li>
+</ul>
+<p><strong>C#</strong></p>
+<ul>
+<li><a href="https://github.com/SandyChapman/cookiecutter-csharp-objc-binding" target="_blank" rel="noopener">cookiecutter-csharp-objc-binding</a>: 生成用于绑定Objective-C静态库的C＃绑定项目的cookircutter模板。</li>
+</ul>
+<p><strong>Common Lisp</strong></p>
+<ul>
+<li><a href="https://github.com/svetlyak40wt/cookiecutter-cl-project" target="_blank" rel="noopener">cookiecutter-cl-project</a>: 带有bootstrap脚本和Slime集成的Common Lisp项目cookiecutter模板，</li>
+</ul>
+<p><strong>Elm</strong></p>
+<ul>
+<li><a href="https://github.com/m-x-k/cookiecutter-elm.git" target="_blank" rel="noopener">cookiecutter-elm</a>: 基于Elm带有html样例的cookiecutter模板。</li>
+</ul>
+<p><strong>Golang</strong></p>
+<ul>
+<li><a href="https://github.com/lacion/cookiecutter-golang" target="_blank" rel="noopener">cookiecutter-golang</a>: 根据最佳实践创建基golang新项目的模板</li>
+</ul>
+<p><strong>Java</strong></p>
+<ul>
+<li><a href="https://github.com/m-x-k/cookiecutter-java.git" target="_blank" rel="noopener">cookiecutter-java</a>: 使用gradle的基本java应用程序设置的cookiecutter模板。</li>
+<li><a href="https://github.com/m-x-k/cookiecutter-spring-boot.git" target="_blank" rel="noopener">cookiecutter-spring-boot</a>: 标准java spring boot gradle应用程序的Cookiecutter模板。</li>
+<li><a href="https://github.com/alexfu/cookiecutter-android" target="_blank" rel="noopener">cookiecutter-android</a>:基于Gradle的Android项目Cookiecutter模板。</li>
+</ul>
+<p><strong>JS</strong></p>
+<ul>
+<li><a href="https://github.com/agconti/cookiecutter-es6-boilerplate" target="_blank" rel="noopener">cookiecutter-es6-boilerplate</a>:S6中的前端项目cookiecutter模板</li>
+<li><a href="https://github.com/hzdg/cookiecutter-webpack" target="_blank" rel="noopener">cookiecutter-webpack</a>: Webpack 2项目的模板，包括热重新加载，babel es6模块和反应。</li>
+<li><a href="https://github.com/audreyr/cookiecutter-jquery" target="_blank" rel="noopener">cookiecutter-jquery</a>:一个基于jQuery Boilerplate的jQuery插件项目模板。</li>
+<li><a href="https://github.com/audreyr/cookiecutter-jswidget" target="_blank" rel="noopener">cookiecutter-jswidget</a>: 为多个JS打包系统创建一个通用的前端非jQuery JS小部件的项目模板。</li>
+<li><a href="https://github.com/audreyr/cookiecutter-component" target="_blank" rel="noopener">cookiecutter-component</a>: Component JS 包模板</li>
+<li><a href="https://github.com/christabor/cookiecutter-tampermonkey" target="_blank" rel="noopener">cookiecutter-tampermonkey</a>: TamperMonkey浏览器脚本的模板。</li>
+<li><a href="https://github.com/ratson/cookiecutter-es6-package" target="_blank" rel="noopener">cookiecutter-es6-package</a>: 使用ES6通过babel编写nodejs包的模板。</li>
+<li><a href="https://github.com/matheuspoleza/cookiecutter-angular2" target="_blank" rel="noopener">cookiecutter-angular2</a>: 带有typescript应用程序的模块化angular2模板。</li>
+<li><a href="https://github.com/TAMU-CPT/CICADA" target="_blank" rel="noopener">CICADA</a>: 自动为AngularJS前端创建列表/细节控制器和片段，以连接到DRF后端的模板和脚本。 与<a href="https://github.com/TAMU-CPT/cc-automated-drf-template" target="_blank" rel="noopener">cc-automated-drf-template</a>配合的很好。</li>
+</ul>
+<p><strong>Kotlin</strong></p>
+<ul>
+<li><a href="https://github.com/thomaslee/cookiecutter-kotlin-gradle" target="_blank" rel="noopener">cookiecutter-kotlin-gradle</a>: 基于Gradle的Kotlin项目简单模板。</li>
+</ul>
+<p><strong>LaTeX/XeTeX</strong></p>
+<ul>
+<li><a href="https://github.com/larsyencken/pandoc-talk" target="_blank" rel="noopener">pandoc-talk</a>:用于与pandoc和XeTeX进行对接的cookiecutter模板。</li>
+<li><a href="https://github.com/Kreger51/cookiecutter-latex-article" target="_blank" rel="noopener">cookiecutter-latex-article</a>: 针对学术界使用的LaTeX模板</li>
+<li><a href="https://github.com/luismartingil/cookiecutter-beamer" target="_blank" rel="noopener">cookiecutter-beamer</a>: LaTeX Beamer展示模板</li>
+</ul>
+<p><strong>PHP</strong></p>
+<ul>
+<li><a href="https://github.com/JonasGroeger/cookiecutter-mediawiki-extension" target="_blank" rel="noopener">cookiecutter-mediawiki-extension</a>: MediaWiki扩展的模板。</li>
+</ul>
+<p><strong>Sublime Text</strong></p>
+<ul>
+<li><a href="https://github.com/kkujawinski/cookiecutter-sublime-text-3-plugin" target="_blank" rel="noopener">cookiecutter-sublime-text-3-plugin</a>: Sublime Text 3 插件模板， 包括自定义设置、命令、键绑定和主菜单</li>
+<li><a href="https://github.com/agenoria/sublime-snippet-package-template" target="_blank" rel="noopener">sublime-snippet-package-template</a>: 包含片段型Sublime Text包的模板。</li>
+</ul>
+<p><strong>Berkshelf-Vagrant</strong></p>
+<ul>
+<li><a href="https://github.com/mahmoudimus/cookiecutter-slim-berkshelf-vagrant" target="_blank" rel="noopener">slim-berkshelf-vagrant</a>: 与 vagrant/berkshelf cookbooks保持一致的cookbook简单模板</li>
+</ul>
+<p><strong>HTML</strong></p>
+<ul>
+<li><a href="https://github.com/audreyr/cookiecutter-complexity" target="_blank" rel="noopener">cookiecutter-complexity</a>:一个使用Bootstrap 3的复杂静态站点cookiecutter模板。</li>
+<li><a href="https://github.com/keimlink/cookiecutter-reveal.js" target="_blank" rel="noopener">cookiecutter-reveal.js</a>: reveal.js演示文稿的cookiecutter模板。</li>
+<li><a href="https://github.com/relekang/cookiecutter-tumblr-theme" target="_blank" rel="noopener">cookiecutter-tumblr-theme</a>: 使用GruntJS作为连接工具的Tumblr主题项目的cookiecutter模板。<br><strong>Scala</strong></li>
+<li><a href="https://github.com/Plippe/cookiecutter-scala" target="_blank" rel="noopener">cookiecutter-scala</a>:带有几个库的简单scala hello world应用程序cookiecutter模板</li>
+<li><a href="https://github.com/jpzk/cookiecutter-scala-spark" target="_blank" rel="noopener">cookiecutter-scala-spark</a>: 用Scala编写的Apache Spark应用程序的cookiecutter模板。<br><strong>6502 Assembly</strong></li>
+<li><a href="https://github.com/joeyjoejoejr/cookiecutter-atari2600" target="_blank" rel="noopener">cookiecutter-atari2600</a>: Atari2600项目的cookiecutter模板。</li>
+</ul>
+<p><strong>Data Science</strong></p>
+<ul>
+<li><a href="https://github.com/jupyter/widget-cookiecutter" target="_blank" rel="noopener">widget-cookiecutter</a>: 用于创建自定义Jupyter小部件项目的cookiecutter模板。</li>
+<li><a href="https://github.com/drivendata/cookiecutter-data-science" target="_blank" rel="noopener">cookiecutter-data-science</a>:为在Python中进行和共享数据科学工作的逻辑的、合理标准化的、灵活的项目结构。<a href="http://drivenndata.github.io/cookiegrate-data-science/" target="_blank" rel="noopener">此处</a>提供了的完整文档 。</li>
+<li><a href="https://github.com/bdcaf/cookiecutter-r-data-analysis" target="_blank" rel="noopener">cookiecutter-r-data-analysis</a>: 组织基于R的工作流-&gt;doc(通过pandoc)-&gt;pdf报告(通过latex)的模板</li>
+<li><a href="https://github.com/docker-science/cookiecutter-docker-science" target="_blank" rel="noopener">cookiecutter-docker-science</a>: Cookiecutter template for data scientists working in Docker containers.为使用Docker容器工作的数据科学家准备的Cookiecutter模板。</li>
+</ul>
+<p><strong>Reproducible Science</strong></p>
+<ul>
+<li><a href="https://github.com/mkrapp/cookiecutter-reproducible-science" target="_blank" rel="noopener">cookiecutter-reproducible-science</a>: 用于开始一个可重复和透明的科学项目，包括数据，模型，分析和报告的cookiecutter模板 (比如你的科学论文)。与上面数据科学Cookiecutter模板的哲学非常一致</li>
+</ul>
+<p><strong>数据驱动的Journalism</strong></p>
+<ul>
+<li><a href="https://github.com/jastark/cookiecutter-data-driven-journalism" target="_blank" rel="noopener">cookiecutter-data-driven-journalism</a>: 通过持续组织数据日志项目和一些预先填充的文件来促进数据日志的透明度的Cookiecutter模板(包括 .gitignore, README, AUTHORS)</li>
+</ul>
+<p><strong>持续交付</strong></p>
+<ul>
+<li><a href="https://github.com/painless-software/painless-continuous-delivery" target="_blank" rel="noopener">painless-continuous-delivery</a>: 用于包含持续交付的软件开发设置cookiecutter模板。支持Python (Django, Flask), 实验性支持 PHP 。</li>
+<li><a href="https://bitbucket.org/greenguavalabs/cookiecutter-devenv.git" target="_blank" rel="noopener">cookiecutter-devenv</a>: 用于将开发和ci环境添加到现有项目的模板。</li>
+</ul>
+<h3 id="云工具"><a href="#云工具" class="headerlink" title="云工具"></a>云工具</h3><ul>
+<li><a href="https://github.com/DualSpark/cookiecutter-tf-module" target="_blank" rel="noopener">cookiecutter-tf-module</a>: 用于构建一致Terraform模块的Cookiecutter模板。</li>
+</ul>
+<h3 id="Tornado"><a href="#Tornado" class="headerlink" title="Tornado"></a>Tornado</h3><ul>
+<li><a href="https://github.com/hkage/cookiecutter-tornado" target="_blank" rel="noopener">cookiecutter-tornado</a>: 创建Tornado项目的Cookiecutter模板</li>
+</ul>
+<p><strong>其他</strong></p>
+<ul>
+<li><a href="https://github.com/Pawamoy/cookiecutter-awesome" target="_blank" rel="noopener">cookiecutter-awesome</a>: 创建[awesome]（<a href="https://github.com/sindresorhus/awesome）列表的Cookiecutter模板。" target="_blank" rel="noopener">https://github.com/sindresorhus/awesome）列表的Cookiecutter模板。</a></li>
+<li><a href="https://github.com/bdcaf/cookiecutter_dotfile" target="_blank" rel="noopener">cookiecutter_dotfile</a>: 由stow管理的dotfiles文件夹的模板。</li>
+<li><a href="https://github.com/genzj/cookiecutter-raml" target="_blank" rel="noopener">cookiecutter-raml</a>: RAML v1.0 API文档的模板。</li>
+</ul>
+<h3 id="与Cookiecutter类似的项目"><a href="#与Cookiecutter类似的项目" class="headerlink" title="与Cookiecutter类似的项目"></a>与Cookiecutter类似的项目</h3><ul>
+<li><a href="http://pythonpaste.org/script/#paster-create" target="_blank" rel="noopener">Paste</a> 具有创建骨架项目的创建选项。</li>
+<li><a href="https://github.com/novagile/diecutter" target="_blank" rel="noopener">Diecutter</a>: 一个提供模板和变量的配置文件的API服务。</li>
+<li><a href="https://docs.djangoproject.com/en/1.9/ref/django-admin/#cmdoption-startapp--template" target="_blank" rel="noopener">Django</a>的tartproject和startapp命令可以使用-template选项。</li>
+<li><a href="https://github.com/fcurella/python-packager" target="_blank" rel="noopener">python-packager</a>:使用自己的模板创建Python包，并提供可配置的选项。</li>
+<li><a href="https://github.com/yeoman/generator" target="_blank" rel="noopener">Yeoman</a> 有一个受Rails启发的生成器系统，为应用程序提供脚手架。</li>
+<li><a href="http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/scaffolding.html" target="_blank" rel="noopener">Pyramid</a>的pcreate命令，用于从脚手架模板创建Pyramid 项目。</li>
+<li><a href="https://github.com/iElectric/mr.bob" target="_blank" rel="noopener">mr.bob</a> 是一个文件系统模板渲染器，用于弃用paster和templer等工具</li>
+<li><a href="https://github.com/gruntjs/grunt-init" target="_blank" rel="noopener">grunt-init</a> 曾经被内置到Grunt中，现在是一个独立的脚手架工具，可以自动创建项目。</li>
+<li><a href="https://github.com/paulmillr/scaffolt" target="_blank" rel="noopener">scaffolt</a> 使用Handlebars 的JSON生成器。</li>
+<li><a href="https://github.com/paulmillr/init-skeleton" target="_blank" rel="noopener">init-skeleton</a> 克隆或复制存储库，执行npm安装和bower安装，并删除.git目录。</li>
+<li><a href="https://bitbucket.org/ned/cog" target="_blank" rel="noopener">Cog</a> 由Ned Batchelder开发的基于python的代码生成工具包</li>
+<li><a href="https://github.com/christabor/Skaffold" target="_blank" rel="noopener">Skaffold</a> 基于python和json配置的django / MVC生成器，带有一些附加组件和集成。</li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python%E5%B7%A5%E5%85%B7%E5%8C%85/">
+                                    <span class="chip bg-color">python工具包</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                                    <span class="chip bg-color">后端文章转载</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-04-24T10-25-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/24/cookiecutter-2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Cookiecutter更好的项目模板工具（2）安装及基础使用">
+                        
+                        <span class="card-title">Cookiecutter更好的项目模板工具（2）安装及基础使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            转载Cookiecutter文章，详解了Cookiecutter的安装及使用
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python%E5%B7%A5%E5%85%B7%E5%8C%85/">
+                        <span class="chip bg-color">python工具包</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">后端文章转载</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/23/drf-mian-shi-ti-zong-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="DRF面试题总结">
+                        
+                        <span class="card-title">DRF面试题总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            介绍了DRF的面试题
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                        <span class="chip bg-color">python面试题</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

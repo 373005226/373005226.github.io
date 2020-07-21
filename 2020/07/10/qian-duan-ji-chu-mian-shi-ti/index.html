@@ -1,0 +1,1884 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="前端基础面试题, 勤奋小L的博客">
+    <meta name="description" content="讲解我遇到的很基础的前端面试题">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>前端基础面试题 | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">前端基础面试题</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
+                            </a>
+                        
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-07-10
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    13.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    48 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>这里面的是我遇到的面试题</p>
+</blockquote>
+<h2 id="JavaScript面试题"><a href="#JavaScript面试题" class="headerlink" title="JavaScript面试题"></a>JavaScript面试题</h2><h3 id="js中-和-区别"><a href="#js中-和-区别" class="headerlink" title="js中==和===区别"></a>js中==和===区别</h3><p>简单来说： == 代表相同， ===代表严格相同, 为啥这么说呢， </p>
+<p>这么理解： 当进行双等号比较时候： 先检查两个操作数数据类型，如果相同， 则进行===比较， 如果不同， 则愿意为你进行一次类型转换， 转换成相同类型后再进行比较， 而===比较时， 如果类型不同，直接就是false.</p>
+<p>操作数1 == 操作数2， 操作数1 === 操作数2</p>
+<p>比较过程：</p>
+<p>　　双等号==： </p>
+<p>　　（1）如果两个值类型相同，再进行三个等号(===)的比较</p>
+<p>　　（2）如果两个值类型不同，也有可能相等，需根据以下规则进行类型转换在比较：</p>
+<p>　　　　1）如果一个是null，一个是undefined，那么相等</p>
+<p>　　　　2）如果一个是字符串，一个是数值，把字符串转换成数值之后再进行比较</p>
+<p>　　</p>
+<p>　　三等号===:</p>
+<p>　　（1）如果类型不同，就一定不相等</p>
+<p>　　（2）如果两个都是数值，并且是同一个值，那么相等；如果其中至少一个是NaN，那么不相等。（判断一个值是否是NaN，只能使用isNaN( ) 来判断）</p>
+<p>　　（3）如果两个都是字符串，每个位置的字符都一样，那么相等，否则不相等。</p>
+<p>　　（4）如果两个值都是true，或是false，那么相等</p>
+<p>　　（5）如果两个值都引用同一个对象或是函数，那么相等，否则不相等</p>
+<p>　　（6）如果两个值都是null，或是undefined，那么相等</p>
+<h3 id="JS如何避免全局变量污染"><a href="#JS如何避免全局变量污染" class="headerlink" title="JS如何避免全局变量污染"></a>JS如何避免全局变量污染</h3><ol>
+<li><p>加上个人标识符</p>
+</li>
+<li><p>匿名函数</p>
+<p>如果是A写的变量跟B写的变量名字一样，那么就会造成变量冲突，此时每个人之间都可以使用匿名函数来开发</p>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!doctype html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>使用匿名函数解决变量作用域问题<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//程序员a写的代码</span>
+                <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//程序员b写的代码</span>
+                <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">89</span><span class="token punctuation">;</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+</code></pre>
+</li>
+</ol>
+<pre><code>       &lt;script&gt;
+           (function() {
+               //程序员c写的代码
+               alert(a);
+           })();
+       &lt;/script&gt;
+
+       这里每个程序员定义了自己的匿名函数，在不同的函数中定义变量，这个变量就是一个局部变量。 &lt;br /&gt;
+       用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突。
+
+   &lt;/body&gt;</code></pre>   </html>
+   ```
+
+<p>   但是如果是不同人之间要共享一个变量的话，如上代码就用不了了</p>
+<p>   解决方案： 将多个全局变量包装在一起，使用一个hash全局变量，类似于一个集合一样的用。</p>
+<ol start="3">
+<li>使用命名空间解决问题</li>
+</ol>
+<p>为解决如上问题，可以使用 命名空间的方法</p>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!doctype html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>使用hash变量作为全局变量<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token comment" spellcheck="true">//hash全局变量</span>
+            <span class="token keyword">var</span> GLOBAL <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//程序员a写的代码</span>
+                <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//程序员b写的代码:操作全局GLOBAL变量</span>
+                GLOBAL<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">89</span><span class="token punctuation">;</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"程序员b:"</span> <span class="token operator">+</span> GLOBAL<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//程序员c写的代码访问的就是全局变量</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"程序员c:"</span> <span class="token operator">+</span> GLOBAL<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+        在这里使用了GLOBAL作为全局变量名， 在匿名函数间要传递值的话，将这些变量作为全局变量的属性即可。 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
+        但GLOBAL是全局变量，它在各个函数间都可以访问到，这很容易让GLOBAL的属性不小心被覆盖掉。 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
+        解决方案：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
+        命名空间
+
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+<p>但是这样的话，如果B不小心把GLOBAL重新赋值了，那么其他人用的变量就会出错</p>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!doctype html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>全局变量GLOBAL中添加定义命名空间的函数<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token comment" spellcheck="true">//hash全局变量</span>
+            <span class="token keyword">var</span> GLOBAL <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//   str :表示要生成的命名空间，例如:    GLOBAL.A.name  或是     A.name</span>
+            GLOBAL<span class="token punctuation">.</span>namespace <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">var</span> arr <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">var</span> o <span class="token operator">=</span> GLOBAL<span class="token punctuation">;</span>
+                <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"GLOBAL"</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//如果str中的第一部分为GLOBAL的话，命名空间从第二个开始计算</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    o<span class="token punctuation">[</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> o<span class="token punctuation">[</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+                    o <span class="token operator">=</span> o<span class="token punctuation">[</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token comment" spellcheck="true">/*
+            * @method 功能A:
+            * @author 程序员a
+            * @connect 1234567
+            * @time 2015-01-01
+            */</span>
+            <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//程序员a写的代码</span>
+                GLOBAL<span class="token punctuation">.</span><span class="token function">namespace</span><span class="token punctuation">(</span><span class="token string">"A.person"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//程序员a定义了自己的命名空间A,并在Ａ下面定义了子命名空间person</span>
+                GLOBAL<span class="token punctuation">.</span>A<span class="token punctuation">.</span>person<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"zy"</span><span class="token punctuation">;</span>
+                GLOBAL<span class="token punctuation">.</span>A<span class="token punctuation">.</span>person<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">;</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span>GLOBAL<span class="token punctuation">.</span>A<span class="token punctuation">.</span>person<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> GLOBAL<span class="token punctuation">.</span>A<span class="token punctuation">.</span>person<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token comment" spellcheck="true">/*
+            * @method 功能B:
+            * @author 程序员b
+            * @connect 1234567
+            * @time 2015-01-01
+            */</span>
+            <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//程序员b写的代码:定义自己的命名空间</span>
+                GLOBAL<span class="token punctuation">.</span><span class="token function">namespace</span><span class="token punctuation">(</span><span class="token string">"B.student"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//程序员a定义了自己的命名空间B,并在B下面定义了子命名空间student</span>
+                GLOBAL<span class="token punctuation">.</span>B<span class="token punctuation">.</span>student<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"lisi"</span><span class="token punctuation">;</span>
+                GLOBAL<span class="token punctuation">.</span>B<span class="token punctuation">.</span>student<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">33</span><span class="token punctuation">;</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span>GLOBAL<span class="token punctuation">.</span>B<span class="token punctuation">.</span>student<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> GLOBAL<span class="token punctuation">.</span>B<span class="token punctuation">.</span>student<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+            <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/*
+            * @method 功能C:
+            * @author 程序员c
+            * @connect 1234567
+            * @time 2015-01-01
+            */</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"程序员c操作A命名空间下的变量:"</span> <span class="token operator">+</span> GLOBAL<span class="token punctuation">.</span>A<span class="token punctuation">.</span>person<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> GLOBAL<span class="token punctuation">.</span>A<span class="token punctuation">.</span>person<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"程序员c操作B命名空间下的变量:"</span> <span class="token operator">+</span> GLOBAL<span class="token punctuation">.</span>B<span class="token punctuation">.</span>student<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> GLOBAL<span class="token punctuation">.</span>B<span class="token punctuation">.</span>student<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+
+        以上体现的就是合理使用命名空间解决变量冲突的问题。
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="NaN是什么数据类型"><a href="#NaN是什么数据类型" class="headerlink" title="NaN是什么数据类型"></a>NaN是什么数据类型</h3><p><strong>NaN是数字类型的，但是它又可以用isNaN()检测，isNaN() 函数用于检查其参数是否是非数字值</strong></p>
+<p>isNaN() 函数通常用于检测 parseFloat() 和 parseInt() 的结果，以判断它们表示的是否是合法的数字</p>
+<h4 id="isNaN-为false的两种情况"><a href="#isNaN-为false的两种情况" class="headerlink" title="isNaN()为false的两种情况"></a>isNaN()为false的两种情况</h4><pre class=" language-jsx"><code class="language-jsx"><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//false</span>
+<span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">'123'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//false</span></code></pre>
+<p>通俗的讲isNaN()是用来检测非合法数字的，只要不是数字，或者可以转换为数字的都是true<br> <strong>注意isNaN(true) //false   isNaN(false) //false isNaN(undefined) //true</strong><br> 这是因为:</p>
+<pre class=" language-jsx"><code class="language-jsx"><span class="token function">Number</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//1</span>
+<span class="token function">Number</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//0</span>
+<span class="token function">Number</span><span class="token punctuation">(</span>undefined<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//NaN</span></code></pre>
+<p><strong>在ES6的Number.isNaN()扩展方法没有出现之前，全局的isNaN()方法是比较可靠的方式判断是否为NaN，但是在ES6出来之后，我们可以使用Number.isNaN()方法进行可靠的判断NaN值</strong><br> Number.isNaN()方法的判断过程：首先判断传入的参数是否为数值类型，如果判断为true再使用isNaN()方法进行判断。为false就直接返回flase<br> 所以：</p>
+<pre class=" language-jsx"><code class="language-jsx">Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span>undefined<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">//false</span></code></pre>
+<p>由此得出NaN是一个非法数字，更是一个没有固定值的数字<br> 所以：</p>
+<pre class=" language-jsx"><code class="language-jsx"><span class="token number">NaN</span> <span class="token operator">!=</span> <span class="token number">NaN</span>  <span class="token comment" spellcheck="true">// true</span>
+<span class="token number">NaN</span> <span class="token operator">!==</span> <span class="token number">NaN</span>  <span class="token comment" spellcheck="true">// true</span></code></pre>
+<h3 id="和-amp-amp-的问题"><a href="#和-amp-amp-的问题" class="headerlink" title="||和&amp;&amp;的问题"></a>||和&amp;&amp;的问题</h3><pre class=" language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'0 || 1='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">||</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'1 || 0='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'2 || 0='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'0 || 2='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">||</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'2 || 1='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">||</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'1 || 2='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">||</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'  '</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'0 &amp;&amp; 1='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//0</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'1 &amp;&amp; 0='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//0</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'2 &amp;&amp; 0='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">&amp;&amp;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//0</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'0 &amp;&amp; 2='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//0</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'2 &amp;&amp; 1='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">&amp;&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'1 &amp;&amp; 2='</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//2</span></code></pre>
+<blockquote>
+<p><strong>&amp;&amp; 是与运算表达式，可以理解为当 &amp;&amp; 前面的值为真时，执行 &amp;&amp; 后面的表达式， &amp;&amp; 前面的表达式为假时，返回false。</strong><br><strong>|| 或运算表达式，可以理解为当 || 前面的值为假时，执行|| 后面的表达式。当 || 前面的表达式为真时，直接返回前面的表达式。</strong></p>
+</blockquote>
+<h3 id="变量声明的问题"><a href="#变量声明的问题" class="headerlink" title="变量声明的问题"></a>变量声明的问题</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">h5course</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">//     var a;</span>
+<span class="token comment" spellcheck="true">//     b = 2;</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> b <span class="token operator">=</span> <span class="token number">2</span>        <span class="token comment" spellcheck="true">//var a=b=2; 等价于 var a=(b=2);</span>
+<span class="token punctuation">}</span>                        <span class="token comment" spellcheck="true">//其中只有a被声明了，b是自动解析为全局变量了</span>
+<span class="token function">h5course</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> a <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//a is not defined         false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> b <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//true                         true</span></code></pre>
+<h3 id="变量拼接问题"><a href="#变量拼接问题" class="headerlink" title="变量拼接问题"></a>变量拼接问题</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">11</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token number">22</span>
+<span class="token keyword">var</span> c <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">Number</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'A||B='</span> <span class="token operator">+</span> <span class="token function">Number</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">Number</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//1122</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>                                    <span class="token comment" spellcheck="true">//33</span></code></pre>
+<h2 id="Vue面试题总结"><a href="#Vue面试题总结" class="headerlink" title="Vue面试题总结"></a>Vue面试题总结</h2><h3 id="1-什么是虚拟-DOM？"><a href="#1-什么是虚拟-DOM？" class="headerlink" title="1.什么是虚拟 DOM？"></a>1.什么是虚拟 DOM？</h3><p>文档对象模型或 DOM 定义了一个接口，该接口允许 JavaScript 之类的语言访问和操作 HTML 文档。元素由树中的节点表示，并且接口允许我们操纵它们。但是此接口需要付出代价，大量非常频繁的 DOM 操作会使页面速度变慢。</p>
+<p>Vue 通过在内存中实现文档结构的虚拟表示来解决此问题，其中虚拟节点（VNode）表示 DOM 树中的节点。当需要操纵时，可以在虚拟 DOM的 内存中执行计算和操作，而不是在真实 DOM 上进行操纵。这自然会更快，并且允许虚拟 DOM 算法计算出最优化的方式来更新实际 DOM 结构。</p>
+<p>一旦计算出，就将其应用于实际的 DOM 树，这就提高了性能，这就是为什么基于虚拟 DOM 的框架（例如 Vue 和 React）如此突出的原因。</p>
+<h2 id="计算机原理题"><a href="#计算机原理题" class="headerlink" title="计算机原理题"></a>计算机原理题</h2><h3 id="讲讲输入完网址按下回车，到看到网页这个过程中发生了什么"><a href="#讲讲输入完网址按下回车，到看到网页这个过程中发生了什么" class="headerlink" title="讲讲输入完网址按下回车，到看到网页这个过程中发生了什么"></a>讲讲输入完网址按下回车，到看到网页这个过程中发生了什么</h3><ul>
+<li>a. 域名解析</li>
+<li>b. 发起TCP的3次握手</li>
+<li>c. 建立TCP连接后发起http请求</li>
+<li>d. 服务器端响应http请求，浏览器得到html代码</li>
+<li>e. 浏览器解析html代码，并请求html代码中的资源</li>
+<li>f. 浏览器对页面进行渲染呈现给用户</li>
+</ul>
+<h3 id="谈谈你对前端性能优化的理解"><a href="#谈谈你对前端性能优化的理解" class="headerlink" title="谈谈你对前端性能优化的理解"></a>谈谈你对前端性能优化的理解</h3><ul>
+<li>a. 请求数量：合并脚本和样式表，CSS Sprites，拆分初始化负载，划分主域</li>
+<li>b. 请求带宽：开启GZip，精简JavaScript，移除重复脚本，图像优化，将icon做成字体</li>
+<li>c. 缓存利用：使用CDN，使用外部JavaScript和CSS，添加Expires头，减少DNS查找，配置ETag，使AjaX可缓存</li>
+<li>d. 页面结构：将样式表放在顶部，将脚本放在底部，尽早刷新文档的输出</li>
+<li>e. 代码校验：避免CSS表达式，避免重定向</li>
+</ul>
+<h3 id="前端-MV-框架的意义"><a href="#前端-MV-框架的意义" class="headerlink" title="前端 MV*框架的意义"></a>前端 MV*框架的意义</h3><p>早期前端都是比较简单，基本以页面为工作单元，内容以浏览型为主，也偶尔有简单的表单操作，基本不太需要框架.</p>
+<p>随着 AJAX 的出现，Web2.0的兴起，人们可以在页面上可以做比较复杂的事情了，然后前端框架才真正出现了。</p>
+<p>如果是页面型产品，多数确实不太需要它，因为页面中的 JavaScript代码，处理交互的绝对远远超过处理模型的，但是如果是应用软件类产品，这就太需要了。</p>
+<p>长期做某个行业软件的公司，一般都会沉淀下来一些业务组件，主要体现在数据模型、业务规则和业务流程，这些组件基本都存在于后端，在前端很少有相应的组织。</p>
+<p>从协作关系上讲，很多前端开发团队每个成员的职责不是很清晰，有了前端的 MV框架，这个状况会大有改观。</p>
+<p>之所以感受不到 MV*框架的重要性，是因为Model部分代码较少，View的相对多一些。如果主要在操作View和Controller，那当然 jQuery 这类库比较好用了。</p>
+<h3 id="请简述盒模型"><a href="#请简述盒模型" class="headerlink" title="请简述盒模型"></a>请简述盒模型</h3><p>IE6盒子模型与W3C盒子模型。</p>
+<p>文档中的每个元素被描绘为矩形盒子。盒子有四个边界：外边距边界margin, 边框边界border, 内边距边界padding与内容边界content。</p>
+<p>CSS3中有个box-sizing属性可以控制盒子的计算方式，</p>
+<p>content-box：padding和border不被包含在定义的width和height之内。对象的实际宽度等于设置的width值和border、padding之和。（W3C盒子模型）</p>
+<p>border-box：padding和border被包含在定义的width和height之内。对象的实际宽度就等于设置的width值。（IE6盒子模型）</p>
+<h3 id="请你谈谈Cookie的弊端"><a href="#请你谈谈Cookie的弊端" class="headerlink" title="请你谈谈Cookie的弊端"></a>请你谈谈Cookie的弊端</h3><ul>
+<li>a. 每个特定的域名下最多生成的cookie个数有限制</li>
+<li>b. IE和Opera 会清理近期最少使用的cookie，Firefox会随机清理cookie</li>
+<li>c. cookie的最大大约为4096字节，为了兼容性，一般不能超过4095字节</li>
+<li>d. 安全性问题。如果cookie被人拦截了，那人就可以取得所有的session信息。</li>
+</ul>
+<h3 id="浏览器本地存储"><a href="#浏览器本地存储" class="headerlink" title="浏览器本地存储"></a>浏览器本地存储</h3><p>在HTML5中提供了sessionStorage和localStorage.</p>
+<p>sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁，是会话级别的存储。</p>
+<p>localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。</p>
+<h3 id="web-storage和cookie的区别"><a href="#web-storage和cookie的区别" class="headerlink" title="web storage和cookie的区别"></a>web storage和cookie的区别</h3><ul>
+<li>a. Cookie的大小是受限的</li>
+<li>b. 每次你请求一个新的页面的时候Cookie都会被发送过去，这样无形中浪费了带宽</li>
+<li>c. cookie还需要指定作用域，不可以跨域调用</li>
+<li>d. Web Storage拥有setItem,getItem等方法，cookie需要前端开发者自己封装setCookie，getCookie</li>
+<li>e. Cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在 ，而Web Storage仅仅是为了在本地“存储”数据而生</li>
+<li>f. IE7、IE6中的UserData通过简单的代码封装可以统一到所有的浏览器都支持web storage</li>
+</ul>
+<h3 id="线程与进程的区别"><a href="#线程与进程的区别" class="headerlink" title="线程与进程的区别"></a>线程与进程的区别</h3><ul>
+<li>a. 一个程序至少有一个进程，一个进程至少有一个线程</li>
+<li>b. 线程的划分尺度小于进程，使得多线程程序的并发性高</li>
+<li>c. 进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率</li>
+<li>d. 每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制</li>
+<li>e. 多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配</li>
+</ul>
+<h3 id="请说出三种减少页面加载时间的方法"><a href="#请说出三种减少页面加载时间的方法" class="headerlink" title="请说出三种减少页面加载时间的方法"></a>请说出三种减少页面加载时间的方法</h3><ul>
+<li>a. 尽量减少页面中重复的HTTP请求数量</li>
+<li>b. 服务器开启gzip压缩</li>
+<li>c. css样式的定义放置在文件头部</li>
+<li>d. Javascript脚本放在文件末尾</li>
+<li>e. 压缩合并Javascript、CSS代码</li>
+<li>f. 使用多域名负载网页内的多个文件、图片</li>
+</ul>
+<h3 id="你都使用哪些工具来测试代码的性能？"><a href="#你都使用哪些工具来测试代码的性能？" class="headerlink" title="你都使用哪些工具来测试代码的性能？"></a>你都使用哪些工具来测试代码的性能？</h3><p>JSPerf, Dromaeo</p>
+<h3 id="什么叫优雅降级和渐进增强？"><a href="#什么叫优雅降级和渐进增强？" class="headerlink" title="什么叫优雅降级和渐进增强？"></a>什么叫优雅降级和渐进增强？</h3><p>渐进增强 progressive enhancement：</p>
+<p>针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。</p>
+<p>优雅降级 graceful degradation：</p>
+<p>一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。</p>
+<p>区别：</p>
+<ul>
+<li>a. 优雅降级是从复杂的现状开始，并试图减少用户体验的供给</li>
+<li>b. 渐进增强则是从一个非常基础的，能够起作用的版本开始，并不断扩充，以适应未来环境的需要</li>
+<li>c. 降级（功能衰减）意味着往回看；而渐进增强则意味着朝前看，同时保证其根基处于安全地带</li>
+</ul>
+<h3 id="WEB应用从服务器主动推送Data到客户端有那些方式？"><a href="#WEB应用从服务器主动推送Data到客户端有那些方式？" class="headerlink" title="WEB应用从服务器主动推送Data到客户端有那些方式？"></a>WEB应用从服务器主动推送Data到客户端有那些方式？</h3><ul>
+<li>a. html5 websoket</li>
+<li>b. WebSocket 通过 Flash</li>
+<li>c. XHR长时间连接</li>
+<li>d. XHR Multipart Streaming</li>
+<li>e. 不可见的Iframe</li>
+<li>f. <code>&lt;script&gt;</code>标签的长时间连接(可跨域)</li>
+</ul>
+<h3 id="对前端界面工程师这个职位是怎么样理解的？"><a href="#对前端界面工程师这个职位是怎么样理解的？" class="headerlink" title="对前端界面工程师这个职位是怎么样理解的？"></a>对前端界面工程师这个职位是怎么样理解的？</h3><ul>
+<li>a. 前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好</li>
+<li>b. 参与项目，快速高质量完成实现效果图，精确到1px；</li>
+<li>c. 与团队成员，UI设计，产品经理的沟通；</li>
+<li>d. 做好的页面结构，页面重构和用户体验；</li>
+<li>e. 处理hack，兼容、写出优美的代码格式；</li>
+<li>f. 针对服务器的优化、拥抱最新前端技术。</li>
+</ul>
+<h3 id="平时如何管理你的项目？"><a href="#平时如何管理你的项目？" class="headerlink" title="平时如何管理你的项目？"></a>平时如何管理你的项目？</h3><ul>
+<li>a. 先期团队必须确定好全局样式（globe.css），编码模式(utf-8) 等；</li>
+<li>b. 编写习惯必须一致（例如都是采用继承式的写法，单样式都写成一行）；</li>
+<li>c. 标注样式编写人，各模块都及时标注（标注关键样式调用的地方）；</li>
+<li>d. 页面进行标注（例如 页面 模块 开始和结束）；</li>
+<li>e. CSS跟HTML 分文件夹并行存放，命名都得统一（例如style.css）；</li>
+<li>f. JS 分文件夹存放 命名以该JS功能为准的英文翻译。</li>
+<li>g. 图片采用整合的 images.png png8 格式文件使用 尽量整合在一起使用方便将来的管理</li>
+</ul>
+<h3 id="Flash、Ajax各自的优缺点，在使用中如何取舍？"><a href="#Flash、Ajax各自的优缺点，在使用中如何取舍？" class="headerlink" title="Flash、Ajax各自的优缺点，在使用中如何取舍？"></a>Flash、Ajax各自的优缺点，在使用中如何取舍？</h3><p>Flash：</p>
+<ul>
+<li>a. Flash适合处理多媒体、矢量图形、访问机器</li>
+<li>b. 对CSS、处理文本上不足，不容易被搜索</li>
+</ul>
+<p>Ajax：</p>
+<ul>
+<li>a. Ajax对CSS、文本支持很好，支持搜索</li>
+<li>b. 多媒体、矢量图形、机器访问不足</li>
+</ul>
+<p>共同点：</p>
+<ul>
+<li>a. 与服务器的无刷新传递消息</li>
+<li>b. 可以检测用户离线和在线状态</li>
+<li>c. 操作DOM</li>
+</ul>
+<h3 id="请解释一下-JavaScript-的同源策略"><a href="#请解释一下-JavaScript-的同源策略" class="headerlink" title="请解释一下 JavaScript 的同源策略"></a>请解释一下 JavaScript 的同源策略</h3><p>同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。</p>
+<p>指一段脚本只能读取来自同一来源的窗口和文档的属性。</p>
+<h3 id="AMD和CMD-规范的区别？"><a href="#AMD和CMD-规范的区别？" class="headerlink" title="AMD和CMD 规范的区别？"></a>AMD和CMD 规范的区别？</h3><p>AMD 提前执行依赖 - 尽早执行，requireJS 是它的实现</p>
+<p>CMD 按需执行依赖 - 懒执行，seaJS 是它的实现</p>
+<h3 id="网站重构的理解"><a href="#网站重构的理解" class="headerlink" title="网站重构的理解"></a>网站重构的理解</h3><p>重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。</p>
+<ul>
+<li>a. 使网站前端兼容于现代浏览器(针对于不合规范的CSS、如对IE6有效的)</li>
+<li>b. 对于移动平台的优化，针对于SEO进行优化</li>
+<li>c. 减少代码间的耦合，让代码保持弹性</li>
+<li>d. 压缩或合并JS、CSS、image等前端资源</li>
+</ul>
+<h3 id="浏览器的内核分别是什么"><a href="#浏览器的内核分别是什么" class="headerlink" title="浏览器的内核分别是什么?"></a>浏览器的内核分别是什么?</h3><p>IE浏览器的内核Trident、Mozilla的Gecko、Chrome的Blink（WebKit的分支）、Opera内核原为Presto，现为Blink</p>
+<h3 id="请介绍下cache-control"><a href="#请介绍下cache-control" class="headerlink" title="请介绍下cache-control"></a>请介绍下cache-control</h3><p>每个资源都可以通过 Cache-Control HTTP 头来定义自己的缓存策略</p>
+<p>Cache-Control 指令控制谁在什么条件下可以缓存响应以及可以缓存多久</p>
+<p>Cache-Control 头在 HTTP/1.1 规范中定义，取代了之前用来定义响应缓存策略的头（例如 Expires）。</p>
+<h3 id="前端页面有哪三层构成，分别是什么？作用是什么？"><a href="#前端页面有哪三层构成，分别是什么？作用是什么？" class="headerlink" title="前端页面有哪三层构成，分别是什么？作用是什么？"></a>前端页面有哪三层构成，分别是什么？作用是什么？</h3><ul>
+<li>a. 结构层：由 HTML 或 XHTML 之类的标记语言负责创建，仅负责语义的表达。解决了页面“内容是什么”的问题。</li>
+<li>b. 表示层：由CSS负责创建，解决了页面“如何显示内容”的问题。</li>
+<li>c. 行为层：由脚本负责。解决了页面上“内容应该如何对事件作出反应”的问题。</li>
+</ul>
+<h3 id="知道的网页制作会用到的图片格式有哪些？"><a href="#知道的网页制作会用到的图片格式有哪些？" class="headerlink" title="知道的网页制作会用到的图片格式有哪些？"></a>知道的网页制作会用到的图片格式有哪些？</h3><p>png-8，png-24，jpeg，gif，svg</p>
+<p>Webp：谷歌（google）开发的一种旨在加快图片加载速度的图片格式。图片压缩体积大约只有JPEG的2/3，并能节省大量的服务器带宽资源和数据空间。Facebook Ebay等知名网站已经开始测试并使用WebP格式。</p>
+<p>Apng：全称是“Animated Portable Network Graphics”, 是PNG的位图动画扩展，可以实现png格式的动态图片效果。04年诞生，但一直得不到各大浏览器厂商的支持，直到日前得到 iOS safari 8的支持，有望代替GIF成为下一代动态图标准。</p>
+<h3 id="一次js请求一般情况下有哪些地方会有缓存处理？"><a href="#一次js请求一般情况下有哪些地方会有缓存处理？" class="headerlink" title="一次js请求一般情况下有哪些地方会有缓存处理？"></a>一次js请求一般情况下有哪些地方会有缓存处理？</h3><ul>
+<li>a. 浏览器端存储</li>
+<li>b. 浏览器端文件缓存</li>
+<li>c. HTTP缓存304</li>
+<li>d. 服务器端文件类型缓存</li>
+<li>e. 表现层&amp;DOM缓存</li>
+</ul>
+<h3 id="一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验。"><a href="#一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验。" class="headerlink" title="一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验。"></a>一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验。</h3><ul>
+<li>a. 图片懒加载，滚动到相应位置才加载图片。</li>
+<li>b. 图片预加载，如果为幻灯片、相册等，将当前展示图片的前一张和后一张优先下载。</li>
+<li>c. 使用CSSsprite，SVGsprite，Iconfont、Base64等技术，如果图片为css图片的话。</li>
+<li>d. 如果图片过大，可以使用特殊编码的图片，加载时会先加载一张压缩的特别厉害的缩略图，以提高用户体验。</li>
+</ul>
+<h3 id="谈谈以前端角度出发做好SEO需要考虑什么？"><a href="#谈谈以前端角度出发做好SEO需要考虑什么？" class="headerlink" title="谈谈以前端角度出发做好SEO需要考虑什么？"></a>谈谈以前端角度出发做好SEO需要考虑什么？</h3><ul>
+<li>a. 了解搜索引擎如何抓取网页和如何索引网页</li>
+<li>b. meta标签优化</li>
+<li>c. 关键词分析</li>
+<li>d. 付费给搜索引擎</li>
+<li>e. 链接交换和链接广泛度（Link Popularity）</li>
+<li>f. 合理的标签使用</li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><blockquote>
+<p>文章内有引用于：<br>版权声明：本文为CSDN博主「Eric_qf」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qfxietian/article/details/90608484" target="_blank" rel="noopener">https://blog.csdn.net/qfxietian/article/details/90608484</a></p>
+</blockquote>
+<h3 id="1-lt-img-gt-标签上title属性与alt属性的区别是什么？"><a href="#1-lt-img-gt-标签上title属性与alt属性的区别是什么？" class="headerlink" title="1.&lt;img&gt;标签上title属性与alt属性的区别是什么？"></a>1.<code>&lt;img&gt;</code>标签上title属性与alt属性的区别是什么？</h3><p>alt属性是为了给那些不能看到你文档中图像的浏览者提供文字说明的。且长度必须少于100个英文字符或者用户必须保证替换文字尽可能的短。</p>
+<p>这包括那些使用本来就不支持图像显示或者图像显示被关闭的浏览器的用户，视觉障碍的用户和使用屏幕阅读器的用户等。</p>
+<p>title属性为设置该属性的元素提供建议性的信息。使用title属性提供非本质的额外信息。</p>
+<h3 id="2-请写出至少5个html5新增的标签，并说明其语义和应用场景"><a href="#2-请写出至少5个html5新增的标签，并说明其语义和应用场景" class="headerlink" title="2.请写出至少5个html5新增的标签，并说明其语义和应用场景"></a>2.请写出至少5个html5新增的标签，并说明其语义和应用场景</h3><p>section：定义文档中的一个章节</p>
+<p>nav：定义只包含导航链接的章节</p>
+<p>header：定义页面或章节的头部。它经常包含 logo、页面标题和导航性的目录。</p>
+<p>footer：定义页面或章节的尾部。它经常包含版权信息、法律信息链接和反馈建议用的地址。</p>
+<p>aside：定义和页面内容关联度较低的内容——如果被删除，剩下的内容仍然很合理。</p>
+<h3 id="3-请说说你对标签语义化的理解？"><a href="#3-请说说你对标签语义化的理解？" class="headerlink" title="3.请说说你对标签语义化的理解？"></a>3.请说说你对标签语义化的理解？</h3><ul>
+<li>a. 去掉或者丢失样式的时候能够让页面呈现出清晰的结构</li>
+<li>b. 有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；</li>
+<li>c. 方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；</li>
+<li>d. 便于团队开发和维护，语义化更具可读性，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</li>
+</ul>
+<h3 id="4-Doctype作用-严格模式与混杂模式如何区分？它们有何意义"><a href="#4-Doctype作用-严格模式与混杂模式如何区分？它们有何意义" class="headerlink" title="4.Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?"></a>4.Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?</h3><!DOCTYPE><p> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器以何种模式来渲染文档。</p>
+<p>严格模式的排版和 JS 运作模式是，以该浏览器支持的最高标准运行。</p>
+<p>在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。</p>
+<p>DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。</p>
+<h3 id="5-你知道多少种Doctype文档类型？"><a href="#5-你知道多少种Doctype文档类型？" class="headerlink" title="5.你知道多少种Doctype文档类型？"></a>5.你知道多少种Doctype文档类型？</h3><p>标签可声明三种 DTD 类型，分别表示严格版本、过渡版本以及基于框架的 HTML 文档。</p>
+<p>HTML 4.01 规定了三种文档类型：Strict、Transitional 以及 Frameset。</p>
+<p>XHTML 1.0 规定了三种 XML 文档类型：Strict、Transitional 以及 Frameset。</p>
+<p>Standards （标准）模式（也就是严格呈现模式）用于呈现遵循最新标准的网页，</p>
+<p>Quirks（包容）模式（也就是松散呈现模式或者兼容模式）用于呈现为传统浏览器而设计的网页。</p>
+<h3 id="6-HTML与XHTML——二者有什么区别"><a href="#6-HTML与XHTML——二者有什么区别" class="headerlink" title="6.HTML与XHTML——二者有什么区别"></a>6.HTML与XHTML——二者有什么区别</h3><ul>
+<li>a. XHTML 元素必须被正确地嵌套。</li>
+<li>b. XHTML 元素必须被关闭。</li>
+<li>c. 标签名必须用小写字母。</li>
+<li>d. XHTML 文档必须拥有根元素。</li>
+</ul>
+<h3 id="7-html5有哪些新特性、移除了那些元素？"><a href="#7-html5有哪些新特性、移除了那些元素？" class="headerlink" title="7.html5有哪些新特性、移除了那些元素？"></a>7.html5有哪些新特性、移除了那些元素？</h3><ul>
+<li>a. HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。</li>
+<li>b. 拖拽释放(Drag and drop) API</li>
+<li>c. 语义化更好的内容标签（header,nav,footer,aside,article,section）</li>
+<li>d. 音频、视频API(audio,video)</li>
+<li>e. 画布(Canvas) API</li>
+<li>f. 地理(Geolocation) API</li>
+<li>g. 本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失</li>
+<li>h. sessionStorage 的数据在页面会话结束时会被清除</li>
+<li>i. 表单控件，calendar、date、time、email、url、search</li>
+<li>j. 新的技术webworker, websocket等</li>
+</ul>
+<p>移除的元素：</p>
+<ul>
+<li>a. 纯表现的元素：basefont，big，center, s，strike，tt，u；</li>
+<li>b. 对可用性产生负面影响的元素：frame，frameset，noframes；</li>
+</ul>
+<h3 id="8-iframe的优缺点？"><a href="#8-iframe的优缺点？" class="headerlink" title="8.iframe的优缺点？"></a>8.iframe的优缺点？</h3><p>优点：</p>
+<ul>
+<li>a. 解决加载缓慢的第三方内容如图标和广告等的加载问题</li>
+<li>b. iframe无刷新文件上传</li>
+<li>c. iframe跨域通信</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>a. iframe会阻塞主页面的Onload事件</li>
+<li>b. 无法被一些搜索引擎索引到</li>
+<li>c. 页面会增加服务器的http请求</li>
+<li>d. 会产生很多页面，不容易管理。</li>
+</ul>
+<h3 id="9-Quirks模式是什么？它和Standards模式有什么区别？"><a href="#9-Quirks模式是什么？它和Standards模式有什么区别？" class="headerlink" title="9.Quirks模式是什么？它和Standards模式有什么区别？"></a>9.Quirks模式是什么？它和Standards模式有什么区别？</h3><p>在写程序时我们也会经常遇到这样的问题，如何保证原来的接口不变，又提供更强大的功能，尤其是新功能不兼容旧功能时。IE6以前的页面大家都不会去写DTD，所以IE6就假定 如果写了DTD，就意味着这个页面将采用对CSS支持更好的布局，而如果没有，则采用兼容之前的布局方式。这就是Quirks模式（怪癖模式，诡异模式，怪异模式）。</p>
+<p>区别：总体会有布局、样式解析和脚本执行三个方面的区别。</p>
+<ul>
+<li>a. 盒模型：在W3C标准中，如果设置一个元素的宽度和高度，指的是元素内容的宽度和高度，而在Quirks 模式下，IE的宽度和高度还包含了padding和border。</li>
+<li>b. 设置行内元素的高宽：在Standards模式下，给<span>等行内元素设置wdith和height都不会生效，而在quirks模式下，则会生效。</li>
+<li>c. 设置百分比的高度：在standards模式下，一个元素的高度是由其包含的内容来决定的，如果父元素没有设置百分比的高度，子元素设置一个百分比的高度是无效的用</li>
+<li>d. 设置水平居中：使用margin:0 auto在standards模式下可以使元素水平居中，但在quirks模式下却会失效。</li>
+</ul>
+<h3 id="10-请阐述table的缺点"><a href="#10-请阐述table的缺点" class="headerlink" title="10.请阐述table的缺点"></a>10.请阐述table的缺点</h3><ul>
+<li>a. 太深的嵌套，比如table&gt;tr&gt;td&gt;h3，会导致搜索引擎读取困难，而且，最直接的损失就是大大增加了冗余代码量。</li>
+<li>b. 灵活性差，比如要将tr设置border等属性，是不行的，得通过td</li>
+<li>c. 代码臃肿，当在table中套用table的时候，阅读代码会显得异常混乱</li>
+<li>d. 混乱的colspan与rowspan，用来布局时，频繁使用他们会造成整个文档顺序混乱。</li>
+<li>e. table需要多次计算才能确定好其在渲染树中节点的属性，通常要花3倍于同等元素的时间。</li>
+<li>f. 不够语义</li>
+</ul>
+<h3 id="11-简述一下src与href的区别"><a href="#11-简述一下src与href的区别" class="headerlink" title="11.简述一下src与href的区别"></a>11.简述一下src与href的区别</h3><p>src用于替换当前元素；href用于在当前文档和引用资源之间确立联系。</p>
+<p>src是source的缩写，指向外部资源的位置，指向的内容将会嵌入到文档中当前标签所在位置</p>
+<p>href是Hypertext Reference的缩写，指向网络资源所在位置，建立和当前元素（锚点）或当前文档（链接）之间的链接</p>
+<h3 id="12-HTML与XHTML——二者有什么区别"><a href="#12-HTML与XHTML——二者有什么区别" class="headerlink" title="12.HTML与XHTML——二者有什么区别?"></a>12.HTML与XHTML——二者有什么区别?</h3><ol>
+<li>HTML 元素必须被正确地嵌套。</li>
+<li>XHTML 元素必须被关闭。</li>
+<li>标签名必须用小写字母。</li>
+<li>XHTML 文档必须拥有根元素。</li>
+</ol>
+<h3 id="13-iframe的优缺点"><a href="#13-iframe的优缺点" class="headerlink" title="13.iframe的优缺点?"></a>13.iframe的优缺点?</h3><p>​    答案：优点：</p>
+<ul>
+<li><p>a. 解决加载缓慢的第三方内容如图标和广告等的加载问题</p>
+</li>
+<li><p>b. iframe无刷新文件上传 c. iframe跨域通信</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>a. iframe会阻塞主页面的Onload事件 b. 无法被一些搜索引擎索引到</p>
+</li>
+<li><p>c. 页面会增加服务器的http请求 d. 会产生很多页面，不容易管理。</p>
+</li>
+</ul>
+<h3 id="14-全屏滚动的原理是什么-用到了CSS的哪些属性"><a href="#14-全屏滚动的原理是什么-用到了CSS的哪些属性" class="headerlink" title="14.全屏滚动的原理是什么?用到了CSS的哪些属性?"></a>14.全屏滚动的原理是什么?用到了CSS的哪些属性?</h3><p>　　答案：原理：有点类似于轮播，整体的元素一直排列下去，假设有5个需要展示的全屏页面，那么高度是500%，只是展示100%，剩下的可以通过transform进行y轴定位，也可以通过margin-top实现</p>
+<p>　　overflow：hidden;transition：all 1000ms ease;</p>
+<h3 id="15-页面导入样式时，使用link和-import有什么区别"><a href="#15-页面导入样式时，使用link和-import有什么区别" class="headerlink" title="15.页面导入样式时，使用link和@import有什么区别?"></a>15.页面导入样式时，使用link和@import有什么区别?</h3><ul>
+<li><p>差别1：本质的差别：link属于XHTML标签，而@import完全是CSS提供的一种方式。</p>
+</li>
+<li><p>差别2：加载顺序的差别：当一个页面被加载的时候(就是被浏览者浏览的时候)，link引用的CSS会同时被加载，而@import引用的CSS会等到页面全部被下载完再被加载。所以有时候浏览@import加载CSS的页面时开始会没有样式(就是闪烁)，网速慢的时候还挺明显。</p>
+</li>
+<li><p>差别3：兼容性的差别：@import是CSS2.1提出的，所以老的浏览器不支持，@import只有在IE5以上的才能识别，而link标签无此问题。</p>
+</li>
+<li><p>差别4：使用dom(document o bject model文档对象模型  )控制样式时的差别：当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的.</p>
+</li>
+</ul>
+<h3 id="16-before-和-after中双冒号和单冒号有什么区别-解释一下这2个伪元素的作用"><a href="#16-before-和-after中双冒号和单冒号有什么区别-解释一下这2个伪元素的作用" class="headerlink" title="16.::before 和 :after中双冒号和单冒号有什么区别?解释一下这2个伪元素的作用"></a>16.::before 和 :after中双冒号和单冒号有什么区别?解释一下这2个伪元素的作用</h3><p>答案：单冒号(:)用于CSS3伪类，双冒号(::)用于CSS3伪元素。</p>
+<ul>
+<li><p>::before就是以一个子元素的存在，定义在元素主体内容之前的一个伪元素。并不存在于dom之中，只存在在页面之中。</p>
+</li>
+<li><p>:before 和 :after  这两个伪元素，是在CSS2.1里新出现的。起初，伪元素的前缀使用的是单冒号语法，但随着Web的进化，在CSS3的规范里，伪元素的语法被修改成使用双冒号，成为::before  ::after</p>
+</li>
+</ul>
+<h3 id="17-怎么让Chrome支持小于12px-的文字"><a href="#17-怎么让Chrome支持小于12px-的文字" class="headerlink" title="17.怎么让Chrome支持小于12px 的文字?"></a>17.怎么让Chrome支持小于12px 的文字?</h3><p>　答案：p{font-size:10px;-webkit-transform:scale(0.8);}//0.8是缩放比例</p>
+<h3 id="18-简述一下你对HTML语义化的理解"><a href="#18-简述一下你对HTML语义化的理解" class="headerlink" title="18.简述一下你对HTML语义化的理解?"></a>18.简述一下你对HTML语义化的理解?</h3><p>答案：</p>
+<ol>
+<li><p>用正确的标签做正确的事情。</p>
+</li>
+<li><p>html语义化让页面的内容结构化，结构更清晰，便于对浏览器，搜索引擎解析;</p>
+</li>
+<li><p>即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;</p>
+</li>
+<li><p>搜索引擎的爬虫也依赖于HTML标记确定上下文和各个关键字的权重，利用SEO;</p>
+</li>
+<li><p>使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</p>
+</li>
+</ol>
+<h2 id="9道价值20k薪资的“VUE必备面试题”，快来围观！"><a href="#9道价值20k薪资的“VUE必备面试题”，快来围观！" class="headerlink" title="9道价值20k薪资的“VUE必备面试题”，快来围观！"></a>9道价值20k薪资的“VUE必备面试题”，快来围观！</h2><blockquote>
+<p>本文引用于：<a href="https://zhuanlan.zhihu.com/p/142412438" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/142412438</a></p>
+</blockquote>
+<h3 id="（1）v-if和v-for谁的优先级最高？"><a href="#（1）v-if和v-for谁的优先级最高？" class="headerlink" title="（1）v-if和v-for谁的优先级最高？"></a>（1）v-if和v-for谁的优先级最高？</h3><p>当面试官提出这个问题时，显然想要考察应聘者对v-if和v-for的“基本功”，同时还想要考察应聘者<strong>如何将理论应用到操作里</strong>。</p>
+<p>基于以上两点，我们可以拓展问题：</p>
+<p><strong>当v-if和v-for同时出现时，我们应该怎样优化从而获得更好的性能？</strong></p>
+<p>得知了面试官的隐含问题，接下来我们对症下药就可以了。</p>
+<p>首先，在源码中找答案：</p>
+<p>compiler/codegen/index.js（☜文件中的位置）</p>
+<p>做个测试如下：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-3698f55bfe3594ca09f606fdf4588932_720w.jpg" alt="img"></p>
+<p>两者<strong>同级</strong>时，渲染函数如下：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-ccb5285e05aae8d1998f8a68ccf9b097_720w.jpg" alt="img"></p>
+<p><strong>_l包含了isFolder的条件判断☝☝</strong></p>
+<p>两者<strong>不同级</strong>时，渲染函数如下：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-6aeb44409c07b43f66d0af9bb42e4b3f_720w.jpg" alt="img"></p>
+<p><strong>先判断条件再决定是否执行☝☝</strong></p>
+<p><strong>正确解答：</strong></p>
+<p>1、显然v-for优先于v-if被解析（<strong>把你是怎么知道的告诉面试官</strong>）</p>
+<p>2、如果同时出现，每次渲染都会先执行循环再判断条件，无论如何循环都不可避免，浪费了性能</p>
+<p>3、要避免出现这种情况，则在外层嵌套template，在这一层进行v-if判断，然后在内部进行v-for循环</p>
+<p>4、如果条件出现在循环内部，可通过计算属性提前过滤掉那些不需要显示的项</p>
+<p>（2）VUE组件data为什么必须是函数</p>
+<p>我们都知道，<strong>VUE的data实例</strong>必须是函数，那么有没有与之相反的情况呢？答案是肯定的，因为<strong>VUE的根实例</strong>就没有“必须是函数”这个限制的。</p>
+<p>所以，我们在对这道题进行解答之前，我们还要考虑与<strong>“VUE组件data对象实例”</strong>所对应的<strong>“VUE的根实例”。</strong></p>
+<p>通过两者的对比论证，会让我们的答案更加清晰缜密、更有说服力。</p>
+<p><strong>源码中找答案：</strong></p>
+<p>src\core\instance\state.js - initData()</p>
+<p>文件中的位置☝</p>
+<p>通过源码得知：</p>
+<p><strong>函数每次执行都会返回全新data对象实例</strong></p>
+<p>测试代码如下：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-67a4ef1e28f10fadc8550fb4f3e755ff_720w.jpg" alt="img"></p>
+<p>然而程序甚至无法通过vue检测☟☟</p>
+<p><img src="https://picb.zhimg.com/80/v2-87b3472b0a0f900be64ae5a548171259_720w.jpg" alt="img"></p>
+<p><strong>正确解答：</strong></p>
+<p>Vue组件可能存在多个实例，如果使用对象形式定义data，则<strong>会导致它们共用一个data对象</strong>，那么状态变更将会影响所有组件实例，这是不合理的；</p>
+<p><strong>采用函数形式定义，在initData时会将其作为工厂函数返回全新data对象</strong>，有效规避多实例之间状态污染问题。</p>
+<p>而在<strong>Vue根实例</strong>创建过程中则不存在该限制，也是<strong>因为根实例只能有一个</strong>，不需要担心这种情况。</p>
+<h3 id="（3）vue中key的作用和工作原理"><a href="#（3）vue中key的作用和工作原理" class="headerlink" title="（3）vue中key的作用和工作原理"></a>（3）vue中key的作用和工作原理</h3><p>为了表达的更加透彻，我们可以通过对比测试来寻找key的工作原理：</p>
+<p>首先是在源码中找答案，它在文件中的位置是☟</p>
+<p>src\core\vdom\patch.js - updateChildren()</p>
+<p>测试代码如下：</p>
+<p><img src="https://picb.zhimg.com/80/v2-9b3e505467fa22a6daf3c8c07d651391_720w.jpg" alt="img"></p>
+<p>本次案例代码重现的是以下过程☟☟：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-ea901d1d7eabe55b21b0b7cbbc119f60_720w.jpg" alt="img"></p>
+<p>在不使用Key的情况下是这样的☟☟：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-71647c38fe0bfd3875db4b8a14689bc7_720w.jpg" alt="img"></p>
+<p>如果使用Key☟☟：</p>
+<pre><code>// 首次循环patch A
+
+A B C D E
+
+A B F C D E
+
+// 第2次循环patch B
+
+B C D E
+
+B F C D E
+
+// 第3次循环patch E
+
+C D E
+
+F C D E
+
+// 第4次循环patch D
+
+C D
+
+F C D
+
+// 第5次循环patch C
+
+C
+
+F C
+
+// oldCh全部处理结束，newCh中剩下的F，创建F并插入到C前面</code></pre><p><strong>正确解答：</strong></p>
+<p>1、<strong>key的作用主要是为了高效的更新虚拟DOM</strong>，其原理是vue在patch过程中通过key可以精准判断两个节点是否是同一个，从而避免频繁更新不同元素，使得整个patch过程更加高效，减少DOM操作量，提高性能。</p>
+<p>2、另外，若<strong>不设置key还可能在列表更新时引发一些隐蔽的bug</strong></p>
+<p>3、vue中在使用相同标签名元素的过渡切换时，也会<strong>使用到key属性，其目的也是为了让vue可以区分它们，否则vue只会替换其内部属性而不会触发过渡效果。</strong></p>
+<h3 id="（4）你怎么理解vue中的diff算法？"><a href="#（4）你怎么理解vue中的diff算法？" class="headerlink" title="（4）你怎么理解vue中的diff算法？"></a><strong>（4）你怎么理解vue中的diff算法？</strong></h3><p><strong>在分析diff算法之前，我们可以看一下VUE的diff算法模型图：</strong></p>
+<p><img src="https://pic4.zhimg.com/80/v2-99f40beef5c4eb5bca08283be7d2c752_720w.jpg" alt="img"></p>
+<p>接下来还是先从源码入手解决问题：</p>
+<p><strong>源码分析1：必要性</strong></p>
+<p>lifecycle.js - mountComponent()</p>
+<p>组件中可能存在很多个data中的key使用</p>
+<p><strong>源码分析2：执行方式</strong></p>
+<p>patch.js - patchVnode()</p>
+<p>patchVnode是diff发生的地方</p>
+<p>整体策略：深度优先，同层比较</p>
+<p><strong>源码分析3：高效性</strong></p>
+<p>patch.js - updateChildren()</p>
+<p>测试代码如下：</p>
+<p><img src="https://pic4.zhimg.com/80/v2-0453b5b0aad4b0abc9c8a07d3760eb8a_720w.jpg" alt="img"></p>
+<p><strong>正确解答：</strong></p>
+<p>1、<strong>diff算法是虚拟DOM技术的必然产物</strong>：通过新旧虚拟DOM作对比（即diff），将变化的地方更新在真实DOM上；</p>
+<p>另外，也需要diff高效的执行对比过程，从而降低时间复杂度为O(n)。</p>
+<p>2、vue 2.x中为了降低Watcher粒度，每个组件只有一个Watcher与之对应，只有<strong>引入diff才能精确找到发生变化的地方。</strong></p>
+<p>3、vue中diff执行的时刻是组件实例执行其更新函数时，它会比对上一次渲染结果oldVnode和新的渲染结果newVnode，此过程称为<strong>patch</strong>。</p>
+<p>4、<strong>diff过程整体遵循深度优先、同层比较的策略</strong>；两个节点之间比较会根据它们是否拥有子节点或者文本节点做不同操作；</p>
+<p>比较两组子节点是算法的重点，首先假设头尾节点可能相同做4次比对尝试；</p>
+<p>如果没有找到相同节点才按照通用方式遍历查找，查找结束再按情况处理剩下的节点；</p>
+<p><strong>借助key通常可以非常精确找到相同节点，因此整个patch过程非常高效。</strong></p>
+<h3 id="（5）谈一谈对vue组件化的理解？"><a href="#（5）谈一谈对vue组件化的理解？" class="headerlink" title="（5）谈一谈对vue组件化的理解？"></a>（5）谈一谈对vue组件化的理解？</h3><p>听到“理解”两个字我们就要注意了，看似一道开放性的问题，实际是要考察我们对VUE组件化的认知基础。</p>
+<p>我们可以从定义、优点、使用场景和注意事项等方面展开陈述，同时要强调vue中组件化的一些特点。</p>
+<p>始终不变的是“从源码深入解决问题，最终达到深入浅出的效果。”</p>
+<p><strong>源码分析1：组件定义</strong></p>
+<pre class=" language-text"><code class="language-text">src\core\global-api\assets.js
+（☝文件中的位置）
+// 组件定义
+Vue.component('comp', {
+template: '<div>this is a component</div>'
+})</code></pre>
+<p>vue-loader会编译template为render函数，最终导出的依然是组件配置对象。☟</p>
+<pre class=" language-text"><code class="language-text"><template>
+<div>
+        this is a component
+    </div>
+</template></code></pre>
+<p><strong>源码分析2：组件化优点</strong></p>
+<p>lifecycle.js - mountComponent()</p>
+<p>☝组件、Watcher、渲染函数和更新函数之间的关系</p>
+<p><strong>源码分析3：组件化实现</strong></p>
+<p>构造函数，</p>
+<p>src\core\global-api\extend.js</p>
+<p>实例化及挂载，</p>
+<p>src\core\vdom\patch.js - createElm()</p>
+<p><strong>正确解答：</strong></p>
+<p>1、组件是独立和可复用的代码组织单元。组件系统是 Vue 核心特性之一，它使开发者使用小型、独立和通常可复用的组件构建大型应用；</p>
+<p>2、组件化开发能大幅提高应用开发效率、测试性、复用性等；</p>
+<p>3、组件使用按分类有：页面组件、业务组件、通用组件；</p>
+<p>4、vue的组件是基于配置的，我们通常编写的组件是组件配置而非组件，框架后续会生成其构造函数，它们基于VueComponent，扩展于Vue；</p>
+<p>5、vue中常见组件化技术有：属性prop，自定义事件，插槽等，它们主要用于组件通信、扩展等；</p>
+<p>6、合理的划分组件，有助于提升应用性能；</p>
+<p>7、组件应该是高内聚、低耦合的；</p>
+<p>8、遵循单向数据流的原则。</p>
+<h3 id="（6）谈一谈对vue设计原则的理解？"><a href="#（6）谈一谈对vue设计原则的理解？" class="headerlink" title="（6）谈一谈对vue设计原则的理解？"></a>（6）谈一谈对vue设计原则的理解？</h3><p>和上一题的思路一样，我们首先要明确：关于VUE设计原则，我们要从哪几个方面入手进行详细解答？</p>
+<p>而在vue的官网上，就写着大大的定义和特点：</p>
+<p>渐进式JavaScript框架</p>
+<p>易用、灵活和高效</p>
+<p>所以阐述此题的整体思路按照这个展开即可。</p>
+<p><strong>正确解答：</strong></p>
+<p>首先就是渐进式JavaScript框架：</p>
+<p>与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。</p>
+<p>Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+<p>另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200711221809.jpg" alt="img"></p>
+<p><strong>易用性</strong></p>
+<p>vue提供数据响应式、声明式模板语法和基于配置的组件系统等核心特性。</p>
+<p>这些使我们只需要关注应用的核心业务即可，只要会写js、html和css就能轻松编写vue应用。</p>
+<p><strong>灵活性</strong></p>
+<p>渐进式框架的最大优点就是灵活性，如果应用足够小，我们可能仅需要vue核心特性即可完成功能；</p>
+<p>随着应用规模不断扩大，我们才可能逐渐引入路由、状态管理、vue-cli等库和工具；</p>
+<p>不管是应用体积还是学习难度都是一个逐渐增加的平和曲线。</p>
+<p><strong>高效性</strong></p>
+<p>超快的虚拟 DOM 和 diff 算法使我们的应用拥有最佳的性能表现。</p>
+<p>追求高效的过程还在继续，vue3中引入Proxy对数据响应式改进以及编译器中对于静态内容编译的改进都会让vue更加高效。</p>
+<h3 id="（7）对MVC、MVP和MVVM的理解"><a href="#（7）对MVC、MVP和MVVM的理解" class="headerlink" title="（7）对MVC、MVP和MVVM的理解"></a><strong>（7）对MVC、MVP和MVVM的理解</strong></h3><p>当我们面对这道考题时，往往有些摸不着头脑，因为MVC、MVP和MVVM的知识点非常广泛，很难做到说清、说透。</p>
+<p>那要怎么才能回答的简洁有条理？让面试官眼前一亮呢？</p>
+<p>来听我给你清晰解读一下这道题的正确思路吧！</p>
+<p>其实在日常工作中，类似MVP、MVC这类前端程序，我们程序员甚至自己都没用过，这恰恰就反映了：</p>
+<p><strong>前端这些年从无到有，从有到优的变迁过程。</strong></p>
+<p>想到这里，我们的解题思路便慢慢浮出水面了，那就是：</p>
+<p><strong>按时间顺序，浅谈MVC、MVP、MVVM等系列产品的更新迭代。</strong></p>
+<p><strong>Web1.0时代</strong></p>
+<p>在web1.0时代，并没有前端的概念。</p>
+<p>开发一个web应用多数采用：</p>
+<p><strong><a href="https://link.zhihu.com/?target=http%3A//ASP.NET/Java/PHP">http://ASP.NET/Java/PHP</a></strong>编写，</p>
+<p>项目通常由多个aspx/jsp/php文件构成。</p>
+<p>每个文件中同时包含了<strong>HTML、CSS、JavaScript、C#/Java/PHP</strong>代码。</p>
+<p>系统整体架构可能是这样子的☟：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200711221829.jpg" alt="img"></p>
+<p>这种架构的好处是简单快捷，但是，缺点也非常明显：JSP代码难以维护</p>
+<p>为了让开发更加便捷，代码更易维护，前后端职责更清晰。便衍生出MVC开发模式和框架，前端展示以模板的形式出现。</p>
+<p>典型的框架就是：</p>
+<p><strong>Spring、Structs、Hibernate。</strong></p>
+<p>整体框架如图所示☟：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200711221829.jpg" alt="img"></p>
+<p>使用这种分层架构，职责清晰，代码易维护。</p>
+<p>但这里的MVC仅限于后端，前后端形成了一定的分离，前端只完成了后端开发中的view层。</p>
+<p>但是，同样的这种模式存在着一些问题：</p>
+<p>1、前端页面开发效率不高</p>
+<p>2、前后端职责不清</p>
+<p><strong>web 2.0时代</strong></p>
+<p>自从Gmail的出现，ajax技术开始风靡全球。有了ajax之后，前后端的职责就更加清晰了。</p>
+<p>因为前端可以通过Ajax与后端进行数据交互，因此，整体的架构图也变化成了下面这幅图☟：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200711221829.jpg" alt="img"></p>
+<p>通过ajax与后台服务器进行数据交换，前端开发人员，只需要开发页面这部分内容，数据可由后台进行提供。</p>
+<p>而且ajax可以使得页面实现部分刷新，减少了服务端负载和流量消耗，用户体验也更佳。</p>
+<p>这时，才开始有专职的前端工程师。同时前端的类库也慢慢的开始发展，最著名的就是jQuery了。</p>
+<p>当然，此架构也存在问题：缺乏可行的开发模式承载更复杂的业务需求，页面内容都杂糅在一起，一旦应用规模增大，就会导致难以维护了。</p>
+<p>因此，前端的MVC也随之而来。</p>
+<p><strong>前后端分离后的架构演变——MVC、MVP和MVVM</strong></p>
+<p><strong>MVC</strong></p>
+<p>前端的MVC与后端类似，具备着View、Controller和Model。</p>
+<p>Model：负责保存应用数据，与后端数据进行同步</p>
+<p>Controller：负责业务逻辑，根据用户行为对Model数据进行修改</p>
+<p>View：负责视图展示，将model中的数据可视化出来。</p>
+<p>三者形成了一个如图所示的模型：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200711221829.jpg" alt="img"></p>
+<p>这样的模型，在理论上是可行的。但往往在实际开发中，并不会这样操作。因为开发过程并不灵活。</p>
+<p>例如，一个小小的事件操作，都必须经过这样的一个流程，那么开发就不再便捷了。</p>
+<p>在实际场景中，我们往往会看到另一种模式，</p>
+<p>如图所示☟：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200711221829.jpg" alt="img"></p>
+<p>这种模式在开发中更加的灵活，backbone.js框架就是这种的模式。</p>
+<p>但是，这种灵活可能导致严重的问题：</p>
+<p>1、数据流混乱：如下图☟</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200711221829.jpg" alt="img"></p>
+<p>2、View比较庞大，而Controller比较单薄：</p>
+<p>由于很多的开发者都会在view中写一些逻辑代码，逐渐的就导致view中的内容越来越庞大，而controller变得越来越单薄。</p>
+<p>既然有缺陷，就会有变革。</p>
+<p>前端的变化中，似乎少了MVP的这种模式，是因为AngularJS早早地将MVVM框架模式带入了前端。</p>
+<p>MVP模式虽然前端开发并不常见，但是在安卓等原生开发中，开发者还是会考虑到它。</p>
+<p><strong>MVP</strong></p>
+<p>MVP与MVC很接近，P指的是Presenter，presenter可以理解为一个中间人。</p>
+<p>它负责着View和Model之间的数据流动，防止View和Model之间直接交流。</p>
+<p>我们可以看一下图示☟</p>
+<p><img src="https://picb.zhimg.com/80/v2-f0329992777c47187eab7825b63417b1_720w.jpg" alt="img"></p>
+<p>我们可以通过看到，presenter负责和Model进行双向交互，还和View进行双向交互。</p>
+<p>这种交互方式，相对于MVC来说少了一些灵活，VIew变成了被动视图，并且本身变得很小。虽然它分离了View和Model。</p>
+<p>但是应用逐渐变大之后，导致presenter的体积增大，难以维护。</p>
+<p>要解决这个问题，或许可以从MVVM的思想中找到答案。</p>
+<p><strong>MVVM</strong></p>
+<p>首先，何为MVVM呢？MVVM可以分解成(Model-View-VIewModel)。</p>
+<p>ViewModel可以理解为在presenter基础上的进阶版。如图所示☟☟：</p>
+<p><img src="https://picb.zhimg.com/80/v2-1e9b8c442d26b2d38e1e3584ca2b983d_720w.jpg" alt="img"></p>
+<p>ViewModel通过实现一套数据响应式机制自动响应Model中数据变化；</p>
+<p>同时Viewmodel会实现一套更新策略自动将数据变化转换为视图更新；</p>
+<p>通过事件监听响应View中用户交互修改Model中数据。</p>
+<p>这样在ViewModel中就减少了大量DOM操作代码。</p>
+<p>MVVM在保持View和Model松耦合的同时，还减少了维护它们关系的代码，使用户专注于业务逻辑，兼顾开发效率和可维护性。</p>
+<p><strong>总结：</strong></p>
+<p>这三者都是框架模式，它们设计的目标都是为了解决Model和View的耦合问题。</p>
+<p>MVC模式出现较早主要应用在后端，如Spring MVC、<a href="https://link.zhihu.com/?target=http%3A//ASP.NET">http://ASP.NET</a> MVC等，在前端领域的早期也有应用，如Backbone.js。</p>
+<p>它的优点是分层清晰，缺点是数据流混乱，灵活性带来的维护性问题。</p>
+<p>MVP模式在是MVC的进化形式，Presenter作为中间层负责MV通信，解决了两者耦合问题，但P层过于臃肿会导致维护问题。</p>
+<p>MVVM模式在前端领域有广泛应用，它不仅解决MV耦合问题，还同时解决了维护两者映射关系的大量繁杂代码和DOM操作代码，在提高开发效率、可读性同时还保持了优越的性能表现。</p>
+<h3 id="（8）你了解哪些Vue性能优化方法？"><a href="#（8）你了解哪些Vue性能优化方法？" class="headerlink" title="（8）你了解哪些Vue性能优化方法？"></a>（8）你了解哪些Vue性能优化方法？</h3><p>相对其他的“陷阱面试题”，这个问题就显得友善了很多，只要我们基础功底扎实，回答得井井有条并不是难事。</p>
+<p>首先，我们要找到VUE性能的现存问题，大部分都是代码层面的，然后具体的提出代码层优化意见就可以了。</p>
+<p>目前我们所知的VUE代码层优化大致为一下11点，村长已经都帮大家整理好了，请大家随意消化一下：</p>
+<p>●路由懒加载</p>
+<p>●keep-alive缓存页面<br>●使用v-show复用DOM<br>●v-for 遍历避免同时使用 v-if<br>●长列表性能优化<br>●事件的销毁<br>●图片懒加载<br>●第三方插件按需引入<br>●无状态的组件标记为函数式组件<br>●子组件分割<br>●变量本地化</p>
+<p>●SSR</p>
+<p>下面是针对这11个优化点给出的具体优化方案：</p>
+<p>●路由懒加载☟</p>
+<pre class=" language-text"><code class="language-text">const router = new VueRouter({
+  routes: [
+    { path: '/foo', component: () => import('./Foo.vue') }
+  ]
+})</code></pre>
+<p>●keep-alive缓存页面☟</p>
+<template>
+
+<div id="app">
+
+<keep-alive>
+
+<router-view/>
+
+</keep-alive>
+
+</div>
+
+</template>
+
+<p>●使用v-show复用DOM☟</p>
+<p><img src="https://pic1.zhimg.com/80/v2-815ec3f9e1d36433e6a00c4457cc4d42_720w.jpg" alt="img"></p>
+<p>●v-for 遍历避免同时使用 v-if☟</p>
+<p><img src="https://pic3.zhimg.com/80/v2-4484890878bbf48fa2e1199e5f40774e_720w.jpg" alt="img"></p>
+<p>●长列表性能优化：</p>
+<p>如果列表是纯粹的数据展示，不会有任何改变，就不需要做响应化☟</p>
+<p><img src="https://pic3.zhimg.com/80/v2-9acd64b9c2020499032017512f7162cb_720w.jpg" alt="img"></p>
+<p>如果是大数据长列表，可采用虚拟滚动，只渲染少部分区域的内容☟</p>
+<p><img src="https://pic1.zhimg.com/80/v2-9ae6d5d466e51b9b6341fc2385dfaec4_720w.jpg" alt="img"></p>
+<p>参考：</p>
+<p>vue-virtual-scroller☟</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/Akryum/vue-virtual-scroller">https://github.com/Akryum/vue-virtual-scroller</a><br>vue-virtual-scroll-list☟</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/tangbc/vue-virtual-scroll-list">https://github.com/tangbc/vue-virtual-scroll-list</a></p>
+<p>●事件的销毁：</p>
+<p>Vue 组件销毁时，会自动解绑它的全部指令及事件监听器，但是仅限于组件本身的事件。</p>
+<pre class=" language-text"><code class="language-text">created() {
+  this.timer = setInterval(this.refresh, 2000)
+},
+beforeDestroy() {
+  clearInterval(this.timer)
+}</code></pre>
+<p>●图片懒加载：</p>
+<p>对于图片过多的页面，为了加速页面加载速度。</p>
+<p>所以很多时候我们需要将页面内未出现在可视区域内的图片先不做加载， 等到滚动到可视区域后再去加载。</p>
+<pre class=" language-text"><code class="language-text"><img v-lazy="/static/img/1.png"></code></pre>
+<p>参考项目：</p>
+<p>vue-lazyload☟</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/hilongjw/vue-lazyload">https://github.com/hilongjw/vue-lazyload</a></p>
+<p>●第三方插件按需引入：</p>
+<p>像element-ui这样的第三方组件库可以按需引入，避免体积太大。</p>
+<pre class=" language-text"><code class="language-text">import Vue from 'vue';
+import { Button, Select } from 'element-ui';
+
+ Vue.use(Button)
+ Vue.use(Select)</code></pre>
+<p>●无状态的组件标记为函数式组件☟</p>
+<p><img src="https://pic4.zhimg.com/80/v2-46949fdb4a030fd39c371f32ad391878_720w.jpg" alt="img"></p>
+<p>●子组件分割</p>
+<p><img src="https://picb.zhimg.com/80/v2-fb9b3baf668bed604a322a2844ddc5db_720w.jpg" alt="img"></p>
+<p>●变量本地化</p>
+<p><img src="https://pic4.zhimg.com/80/v2-72e6a07bad21088c992c53ab02a6f534_720w.jpg" alt="img"></p>
+<p>●服务端渲染 - SSR</p>
+<h3 id="（9）你对Vue3-0的新特性有没有了解？"><a href="#（9）你对Vue3-0的新特性有没有了解？" class="headerlink" title="（9）你对Vue3.0的新特性有没有了解？"></a>（9）你对Vue3.0的新特性有没有了解？</h3><p>young村长帮大家总结了Vue3.0改进方向，主要在以下几点：</p>
+<p>●更快</p>
+<p>○虚拟DOM重写</p>
+<p>○优化slots的生成</p>
+<p>○静态树提升</p>
+<p>○静态属性提升</p>
+<p>○基于Proxy的响应式系统</p>
+<p>●更小：</p>
+<p>○通过摇树优化核心库体积</p>
+<p>●更容易维护：</p>
+<p>○TypeScript + 模块化</p>
+<p>●更加友好</p>
+<p>○跨平台：编译器核心和运行时核心与平台无关，使得Vue更容易与任何平台（Web、Android、iOS）一起使用</p>
+<p>●更容易使用</p>
+<p>○改进的TypeScript支持，编辑器能提供强有力的类型检查和错误及警告</p>
+<p>●更好的调试支持</p>
+<p>●独立的响应化模块</p>
+<p>●Composition API</p>
+<p><strong>虚拟 DOM 重写</strong></p>
+<p>期待更多的编译时提示来减少运行时开销，使用更有效的代码来创建虚拟节点。</p>
+<p>组件快速路径+单个调用+子节点类型检测</p>
+<p>▷跳过不必要的条件分支</p>
+<p>▷JS引擎更容易优化</p>
+<p>详情见下图☟</p>
+<p><img src="https://pic3.zhimg.com/80/v2-e3e4ac6bb7d6c4f7e47e55f0b5d10100_720w.jpg" alt="img"></p>
+<p><strong>优化slots生成</strong></p>
+<p>vue3中可以单独重新渲染父级和子级：</p>
+<p>▷确保实例正确的跟踪依赖关系</p>
+<p>▷避免不必要的父子组件重新渲染</p>
+<p>详情见下图☟</p>
+<p><img src="https://pic1.zhimg.com/80/v2-632f478f127d5bb8bead49fc3a250a28_720w.jpg" alt="img"></p>
+<p><strong>静态树提升(Static Tree Hoisting)</strong></p>
+<p>使用静态树提升，这意味着 Vue 3 的编译器将能够检测到什么是静态的，然后将其提升，从而降低了渲染成本。</p>
+<p>▷跳过修补整棵树，从而降低渲染成本</p>
+<p>▷即使多次出现也能正常工作</p>
+<p>详情见下图☟</p>
+<p><img src="https://picb.zhimg.com/80/v2-0256e1050b63013762e4501d1f1e6801_720w.jpg" alt="img"></p>
+<p><strong>静态属性提升</strong></p>
+<p>使用静态属性提升，Vue 3打补丁时将跳过这些属性不会改变的节点。☟</p>
+<p><img src="https://picb.zhimg.com/80/v2-a01cf33b39b505dd0a6b91a8c0245ff0_720w.jpg" alt="img"></p>
+<p><strong>基于 Proxy 的数据响应式</strong></p>
+<p>Vue 2的响应式系统使用：</p>
+<p>Object.defineProperty 的getter 和 setter。</p>
+<p>Vue 3 将使用 ES2015 Proxy 作为其观察机制，这将会带来如下变化：</p>
+<p>●组件实例初始化的速度提高100％</p>
+<p>●使用Proxy节省以前一半的内存开销，加快速度，但是存在低浏览器版本的不兼容</p>
+<p>●为了继续支持 IE11，Vue 3 将发布一个支持旧观察者机制和新 Proxy 版本的构建</p>
+<p><img src="https://pic4.zhimg.com/80/v2-a36fa90fa7744c3d709b32290b039f79_720w.jpg" alt="img"></p>
+<p><strong>高可维护性</strong></p>
+<p>Vue 3 将带来更可维护的源代码。它不仅会使用 TypeScript，而且许多包被解耦，更加模块化。</p>
+<pre class=" language-text"><code class="language-text">created() {
+  this.timer = setInterval(this.refresh, 2000)
+},
+beforeDestroy() {
+  clearInterval(this.timer)
+}</code></pre>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://picb.zhimg.com/80/v2-1868fbe98a13f78aa92a6141319b1e44_720w.jpg" alt="img"></h3>
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
+                                </a>
+                            
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-07-10T11-22-27',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/07/10/javascript-bi-bao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="JavaScript闭包">
+                        
+                        <span class="card-title">JavaScript闭包</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            讲解JavaScript中的闭包问题以及常见的面试题
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                        <span class="chip bg-color">前端面试题</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/07/08/vue-kai-fa-ji-qiao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Vue开发技巧">
+                        
+                        <span class="card-title">Vue开发技巧</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            讲解Vue的36个开发技巧
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">转载</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">
+                        <span class="chip bg-color">实用技巧</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

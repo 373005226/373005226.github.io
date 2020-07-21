@@ -1,0 +1,1498 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Django优秀资源大全, 勤奋小L的博客">
+    <meta name="description" content="Django优秀资源汇总">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Django优秀资源大全 | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Django优秀资源大全</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python%E5%B7%A5%E5%85%B7%E5%8C%85/">
+                                <span class="chip bg-color">python工具包</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                                <span class="chip bg-color">后端文章转载</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-24
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    8.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    33 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>本文转载于：<a href="https://github.com/haiiiiiyun/awesome-django-cn" target="_blank" rel="noopener">https://github.com/haiiiiiyun/awesome-django-cn</a></p>
+<p>需要采用最新的资源请到原文章查看</p>
+</blockquote>
+<h1 id="Django-优秀资源大全。"><a href="#Django-优秀资源大全。" class="headerlink" title="Django 优秀资源大全。"></a>Django 优秀资源大全。</h1><h2 id="Awesome-Django"><a href="#Awesome-Django" class="headerlink" title="Awesome Django "></a>Awesome Django <a href="https://camo.githubusercontent.com/13c4e50d88df7178ae1882a203ed57b641674f94/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/13c4e50d88df7178ae1882a203ed57b641674f94/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667" alt="Awesome"></a></h2><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://github.com/rosarior/awesome-django" target="_blank" rel="noopener">Awesome-Django</a> 是由 <a href="https://github.com/rosarior" target="_blank" rel="noopener">Roberto Rosario</a> 发起和维护的 Django 资源列表。该列表收集了大量 Django 相关的优秀应用、项目等资源，方便了 Django 用户参考查阅。</p>
+<p><a href="https://github.com/haiiiiiyun/awesome-django-cn" target="_blank" rel="noopener">Django 优秀资源大全</a> 则是依据 <a href="https://github.com/rosarior/awesome-django" target="_blank" rel="noopener">Awesome-Django</a> 翻译而来。也欢迎你帮助推荐和提供建议</p>
+<ul>
+<li>Awesome Django<ul>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#管理界面" target="_blank" rel="noopener">管理界面</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#分析" target="_blank" rel="noopener">分析</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#资源管理" target="_blank" rel="noopener">资源管理</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#认证" target="_blank" rel="noopener">认证</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#授权" target="_blank" rel="noopener">授权</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#blog-管理" target="_blank" rel="noopener">Blog 管理</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#样板" target="_blank" rel="noopener">样板</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#缓存" target="_blank" rel="noopener">缓存</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#兼容性" target="_blank" rel="noopener">兼容性</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#仪表盘" target="_blank" rel="noopener">仪表盘</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#数据科学" target="_blank" rel="noopener">数据科学</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#数据库" target="_blank" rel="noopener">数据库</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#调试" target="_blank" rel="noopener">调试</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#email" target="_blank" rel="noopener">Email</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#数据项" target="_blank" rel="noopener">数据项</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#文件传输" target="_blank" rel="noopener">文件传输</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#表单" target="_blank" rel="noopener">表单</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#gis" target="_blank" rel="noopener">GIS</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#图片处理" target="_blank" rel="noopener">图片处理</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#导入导出" target="_blank" rel="noopener">导入/导出</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#数据迁移" target="_blank" rel="noopener">数据迁移</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#移动端支持" target="_blank" rel="noopener">移动端支持</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#数据模型扩展" target="_blank" rel="noopener">数据模型扩展</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#支持处理" target="_blank" rel="noopener">支持处理</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#项目管理" target="_blank" rel="noopener">项目管理</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#报表" target="_blank" rel="noopener">报表</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#restful-api" target="_blank" rel="noopener">RESTful API</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#seo" target="_blank" rel="noopener">SEO</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#搜索" target="_blank" rel="noopener">搜索</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#安全性" target="_blank" rel="noopener">安全性</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#设置" target="_blank" rel="noopener">设置</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#存储" target="_blank" rel="noopener">存储</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#标签" target="_blank" rel="noopener">标签</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#任务队列" target="_blank" rel="noopener">任务队列</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#测试" target="_blank" rel="noopener">测试</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#缩略图" target="_blank" rel="noopener">缩略图</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#翻译" target="_blank" rel="noopener">翻译</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#视图" target="_blank" rel="noopener">视图</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#web-前端集成" target="_blank" rel="noopener">Web 前端集成</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#wiki-应用" target="_blank" rel="noopener">Wiki 应用</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#工作流" target="_blank" rel="noopener">工作流</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#所见即所得编辑器" target="_blank" rel="noopener">所见即所得编辑器</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#其它" target="_blank" rel="noopener">其它</a></li>
+</ul>
+</li>
+<li>项目<ul>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#cms" target="_blank" rel="noopener">CMS</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#文档管理" target="_blank" rel="noopener">文档管理</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#项目管理" target="_blank" rel="noopener">项目管理</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#电子商务" target="_blank" rel="noopener">电子商务</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#其它" target="_blank" rel="noopener">其它</a></li>
+</ul>
+</li>
+<li>资源<ul>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#图书" target="_blank" rel="noopener">图书</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#会议" target="_blank" rel="noopener">会议</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#外部文档" target="_blank" rel="noopener">外部文档</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#视频" target="_blank" rel="noopener">视频</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#网站" target="_blank" rel="noopener">网站</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#工具" target="_blank" rel="noopener">工具</a></li>
+<li><a href="https://github.com/haiiiiiyun/awesome-django-cn#贡献" target="_blank" rel="noopener">贡献</a></li>
+</ul>
+<h2 id="管理界面"><a href="#管理界面" class="headerlink" title="管理界面"></a>管理界面</h2><p><em>扩展管理界面，增加或增强基功能特性的相关包。</em></p>
+<ul>
+<li><a href="https://github.com/newpanjing/simpleui/" target="_blank" rel="noopener">django-simpleui, star:159</a> - 可用于 Django 管理界面的一个Vue+Element-ui的现代主题。</li>
+<li><a href="https://github.com/hersonls/djamin/" target="_blank" rel="noopener">djamin, star:214</a> - Django 管理界面的一种新样式。</li>
+<li><a href="https://github.com/django-admin-bootstrap/django-admin-bootstrap" target="_blank" rel="noopener">django-admin-bootstrap, star:468</a> - Django 管理界面的自适应皮肤。</li>
+<li><a href="https://github.com/django-admin-bootstrapped/django-admin-bootstrapped/" target="_blank" rel="noopener">django-admin-bootstrapped, star:1360</a> - 一种基于 Twitter Bootstrap 的 Django 管理界面主题。</li>
+<li><a href="https://github.com/ebertti/django-admin-easy" target="_blank" rel="noopener">django-admin-easy, star:70</a> - 一个关于管理界面数据项和装饰器的集合。</li>
+<li><a href="https://github.com/fabiocaccamo/django-admin-interface" target="_blank" rel="noopener">django-admin-interface, star:75</a> - 终级管理界面，它基于现代扁平式风格，能让你通过管理界面自身定制它的主题、logo 和配色。</li>
+<li><a href="https://github.com/django-admin-tools/django-admin-tools" target="_blank" rel="noopener">django-admin-tools, star:221</a> - 一个关于默认 Django 管理界面的扩展/工具的集合。</li>
+<li><a href="https://github.com/pydanny/django-admin2/" target="_blank" rel="noopener">django-admin2, star:952</a> - django.contrib.admin 的一个可扩展、能适配的版本。</li>
+<li><a href="https://github.com/elky/django-flat-theme" target="_blank" rel="noopener">django-flat-theme, star:392</a> - 可用于 Django 管理界面的一种扁平式主题。现代、清新、简洁。</li>
+<li><a href="https://github.com/edoburu/django-fluent-dashboard/" target="_blank" rel="noopener">django-fluent-dashboard, star:166</a> - Django 项目的增强型管理面板。</li>
+<li><a href="https://github.com/sehmaschine/django-grappelli/" target="_blank" rel="noopener">django-grappelli, star:2087</a> - 可用于 Django 管理界面的一个绚丽皮肤。</li>
+<li><a href="https://github.com/arteria/django-hijack/" target="_blank" rel="noopener">django-hijack, star:542</a> - 允许超级用户以其他用户微分登录和操作。</li>
+<li><a href="https://github.com/geex-arts/django-jet" target="_blank" rel="noopener">django-jet, star:791</a> - 可用于管理界面的现代模板，并增强了功能。</li>
+<li><a href="https://github.com/viewflow/django-material" target="_blank" rel="noopener">django-material, star:1037</a> - Material 风格的 Django 表单和管理界面。是模板驱动的。</li>
+<li><a href="https://github.com/crccheck/django-object-actions" target="_blank" rel="noopener">django-object-actions, star:162</a> - 一个 Django 应用，用于在管理界面中为数据模型添加对象工具。</li>
+<li><a href="https://github.com/darklow/django-suit/" target="_blank" rel="noopener">django-suit, star:1226</a> - 可用于 Django 管理界面的一个现代主题。</li>
+<li><a href="https://github.com/barszczmm/django-wpadmin/" target="_blank" rel="noopener">django-wpadmin, star:202</a> - WordPress 风格的 Django 管理界面。</li>
+<li><a href="https://github.com/sshwsfc/django-xadmin/" target="_blank" rel="noopener">django-xadmin, star:2016</a> - 一个 Django admin 的替代器，并附带很多不错的功能特性，完全支持用插件扩展，绚丽的 UI 基于 Twitter Bootstrap。</li>
+<li><a href="https://github.com/yawd/yawd-admin/" target="_blank" rel="noopener">yawd-admin, star:129</a> - 用于 Django 的一个管理界面（3 年未更新）。</li>
+</ul>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><em>网站分析或与集成网站分析服务相关的包。</em></p>
+<ul>
+<li><a href="https://github.com/jcassee/django-analytical" target="_blank" rel="noopener">django-analytical, star:465</a> - 用一个通用接口来集成各种分析服务，无需修改模板文件。</li>
+</ul>
+<h2 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h2><p><em>有助于管理项目资源文件的包。</em></p>
+<ul>
+<li><a href="https://github.com/django-compressor/django-compressor/" target="_blank" rel="noopener">django-compressor, star:1862</a> - 将通过链接及内联的 javascript 或 CSS 压缩成单个缓存文件。</li>
+<li><a href="https://github.com/gears/django-gears/" target="_blank" rel="noopener">django-gears, star:54</a> - 编译及合并 JavaScript 和 CSS 文件。</li>
+<li><a href="https://github.com/cobrateam/django-htmlmin/" target="_blank" rel="noopener">django-htmlmin, star:340</a> - 用于 Python 框架的 HTML 压缩工具，完全支持 HTML 5 和 Django。</li>
+<li><a href="https://github.com/jazzband/django-pipeline" target="_blank" rel="noopener">django-pipeline, star:1141</a> - Django 的资源文件管理包。</li>
+<li><a href="https://github.com/sergei-maertens/django-systemjs" target="_blank" rel="noopener">django-systemjs, star:41</a> - Django SystemJS 将 Javascript 的未来版本带到当前的 Django 中。(JSPM 与 Django 集成)</li>
+<li><a href="https://github.com/owais/django-webpack-loader/" target="_blank" rel="noopener">django-webpack-loader, star:807</a> - webpack 无缝集成到 django。</li>
+<li><a href="https://github.com/markfinger/python-webpack" target="_blank" rel="noopener">python-webpack, star:58</a> - webpack 的 Python 绑定包，并与 django 集成。</li>
+</ul>
+<h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p><em>增强或扩展了 Django 认证方法的相关包。</em></p>
+<ul>
+<li><a href="https://github.com/pennersr/django-allauth/" target="_blank" rel="noopener">django-allauth, star:3000</a> - 一套完整的 Django 应用，解决认证，注册，帐户管理及第三方（社交）帐户认证。</li>
+<li><a href="https://github.com/bennylope/django-organizations" target="_blank" rel="noopener">django-organizations, star:338</a> - Django 项目的多用户帐户功能。</li>
+<li><a href="https://bitbucket.org/psagers/django-otp/" target="_blank" rel="noopener">django-otp, bitbucket forks:39</a> - 一个可插拔框架，用于为 Django 添加使用一次性密码的双因子认证。</li>
+<li><a href="https://github.com/macropin/django-registration/" target="_blank" rel="noopener">django-registration, star:554</a> - 一个简单的 Django 用户注册应用，意在使用户注册过程尽可以简单。</li>
+<li><a href="https://github.com/Tivix/django-rest-auth" target="_blank" rel="noopener">django-rest-auth, star:793</a> - 一组 REST API，用于处理用户注册和认证任务。</li>
+<li><a href="https://github.com/Bouke/django-two-factor-auth/" target="_blank" rel="noopener">django-two-factor-auth, star:391</a> - 用户友好的双因子认证。</li>
+<li><a href="https://github.com/bread-and-pepper/django-userena/" target="_blank" rel="noopener">django-userena, star:1171</a> - Django 的帐户应用，使用极其简单。</li>
+<li><a href="https://github.com/omab/python-social-auth/" target="_blank" rel="noopener">python-social-auth, star:2639</a> - Python Social Auth 是一个很容易设置的社交认证/注册机制，它支持多个框架和认证提供商。</li>
+</ul>
+<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p><em>与授权基础设施和权限相关的包。</em></p>
+<ul>
+<li><a href="https://github.com/django-guardian/django-guardian" target="_blank" rel="noopener">django-guardian, star:1412</a> - 实现对象级别的权限，来用作授权后端。</li>
+<li><a href="https://github.com/evonove/django-oauth-toolkit" target="_blank" rel="noopener">django-oauth-toolkit, star:963</a> - Django 用来集成 OAuth2 的好东西。</li>
+<li><a href="https://github.com/caffeinehit/django-oauth2-provider" target="_blank" rel="noopener">django-oauth2-provider, star:304</a> - 为你的应用提供 OAuth2 访问。</li>
+<li><a href="https://github.com/angvp/django-oml/" target="_blank" rel="noopener">django-oml, star:10</a> - Object Moderation Layer, mixin for models that allows you moderate several content types.（2 年未更新）</li>
+<li><a href="https://github.com/lambdalisue/django-permission/" target="_blank" rel="noopener">django-permission, star:227</a> - 一个增强的权限库，它能使用 <em>基于逻辑的权限系统</em> 来处理 Django 中的复杂权限问题。</li>
+<li><a href="https://github.com/dfunckt/django-rules" target="_blank" rel="noopener">django-rules, star:431</a> - 一个微型但强大的应用，为 Django 提供了对象级别的权限，它无需使用数据。其核心是一个用于构建基于规则的系统的通用框架，类似决策树。它也可以以独立库的形式使用在其它上下文和框架中。</li>
+</ul>
+<h2 id="Blog-管理"><a href="#Blog-管理" class="headerlink" title="Blog 管理"></a>Blog 管理</h2><p><em>用于创建和管理 blog 应用的包。</em></p>
+<ul>
+<li><a href="https://github.com/Fantomas42/django-blog-zinnia" target="_blank" rel="noopener">django-blog-zinnia, star:1430</a> - 一个简单而且强大，又非常容易扩展的应用，用于管理 Django 网站中的 blog。</li>
+<li><a href="https://github.com/APSL/puput" target="_blank" rel="noopener">puput, star:184</a> - 一个 用 <a href="https://github.com/wagtail/wagtail" target="_blank" rel="noopener">Wagtail</a> 实现的 Django blog 应用。</li>
+</ul>
+<h2 id="样板"><a href="#样板" class="headerlink" title="样板"></a>样板</h2><p><em>有关可快速开启一个新项目的包。</em></p>
+<ul>
+<li><a href="https://github.com/audreyr/cookiecutter/" target="_blank" rel="noopener">cookiecutter, star:4912</a> - 一个可根据 cookiecutters (项目模板）创建新项目的命令行工具。</li>
+<li><a href="https://github.com/DrkSephy/django-hackathon-starter" target="_blank" rel="noopener">django-hackathon-starter, star:996</a> - 一个 Django Web 应用的样板，包含多种社交认证方法和多个流行的 API 示例（1 年未更新）。</li>
+<li><a href="https://github.com/arocks/edge" target="_blank" rel="noopener">edge, star:456</a> - 一个 非常现代化非常先进的 Django 项目骨架。</li>
+</ul>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p><em>有助于缓存的包。</em></p>
+<ul>
+<li><a href="https://github.com/BertrandBordage/django-cachalot" target="_blank" rel="noopener">django-cachalot, star:453</a> - 对你的 Django ORM 进行缓存，并能自动使它们失效。</li>
+<li><a href="https://github.com/django-cache-machine/django-cache-machine" target="_blank" rel="noopener">django-cache-machine, star:659</a> - 能在 ORM 中的 Django 数据模型自动进行缓存和使其失效（1 年未更新）。</li>
+<li><a href="https://github.com/Suor/django-cacheops" target="_blank" rel="noopener">django-cacheops, star:668</a> - 一个精巧的 ORM 缓存，具有自动化细粒度事件驱动型的失效机制。</li>
+<li><a href="https://github.com/tvavrys/django-memoize" target="_blank" rel="noopener">django-memoize, star:46</a> - Django 中 <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank" rel="noopener">记忆(memoization)</a> 技术的一种实现。</li>
+<li><a href="https://github.com/educreations/django-ormcache/" target="_blank" rel="noopener">django-ormcache, star:13</a> - 一个缓存管理器 mixin，提供了一些 ORM 对象的缓存功能。</li>
+<li><a href="https://github.com/sebleier/django-redis-cache/" target="_blank" rel="noopener">django-redis-cache, star:745</a> - 用于 Django 的 Redis 缓存后端。</li>
+<li><a href="https://github.com/jmoiron/johnny-cache/" target="_blank" rel="noopener">johnny-cache, star:265</a> - Johnny Cache 是一个用于 Django 应用的缓存框架。</li>
+</ul>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><p><em>有助于保存可重用性 app 在不同的 Django 版本间保存兼容性的包。</em></p>
+<ul>
+<li><a href="https://github.com/arteria/django-compat" target="_blank" rel="noopener">django-compat, star:91</a> - 为官方支持的 Django 版本提供向前和向后兼容层。</li>
+<li><a href="https://github.com/ubernostrum/django-compat-lint" target="_blank" rel="noopener">django-compat-lint, star:36</a> - 为你的代理检查 Django 兼容性（2 年未更新）。</li>
+</ul>
+<h2 id="仪表盘"><a href="#仪表盘" class="headerlink" title="仪表盘"></a>仪表盘</h2><p><em>用于创建信息仪表盘以可视化数据的包。</em></p>
+<ul>
+<li><a href="https://github.com/talpor/django-dashing/" target="_blank" rel="noopener">django-dashing, star:381</a> - 一个可定制，模块化的仪表盘应用框架，用以在你的 Django 项目中可视化有兴趣的数据。灵感来自那个相当优秀的仪表盘框架 Dashing。</li>
+</ul>
+<h2 id="数据科学"><a href="#数据科学" class="headerlink" title="数据科学"></a>数据科学</h2><p><em>使得使用大数据更方便的包。</em></p>
+<ul>
+<li><a href="https://github.com/wq/django-rest-pandas/" target="_blank" rel="noopener">rest-pandas, star:435</a> - 通过 Django REST 框架架设你的 Pandas 数据帧服务，以在客户端（如 d3.js）可视化和离线分析（如 Excel）中使用。</li>
+</ul>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><em>有于支持第三方数据库或添加数据库特定功能的包。</em></p>
+<ul>
+<li><a href="https://github.com/kennethreitz/dj-database-url/" target="_blank" rel="noopener">dj-database-url, star:562</a> - 在你的 Django 应用中使用数据库 URL。</li>
+<li><a href="https://github.com/adamchainz/django-mysql/" target="_blank" rel="noopener">django-mysql, star:127</a> - 一个 Django 扩展，以使用 MySQL/MariaDB。</li>
+<li><a href="https://github.com/stephenmcd/django-postgres-fuzzycount" target="_blank" rel="noopener">django-postgres-fuzzycount, star:55</a> - 在 Django 中使用快速 / 模糊的 PostgreSQL count 操作。</li>
+<li><a href="https://github.com/kennethreitz/django-postgrespool/" target="_blank" rel="noopener">django-postgrespool, star: 259</a> - 用于 Django 的 Postgres 连接池，基于 SQLAlchemy。</li>
+</ul>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p><em>有助于查找 Bug 的包。</em></p>
+<ul>
+<li><a href="https://github.com/django-debug-toolbar/django-debug-toolbar/" target="_blank" rel="noopener">django-debug-toolbar, star:4136</a> - 可配置的一组面板，可显示有关当前请求/应答中的许多调试信息。</li>
+<li><a href="https://github.com/dcramer/django-devserver/" target="_blank" rel="noopener">django-devserver, star:1190</a> - Django 内置 runserver 的简单替代者（1 年未更新）。</li>
+<li><a href="https://github.com/bradmontgomery/django-querycount/" target="_blank" rel="noopener">django-querycount, star:83</a> - 一个中间件，用于将数据库查询数输出来 runserver 命令行中。</li>
+<li><a href="https://github.com/django-silk/silk" target="_blank" rel="noopener">django-silk, star:905</a> - Django 中非常易用的剖析工具。</li>
+<li><a href="https://github.com/jmcarp/nplusone/" target="_blank" rel="noopener">nplusone, star:262</a> - 自动检测 Django（及其它 ORM）中的 n+1 查询问题。</li>
+<li><a href="https://github.com/getsentry/sentry" target="_blank" rel="noopener">sentry, star:12408</a> - 一个现代的错误记录和聚合平台。</li>
+</ul>
+<h2 id="Email"><a href="#Email" class="headerlink" title="Email"></a>Email</h2><p><em>有助于管理邮件发送的包。</em></p>
+<ul>
+<li><a href="https://github.com/pmclanahan/django-celery-email/" target="_blank" rel="noopener">django-celery-email, star:146</a> - 一个 Django 邮件后端，使用 celery 任务来发送邮件。</li>
+<li><a href="https://github.com/LPgenerator/django-db-mailer/" target="_blank" rel="noopener">django-db-mailer, star:156</a> - 一个 Django 模块，能很容易地发送使用 Django 模板 的邮件/短信/push/tss 信息，而模板存于数据库中并通过 Django 管理后面管理。</li>
+<li><a href="https://github.com/zapier/django-drip" target="_blank" rel="noopener">django-drip, star:543</a> - Django Admin based management for drip email campaigns（2 年未更新）。</li>
+<li><a href="https://github.com/stephenmcd/django-email-extras" target="_blank" rel="noopener">django-email-extras, star:67</a> - 多种邮件工具: PGP 加密, multipart 模板, 浏览器测试后端等。</li>
+<li><a href="https://github.com/BradWhittington/django-mailgun/" target="_blank" rel="noopener">django-mailgun, star:205</a> - 使用 Mailgun 的 Django 邮件后端。</li>
+<li><a href="https://github.com/ui/django-post_office/" target="_blank" rel="noopener">django-post_office, star:331</a> - 一个用于发送和管理邮件的简单 Django 应用，支持模板，并能很容易与任务队伍集成。</li>
+<li><a href="https://github.com/django-ses/django-ses" target="_blank" rel="noopener">django-ses, star:475</a> - 使用 Amazon Simple Email Service 的 Django 邮件后端。</li>
+<li><a href="https://github.com/20tab/django-spoolgore" target="_blank" rel="noopener">django-spoolgore, star:5</a> - 使用 Spoolgore daemon 的 django 邮件后端（3 年未更新）。</li>
+<li><a href="https://github.com/BradWhittington/django-templated-email" target="_blank" rel="noopener">django-templated-email, star:291</a> - 一个 Django 模板，能很容易地发送模板型邮件，可以使用 django 模板，或事务型邮件提供商（如 mailchimp, silverpop 等）。</li>
+<li><a href="https://github.com/APSL/django-yubin" target="_blank" rel="noopener">django-yubin, star:22</a> - django-mailer2 + django-mailviews，及其它功能。</li>
+<li><a href="https://github.com/bameda/djmail" target="_blank" rel="noopener">djmail, star:58</a> - 一个简单且非阻塞式的 django 邮件中间件。</li>
+<li><a href="https://github.com/brack3t/Djrill/" target="_blank" rel="noopener">djrill, star:354</a> - 一个使用 MailChimp 的 Mandrill 事务型邮件邮件的邮件后端。</li>
+</ul>
+<h2 id="数据项"><a href="#数据项" class="headerlink" title="数据项"></a>数据项</h2><p><em>与扩展现有项类型功能或添加新项类型有关的包。</em></p>
+<ul>
+<li><a href="https://github.com/areski/django-audiofield" target="_blank" rel="noopener">django-audiofield, star:91</a> - 允许对音频文件进行上传，管理，将转换成不同的音频格式 (mp3, wav &amp; ogg)。</li>
+<li><a href="https://github.com/disqus/django-bitfield/" target="_blank" rel="noopener">django-bitfield, star:282</a> - Django 数据模型的一个扩展，A BitField。</li>
+<li><a href="https://github.com/SmileyChris/django-countries/" target="_blank" rel="noopener">django-countries, star:359</a> - 为表单提供国家选择，也基于国旗选择，还提供一个 CountryField。</li>
+<li><a href="https://github.com/5monkeys/django-enumfield/" target="_blank" rel="noopener">django-enumfield, star:99</a> - 基于命名常数列表的 Django 定制数据项（1 看未更新）。</li>
+<li><a href="https://github.com/bonsaistudio/django-image-tools/" target="_blank" rel="noopener">django-image-tools, star:36</a> - 在 Django 中处理图像的包(1 看未更新）。</li>
+<li><a href="https://github.com/matthewwithanm/django-imagekit/" target="_blank" rel="noopener">django-imagekit, star:1154</a> - 在 Django 中自动处理图像。</li>
+<li><a href="https://pypi.python.org/pypi/django-jsonfield" target="_blank" rel="noopener">django-jsonfield, bitbucket forks:49</a> - 用于 Django 数据模型中的 JSONField。 for Django models.</li>
+<li><a href="https://github.com/caioariede/django-location-field/" target="_blank" rel="noopener">django-location-field, star:266</a> - 一个位置项及其组件，并与 google 地图集成。</li>
+<li><a href="https://github.com/django-macaddress/django-macaddress" target="_blank" rel="noopener">django-macaddress, star:25</a> - 在 Django 中使用的 MAC 地址数据模型及其表单项。</li>
+<li><a href="https://github.com/stefanfoulis/django-phonenumber-field/" target="_blank" rel="noopener">django-phonenumber-field, star:383</a> - 一个可以与 <a href="https://github.com/daviddrysdale/python-phonenumbers" target="_blank" rel="noopener">python-phonenumbers</a> 交互的 Django 库，以用来验证、格式输出和转换手机号码。</li>
+<li><a href="https://github.com/gintas/django-picklefield/" target="_blank" rel="noopener">django-picklefield, star:92</a> - 用于 Django 的序列化对象项（pickled object field）。</li>
+<li><a href="https://github.com/and3rson/django-searchable-select" target="_blank" rel="noopener">django-searchable-select, star:29</a> - 一个更好更快的多选组件，并附有提示功能。</li>
+<li><a href="https://github.com/dcramer/django-uuidfield/" target="_blank" rel="noopener">django-uuidfield, star:261</a> - 用于 Django 的 UUIDField（2 年未更新）。</li>
+<li><a href="https://github.com/WGBH/django-versatileimagefield/" target="_blank" rel="noopener">django-versatileimagefield, star:230</a> - django ImageField 的简单替代品，并提供了一个灵活、直观、易扩展的接口来快速地根据指定的图像创建一个表单项。</li>
+</ul>
+<h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><p><em>用于在项目间或用户间传输文件的包。</em></p>
+<ul>
+<li><a href="https://github.com/benoitbryon/django-downloadview/" target="_blank" rel="noopener">django-downloadview, star:129</a> - 用 Django 提供文件服务。</li>
+<li><a href="https://github.com/johnsensible/django-sendfile/" target="_blank" rel="noopener">django-sendfile, star:311</a> - 这是对特定于 Web 服务器的方法的一个封闭器，用来将文件发送给 Web 客户端。</li>
+</ul>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><p><em>扩展表单功能或添加亲的表单类型的相关包。</em></p>
+<ul>
+<li><a href="https://github.com/yourlabs/django-autocomplete-light/" target="_blank" rel="noopener">django-autocomplete-light, star:794</a> - django-autocomplete-light 的目标是在 Django 项目中快速而适当地实现自动填充功能。</li>
+<li><a href="https://github.com/tzangms/django-bootstrap-form/" target="_blank" rel="noopener">django-bootstrap-form, star:485</a> - 将 Twitter Bootstrap 使用到 Django 表单中。</li>
+<li><a href="https://github.com/dyve/django-bootstrap3/" target="_blank" rel="noopener">django-bootstrap3, star:1731</a> - 以 Django 的方式，在 Django 模板中使用 Bootstrap。</li>
+<li><a href="https://github.com/maraujop/django-crispy-forms/" target="_blank" rel="noopener">django-crispy-forms, star:2756</a> - 实现 DRY Django 表单的最好方式。该应用提供的 Tag 和 Filter 能让你快速将表单呈现成 div 格式，同时又提供大量的功能来配置和控制呈现的 HTML。</li>
+<li><a href="https://github.com/gregmuellegger/django-floppyforms/" target="_blank" rel="noopener">django-floppyforms, star:681</a> - django-floppyforms 这个应用能让你完全控制表单的呈现结果。表单 API 和功能与 Django 的完全相同，主要的不同在同它的表单项和表单组件是在模板中呈现的，而不是使用字符串处理完成，因此它能让你在使用 Django 模板中完成控制输出的结果。</li>
+</ul>
+<h2 id="GIS"><a href="#GIS" class="headerlink" title="GIS"></a>GIS</h2><p><em>能更容易与地理信息系统项目协作的包。</em></p>
+<ul>
+<li><a href="https://github.com/philippbosch/django-geoposition/" target="_blank" rel="noopener">django-geoposition, star:261</a> - 一个数据模型项，可用来保存地理信息(经度/纬度)，并提供相应的后台管理/表单组件。</li>
+<li><a href="https://github.com/caioariede/django-location-field/" target="_blank" rel="noopener">django-location-field, star:266</a> - 一个位置项及其组件，并与 google 地图集成。</li>
+<li><a href="https://github.com/bkg/django-spillway/" target="_blank" rel="noopener">django-spillway, star:42</a> - Django REST 框架的 Geodata 扩展。</li>
+<li><a href="https://github.com/djangonauts/django-rest-framework-gis/" target="_blank" rel="noopener">djangorestframework-gis, star:372</a> - Django REST 框架的地理信息扩展。</li>
+</ul>
+<h2 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h2><p><em>用于处理，修改或转换图片的包。</em></p>
+<ul>
+<li><a href="https://github.com/jonasundderwolf/django-image-cropping" target="_blank" rel="noopener">django-image-cropping, star:386</a> - 一个协助应用，能很容易地为后台或前端非破坏性的剪切任意大图片。</li>
+<li><a href="https://github.com/WGBH/django-versatileimagefield/" target="_blank" rel="noopener">django-versatileimagefield, star:230</a> - django ImageField 的简单替代品，并提供了一个灵活、直观、易扩展的接口来快速地根据指定的图像创建一个表单项。</li>
+</ul>
+<h2 id="导入-导出"><a href="#导入-导出" class="headerlink" title="导入/导出"></a>导入/导出</h2><p><em>能在项目中加载、导入或导出数据的包。</em></p>
+<h2 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h2><p><em>当有模式更新后，能用来进行数据库迁移的包。</em></p>
+<ul>
+<li><a href="https://bitbucket.org/andrewgodwin/south/src/" target="_blank" rel="noopener">South, bitbucket forks:169</a> - 一个提供了模式和数据迁移功能的 Django 应用，支持至 Django 1.6.x。(<a href="https://docs.djangoproject.com/en/dev/topics/migrations/" target="_blank" rel="noopener">Django 1.7 及以上版本已经集成了一个数据迁移系统，其基于 South 但不兼容</a>)</li>
+</ul>
+<h2 id="移动端支持"><a href="#移动端支持" class="headerlink" title="移动端支持"></a>移动端支持</h2><p><em>用于支持 iOS, Android 及其它移动端的包。</em></p>
+<ul>
+<li><a href="https://github.com/jleclanche/django-push-notifications" target="_blank" rel="noopener">django-push-notifications, star:911</a> - 一个微型 Django 应用，它实现了 Device 数据模型，可通过 APNS 和 GCM 发送消息。</li>
+<li><a href="https://github.com/rakanalh/django-pushy" target="_blank" rel="noopener">django-pushy, star:157</a> - 一个 Django 应用，使用 celery 来提供推送功能。该应用的主要目的是帮助你批量向你的用户发送推送消息。如果你有多个已注册的设备码(registered device keys)，django-pushy 会将设备码分成小组，从而加快消息的发送过程。</li>
+</ul>
+<h2 id="数据模型扩展"><a href="#数据模型扩展" class="headerlink" title="数据模型扩展"></a>数据模型扩展</h2><p><em>能扩展数据模型功能或添加新数据模型类的包。</em></p>
+<ul>
+<li><a href="https://github.com/henriquebastos/django-aggregate-if/" target="_blank" rel="noopener">django-aggregate-if, star:125</a> - 对 Django 查询进行条件聚合，就如 Excel 中的 SumIf 和 CountIf（2 年未更新）。</li>
+<li><a href="https://github.com/django/django-localflavor/" target="_blank" rel="noopener">django-localflavor, star:290</a> - 与国家信息有关的 Django 辅助包，即原先的 fame 贡献包。</li>
+<li><a href="https://github.com/carljm/django-model-utils/" target="_blank" rel="noopener">django-model-utils, star:1126</a> - Django 数据模型的 mixins 和工具集。</li>
+<li><a href="https://github.com/django-mptt/django-mptt/" target="_blank" rel="noopener">django-mptt, star:1439</a> - 用来在 Django 中实现一个修订版的先序遍历树的工具集。</li>
+<li><a href="https://github.com/tabo/django-treebeard" target="_blank" rel="noopener">django-treebeard, star:370</a> - Django 中树数据结构的另一种实现(提供了 3 种不同的层级数据排序方法，包括 MPTT )。</li>
+</ul>
+<h2 id="支付处理"><a href="#支付处理" class="headerlink" title="支付处理"></a>支付处理</h2><p><em>与支付处理提供商集成有关的包。</em></p>
+<ul>
+<li><a href="https://github.com/pydanny/dj-stripe/" target="_blank" rel="noopener">dj-stripe, star:370</a> - 使得 Django + Stripe 更容易。</li>
+<li><a href="https://github.com/agiliq/merchant/" target="_blank" rel="noopener">django-merchant, star:862</a> - 一个 Django 应用，为多个可插拔支付后端提供了辅助工具（2 年未更新）。</li>
+<li><a href="https://github.com/oscaro/django-oscar-adyen/" target="_blank" rel="noopener">django-oscar-adyen, star:5</a> - 这个包提供了与 Adyen 支付网关的集成功能。它意在与电子商务框架 django-oscar 进行无缝对接，但也可以独立于 Oscar 使用。</li>
+<li><a href="https://github.com/django-oscar/django-oscar-paymentexpress/" target="_blank" rel="noopener">django-oscar-paymentexpress, star:6</a> - 这个包提供了与 PaymentExpress 支付网关（使用它们的 PX POST API）的集成功能。它意在与电子商务框架 django-oscar 进行无缝对接，但也可以独立于 Oscar 使用（5 年未更新）。</li>
+<li><a href="https://github.com/django-oscar/django-oscar-paypal/" target="_blank" rel="noopener">django-oscar-paypal, star:70</a> - PayPal 集成进 django-oscar。也可以独立于 Oscar 使用。</li>
+<li><a href="https://github.com/spookylukey/django-paypal" target="_blank" rel="noopener">django-paypal, star:378</a> - 一个可插拔的 Django 应用，进于集成 PayPal 标准支持和高级支付功能。</li>
+<li><a href="https://github.com/rossp/django-pinpayments/" target="_blank" rel="noopener">django-pinpayments, star:19</a> - 可简化使用 Pin 的支付过程的 Django 库（1 年未更新）。</li>
+<li><a href="https://github.com/GoodCloud/django-zebra/" target="_blank" rel="noopener">django-zebra, star:177</a> - 表单，组件，模板标签及模板，以使 Stripe + Django 更容易(3 年未更新）。</li>
+</ul>
+<h2 id="项目管理"><a href="#项目管理" class="headerlink" title="项目管理"></a>项目管理</h2><ul>
+<li><a href="https://github.com/caktus/django-timepiece/" target="_blank" rel="noopener">django-timepiece, star:251</a> - 一个多用户的 Django 应用，用于跟踪用户在项目上的时间（1 年未更新）。</li>
+</ul>
+<h2 id="报表"><a href="#报表" class="headerlink" title="报表"></a>报表</h2><p><em>创建报表相关的包。</em></p>
+<ul>
+<li><a href="https://github.com/juanpex/django-model-report/" target="_blank" rel="noopener">django-model-report, star:156</a> - 一个集成了 highcharts 的 Django 报表应用。</li>
+<li><a href="https://github.com/burke-software/django-report-builder/" target="_blank" rel="noopener">django-report-builder, star:453</a> - Django ORM 的一个用户界面。能构建自定义的查询并显示结果。目标用户是系统管理员及不会编程的终端用户。</li>
+</ul>
+<h2 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h2><p><em>开发 REST API 的包。</em></p>
+<ul>
+<li><a href="https://github.com/funkybob/django-nap/" target="_blank" rel="noopener">django-nap, star:176</a> - 实现对象序列化，RESTful 视图和 RPC 视图的一种极简方式。</li>
+<li><a href="https://github.com/Tivix/django-rest-auth/" target="_blank" rel="noopener">django-rest-auth, star:793</a> - 该应用将所有与注册和验证相关的功能都以 CBV (Class Base View) 和 REST (JSON) 的形式提供，从而使用它来构建 Django SPA (Single Page App) 或移动应用是极其方便的。</li>
+<li><a href="http://www.django-rest-framework.org/" target="_blank" rel="noopener">django-rest-framework, star:7811</a> - 一个功能强大且灵活的工具集，用它来构建 Web API 很容易。</li>
+<li><a href="https://github.com/gilsondev/django-rest-localflavor/" target="_blank" rel="noopener">django-rest-localflavor, star:11</a> - 用于 Django Rest 框架的一些本地化相关序列化器。</li>
+<li><a href="https://github.com/marcgibbons/django-rest-swagger/" target="_blank" rel="noopener">django-rest-swagger, star:1465</a> - Django REST 框架的 <a href="http://swagger.io/" target="_blank" rel="noopener">Swagger</a> 文档生成器。</li>
+<li><a href="https://github.com/ekonstantinidis/django-rest-framework-docs" target="_blank" rel="noopener">drfdocs, star:342</a> - 为使用 Django REST 框架开发的 Web API 提供文档。</li>
+<li><a href="http://tastypieapi.org/" target="_blank" rel="noopener">django-tastypie, star:3174</a> - 自 2010 年来就能为 Django 应用创建完美的 API。</li>
+<li><a href="https://github.com/toastdriven/restless/" target="_blank" rel="noopener">restless, star:601</a> - 一个在 Python 中使用的轻量级 REST 微框架。</li>
+</ul>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><em>为项目提供搜索能力的包。</em></p>
+<ul>
+<li><a href="https://github.com/django-haystack/django-haystack" target="_blank" rel="noopener">django-haystack, star:2181</a> - Django 中的模块化搜索包。</li>
+<li><a href="https://github.com/etianen/django-watson/" target="_blank" rel="noopener">django-watson, star:577</a> - 快速的多数据模式的全文搜索插件。</li>
+<li><a href="https://github.com/linuxlewis/djorm-ext-pgfulltext" target="_blank" rel="noopener">djorm-ext-pgfulltext, star:237</a> - PostgreSQL 全文搜索与 django orm 整合（1 年未更新）。</li>
+</ul>
+<h2 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h2><p><em>用于改善项目安全性的包。</em></p>
+<ul>
+<li><a href="https://github.com/dmpayton/django-admin-honeypot/" target="_blank" rel="noopener">django-admin-honeypot, star:363</a> - 一个伪装的 Django 管理后台登录界面，用来向管理员发送未授权访问尝试信息。</li>
+<li><a href="https://github.com/django-pci/django-axes/" target="_blank" rel="noopener">django-axes, star:315</a> - 是一种用于记录失败登录尝试的简单方法，即可用于 Django 管理后台，也可用于你的应用系统。</li>
+<li><a href="https://github.com/lpomfrey/django-debreach/" target="_blank" rel="noopener">django-debreach, star:67</a> - 为你的 Django 应用提供 BREACH 防御。</li>
+<li><a href="https://github.com/atugushev/django-password-session/" target="_blank" rel="noopener">django-password-session, star:10</a> - 当修改密码后会使所有活跃会话全部失效(<a href="https://docs.djangoproject.com/en/dev/topics/auth/default/#session-invalidation-on-password-change" target="_blank" rel="noopener">Django 1.7+ 中已有此功能</a>)（2 年未更新）。</li>
+<li><a href="https://github.com/carljm/django-secure/" target="_blank" rel="noopener">django-secure, star:489</a> - 提醒你通过完成一些简单地任务来提高你的 Django 网站的安全性，该项目已整合入 Django 1.8+，故不再维护（2 年未更新）。</li>
+<li><a href="https://github.com/gotlium/django-secure-auth" target="_blank" rel="noopener">django-secure-auth, star:23</a> - 通过 TOTP, 短信, 代码 &amp; 答案等进行安全认证。能根据 IP 和 captcha 进行登录保护。</li>
+<li><a href="https://github.com/sdelements/django-security/" target="_blank" rel="noopener">django-security, star:108</a> - 一组数据模型，视图、中间件和表单，用来加固 Django 项目的安全性。</li>
+<li><a href="https://github.com/rdegges/django-sslify/" target="_blank" rel="noopener">django-sslify, star:287</a> - 在你的 Django 网站上强制使用 SSL。</li>
+<li><a href="https://github.com/mgrouchy/django-stronghold/" target="_blank" rel="noopener">django-stronghold, star:227</a> - Stronghold 是一个中间件，用来默认将你的所有视图导向 login required。</li>
+<li><a href="https://github.com/mattrobenolt/django-sudo" target="_blank" rel="noopener">django-sudo, star:235</a> - Sudo 模式是你的最敏感页面的一个额外安全层。这是 Django 中的 GitHub Sudo 模式的一种实现。</li>
+</ul>
+<h2 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h2><p>*帮助改善项目 SEO ( 搜索引擎优化 ) 的包。</p>
+<ul>
+<li><a href="https://github.com/nephila/django-meta/" target="_blank" rel="noopener">django-meta, star:144</a> - 一个可插拔的应用，Django 开发人员可以用它来快速地将 meta 标签和 OpenGraph, Twitter, 和 Google Plus 属性添加到他们的 HTML 页面中。</li>
+<li><a href="https://github.com/jazzband/django-robots" target="_blank" rel="noopener">django-robots, star:205</a> - 一个用于管理 robots.txt 文件的应用，它遵循 robots 扩展协议。</li>
+<li><a href="https://github.com/romansalin/django-seo2/" target="_blank" rel="noopener">django-seo2, star:34</a> - 提供了一组工具来管理 Django 站点的搜索引擎优化 (SEO) 元数据。</li>
+</ul>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p><em>用来管理项目的配置的包。</em></p>
+<ul>
+<li><a href="https://github.com/jazzband/django-configurations" target="_blank" rel="noopener">django-configurations, star:512</a> - 一个依据广为接受的编程模式来组织 Django 项目配置信息的辅助包。</li>
+<li><a href="https://github.com/jazzband/django-constance" target="_blank" rel="noopener">django-constance, star:730</a> - 一个能将动态设置信息存储在可插拔后端（内置 Redis 和 Django 数据模型后端）的 Django 应用，并已与 Django 后台管理应用整合。</li>
+<li><a href="https://github.com/henriquebastos/python-decouple/" target="_blank" rel="noopener">python-decouple, star:386</a> - 严格地将配置与代码分离。</li>
+<li><a href="https://github.com/joke2k/django-environ" target="_blank" rel="noopener">django-environ, star:667</a> - 能让你使用 12factor 的环境变量来配置你的 Django 应用。</li>
+<li><a href="https://github.com/sobolevn/django-split-settings" target="_blank" rel="noopener">django-split-settings, star:131</a> - 将 Django 设置信息组织到多个文件和目录中。能容易地实现对设置的覆盖和修改。能使用通配符和可选的设置文件。</li>
+</ul>
+<h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p><em>扩展了现有存储后端的功能或提供新存储后端的相关包。</em></p>
+<ul>
+<li><a href="https://github.com/EliotBerriot/django-dynamic-preferences" target="_blank" rel="noopener">django-dynamic-preferences, star:75</a> - 为你的 Django 项目实现动态、全局的实例设置。</li>
+<li><a href="https://github.com/marazmiki/django-selectel-storage" target="_blank" rel="noopener">django-selectel-storage, star:10</a> - 使用该应用能容易地将媒体或静态文件保存到 <a href="https://selectel.ru/" target="_blank" rel="noopener">Selectel</a> 云存储上。</li>
+<li><a href="https://bitbucket.org/david/django-storages/src/" target="_blank" rel="noopener">django-storages, bitbucket forks: 268</a> - django-storages 是一个有关自定义 Django 存储后端的列表（4 年未更新）。</li>
+<li><a href="https://github.com/jazzband/django-queued-storage" target="_blank" rel="noopener">django-queued-storage, star:245</a> - 为 Django 存储后端提供了代理功能，从而使你能像在本地一样上传文件，但最终是保存在远程。</li>
+<li><a href="https://github.com/marazmiki/django-webdav-storage" target="_blank" rel="noopener">django-webdav-storage, star:11</a> - Django 存储后端，能将文件存储在自定义的 WebDAV 存储中。</li>
+</ul>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li><a href="https://github.com/alex/django-taggit/" target="_blank" rel="noopener">django-taggit, star:1644</a> - Django 的简单标签应用。</li>
+<li><a href="https://github.com/mfcovington/django-taggit-helpers" target="_blank" rel="noopener">django-taggit-helpers, star:17</a> - django-taggit 标签的 Django 后台管理辅助类（1 年未更新）。</li>
+</ul>
+<h2 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h2><p><em>能更容易使用任务/后台队队的包。</em></p>
+<ul>
+<li><a href="https://github.com/celery/django-celery" target="_blank" rel="noopener">django-celery, star:1011</a> - Celery 与 Django 集成。(Celery 3.1+ 已不再需要该包)</li>
+<li><a href="https://github.com/Koed00/django-q" target="_blank" rel="noopener">django-q, star:477</a> - 一个 Django 多进程任务队列。</li>
+<li><a href="https://github.com/ui/django-rq" target="_blank" rel="noopener">django-rq, star:620</a> - 在你的 Django 项目监测和使用 <a href="http://python-rq.org/" target="_blank" rel="noopener">RQ</a> 的最简单方法。</li>
+<li><a href="https://github.com/coleifer/huey/" target="_blank" rel="noopener">huey, star:1190</a> - 一个 Python 中的小型多线程任务队列。</li>
+</ul>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><em>有助于测试代码或创建测试数据的包。</em></p>
+<ul>
+<li><a href="https://github.com/behave/behave-django" target="_blank" rel="noopener">behave-django, star:29</a> - 将行为驱动开发 (<a href="https://pypi.python.org/pypi/behave" target="_blank" rel="noopener">Behave BDD</a>) 集成到 Django 中。</li>
+<li><a href="https://github.com/django-behave/django-behave/" target="_blank" rel="noopener">django-behave, star:173</a> - Behave BDD 模块的 TestRunner。</li>
+<li><a href="https://github.com/paulocheque/django-dynamic-fixture" target="_blank" rel="noopener">django-dynamic-fixture, star:252</a> - 可为测试目的动态地创建数据模拟实例。</li>
+<li><a href="https://github.com/joke2k/django-faker/" target="_blank" rel="noopener">django-faker, star:144</a> - 使用 <a href="https://github.com/joke2k/faker/" target="_blank" rel="noopener">Fake-factory</a> 来创建测试数据（2 年未更新）。</li>
+<li><a href="https://github.com/kmmbvnr/django-jenkins" target="_blank" rel="noopener">django-jenkins, star:799</a> - 在 Django 中即插即用 jenkins 进行持续集成。</li>
+<li><a href="https://github.com/django-nose/django-nose/" target="_blank" rel="noopener">django-nose, star:743</a> - 使用 nose 进行测试。</li>
+<li><a href="https://github.com/dragoon/django-selenium/" target="_blank" rel="noopener">django-selenium, star:84</a> - 支持用 Selenium 测试。</li>
+<li><a href="https://github.com/stephenmcd/django-shotgun" target="_blank" rel="noopener">django-shotgun, star:8</a> - 测试整个 Django 网站（3 年未更新）。</li>
+<li><a href="https://github.com/realpython/django-slow-tests" target="_blank" rel="noopener">django-slowtests, star:106</a> - 定位出最慢的测试。</li>
+<li><a href="https://github.com/revsys/django-test-plus" target="_blank" rel="noopener">django-test-plus, star:208</a> - 增强了 Django 默认的 TestCase 的功能，能极大减少样板代码。</li>
+<li><a href="https://github.com/rbarrois/factory_boy/" target="_blank" rel="noopener">factory_boy, star:1150</a> - Python test fixtures 一个替代器。</li>
+<li><a href="http://hitchtest.com/" target="_blank" rel="noopener">hitchtest, star:32</a> - 与 Django 高度集成的一个测试框架。</li>
+<li><a href="https://github.com/stringfellow/lettuce-django-terrain/" target="_blank" rel="noopener">lettuce-django-terrain, star:12</a> - 用于 Django 项目中 <a href="https://github.com/gabrielfalcao/lettuce" target="_blank" rel="noopener">lettuce</a> 的 Terrain 文件（5 年未更新，但 lettuce 网站上的代码框显示很赞）。</li>
+<li><a href="https://github.com/klen/mixer" target="_blank" rel="noopener">mixer, star:395</a> - 一个用来产生 Django 或 SQLAlchemy 数据模型实例的应用。能快速便捷地创建测试数据。</li>
+<li><a href="https://github.com/dcramer/mock-django" target="_blank" rel="noopener">mock-django, star:191</a> - 一个简单的库，能为诸如 ORM 等一些 Django 行为设置模拟信息（1 年未更新）。</li>
+<li><a href="https://github.com/vandersonmota/model_mommy/" target="_blank" rel="noopener">model-mommy, star:660</a> - 为进行更好地测试提供了智能 fixtures。</li>
+<li><a href="https://github.com/pytest-dev/pytest-django" target="_blank" rel="noopener">pytest-django, star:308</a> - pytest 的一个 Django 插件。</li>
+<li><a href="https://github.com/cobrateam/splinter/" target="_blank" rel="noopener">splinter, star:1355</a> - Web 应用的一个 Python 测试框架。</li>
+</ul>
+<h2 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图"></a>缩略图</h2><p><em>用于创建缩略图的包。</em></p>
+<ul>
+<li><a href="https://github.com/codingjoe/django-stdimage/" target="_blank" rel="noopener">django-stdimage, star:125</a> - 用于 Django 的缩略图和图像工具。</li>
+<li><a href="https://github.com/WGBH/django-versatileimagefield/" target="_blank" rel="noopener">django-versatileimagefield, star:230</a> - Django ImageField 的简单替代器，它提供了一个灵活易用、易扩展的接口，能根据数据项中设置的图片快速地创建新的图片。</li>
+<li><a href="https://github.com/SmileyChris/easy-thumbnails" target="_blank" rel="noopener">easy-thumbnails, star:898</a> - 一个易用的 Django 缩略图应用。</li>
+<li><a href="https://github.com/mariocesar/sorl-thumbnail/" target="_blank" rel="noopener">sorl-thumbnail, star:1050</a> - 用于 Django 的缩略图应用。</li>
+</ul>
+<h2 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h2><p><em>有助于翻译工程项目的包。</em></p>
+<ul>
+<li><a href="https://github.com/KristianOellegaard/django-hvad" target="_blank" rel="noopener">django-hvad, star:417</a> - 可在 django 中进行轻松地翻译，使用通常的 ORM。能很容易集成到现存的项目和应用中。能从 django-multilingual-ng 很容易地转换过来。</li>
+<li><a href="https://github.com/angvp/django-klingon/" target="_blank" rel="noopener">django-klingon, star:35</a> - 意在能 django 数据模型的翻译更加容易（2 年未更新）。</li>
+<li><a href="https://github.com/deschler/django-modeltranslation/" target="_blank" rel="noopener">django-modeltranslation, star:483</a> - 将现有 Django 数据模型中的动态数据翻译成任何的语言，而无需修改原来的数据模型类。</li>
+<li><a href="https://github.com/edoburu/django-parler" target="_blank" rel="noopener">django-parler, star:236</a> - 简单的 Django 数据模型翻译工具，没有奇技淫巧。</li>
+<li><a href="https://github.com/mbi/django-rosetta/" target="_blank" rel="noopener">django-rosetta, star:608</a> - Rosetta 是一个 ango 应用，它使你的 Django 项目的翻译过程更加容易。</li>
+</ul>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p><em>用于增强或提供新的视图类的包。</em></p>
+<ul>
+<li><a href="https://github.com/AndrewIngram/django-extra-views/" target="_blank" rel="noopener">django-extra-views, star:593</a> - Django 的基于类的通用视图都很赞，那就再实现一些。</li>
+<li><a href="https://github.com/tomchristie/django-vanilla-views/" target="_blank" rel="noopener">django-vanilla-views, star:656</a> - 一些非常简洁的基于类的视图。</li>
+</ul>
+<h2 id="Web-前端集成"><a href="#Web-前端集成" class="headerlink" title="Web 前端集成"></a>Web 前端集成</h2><ul>
+<li><a href="https://github.com/jrief/django-angular/" target="_blank" rel="noopener">django-angular, star:1074</a> - 使 AngularJS 与 Django 整合。</li>
+<li><a href="https://github.com/nvbn/django-bower" target="_blank" rel="noopener">django-bower, star:491</a> - 使在 Django 项目中使用 <a href="http://bower.io/" target="_blank" rel="noopener">bower</a> 更加容易。</li>
+<li><a href="https://github.com/ierror/django-js-reverse" target="_blank" rel="noopener">django-js-reverse, star:331</a> - 一个 Django 应用，实现 Javascript url 处理。</li>
+<li><a href="https://github.com/appliedsec/djangular/" target="_blank" rel="noopener">djangular, star:214</a> - 一个可复用的 Django app，为 Angular.js 提供了更好的集成及工具。（1 年未更新）</li>
+</ul>
+<h2 id="所见即所得编辑器"><a href="#所见即所得编辑器" class="headerlink" title="所见即所得编辑器"></a>所见即所得编辑器</h2><p><em>方便文本翻译的包。</em></p>
+<ul>
+<li><a href="https://github.com/django-ckeditor/django-ckeditor/" target="_blank" rel="noopener">django-ckeditor, star:820</a> - Django 管理界面与 CKEditor 集成。</li>
+<li><a href="https://github.com/summernote/django-summernote/" target="_blank" rel="noopener">django-summernote, star:325</a> - Summernote 是一个简单的所见即所得编辑器。django-summernote 能将 Summernote 方便地嵌入到 Django 中。支持 mixins 和 widgets。</li>
+<li><a href="https://github.com/aljosa/django-tinymce/" target="_blank" rel="noopener">django-tinymce, star:615</a> - TinyMCE 与 Django 集成。</li>
+<li><a href="https://github.com/pydanny/django-wysiwyg/" target="_blank" rel="noopener">django-wysiwyg, star:440</a> - 一个 Django 应用，实现将 Django 文本框变成富文本编辑器。可用作模板标签，也可用于表单组件。</li>
+</ul>
+<h2 id="Wiki-应用"><a href="#Wiki-应用" class="headerlink" title="Wiki 应用"></a>Wiki 应用</h2><ul>
+<li><a href="https://github.com/django-wiki/django-wiki" target="_blank" rel="noopener">django-wiki, star:727</a> - 一个 wiki 系统，功能复杂，集成容易，界面优秀。能将你的知识配以样式进行存储：使用 django 数据模型。</li>
+<li><a href="https://github.com/mgaitan/waliki" target="_blank" rel="noopener">waliki, star:254</a> - 一个可扩展的 Django wiki 应用，使用 Git 后端。</li>
+</ul>
+<h2 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h2><p><em>用于过程或业务任务管理的包。</em></p>
+<ul>
+<li><a href="https://github.com/carlio/django-flows/" target="_blank" rel="noopener">django-flows, star:87</a> - django-flows 能保存逻辑复杂流中的状态和位置，允许基于每个用户的一系列动作进行可能的分支和复杂路径分离。（1 年未更新）</li>
+<li><a href="https://github.com/kmmbvnr/django-fsm/" target="_blank" rel="noopener">django-fsm, star:831</a> - Django 对有限状态机的友好支持。</li>
+<li><a href="https://github.com/javrasya/django-river/" target="_blank" rel="noopener">django-river, star:303</a> - Django 状态机和工作流库，提供即时修改功能。</li>
+<li><a href="https://github.com/vikingco/django-states2/" target="_blank" rel="noopener">django-states, star:113</a> - django 数据模型的状态机。</li>
+<li><a href="https://github.com/viewflow/viewflow" target="_blank" rel="noopener">django-viewflow, star:631</a> - Django 中的可复用工作流库。</li>
+<li><a href="https://bitbucket.org/jerzyk/django-workflows/" target="_blank" rel="noopener">django-workflows, bitbucket forks:1</a> - django-workflows 为 Django 提供了一个通用的工作流引擎。</li>
+<li><a href="https://github.com/rbarrois/django_xworkflows/" target="_blank" rel="noopener">django-xworkflows, star:73</a> - 一个将 xworkflows 整合到 django 数据模型中的库。</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li><a href="https://github.com/hellysmile/django-activeurl" target="_blank" rel="noopener">django-activeurl, star:94</a> - 使在 django 更容易使用活跃 URL 高亮。（2 年未更新）</li>
+<li><a href="https://github.com/justquick/django-activity-stream/" target="_blank" rel="noopener">django-activity-stream, star:1181</a> - 基于站点上的行为创建通用的活动流。用户可关注任何行为者的个人活动流。</li>
+<li><a href="https://github.com/saxix/django-adminactions/" target="_blank" rel="noopener">django-adminactions, star:169</a> - 一组非常有用的行为集，可用于 django.contrib.admin.ModelAdmin 和 django.contrib.admin.AdminSite。</li>
+<li><a href="https://github.com/rosarior/django-autoadmin/" target="_blank" rel="noopener">django-autoadmin, star:28</a> - 为 Django 项目自动创建管理员用户。（2 年未更新）</li>
+<li><a href="https://github.com/brack3t/django-braces/" target="_blank" rel="noopener">django-braces, star:1220</a> - 可复用的，通用的 Django mixins。</li>
+<li><a href="https://github.com/bitmazk/django-calendarium/" target="_blank" rel="noopener">django-calendarium, star:167</a> - 一个可复用的应用，用于在模板中管理和显示日历。</li>
+<li><a href="https://github.com/angvp/django-changuito/" target="_blank" rel="noopener">django-changuito, star:46</a> - django 网站的购物篮应用，django-cart 的分支版本。</li>
+<li><a href="https://github.com/ottoyiu/django-cors-headers" target="_blank" rel="noopener">django-cors-headers, star:1435</a> - 一个用于处理跨源资源共享(CORS) 所需的服务器头的 Django 应用。</li>
+<li><a href="https://github.com/praekelt/django-dfp" target="_blank" rel="noopener">django-dfp, star:4</a> - 一个应用，提供了用于获取 Google DFP 广告的标签。（2 年未更新）</li>
+<li><a href="https://github.com/holgerd77/django-dynamic-scraper/" target="_blank" rel="noopener">django-dynamic-scraper, star:552</a> - 能通过 Django 管理界面创建 Scrapy 抓取器。</li>
+<li><a href="https://github.com/django-extensions/django-extensions/" target="_blank" rel="noopener">django-extensions, star:3111</a> - 该仓库收集了有关 Django 框架的全局自定义管理扩展功能。</li>
+<li><a href="https://github.com/alex/django-filter/" target="_blank" rel="noopener">django-filter, star:1743</a> - 一个通用的系统，能基于用户选择过滤 Django QuerySets。</li>
+<li><a href="https://github.com/revsys/django-friendship/" target="_blank" rel="noopener">django-friendship, star:291</a> - 用于管理从属或双向关系的 Django 应用。</li>
+<li><a href="https://github.com/twaddington/django-gravatar/" target="_blank" rel="noopener">django-gravatar2, star:93</a> - 主要实现在 Django 中支持 Gravatar。功能有辅助函数，模板标签和完整的测试。</li>
+<li><a href="https://github.com/DrkSephy/django-hackathon-starter" target="_blank" rel="noopener">django-hackathon-starter, star:1005</a> - Django Web 应用的样板，包含各种社交认证方法和许多流行 API 的例子。（1 年未更新）</li>
+<li><a href="https://github.com/un33k/django-ipware" target="_blank" rel="noopener">django-ipware, star:323</a> - 一个用于获取用户 IP 地址的 Django 应用。</li>
+<li><a href="https://github.com/kronoscode/django-magicembed" target="_blank" rel="noopener">django-magic-embed, star:18</a> - 一个简单易用的 Django 模板标签和工具，用于嵌入视频，并从视频提供者处获取缩略图。（2 年未更新）</li>
+<li><a href="https://github.com/zsiciarz/django-markitup" target="_blank" rel="noopener">django-markitup, star:41</a> - 一个可复用的 Django 应用，用于端到端的标签处理。</li>
+<li><a href="https://github.com/LPgenerator/django-mmc" target="_blank" rel="noopener">django-mmc, star:30</a> - 一个用于监测 Django 中的管理命令的应用。</li>
+<li><a href="https://github.com/stephenmcd/django-overextends" target="_blank" rel="noopener">django-overextends, star:90</a> - Django 中的环型模板继承。</li>
+<li><a href="https://github.com/ericflo/django-pagination" target="_blank" rel="noopener">django-pagination, star:505</a> - <a href="https://github.com/ericflo/django-pagination。（3" target="_blank" rel="noopener">https://github.com/ericflo/django-pagination。（3</a> 年未更新)</li>
+<li><a href="https://github.com/shtalinberg/django-el-pagination" target="_blank" rel="noopener">django-el-pagination, star:113</a> - Django EL(Endless) Pagination 可用于提供 Twitter 风格或 Digg 风格的分页，可支持 Ajax。</li>
+<li><a href="https://github.com/tomwalker/django_quiz/" target="_blank" rel="noopener">django-quiz-app, star:196</a> - 这是一个可配置的 Django 调查问答应用。</li>
+<li><a href="https://github.com/praekelt/django-recaptcha/" target="_blank" rel="noopener">django-recaptcha, star:391</a> - Django reCAPTCHA 表单项/组件集成应用。</li>
+<li><a href="https://github.com/semente/django-smuggler/" target="_blank" rel="noopener">django-smuggler, star:228</a> - Django Smuggler 是 Django Web 框架中的一个可插拔应用，可用于在自动生成的管理界面中导入/导出 fixtures。</li>
+<li><a href="https://github.com/lazybird/django-solo/" target="_blank" rel="noopener">django-solo, star:273</a> - 有助于使用单例 – 全局设置等那些你想在管理站点上进行编辑的事物。</li>
+<li><a href="https://github.com/epantry/django-sql-explorer/" target="_blank" rel="noopener">django-sql-explorer, star:1251</a> - 能通过 SQL 查询进行数据共享更加容易。</li>
+<li><a href="https://github.com/evonove/django-stored-messages/" target="_blank" rel="noopener">django-stored-messages, star:71</a> - 将 Django 消息保存到你的项目后端。（1 年未更新）</li>
+<li><a href="https://github.com/jsocol/django-ratelimit/" target="_blank" rel="noopener">django-ratelimit, star:336</a> - 为限速率视图提供了一个装饰器。可基于 IP 地址或请求中的某项（GET 或 POST 中的变量）进行限制。</li>
+<li><a href="https://github.com/un33k/django-uuslug/" target="_blank" rel="noopener">django-uuslug, star:187</a> - 一个 slugify 应用，能保证唯一性，且能处理 Unicode。</li>
+<li><a href="https://github.com/mwarkentin/django-watchman/" target="_blank" rel="noopener">django-watchman, star:145</a> - django-watchman 为你的数据库，缓存等后端服务提供状态端点。</li>
+<li><a href="https://github.com/jrief/django-websocket-redis" target="_blank" rel="noopener">django-websocket-redis, star:611</a> - 为 Django 应用实现的 Websockets，使用 Redis 作为消息队列。</li>
+<li><a href="http://tryolabs.github.io/metamon/" target="_blank" rel="noopener">metamon, star:348</a> - 一组 Ansible playbooks 集合，可用于快速创建 Django 应用。</li>
+<li><a href="https://github.com/coleifer/micawber/" target="_blank" rel="noopener">micawber, star:338</a> - 一个用于从 URL 抽取内容的小型库。</li>
+<li><a href="https://github.com/matthiask/towel/" target="_blank" rel="noopener">towel, star:68</a> - 一个工具集，能极大地方便你的 Django 开发。</li>
+</ul>
+<h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><p><em>出色的 Django 项目</em></p>
+<h2 id="CMS"><a href="#CMS" class="headerlink" title="CMS"></a>CMS</h2><ul>
+<li><a href="https://github.com/divio/django-cms/" target="_blank" rel="noopener">django-cms, star:4880</a> - 易用且对开发者友好的 CMS。</li>
+<li><a href="https://github.com/ridethepony/django-fiber" target="_blank" rel="noopener">django-fiber, star:552</a> - Django Fiber, 一个简单易用的 CMS，可用于所有的 Django 项目中。</li>
+<li><a href="https://github.com/feincms/feincms/" target="_blank" rel="noopener">feincms, star:697</a> - 一个基于 Django 的 CMS，关注于扩展性和代码的简洁性。</li>
+<li><a href="https://github.com/stephenmcd/mezzanine/" target="_blank" rel="noopener">Mezzanine, star:3057</a> - 一个使用 Django 框架构建的内容管理平台。</li>
+<li><a href="https://github.com/torchbox/wagtail/" target="_blank" rel="noopener">wagtail, star:4325</a> - 一个新的 Django 内容管理系统。</li>
+<li><a href="https://github.com/django-leonardo/django-leonardo/" target="_blank" rel="noopener">leonardo, star:61</a> - 一个新的 Django 内容管理系统，基于 FeinCMS 和 OpenStack Horizon 构建。</li>
+</ul>
+<h2 id="文档管理"><a href="#文档管理" class="headerlink" title="文档管理"></a>文档管理</h2><ul>
+<li><a href="https://github.com/mayan-edms/mayan-edms/" target="_blank" rel="noopener">mayan-edms, star:251</a> - 一个开源的，基于 Django 的 DMS (文档管理系统)，它具有自定义元数据索引、文件服务集成、OCR 功能、文档版本控制和电子签名验证等功能。</li>
+</ul>
+<h2 id="电子商务"><a href="#电子商务" class="headerlink" title="电子商务"></a>电子商务</h2><ul>
+<li><a href="https://github.com/stephenmcd/cartridge" target="_blank" rel="noopener">Cartridge, star:523</a> - Django/Mezzanine 的电子商务应用。</li>
+<li><a href="https://github.com/django-oscar/django-oscar" target="_blank" rel="noopener">django-oscar, star:2495</a> - Django 中基于领域驱动的电子商务框架。</li>
+<li><a href="http://www.getlfs.com/" target="_blank" rel="noopener">Lighting Fas Shop</a> - Lighting Fas Shop 是一个用 Django 构建的电子商务解决方案。</li>
+<li><a href="http://getsaleor.com/" target="_blank" rel="noopener">Saleor</a> - 在 Python 和 Django 中使用的电子商务店铺。</li>
+<li><a href="http://satchless.com/" target="_blank" rel="noopener">Satchless</a> - Satchless 将电子商务和 Python 结合了起来。</li>
+<li><a href="https://bitbucket.org/chris1610/satchmo/src/" target="_blank" rel="noopener">Satchmo</a> - Satchmo 是一个用 Django 构建的电子商务框架，它能使你开发独一无二且健壮的在线商店。</li>
+</ul>
+<h2 id="其它-1"><a href="#其它-1" class="headerlink" title="其它"></a>其它</h2><ul>
+<li><a href="https://github.com/pydanny/djangopackages/" target="_blank" rel="noopener">Django packages, star:248</a> - Django Packages 是一个 Django 的可复用应用，站点，工具等的目录。</li>
+<li><a href="https://github.com/wunki/django-salted/" target="_blank" rel="noopener">django-salted, star:329</a> - 使用 Vagrant 的 Django 项目全栈 SaltStack 配置。（4 年前更新）</li>
+<li><a href="https://github.com/stephenmcd/drum" target="_blank" rel="noopener">Drum, star:319</a> - Reddit / Hacker News 的克隆版，使用 Django/Mezzanine。</li>
+<li><a href="https://github.com/tfroehlich82/koalixcrm" target="_blank" rel="noopener">koalixcrm, star:60</a> - 适用于小业务的完美的 CRM/ERP。</li>
+</ul>
+<h2 id="项目管理-1"><a href="#项目管理-1" class="headerlink" title="项目管理"></a>项目管理</h2><ul>
+<li><a href="https://github.com/orges/itsy/" target="_blank" rel="noopener">ITSY, star:74</a> - 问题跟踪系统。（3 年前更新）</li>
+<li><a href="https://github.com/taigaio/taiga-back" target="_blank" rel="noopener">taiga, star:3467</a> - 敏捷，免费而且开源的项目管理工具，基于 Django 和 Angular。</li>
+</ul>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><em>探索新 Django 应用和项目的地方。</em></p>
+<h2 id="图书"><a href="#图书" class="headerlink" title="图书"></a>图书</h2><ul>
+<li><a href="https://github.com/kevinlondon/django-by-example" target="_blank" rel="noopener">Django by Example</a> (1.2)</li>
+<li><a href="http://agiliq.com/books/djenofdjango/" target="_blank" rel="noopener">Djen of Django</a> (&lt; 1.7)</li>
+<li><a href="http://www.effectivedjango.com/" target="_blank" rel="noopener">Effective Django</a> (1.5)</li>
+<li><a href="http://gettingstartedwithdjango.com/" target="_blank" rel="noopener">Getting started with Django</a> (video)</li>
+<li><a href="https://highperformancedjango.com/" target="_blank" rel="noopener">High Performance Django</a> (1.7) - 部署快速、可扩展的 Django 站点。</li>
+<li><a href="http://shop.oreilly.com/product/0636920032502.do" target="_blank" rel="noopener">Lightweight Django</a> (1.7) - 使用 REST, WebSockets, Backbone 和 Django。</li>
+<li><a href="http://www.tangowithdjango.com/" target="_blank" rel="noopener">Tango With Django</a> (1.5)</li>
+<li><a href="http://chimera.labs.oreilly.com/books/1234000000754/index.html" target="_blank" rel="noopener">Test-Driven Web Development with Python</a> (1.7)</li>
+<li><a href="https://www.twoscoopspress.com/products/two-scoops-of-django-1-8/" target="_blank" rel="noopener">Two Scoops of Django: Best Practices for Django 1.8</a> - 关于 Python 和 Django 开发的最佳实践的书。</li>
+</ul>
+<h2 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h2><ul>
+<li><a href="http://tutorial.djangogirls.org/" target="_blank" rel="noopener">Django Girls Tutorial</a> - 一篇有趣并且吸引人的教程，显示了如何使用 Django 创建一个 blog 并部署到 Heroku。</li>
+<li><a href="http://www.django-introduction.com/" target="_blank" rel="noopener">Django Introduction</a> - 一组可复用的幻灯片，可用于向更多人传授关于 Django 的知识。</li>
+<li><a href="https://github.com/pydanny/djangopackages/" target="_blank" rel="noopener">Django packages</a> - Django Packages 是一个 Django 的可复用应用，站点，工具等的目录。</li>
+<li><a href="https://www.djangosites.org/" target="_blank" rel="noopener">Django Sites</a> - Django Sites 收集了基于 Django 的网站的案例。</li>
+<li><a href="http://www.fullstackpython.com/django.html" target="_blank" rel="noopener">Full Stack Python’s Django page</a> - 包含对 Django 哲学及其组件的解释，并且还有链向其它资源和教程的链接。</li>
+</ul>
+<h2 id="会议"><a href="#会议" class="headerlink" title="会议"></a>会议</h2><ul>
+<li><a href="https://www.djangobeer.com/" target="_blank" rel="noopener">Django Beer</a> - 佛罗伦萨 Django 社区的聚会。</li>
+<li><a href="http://djangovillage.it/" target="_blank" rel="noopener">Django Village</a> - 意大利 Django 社会大会。与全意大利及海外 Django 人的好机会。</li>
+<li><a href="https://twitter.com/djangoweekend" target="_blank" rel="noopener">Django Weekend</a> - 是一个 Django/Python 非营利社区活动，完全由自愿者组织和运营。该大会主要关注 Django，但是有关 Python 的各个方面也都在其范围内。</li>
+<li><a href="http://www.djangounderthehood.com/" target="_blank" rel="noopener">Django: Under The Hood</a> - 是一个令人兴奋的针对有经验的 Django 开发人员的新 Django 会议。来学习关于 Django 的内部机理，帮助规划其愿景。</li>
+<li><a href="http://www.djangocon.eu/" target="_blank" rel="noopener">DjangoCon Europe</a> - 是欧洲年度最大的 Django 会议，通常在暮春举行。</li>
+<li><a href="http://www.djangocon.us/" target="_blank" rel="noopener">DjangoCon US</a> - 是北美最大的 Django 会议，通常在每年九月的第一周举行。</li>
+</ul>
+<h1 id="非-Python-包"><a href="#非-Python-包" class="headerlink" title="非 Python 包"></a>非 Python 包</h1><ul>
+<li><a href="https://github.com/pydanny/cookiecutter-django" target="_blank" rel="noopener">cookiecutter-django, star:2559</a> - 一个 cookiecutter 模板，用于快速创建 Django 项目。</li>
+</ul>
+<h2 id="外部文档"><a href="#外部文档" class="headerlink" title="外部文档"></a>外部文档</h2><p><em>关于 Django 特性的其它信息源。</em></p>
+<ul>
+<li><a href="http://ccbv.co.uk/" target="_blank" rel="noopener">Classy Class-Based Views</a> - 对每个 Django 中基于类的通用视图的全部方法和属性进行了详细的描述。</li>
+<li><a href="http://www.cdrf.co/" target="_blank" rel="noopener">Classy Django REST Framework</a> - 对 Django REST 框架中每个基于类的视图和序列化器的全部方法和属性进行了详细的描述。</li>
+</ul>
+<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><ul>
+<li><a href="https://www.codingforentrepreneurs.com/projects/" target="_blank" rel="noopener">CodingforEntrepreneur</a> - 一组关于 Django 及所有基于 Django 的项目的最佳视频集。</li>
+<li><a href="https://godjango.com/" target="_blank" rel="noopener">GoDjango</a> - 包含了从初级到高级的 Django 视频。囊括了从第 3 方应用到 Django 核心组件的内容。</li>
+<li><a href="https://github.com/rosarior/django-must-watch/" target="_blank" rel="noopener">Must Watch Django Videos</a> - 关于 Django 和 Python 的必看视频。</li>
+<li><a href="https://onemonth.com/" target="_blank" rel="noopener">One Month Django</a> - 这组视频集将在一个月内教会你 Django。</li>
+</ul>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p><em>那些方便 Django 使用的非 Django 项目。</em></p>
+<ul>
+<li><a href="https://github.com/timonweb/Django-manage.py-anywhere/" target="_blank" rel="noopener">Django-manage.py-anywhere, star:14</a> - 可从任意地方运行 manage.py。找到距离最近的 manage.py 文件，并基于该文件运行命令。</li>
+<li><a href="https://github.com/dcramer/logan" target="_blank" rel="noopener">Logan, star:192</a> - 一个用于单独运行 Django 应用的工具集。它提供了用于创建一个 CLI 运行器，管理配置信息，及启动程序的工具（2 年前更新）。</li>
+</ul>
+<h1 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h1><p>Just fork and send a pull request with your awesome Django apps, projects or resources. By contributing you agree to abide by the Code of Merit.</p>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python%E5%B7%A5%E5%85%B7%E5%8C%85/">
+                                    <span class="chip bg-color">python工具包</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                                    <span class="chip bg-color">后端文章转载</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-04-24T20-20-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/26/vagrant-xia-zai-jing-xiang-jia-su/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="vagrant">
+                        
+                        <span class="card-title">vagrant</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            因为vagrant官网是在国外的，所以下载十分的慢，这里介绍怎么下载镜像来快速开发
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">运维工具</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/24/python-xu-ni-huan-jing-yuan-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Python中的虚拟环境（Virtualenv）及其工作原理">
+                        
+                        <span class="card-title">Python中的虚拟环境（Virtualenv）及其工作原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            转载优质文章
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">后端文章转载</span>
+                    </a>
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

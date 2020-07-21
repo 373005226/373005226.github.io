@@ -1,0 +1,1323 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker学习笔记五, 勤奋小L的博客">
+    <meta name="description" content="介绍了Docker swarm">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>docker学习笔记五 | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = 'd548c5b83fa61d8e3bd86ad42a7ffea9b7c86e3f9d8095c1577d3e1270bb9420';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">docker学习笔记五</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                运维
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    26 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>总结慕课网docker课程的学习总结，本篇总结了docker swarm的理念和操作</p>
+</blockquote>
+<h2 id="Docker-swarm"><a href="#Docker-swarm" class="headerlink" title="Docker swarm"></a>Docker swarm</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200507213343.png" alt=""></p>
+<p>之前学的都是docker在一台机器上运行，但是一般的应用都是比较复杂的，不可能所有的应用都在一台机器上运行</p>
+<p>生产环境一般都是在集群里面部署应用，这样就会涉及到很多容器，那么就会遇到如下等问题</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200507213536.png" alt=""></p>
+<p>在这样的情况下，需要一套容器的编排系统，在这样的情况下swarm就诞生了，swarm并不是唯一的一个编排的工具，但是swarm是唯一一个内置于docker的编排工具，之前的都是运行在单机的模式下，不是运行在swarm的模式下</p>
+<p>这里先介绍一下swarm的架构，以及重要的概念</p>
+<h2 id="swarm基础架构"><a href="#swarm基础架构" class="headerlink" title="swarm基础架构"></a>swarm基础架构</h2><p>swarm是一套集群的架构，有集群里面肯定是有节点，有节点的话就有角色</p>
+<p>在swarm里面，节点主要有两种角色，一种叫manager，一种叫worker</p>
+<p>第一种角色就是manager，manager是整个集群的大脑，既然是大脑，而且是生产环境，为了避免单点故障，大脑至少要有两个，如果是多个的话，那么就设计到状态的同步问题，这个就涉及到一个内置的分布式存储的数据库，这个数据呢是通过Raft协议去做的一个数据同步，Raft能够确保manager节点之间的信息是对称同步的</p>
+<p>第二种角色就是worker，worker就是一个干活的节点，大部分的容器要部署，都要运行到worker节点上面，当然manger节点上也是可以运行的，但是主要还是在worker节点上面，因为worker节点比较多一点。worker节点也有数据需要同步，他们就通过一个叫Gossip的网络去做信息的同步</p>
+<p>Swarm manager和worker节点之间通信是通过TLS去加密的，加密的信息的都是寸在于manager的节点的内置分布式存储数据库里面的，而且是通过加密存储在硬盘里面的</p>
+<p>整体架构如下图所示：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200507214550.png" alt=""></p>
+<h2 id="Service和Replicas"><a href="#Service和Replicas" class="headerlink" title="Service和Replicas"></a>Service和Replicas</h2><p>Service在docker compose里面的Service概念其实是一样的，一个Service就代表了一个容器，但是在Replicas模式的情况下，就是需要去做一个横向的拓展，既然是横向去拓展，在部署的时候，一个Replicas其实就是一个容器，比如下图的service是Nginx，要给它做三个拓展，实际上部署的时候就会产生三个容器，他们会通过调度系统来调度到不同的node上面（也就是通过swarm manager这个节点去部署一个service的时候，是不知道service会运行在哪些swarm节点上面的，这个是通过swarm的调度算法去算的，比如看哪些节点的负载比较轻一些，有充足的内存和cpu资源，就会把容器调度在这台机器上面）</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200507214633.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508095409.png" alt="swam创建service的时候调度的过程"></p>
+<p>基本上讲的就是在swarm manager上做所有的决策，最终的结果呢就是把service部署在哪台node节点上面，再去执行实际操作就可以了，这个就是一个基本的调度情况</p>
+<h2 id="docker-swarm创建三个节点"><a href="#docker-swarm创建三个节点" class="headerlink" title="docker swarm创建三个节点"></a>docker swarm创建三个节点</h2><p>如果要安装一个 swarm cluster</p>
+<p>先看初始化init的参数</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508103017.png" alt=""></p>
+<p>主要看第一条参数指定地址</p>
+<p>因为初始化swarm cluster就要宣告一个地址，cluster必须要有多个节点，要让别的节点知道这个节点的存在，就要添加一个本地的地址，本地的地址通过ip a查看</p>
+<p>知道自己的服务器地址后直接添加manager节点即可</p>
+<p>输入后可得到docker swarm join之类的结果，如下图所示</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508110231.png" alt="manager节点"></p>
+<p>只需要黏贴这串字符串执行，那么就可以添加为worker节点</p>
+<p>然后再用一个服务器，执行这串命令，如下图所示就是成功</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508110447.png" alt="worker1节点"></p>
+<p>再切回manager服务器查看节点</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508110529.png" alt="manager节点"></p>
+<p>可以看到节点添加成功</p>
+<p>实战需要三台服务器，所以我再用本地的docker添加为worker节点</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508110846.png" alt="worker2节点"></p>
+<p>可以看到已经有三台服务器，有leader就是manager节点的服务器，其余皆是worker节点</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508110932.png" alt="manager节点"></p>
+<p>当然还可以通过docker-machine和play-with-docker</p>
+<p>并且play-with-docker还可以快速创建节点和环境</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508111622.png" alt=""></p>
+<h2 id="docker-swarm-service"><a href="#docker-swarm-service" class="headerlink" title="docker swarm service"></a>docker swarm service</h2><p>在docker-compose里面一个service就是一个容器，而且是在允许在同一台机器上面</p>
+<p>而在swarm模式下面呢，如果是创建一个service，这个service是一个容器，默认情况下会运行到cluster里面的任何一个节点上面</p>
+<p>在docker swarm模式下创建service是不同的</p>
+<p>先查看命令如何使用</p>
+<pre><code>docker service</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508112139.png" alt="docker service"></p>
+<p>这个create命令跟run命令很相似，但是run是在本地创建一个container，在cluster里面创建一个service，这个service不一定会在本地</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508112724.png" alt="docker service create命令"></p>
+<p>这里先创建一个service</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508113037.png" alt="创建service"></p>
+<p>busybox就是image的名字，sh也就是shell，这个就是command</p>
+<p>然后<code>docker service ls</code>就可以看到<code>service</code>创建完成</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508113211.png" alt="docker service ls执行结果"></p>
+<p>这个service也可以理解为container，这个在哪台机器上呢可以通过ps命令查看</p>
+<pre><code>docker service ps +service的名字</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508113404.png" alt="查看service在哪个节点"></p>
+<p>从图中看到，这个容器是在docker-desktop这个节点上的，也就是我本地window上的docker节点，然后在本地的docker查看一下运行的容器</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508114342.png" alt="在docker-desktop节点上查看运行的容器"></p>
+<p>可以看到刚刚service创建的容器，这个名字并不叫demo，而是<code>demo+.随机数</code></p>
+<p>接下来可以看<code>docker service ls</code>执行结果的<code>MODE</code>和<code>REPLTCAS</code></p>
+<p>这两个说明这个service是可以水平拓展的，这个跟docker-compose的scale，可以把service去横向去拓展，拓展成多个，这个<code>REPLTCAS</code>也是同样的意思，那么如何对它进行拓展呢，其实命令差不多的，先执行下面的命令查看如何使用 </p>
+<pre><code>docker service scale</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508115448.png" alt="docker service scale查看命令"></p>
+<p>然后对service demo进行拓展</p>
+<pre><code>docker service scale demo=5</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508115553.png" alt=""></p>
+<p>因为这个service要平均部署到cluster里面，可能在其他的节点看到这个service（容器）</p>
+<p>然后等待执行完毕再看看service</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508115722.png" alt=""></p>
+<p>这里就变成了5个了，分母代表scale的数量，分子是代表有多少个service ready了</p>
+<p>这里再看看service的详情</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508115834.png" alt=""></p>
+<p>这里是部署到整个cluster里面的，具体详情如下图</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508120046.png" alt="manager节点"></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508120059.png" alt="worker1节点"></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508120116.png" alt="worker2节点"></p>
+<p>这里如果是我再其中一台服务器把service强制删除</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508120236.png" alt="错误：destop节点删除容器"></p>
+<p>然后再ls看一下service的情况</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508120610.png" alt="错误：manager节点查看结果"></p>
+<p>一开始是4/5的，几秒后就变成5/5了</p>
+<p>下面这个也是一样</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508120524.png" alt="work1节点服务器删除容器"></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508120549.png" alt="manager节点服务器查看结果"></p>
+<p>然后等待几秒后再查看一次</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508120711.png" alt=""></p>
+<p>这个究竟是什么原因让4/5变成5/5呢</p>
+<p>这里详细查看一下demo</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508142754.png" alt="docker service ps demo"></p>
+<p> 可以看到启动的容器数量还是没有少的，这个scale的5不仅是能做到横向拓展，还能够保证一定数量的拓展是有效的，也就是说swarm发现部分的节点失效了或者是退出了，然后通过cluster的任意节点去修补来达到特定数目的scale，能确保数量一定是5，而且是一定是有效的，也就是能确保系统是有效和有用的</p>
+<p>如果是想删除的话</p>
+<p>直接rm +service的名字即可，比如</p>
+<pre><code>docker service rm demo</code></pre><p>虽然删除后ls和ps上是看不到了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508144847.png" alt=""></p>
+<p>然后<code>docker ps</code> 马上看节点上的容器还是在运行的，要等几秒才能够删除完毕</p>
+<p><code>docker service remove</code>这个过程是很快的，但是后台需要有一个比较复杂的操作，要看<code>service</code>有多少个容器在<code>cluster</code>里面，并且在哪台机器上面，然后再去把<code>container</code>删除，这个过程比较复杂，所以比较慢一点，但是<code>service</code>本身的删除是很快的</p>
+<h2 id="WordPress实战"><a href="#WordPress实战" class="headerlink" title="WordPress实战"></a>WordPress实战</h2><p> 如果是用swarm来启动WordPress的话，要考虑到WordPress和mysql通信问题，这两个容器极有可能不在同一个节点上，这个其实可以用docker-compose的那个原理，只要两个容器在同一个网络上就可以进行通信</p>
+<p>所以是先要创建一个overlay的network</p>
+<pre><code>docker network create -d overlay demo</code></pre><p>先在manager节点服务器创建并且查看网络</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508151237.png" alt="manager节点查看网络"></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508151324.png" alt="worker节点查看网络"></p>
+<p>这里worker节点服务器是没有的</p>
+<p>这里先去创建一个mysql的服务看一下</p>
+<p><strong>注意：一定要是5.7及以下，因为mysql8.0有新的验证</strong></p>
+<pre><code>docker service create --name mysql --env MYSQL_ROOT_PASSWORD=root --env MYSQL_DATABASE=wordpress --network demo --mount type=volume,source=mysql-data,destination=/var/lib/mysql mysql:5.7</code></pre><p> –env：就是环境变量</p>
+<p>–mount：在docker run有个-v的参数来指定volume，在service就是–mount，格式是type就是volume，volume的名字就是mysql-data，destination就是文件的地址</p>
+<p>–network：就是指定的网络名字</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508153243.png" alt="mysql创建成功"></p>
+<p>然后ps看一下mysql这个service在哪个地方</p>
+<pre><code>docker service ps mysql</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508153333.png" alt=""></p>
+<p>然后发现是在manager的服务器上</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508153440.png" alt="manager节点服务器ps查看"></p>
+<p>然后创建的应该是WordPress这个service</p>
+<pre><code>docker service create --name wordpress -p 80:80 --env WORDPRESS_DB_PASSWORD=root --env WORDPRESS_DB_HOST=mysql --network demo wordpress</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508153813.png" alt="安装WordPress"></p>
+<p>然后要查看一下WordPress被安装在哪个节点上了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508160412.png" alt="查看WordPress在哪个节点"></p>
+<p>可以看到是在我的另一台worker1节点服务器上</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508160517.png" alt="worker1节点服务器"></p>
+<p>然后输入这个节点的ip地址</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508162406.png" alt=""></p>
+<p>则docker service之间是可以正常的访问的</p>
+<p>而且无论你输入的是manager还是worker的节点，正常情况下输入ip地址：80端口都是可以访问WordPress的，但是因为我的服务器80端口部署着网站，所以就不再演示</p>
+<p>在创建两个容器之前，创建了一个名为demo的network，但是在manager节点的服务器创建完之后并没有在worker服务器能够实时查看的到，但是创建完service以后，worker上的名为demo的network就可以显示了，这个过程是swarm去完成的，WordPress这个节点被分配到worker这个节点以后，要保证和manager节点进行通信的话，这个overlay的网络一定要同步，swarm这个底层的机制会自己去同步网络的创建，因为要实现多个节点之间的网络通信，肯定要通过overlay这个网络去实现</p>
+<h2 id="集群之间的网络通信Rouing-Mesh之Internal"><a href="#集群之间的网络通信Rouing-Mesh之Internal" class="headerlink" title="集群之间的网络通信Rouing Mesh之Internal"></a>集群之间的网络通信Rouing Mesh之Internal</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509110347.png" alt="Rouing Mesh的两种体现方式"></p>
+<p>上面的那个实战<code>WordPress</code>有两个<code>service</code>组成，一个<code>WordPress</code>，一个<code>mysql</code>，通过<code>service</code>的创建，把它部署到<code>swarm  cluster</code>里面</p>
+<p>这两个<code>service</code>是在两个不同的节点上面的，注意这两个节点之间是需要相互通信的，这个就涉及到<code>DNS服务发现</code>的问题</p>
+<p>通过<code>docker-compose</code>去部署一个app的话，如果app的<code>service</code>，如果他们连接到了一个网络上面去，他们之间就可以通过<code>service</code>的名字去相互访问的，底层是通过<code>DNS服务发现</code>去实现的，这个是<code>docker-compose</code>在单机的情况下</p>
+<p>如果是在<code>swarm</code>的<code>cluster</code>里面，<code>service</code>是在不同的节点上面的，他们之间也是可以通过<code>service</code> 的名字去通信，这个肯定也有<code>DNS</code>的功劳在里面，对于<code>swarm</code>来讲，有内置的<code>DNS服务发现</code>的功能在里面 ，<code>service</code>之间如果是连到一个<code>overlay</code>的网络上面，然后就可以在<code>overlay</code>这个网络上面的所有<code>service</code>添加DNS的记录，通过DNS记录呢就可以得到他的IP地址，然后就可以访问这个服务了，但是实际上来讲，DNS的名字呢就是<code>service</code>的名字，但是对应的DNS记录后面的IP并不是这个<code>service</code>所在容器的<code>IP</code>，而是有一个虚拟的IP地址叫做<code>VIP</code>，为什么会这样呢，如果<code>service</code>有<code>scale</code>（即有横向的拓展），<code>service</code>有<code>scale</code>来说不一定在哪个节点上面，可能是因为某个节点进程的service down掉了，可能会在另一个节点上重新启动一个，这个时候IP地址都变了，或者说<code>scale</code>的时候有很多个<code>service</code>，对应着很多个IP地址，如果是在<code>DNS</code>里面，通过真实的IP地址去标识的话，这个就是很不稳定的，这个时候就可以通过虚拟的IP来解决这个问题（即<code>service</code>会分配一个<code>虚拟的IP</code>，而这个<code>IP</code>是不会变的），但是这个<code>虚拟IP</code>背后指的实际的IP，这个呢就是通过<code>LVS</code>来实现的，下面通过一个实验来证明</p>
+<h3 id="确定不是真实的IP地址"><a href="#确定不是真实的IP地址" class="headerlink" title="确定不是真实的IP地址"></a>确定不是真实的IP地址</h3><p>（1） 首先要要确保有一个名为<code>demo</code>的<code>overlay</code>的<code>network</code>，如果没有就通过以下的命令去创建一个</p>
+<pre><code>docker network create -d overlay demo</code></pre><p>（2） 接着创建一个名为whoami的service（是一个web服务，访问会返回容器的host name）</p>
+<pre><code>docker service create --name whoami -p 8000:8000 --network demo -d jwilder/whoami</code></pre><p>（3） 看一下这个服务运行在哪个容器</p>
+<pre><code>docker service ps whoami</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508171352.png" alt=""></p>
+<p>（4） 可以看到是在manager的容器上面</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508171449.png" alt=""></p>
+<p>（5） 输入这个ip地址+端口看看</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508171546.png" alt=""></p>
+<p> （6）再创建一个service也连接到这个名为demo的network上面</p>
+<pre><code>docker service create --name client -d --network demo busybox sh -c &quot;while true;do sleep 3600;done&quot;</code></pre><p>（7）创建好之后查看client这个service的信息</p>
+<pre><code>docker service ls</code></pre><pre><code>docker service client</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172017.png" alt=""></p>
+<p>（8）查看这个服务的节点服务器</p>
+<pre><code>docker ps</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172042.png" alt=""></p>
+<p>（9）进入这个容器<code>ping</code> <code>whoami</code>的这个<code>service</code></p>
+<pre><code>docker exec --it 6ead sh</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172218.png" alt=""></p>
+<p>可以得出结论，不仅仅是可以<code>ping</code>的通的，而且<code>ping</code>的地址不是真实的IP地址而是<code>10.0.0.49</code></p>
+<h3 id="确定地址不会改变"><a href="#确定地址不会改变" class="headerlink" title="确定地址不会改变"></a>确定地址不会改变</h3><p>上面已经得出结论ping的IP地址不是真实的IP</p>
+<p>（1）这里再使用<code>scale</code>进行一次横向拓展</p>
+<pre><code> docker service scale whoami=2</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172559.png" alt=""></p>
+<p>（2）查看部署到哪个节点了</p>
+<pre><code>docker service ps whoami</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508172646.png" alt=""></p>
+<p>（3）进入容器查看真实的DNS地址</p>
+<p>可以从图中看到已经部署了两个容器,然后再进入容器里面</p>
+<pre><code>docker exec -it 6ead sh</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508173351.png" alt=""></p>
+<p>这个ping的IP和上面的居然还是一样的，还是<code>10.0.0.49</code></p>
+<p>有两个whoami的service，它到底ping的是谁呢</p>
+<p>这个<code>10.0.0.49</code>并不是任何一个容器的地址，其实是一个<code>VIP（virtual IP）</code></p>
+<p>这里因为跟视频的操作有冲突，可能是版本不同，所有nslookup whoami没有反应</p>
+<p>如果是按照视频中的操作的话，<code>nslookup whoami</code>会返回<code>10.0.0.49</code></p>
+<p>如果<code>scale</code>了两个<code>whoami</code>，那么<code>nslookup tasks.whoami</code>会有两个地址，如下图</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508183052.png" alt=""></p>
+<p>这两个才是真实的容器地址</p>
+<p>同理，如果<code>scale</code>横向拓展成三个，再取得<code>scale tasks.whoami</code>，就会返回三个记录</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508183327.png" style="zoom:67%;" />
+
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508183306.png" alt=""></p>
+<p>这三个就是真实的<code>ip</code></p>
+<p>如果是<code>ping whoami</code>的话返回的肯定只是唯一的结果，是视频中<code>service</code>的<code>VIP``10.0.0.7</code></p>
+<p>而虚拟的IP会跟真实的IP有一个web关系，就通过这个web关系去找到<code>service</code>的实际ip地址</p>
+<p>然后再去访问一下<code>whoami</code>的服务，会发现每一次访问得到的结果都是不一样的</p>
+<p>原因如下：</p>
+<p>首先<code>whoami</code>在三个节点上都有运行</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508202144.png" alt=""></p>
+<p>然后访问<code>whoami</code>的DNS</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200508202313.png" alt=""></p>
+<p>背后是有三个IP地址的</p>
+<p>（4）测试负载均衡</p>
+<p>进入容器后下载一下whoami，查看每次的host是否相同</p>
+<p>每次访问视频里面的10.0.0.7，都会做一次负载均衡</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509100252.png" alt=""></p>
+<p>从图中可知，每次的访问的得到的结果都不一样，是因为<code>swarm</code>部署到三个节点，再访问的话每三次返回的值都是不一样的</p>
+<p>其中负载均衡都是通过<code>LVS</code>去实现的 ，整体架构如下图</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509111935.png" alt=""></p>
+<p>访问web的时候访问的是那个VIP，VIP如何映射到具体的container的IP呢，这个就是通过LVS去实现的，LVS的全称为Linux Virtual Server，如果在谷歌搜索LVS Keepalived配置，这两个东西可以部署一个高可用的负载均衡配置</p>
+<p>两台web service和一台client service都连接到同一个overlay的网络，他们分别位于不同的swarm节点上面，client访问web的时候是通过VIP去访问的，VIP会自动负载均衡到每一个service节点上面，这个就是internal Load Balancing，具体过程如下图</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509112515.png" alt=""></p>
+<p>这张图的意思就是在client访问外边的service的时候，过程是DNS把service name解析成一个具体的VIP，VIP的话比如VIP去访问8000端口，那么具体会通过iptables以及IPVS（LVS）去做负载均衡，负载均衡到不同的service节点上去</p>
+<h2 id="集群之间的网络通信Rouing-Mesh之Ingress"><a href="#集群之间的网络通信Rouing-Mesh之Ingress" class="headerlink" title="集群之间的网络通信Rouing Mesh之Ingress"></a>集群之间的网络通信Rouing Mesh之Ingress</h2><p>Ingress网络呢，就是service有绑定端口，比如说WordPress是绑定的80端口，whoami绑定的是8000端口。，但是呢service虽然只是在swarm的部分cluster节点上运行，但是呢可以在swarm的任何节点上通过端口去访问到这个服务，这个是就是Ingress</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509113821.png" alt=""></p>
+<p> 这个ingress network其实之前的实验是有个现象的：把WordPress这个服务部署到swarm cluster里面，也就是只在一个cluster节点上，web服务暴露一个端口8080，但是在swarm cluster的任何节点上访问8080，都可以访问到WordPress ，这个就是ingress network去实现的</p>
+<p>ingress network的作用就是，当去任何一台swarm节点上访问端口服务的时候，会把服务通过本节点的 IPVS（IPV6）去通过LVS去load balance到真正具有service的节点上面，比如图中的访问docker host3上的8080，但是docker host3上面肯定是没有这个service</p>
+<p>但是可以通过ipvs把请求转发到另外两台具有service的docker host上面去，然后再把response返回，这个就是ingress network的一个主要的现象</p>
+<p> 就想curl whoami，每次访问得到的结果都是不一样的，即便是在没有whoami的service的服务器，curl whoami也是照样可以返回结果</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509150834.png" alt=""></p>
+<p>那么是为什么即使是在没有部署whoami的host上面，还是可以继续访问8000端口得到结果呢，这里可以通过看看iptables看看转化规则</p>
+<pre><code>sudo iptables -nL -t nat</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509152459.png" alt=""></p>
+<p>红线这行的意思就是访问8000端口，就可以把端口转发到172.19.0.2:8000地址上</p>
+<p>然后先看看本地端口的情况</p>
+<pre><code>ip a</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509152800.png" alt=""></p>
+<p>可以看到两个标注的地方是同一个地址的</p>
+<pre><code>brctl show</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509152916.png" alt=""></p>
+<p>可以看到这个docker_gwbridge连接的interface有两个</p>
+<p>看一下network的情况</p>
+<pre><code>docker network ls
+docker network inspect docker_gwbridge</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153118.png" alt=""></p>
+<p>而得到的结果中可以看到这个就是刚刚转发后的地址</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153225.png" alt=""></p>
+<p>但是端口转发后ingress-sbox后悔怎么样呢，这里就要先进到ingress-sbox里面看看</p>
+<pre><code>sudo ls /var/run/docker/netns
+nsenter --net=/var/run/docker/netns/ingress_sbox</code></pre><p> <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153511.png" alt=""></p>
+<p>这里是因为我用的是paly with docker，所以是进不去，正常情况下进去的情况是这样的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153755.png" alt=""></p>
+<p>进去后角色就变成了root</p>
+<p>整体情况如下图</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509153916.png" alt=""></p>
+<p>数据包 通过default_gwbridge转发到了一个叫做ingress-sbox里面，ingress-sbox这个其实是一个network inspect</p>
+<p>在ingress-sbox里面通过iptables和IPVS（LVS）就可以看到数据被正确的转发到了另外一个host上面去，通过的网络就是ingress 的overlay的这个网络，经过vxlan的这个封装去到另一台机器上面</p>
+<p>数据包进入到淡绿色框框里面了，要通过防火墙去看一下数据包的数据运行情况</p>
+<pre><code>iptables -nL -t mangle</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509160221.png" alt=""></p>
+<p>标注的地方就是给8000端口做了一个mark，这个其实就是做负载均衡的，是要通过lvs把去往8000端口的数据包呢做一个load balance来转换到具体实际的ip地址</p>
+<p>继续去演示一下LVS</p>
+<pre><code>yum install ipvsadm
+ipvsadm -l</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509161455.png" alt=""></p>
+<p>可以从图中看到做了一次load balance，选择了这两个地址，这两个地址就是真实IP地址</p>
+<h2 id="DockerStack部署wordpress"><a href="#DockerStack部署wordpress" class="headerlink" title="DockerStack部署wordpress"></a>DockerStack部署wordpress</h2><p>Docker-compose是在本机上进行开发的工具和只能在本地进行部署的，在swarm里面不是单机的，是一个cluster，这里演示如何在swarm上面部署一个WordPress</p>
+<p>docker- compose3版本中只增加了一个deploy命令</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509164117.png" alt="">    deploy支持的写法如下</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509164220.png" alt=""></p>
+<p>deploy之下有很多个子命令</p>
+<h3 id="ENDPOINT-MODE"><a href="#ENDPOINT-MODE" class="headerlink" title="ENDPOINT_MODE"></a>ENDPOINT_MODE</h3><p>这个是指明endpoint的模式</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509164338.png" alt=""></p>
+<p>这个有两种的取值方式，默认是使用VIp</p>
+<p>第一种是VIP，也就是虚拟的IP，也就是上面提到的</p>
+<p>第二种是dnsrr，也就是不使用虚拟的IP了，直接使用service的IP地址，但是service的IP地址肯定是有很多个 ，特别是使用scale拓展之后，每个service都有自己的IP地址，使用dnsrr的时候，就不通过ip地址去访问，通过dns的时候会帮我们去做一个robin（负载均衡的一种策略，如果是service有三个IP地址去循环使用）</p>
+<h3 id="LABELS"><a href="#LABELS" class="headerlink" title="LABELS"></a>LABELS</h3><p>这个是一个帮助描述的一个信息，类似一个key-value的形式</p>
+<h3 id="MODE"><a href="#MODE" class="headerlink" title="MODE"></a>MODE</h3><p>这个有两种，一种是global，一种是replicated，区别在于global的cluster只有一个（即不能做横向拓展，就是不能用scale命令去拓展）。第二种是replicated，这个刚刚好相反，这个是mode的默认值</p>
+<h3 id="PLACEMENT"><a href="#PLACEMENT" class="headerlink" title="PLACEMENT"></a>PLACEMENT</h3><p>这个主要是为了限制service的条件，比如限制节点的角色为manager</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509170547.png" alt=""></p>
+<p>如图限制角色为managr，则db这个service就只会部署到manager上面</p>
+<h3 id="REPLICAS"><a href="#REPLICAS" class="headerlink" title="REPLICAS"></a>REPLICAS</h3><p>这个是mode设置成replicated的时候，就可以在初始化的时候指定需要几个replicas，比如说图中的6个，那么就会部署6个service</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509170938.png" alt=""></p>
+<h3 id="RESOURCES"><a href="#RESOURCES" class="headerlink" title="RESOURCES"></a>RESOURCES</h3><p>这个很简单就是做一些资源的限制，比如cpu啊memory啊。或者是做一个保留，去做一个优先保留cpu、memory，可以优先的去使用这些资源</p>
+<h3 id="RESTART-POLICY"><a href="#RESTART-POLICY" class="headerlink" title="RESTART_POLICY"></a>RESTART_POLICY</h3><p>这个如果是某个service因为某种原因停止了，那么是否需要去重启，重启的条件是什么，比如延时啊、最大重启的次数什么的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509171221.png" alt=""></p>
+<h3 id="UPDATE-CONFIG"><a href="#UPDATE-CONFIG" class="headerlink" title="UPDATE_CONFIG"></a>UPDATE_CONFIG</h3><p>做一些配置，这个配置可以用于对service进行更新的时候遵循的原则，比如并行的数量</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509171343.png" alt=""></p>
+<p>如上图，对service进行update的时候，有两个replicas，如果parallelism为1，delay为10s，那么意思就是每个更新的间隔都是10s</p>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>对比之前单机版的compose文件</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509171806.png" alt=""></p>
+<p>首先如果是在swarm上面因为可能不在一台机器上面，所以就不能使用bridge网络了，要改成overlay</p>
+<p>其次对mysql是有要求的，mysql只能有一台机器，不能够去做横向拓展，所以mode要改成global，而且还有额外的要求只能部署在manager节点上面</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509172058.png" alt=""></p>
+<p>对于WordPress呢，首先是要可以横向拓展的，并且初始化replicated要等于3</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509172320.png" alt=""></p>
+<p>第三个参数是RESTART_POLICY，重启或者是失败的情况下要设置一些参数</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509172517.png" alt=""></p>
+<p>最后是要设置更新的策略</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509172624.png" alt=""></p>
+<p>这里进入正题，在swarm模式下使用docker-compose去部署，命令是不同的</p>
+<pre><code>docker stacks</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509173213.png" alt="docker stacks命令"></p>
+<p><code>docker stack</code>的命令比较简单</p>
+<p><code>deploy</code>是通过命令去部署一个<code>stack</code>，这个<code>stack</code>就是一个<code>service</code>，<code>service</code>是<code>docker.compose.yml</code>的文件里面去自定义的</p>
+<p>看看<code>stack</code>的命令，可以看出是要给一个<code>stack</code>取一个名字</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509173424.png" alt=""></p>
+<p>这里把<code>stack</code>取名为<code>WordPress</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509173611.png" alt=""></p>
+<p>紧接着是<code>--compose-file</code>后面要接一个文件</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509173927.png" alt=""></p>
+<p>如图创建成功</p>
+<p><code>wordpress_my-network</code>这个前缀<code>wordpress_</code>就是前面取的<code>stack</code>的名字</p>
+<p>然后查看一下<code>stack</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509174050.png" alt=""></p>
+<p>再看一下细节</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200509174121.png" alt=""></p>
+<h2 id="部署投票应用"><a href="#部署投票应用" class="headerlink" title="部署投票应用"></a>部署投票应用</h2><p>使用swarm部署投票应用的话是跟compose不同的</p>
+<p>这里的image一定拉取才行不能通过build</p>
+<h2 id="Docker-Secret管理和使用"><a href="#Docker-Secret管理和使用" class="headerlink" title="Docker Secret管理和使用"></a>Docker Secret管理和使用</h2><p> 上面的docker-compose.yml文件，如果要连接数据库的之类的话， 就需要添加密码，但是如果是生产环境的话，肯定是不可以把密码这么明显的信息放到文件里面的</p>
+<p>所以肯定是希望docker可以访问到这个密码</p>
+<p>Secret有如下几种类型</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200510202037.png" style="zoom: 50%;" />
+
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200510202108.png" alt="Docker Swarm架构图"></p>
+<p>架构图如上图所示</p>
+<p>Swarm manager和worker节点之间通信是通过TLS去加密的，加密的信息的都是寸在于manager的节点的内置分布式存储数据库里面的，而且是通过加密存储在硬盘里面的。基于这个环境之下，如果有个service想去用这个Secret的话，就比如说数据库想用一个密码，可以分配给这个service一个权限，能让他访问的到Secret就可以了</p>
+<p>Docker Secret有如下那么几点</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200510202844.png" style="zoom:50%;" />
+
+<p>接下来查看一下secret的创建</p>
+<pre><code>docker secret create</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511104344.png" alt=""></p>
+<p>意思就是secret可以是从文件里面创建，也可以从标准的输入里面创建</p>
+<p>这里先看一下从文件里面创建</p>
+<h3 id="文件创建密码"><a href="#文件创建密码" class="headerlink" title="文件创建密码"></a>文件创建密码</h3><pre><code>vim password </code></pre><p>在里面随便写一个密码，比如我的是admin123，文件名字为password</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511105703.png" alt=""></p>
+<p>然后再创建一个密码，password就是文件</p>
+<pre><code>docker secret create my-pw password </code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511105958.png" alt=""></p>
+<p>就可以创建一个secret，然后再去把这个文件删掉</p>
+<p>然后就可以看到secret上有哪些密码了</p>
+<pre><code>docker secret ls</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511110230.png" alt=""></p>
+<h3 id="输入流创建密码"><a href="#输入流创建密码" class="headerlink" title="输入流创建密码"></a>输入流创建密码</h3><pre><code>echo &quot;adminadmin&quot; | docker secret create my-pw2 -</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511110409.png" alt=""></p>
+<p>然后再看一下secret密码</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511110501.png" alt=""></p>
+<h3 id="使用secret"><a href="#使用secret" class="headerlink" title="使用secret"></a>使用secret</h3><p>先看一下secret create的参数</p>
+<pre><code>docker service create --help</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511112726.png" alt=""></p>
+<p>这个行也就是说可以把secret暴露给一个service</p>
+<pre><code>docker service create --name client --secret my-pw busybox sh -c &quot;while true;do sleep 3600;done&quot;</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511112955.png" alt=""></p>
+<p>然后查看一下这个服务运行在哪个端口</p>
+<pre><code>docker service ls
+docker service ps client
+docker ps</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511113209.png" alt=""></p>
+<p>看到到服务是在这台服务器上运行后，进入里面查看一下</p>
+<pre><code>docker exec -it 容器ID sh</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511113405.png" alt=""></p>
+<p>可以看到里面的密码就是我刚刚创建的</p>
+<p>当然密码可以创建一个也可以创建多个，比如mysql有个root密码和普通用户的密码</p>
+<p>这里拿mysql的看一下</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511113731.png" alt=""></p>
+<p>从图中看出是有这么一行参数来指定root密码的</p>
+<p>然后再创建一下service</p>
+<pre><code>docker service create --name db --secret my-pw -e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my-pw mysql</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511113951.png" alt=""></p>
+<p>等待几分钟，创建好并且查询到之后找到这个容器</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511114355.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511114406.png" alt=""></p>
+<p>进入这个容器查询密码</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511114700.png" alt=""></p>
+<p>密码没错就是刚刚我创建的，然后再去执行进入mysql</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511114752.png" alt=""></p>
+<p>密码我输入的就是admin123，如图是可以进入的，说明password生效了</p>
+<h3 id="如何在docker-compose-yml文件使用secret"><a href="#如何在docker-compose-yml文件使用secret" class="headerlink" title="如何在docker-compose.yml文件使用secret"></a>如何在docker-compose.yml文件使用secret</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511115258.png" alt="docker-compose.yml"></p>
+<p>这里图中标注的就是指定secret的名字和指定密码的存储位置</p>
+<p>secret的来源有两种</p>
+<p>一种是事先创建好了my-pw，也就是图中的写法，写好docker-compose.yml文件后，通过命令去创建即可</p>
+<pre><code>docker stack deploy WordPress -c=docker-compose.yml</code></pre><p>另外一种是如果没有事先创建好，也可以在docker-compose.yml文件里面指定一个部分去专门定义secret</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511115521.png" alt=""></p>
+<p>在当前的文件中也创建一个名为password的文件，在里面去指定密码，当然这种方式是肯定不推荐的，因为密码都已经保存在文件里面了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511115618.png" alt=""></p>
+<h3 id="image更新"><a href="#image更新" class="headerlink" title="image更新"></a>image更新</h3><p>这个更新的意思是在运行的时候都进行更新，因为swarm是作用于生产环境的，也就是在swarm运行的是实际业务，当然是不可以停止几分钟去更新</p>
+<p>这里进行一次简单的更新演示</p>
+<p>实验前首先要确定有demo这个overlay的network</p>
+<pre><code>docker network ls</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511150149.png" alt=""></p>
+<p>如果没有就去创建一个</p>
+<pre><code>docker network create -d overlay demo</code></pre><p>然后创建一个服务</p>
+<pre><code>docker service create --name web --publish 8080:5000 --network demo xiaopeng163/python-flask-demo:1.0</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511151023.png" alt=""></p>
+<p>注意这个只是1.0的版本，下面是演示如何更新到2.0版本</p>
+<p> （1） 首先要对业务进行一个拓展，因为要停掉一个去重新创建，但是又不能让业务中止</p>
+<pre><code>docker service scale web=2</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511152101.png" alt=""></p>
+<p>（2） 为了证明服务没有中断，这里在work节点上写一个脚本不停地访问8080端口</p>
+<pre><code>sh -c &quot;while true;do curl 127.0.0.1:8080&amp;&amp;sleep 1;done&quot;</code></pre><p>（3） 在manager使用service update</p>
+<p>先看一下参数</p>
+<pre><code>docker service update --help</code></pre><p>可以更新很多</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511152922.png" alt=""></p>
+<p>比如说可以更新密码、更新端口、更新镜像等，这里就是要更新镜像</p>
+<pre><code>docker service update --image xiaopeng163/python-flask-demo:2.0 web</code></pre><p>然后服务就已经开始更新了，这个时候就可以回去work节点查看是否更新成功</p>
+<p>这个时候会出现如下状况</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511155028.png" alt=""></p>
+<p>因为只更新了一个，另外一个是正在更新，等全部更新完之后就可以看到全部都是2.0了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511155130.png" alt=""></p>
+<p>此时看看web服务的详情，会发现1.0的版本已经shutdown</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511155229.png" alt=""></p>
+<p>说明更新是成功的</p>
+<p>但是这个有个很严重的问题就是1.0和2.0的版本在更新的时候是并存的，这个是很有问题的</p>
+<h3 id="端口更新"><a href="#端口更新" class="headerlink" title="端口更新"></a>端口更新</h3><pre><code>docker service update --publish-rm 8080:5000 --publish-add 8088:5000 web</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200511155838.png" alt=""></p>
+<p>这个时候发现原来的端口不能用了，端口改成8088了</p>
+<h3 id="docker-compose-yml更新"><a href="#docker-compose-yml更新" class="headerlink" title="docker-compose.yml更新"></a>docker-compose.yml更新</h3><p>如果是用过docker stack去更新的话，只需要改掉对应的地方即可，因为docker stack是没有update参数的</p>
+<p>改完之后再docker stack deploy -c=docker-compose.yml即可</p>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-05-07T21-50-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/05/11/docker-xue-xi-bi-ji-liu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="docker学习笔记六">
+                        
+                        <span class="card-title">docker学习笔记六</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            介绍了Kubernetes的用法和介绍
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/06/docker-xue-xi-bi-ji-si/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="docker学习笔记四">
+                        
+                        <span class="card-title">docker学习笔记四</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            介绍了Docker Compose
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

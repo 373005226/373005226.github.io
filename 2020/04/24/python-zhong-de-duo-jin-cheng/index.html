@@ -1,0 +1,1165 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Python中的多进程（multiprocessing）, 勤奋小L的博客">
+    <meta name="description" content="转载Cookiecutter文章，详解了Cookiecutter的安装及使用">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Python中的多进程（multiprocessing） | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Python中的多进程（multiprocessing）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                                <span class="chip bg-color">后端文章转载</span>
+                            </a>
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                后端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-24
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    7 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>本文转载于：<a href="https://note.qidong.name/2018/11/python-multiprocessing/" target="_blank" rel="noopener">https://note.qidong.name/2018/11/python-multiprocessing/</a></p>
+<p>文章作者：<a href="http://weibo.com/u/2837672545" target="_blank" rel="noopener">匿蟒</a></p>
+<p>作者博客：<a href="https://note.qidong.name/" target="_blank" rel="noopener">https://note.qidong.name/</a></p>
+</blockquote>
+<p>Python中的多线程、包括协程，由于CPython的<a href="https://docs.python.org/3/glossary.html#term-global-interpreter-lock" target="_blank" rel="noopener">GIL</a>（Global interpreter Lock ，全局解释锁）问题，只能实现并发（Concurrency），不能实现并行（Parallelism）。 因此，在并行计算场景，多进程是Python最简单的选择。</p>
+<h2 id="Python多进程概念"><a href="#Python多进程概念" class="headerlink" title="Python多进程概念"></a>Python多进程概念</h2><p>概念，就是<code>class</code>。 了解概念，就会了解<code>class</code>之间的关系。</p>
+<h3 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h3><p>与普通的多进程类似，Python多进程的核心概念是<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" target="_blank" rel="noopener">Process</a>（进程）。 一个简单的进程使用示例如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> multiprocessing <span class="token keyword">import</span> Process
+
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    p0 <span class="token operator">=</span> Process<span class="token punctuation">(</span>target<span class="token operator">=</span>f<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'alice'</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p1 <span class="token operator">=</span> Process<span class="token punctuation">(</span>target<span class="token operator">=</span>f<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'bob'</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p0<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    p1<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    p0<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    p1<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>进程使用三部曲：</p>
+<ol>
+<li>创建<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" target="_blank" rel="noopener">Process</a>。</li>
+<li><code>start</code>，开始执行。</li>
+<li><code>join</code>，等待执行完毕。</li>
+</ol>
+<h3 id="Pipe"><a href="#Pipe" class="headerlink" title="Pipe"></a>Pipe</h3><p><a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Pipe" target="_blank" rel="noopener">Pipe</a>即管道，是Bash中最常见的跨进程通信手段。 <code>echo hello | tee stdout.log</code>，中间的<code>|</code>就是管道，把前一个进程的stdout传递给下一个进程。</p>
+<p><a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Pipe" target="_blank" rel="noopener">Pipe</a>创建时，返回两个<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.connection.Connection" target="_blank" rel="noopener">Connection</a>，前者负责<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.connection.Connection.send" target="_blank" rel="noopener">send</a>而后者负责<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.connection.Connection.recv" target="_blank" rel="noopener">recv</a>。 两个进程各执一端，就可以实现单向通信。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> multiprocessing <span class="token keyword">import</span> Process<span class="token punctuation">,</span> Pipe
+
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    conn<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">42</span><span class="token punctuation">,</span> None<span class="token punctuation">,</span> <span class="token string">'hello'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    receiver<span class="token punctuation">,</span> sender <span class="token operator">=</span> Pipe<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    p <span class="token operator">=</span> Process<span class="token punctuation">(</span>target<span class="token operator">=</span>f<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>sender<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>receiver<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># prints "[42, None, 'hello']"</span>
+    p<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>如果在创建<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Pipe" target="_blank" rel="noopener">Pipe</a>时，指定<code>duplex=True</code>，比如<code>Pipe(True)</code>，两个<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.connection.Connection" target="_blank" rel="noopener">Connection</a>即可实现双向通信。 默认<code>duplex=False</code>。</p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p><a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Queue" target="_blank" rel="noopener">Queue</a>是一个基于标准模块<a href="https://docs.python.org/3/library/queue.html#module-queue" target="_blank" rel="noopener">queue</a>、包装了<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Pipe" target="_blank" rel="noopener">Pipe</a>的类。 它不仅具有先进先出（FIFO）的特性，还能实现跨进程通信。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> multiprocessing <span class="token keyword">import</span> Process<span class="token punctuation">,</span> Queue
+
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    q<span class="token punctuation">.</span>put<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">42</span><span class="token punctuation">,</span> None<span class="token punctuation">,</span> <span class="token string">'hello'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    q <span class="token operator">=</span> Queue<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    p <span class="token operator">=</span> Process<span class="token punctuation">(</span>target<span class="token operator">=</span>f<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># prints "[42, None, 'hello']"</span>
+    p<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>在实际使用中，除了少数简单场景外，都不会直接使用<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" target="_blank" rel="noopener">Process</a>、<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Pipe" target="_blank" rel="noopener">Pipe</a>、<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Queue" target="_blank" rel="noopener">Queue</a>来实现多进程。 这种低层级（low level，无贬义）的API，可读性差，容易出错。 常用的是高层级API——进程池。</p>
+<h3 id="Pool"><a href="#Pool" class="headerlink" title="Pool"></a>Pool</h3><p>由于<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" target="_blank" rel="noopener">Process</a>创建、销毁有较大开销，并且并行数受机器CPU数量的限制，过多无益。 一个<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool" target="_blank" rel="noopener">Pool</a>（进程池）会统一创建并维持一定数量的<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" target="_blank" rel="noopener">Process</a>，并行地执行Task。 在所有Task执行完毕后，再统一地关闭<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" target="_blank" rel="noopener">Process</a>。</p>
+<p>这里Task（任务）的概念，并未被实现为一个<code>class</code>，而是一个<code>callable</code>，比如下面的<code>f</code>、<code>g</code>。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python3</span>
+<span class="token comment" spellcheck="true"># -*- coding:utf-8 -*-</span>
+<span class="token keyword">from</span> multiprocessing<span class="token punctuation">.</span>pool <span class="token keyword">import</span> Pool
+
+
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x <span class="token operator">*</span> x
+
+
+<span class="token keyword">def</span> <span class="token function">g</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x<span class="token operator">**</span>y
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> Pool<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">as</span> pool<span class="token punctuation">:</span>
+        result <span class="token operator">=</span> pool<span class="token punctuation">.</span>map<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+
+    <span class="token keyword">with</span> Pool<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">as</span> pool<span class="token punctuation">:</span>
+        result <span class="token operator">=</span> pool<span class="token punctuation">.</span>starmap<span class="token punctuation">(</span>g<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>以上代码保存为<code>multi.py</code>文件，执行结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">$ python3 multi.py
+<class 'list'>
+[1, 4, 9, 16, 25]
+<class 'list'>
+[1, 16, 243, 4096, 78125]</code></pre>
+<p><a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.map" target="_blank" rel="noopener">map</a>的用法类似内置函数<code>map</code>，专门处理单个参数的<code>callable</code>； 而<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.starmap" target="_blank" rel="noopener">starmap</a>则是用来处理多个参数的<code>callable</code>。</p>
+<p>此外，还有利用<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool" target="_blank" rel="noopener">Pool</a>执行单个Task的<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.apply" target="_blank" rel="noopener">apply</a>。 除非Task本身就是一个个来的，否则使用<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.apply" target="_blank" rel="noopener">apply</a>的效率不高。</p>
+<p>比起<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.apply" target="_blank" rel="noopener">apply</a>，更值得关注的是<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.imap" target="_blank" rel="noopener">imap</a>和<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.imap_unordered" target="_blank" rel="noopener">imap_unordered</a>。 <a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.imap" target="_blank" rel="noopener">imap</a>和<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.map" target="_blank" rel="noopener">map</a>非常类似，而这个多出来的<code>i</code>，则是<code>Iterable</code>。 <a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.map" target="_blank" rel="noopener">map</a>使用的是<code>list</code>而<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.imap" target="_blank" rel="noopener">imap</a>则是<code>Iterable</code>，前者效率略高，而后者内存消耗显著的小。 在处理结果上，<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.imap" target="_blank" rel="noopener">imap</a>可以尽快返回一个<code>Iterable</code>的结果，而<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.map" target="_blank" rel="noopener">map</a>则需要等待全部Task执行完毕，返回<code>list</code>。 无论<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.map" target="_blank" rel="noopener">map</a>还是<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.imap" target="_blank" rel="noopener">imap</a>，都需要按顺序等待Task执行完成，而<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.imap_unordered" target="_blank" rel="noopener">imap_unordered</a>则不必。 <a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.imap_unordered" target="_blank" rel="noopener">imap_unordered</a>返回的<code>Iterable</code>，会优先迭代到先执行完成的Task。 三者各有特点，要按需使用。</p>
+<h3 id="AsyncResult"><a href="#AsyncResult" class="headerlink" title="AsyncResult"></a>AsyncResult</h3><p>以上为进程池的同步使用方案。 同步方案会卡在<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.map" target="_blank" rel="noopener">map</a>或<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.starmap" target="_blank" rel="noopener">starmap</a>这一行，直到所有任务都执行完毕。 有时，我们会需要一个异步方案，这时就需要用到<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.map_async" target="_blank" rel="noopener">map_async</a>或<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.starmap_async" target="_blank" rel="noopener">starmap_async</a>。 它们返回的结果，就是<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.AsyncResult" target="_blank" rel="noopener">AsyncResult</a>。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python3</span>
+<span class="token comment" spellcheck="true"># -*- coding:utf-8 -*-</span>
+<span class="token keyword">from</span> multiprocessing<span class="token punctuation">.</span>pool <span class="token keyword">import</span> Pool
+
+
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x <span class="token operator">*</span> x
+
+
+<span class="token keyword">def</span> <span class="token function">g</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x<span class="token operator">**</span>y
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> Pool<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">as</span> pool<span class="token punctuation">:</span>
+        result <span class="token operator">=</span> pool<span class="token punctuation">.</span>map_async<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">with</span> Pool<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">as</span> pool<span class="token punctuation">:</span>
+        result <span class="token operator">=</span> pool<span class="token punctuation">.</span>starmap_async<span class="token punctuation">(</span>g<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>以上代码保存为<code>multi_async.py</code>文件，执行结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">$ python3 multi_async.py
+<class 'multiprocessing.pool.MapResult'>
+[1, 4, 9, 16, 25]
+<class 'multiprocessing.pool.MapResult'>
+[1, 16, 243, 4096, 78125]</code></pre>
+<p>以上代码中，实际等待位置是<code>result.get()</code>那一行。</p>
+<h2 id="Timeout"><a href="#Timeout" class="headerlink" title="Timeout"></a>Timeout</h2><p>以上多进程代码，其实是不完善的。 除非Task非常简单，并无IO、网络等资源依赖，否则多进程也好、多线程也好，都有可能执行不完。 为了避免未知原因的挂起，及时止损，通常需要设置<code>timeout</code>。 <a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.AsyncResult" target="_blank" rel="noopener">AsyncResult</a>在阻塞时，可以用<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.AsyncResult.wait" target="_blank" rel="noopener">wait</a>或<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.AsyncResult.get" target="_blank" rel="noopener">get</a>，设置<code>timeout</code>参数。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python3</span>
+<span class="token comment" spellcheck="true"># -*- coding:utf-8 -*-</span>
+
+<span class="token keyword">import</span> time
+<span class="token keyword">from</span> multiprocessing<span class="token punctuation">.</span>pool <span class="token keyword">import</span> Pool<span class="token punctuation">,</span> TimeoutError
+
+
+<span class="token keyword">def</span> <span class="token function">sleep</span><span class="token punctuation">(</span>duration<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span>duration<span class="token punctuation">)</span>
+    <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'result.log'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> file<span class="token punctuation">:</span>
+        file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>str<span class="token punctuation">(</span>duration<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        file<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> duration
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> Pool<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">as</span> pool<span class="token punctuation">:</span>
+        result <span class="token operator">=</span> pool<span class="token punctuation">.</span>map_async<span class="token punctuation">(</span>sleep<span class="token punctuation">,</span> range<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>get<span class="token punctuation">(</span>timeout<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span> TimeoutError<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>TimeoutError<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>以上代码保存为<code>timeout.py</code>文件，执行结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">$ python3 timeout.py
+TimeoutError
+$ cat result.log
+0
+1
+2
+3
+4</code></pre>
+<p>可以看到，由于<code>timeout=5</code>，4秒以前的Task都成功了，而大于（等于）5秒的Task都失败了。</p>
+<p>当<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.AsyncResult.get" target="_blank" rel="noopener">get</a>需要等待所有进程结束时，需要在<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool" target="_blank" rel="noopener">Pool</a>关闭以前。 因此，需要在<code>with</code>作用域中执行，否则将超时或（没设<code>timeout</code>）挂死。 如果使用<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.AsyncResult.wait" target="_blank" rel="noopener">wait</a>，则<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.AsyncResult.get" target="_blank" rel="noopener">get</a>可以在<code>with</code>以外获取结果。 因此，更<strong>推荐使用</strong><a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.AsyncResult.wait" target="_blank" rel="noopener">wait</a>配合<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.AsyncResult.get" target="_blank" rel="noopener">get</a>。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> Pool<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">as</span> pool<span class="token punctuation">:</span>
+        result <span class="token operator">=</span> pool<span class="token punctuation">.</span>map_async<span class="token punctuation">(</span>sleep<span class="token punctuation">,</span> range<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        result<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> TimeoutError<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>TimeoutError<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span></code></pre>
+<p>替换<code>main()</code>，执行结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">$ python3 timeout.py
+[0, 1, 2, 3, 4, 5, 6, 7]</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>前面提到Python做并行计算的选择，多进程<a href="https://docs.python.org/3/library/multiprocessing.html" target="_blank" rel="noopener">multiprocessing</a>只是最简单的一个选择。 另外还有两个常见选择： 一是使用其它解释器实现的Python，比如PyPy、Jython等； 二是使用C语言优化需要并行的代码，在Native层绕过GIL的限制； 三是使用协程（或线程）加<a href="https://docs.python.org/3/library/subprocess.html" target="_blank" rel="noopener">subprocess</a>，这也算是多进程的一个方案。 此外，确认代码是否真的会被GIL所影响，是首要工作。 如果代码中真正耗时的计算是在Native层执行——这在Python中非常常见，比如OpenCV——那么用多线程也没问题。</p>
+<p>另外，要注意多进程的测试覆盖问题。 在另一个进程执行的代码，是无法被<a href="https://pypi.org/project/coverage/" target="_blank" rel="noopener">coverage</a>确认为已覆盖的。 需要对执行内容进行单独测试，或者在程序中预留未用多进程优化的原始方案。</p>
+<p>其实，多进程带来的额外通信、切换开销，有时候也是很明显的。 还有个问题是，主进程被杀掉后，子进程会仍然存活，这在某些场景下会产生未知问题。 所以，在机器不是很强大的场景下，用原始的单线程串行方案，是最经济实用的选择。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://docs.python.org/3/library/multiprocessing.html" target="_blank" rel="noopener">multiprocessing — Process-based parallelism — Python 3.7.1 documentation</a></li>
+<li><a href="https://stackoverflow.com/a/26521507/5588463" target="_blank" rel="noopener">python - multiprocessing.Pool: What’s the difference between map_async and imap? - Stack Overflow</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/30275154" target="_blank" rel="noopener">谈谈Python协程技术的演进 - 知乎</a></li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                                    <span class="chip bg-color">后端文章转载</span>
+                                </a>
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-04-24T10-42-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/24/python-xu-ni-huan-jing-yuan-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Python中的虚拟环境（Virtualenv）及其工作原理">
+                        
+                        <span class="card-title">Python中的虚拟环境（Virtualenv）及其工作原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            转载优质文章
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">后端文章转载</span>
+                    </a>
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/24/cookiecutter-chuang-jian-xin-xiang-mu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="用cookiecutter来创建新项目">
+                        
+                        <span class="card-title">用cookiecutter来创建新项目</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            转载Cookiecutter文章，详解了Cookiecutter的创建
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python%E5%B7%A5%E5%85%B7%E5%8C%85/">
+                        <span class="chip bg-color">python工具包</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%90%8E%E7%AB%AF%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">后端文章转载</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

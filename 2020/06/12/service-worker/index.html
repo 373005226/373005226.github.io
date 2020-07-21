@@ -1,0 +1,1698 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Service Worker, 勤奋小L的博客">
+    <meta name="description" content="Service Worker：让你的 Web 应用牛逼起来">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Service Worker | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Service Worker</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                <span class="chip bg-color">转载</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                                <span class="chip bg-color">前端面试题</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">
+                                <span class="chip bg-color">前端优化</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    27 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>本文出自公众号：前端瓶子君</p>
+<p>原文地址<a href="https://mp.weixin.qq.com/s/8mjrSeQfG2m5Kpkb13EPAg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/8mjrSeQfG2m5Kpkb13EPAg</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文首先会简单介绍下前端的常见缓存方式，再引入serviceworker的概念，针对其原理和如何运用进行介绍。然后基于google推出的第三方库workbox，在产品中进行运用实践，并对其原理进行简要剖析。</p>
+<h2 id="前端缓存简介"><a href="#前端缓存简介" class="headerlink" title="前端缓存简介"></a>前端缓存简介</h2><p>先简单介绍一下现有的前端缓存技术方案，主要分为http缓存和浏览器缓存。</p>
+<h3 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h3><p>http缓存都是第二次请求时开始的，这也是个老生常谈的话题了。无非也是那几个http头的问题：</p>
+<h4 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h4><p>HTTP1.0的内容，服务器使用Expires头来告诉Web客户端它可以使用当前副本，直到指定的时间为止。</p>
+<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h4><p>HTTP1.1引入了Cathe-Control，它使用max-age指定资源被缓存多久，主要是解决了Expires一个重大的缺陷，就是它设置的是一个固定的时间点，客户端时间和服务端时间可能有误差。</p>
+<p>所以一般会把两个头都带上，这种缓存称为<strong>强缓存</strong>，表现形式为：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175720" alt="img"></p>
+<h4 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a>Last-Modified / If-Modified-Since</h4><p>Last-Modified是服务器告诉浏览器该资源的最后修改时间，If-Modified-Since是请求头带上的，上次服务器给自己的该资源的最后修改时间。然后服务器拿去对比。</p>
+<p>若资源的最后修改时间大于If-Modified-Since，说明资源又被改动过，则响应整片资源内容，返回状态码200；</p>
+<p>若资源的最后修改时间小于或等于If-Modified-Since，说明资源无新修改，则响应<strong>HTTP 304</strong>，告知浏览器继续使用当前版本。</p>
+<h4 id="Etag-If-None-Match"><a href="#Etag-If-None-Match" class="headerlink" title="Etag / If-None-Match"></a>Etag / If-None-Match</h4><p>前面提到由文件的修改时间来判断文件是否改动，还是会带来一定的误差，比如注释等无关紧要的修改等。所以推出了新的方式。</p>
+<p>Etag是由服务端特定算法生成的该文件的唯一标识，而请求头把返回的Etag值通过If-None-Match再带给服务端，服务端通过比对从而决定是否响应新内容。这也是304缓存。</p>
+<h3 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h3><h4 id="storage"><a href="#storage" class="headerlink" title="storage"></a>storage</h4><p>简单的缓存方式有cookie，localStorage和sessionStorage。这里就不详细介绍他们的区别了，这里说下通过localStorage来缓存静态资源的优化方案。</p>
+<p>localStorage通常有5MB的存储空间，我们以[微信文章页](<a href="https://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=2651340686&amp;idx=1&amp;sn=3714a2d0941667bed71228c66351ee76&amp;chksm=80f3c254b7844b42f38f61de40a50076d69a1fe752c46348e4121525d12144f0bedbb90c79c6&amp;mpshare=1&amp;scene=21&amp;srcid=0906lJRVVg3vsE0wP2BnDlLu&amp;key=ff3a3f386f4471abb7bae740ce6af96999ee908a3e121c460d8a5152d30f4a98db19585834e9746bf411d11071c558231692934f2c20adf0a393c35d83836ee543b76a7f95ffdc8192edbfaac941f906&amp;ascene=0&amp;uin=MjUwMTIyNjY4Mg==&amp;devicetype=iMac" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=2651340686&amp;idx=1&amp;sn=3714a2d0941667bed71228c66351ee76&amp;chksm=80f3c254b7844b42f38f61de40a50076d69a1fe752c46348e4121525d12144f0bedbb90c79c6&amp;mpshare=1&amp;scene=21&amp;srcid=0906lJRVVg3vsE0wP2BnDlLu&amp;key=ff3a3f386f4471abb7bae740ce6af96999ee908a3e121c460d8a5152d30f4a98db19585834e9746bf411d11071c558231692934f2c20adf0a393c35d83836ee543b76a7f95ffdc8192edbfaac941f906&amp;ascene=0&amp;uin=MjUwMTIyNjY4Mg==&amp;devicetype=iMac</a> MacBookPro13,2 OSX OSX 10.12.1 build(16B2657)&amp;version=12020810&amp;nettype=WIFI&amp;lang=zh_CN&amp;fontScale=100&amp;pass_ticket=b33mKzDsMeDiiLYT97yWzaAceoFf/ly7szwZmE/62 tvutX3nrerhLuye wpBGCb#wechat_redirect)为例。</p>
+<p>查看请求发现，基本没有js和css的请求，因为它把全部的不需要改动的资源都放到了localStorage中：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175729" alt="img"></p>
+<p>所以微信的文章页加载非常的快。</p>
+<h4 id="前端数据库"><a href="#前端数据库" class="headerlink" title="前端数据库"></a>前端数据库</h4><p>前端数据库有WebSql和IndexDB，其中WebSql被规范废弃，他们都有大约50MB的最大容量，可以理解为localStorage的加强版。</p>
+<h4 id="应用缓存"><a href="#应用缓存" class="headerlink" title="应用缓存"></a>应用缓存</h4><p>应用缓存主要是通过manifest文件来注册被缓存的静态资源，已经被废弃，因为他的设计有些不合理的地方，他在缓存静态文件的同时，也会默认缓存html文件。这导致页面的更新只能通过manifest文件中的版本号来决定。所以，应用缓存只适合那种常年不变化的静态网站。如此的不方便，也是被废弃的重要原因。</p>
+<p>PWA也运用了该文件，不同于manifest简单的将文件通过是否缓存进行分类，PWA用manifest构建了自己的APP骨架，<strong>并运用Servie Worker来控制缓存</strong>，这也是今天的主角。</p>
+<h2 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h2><p>Service Worker本质上也是浏览器缓存资源用的，只不过他不仅仅是cache，也是通过worker的方式来进一步优化。</p>
+<p>他基于h5的web worker，所以绝对不会阻碍当前js线程的执行，sw最重要的工作原理就是</p>
+<p>1、后台线程：独立于当前网页线程；</p>
+<p>2、网络代理：在网页发起请求时代理，来缓存文件；</p>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175735" alt="img"></p>
+<p>可以看到，基本上新版浏览器还是兼容滴。之前是只有chrome和firefox支持，现在微软和苹果也相继支持了。</p>
+<h3 id="成熟程度"><a href="#成熟程度" class="headerlink" title="成熟程度"></a>成熟程度</h3><p>判断一个技术是否值得尝试，肯定要考虑下它的成熟程度，否则过一段时间又和应用缓存一样被规范抛弃就尴尬了。</p>
+<p>所以这里我列举了几个使用Service Worker的页面：</p>
+<p>淘宝</p>
+<p>网易新闻</p>
+<p>考拉</p>
+<p>所以说还是可以尝试下的。</p>
+<h3 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h3><p>一个网站是否启用Service Worker，可以通过开发者工具中的Application来查看：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175754" alt="img"></p>
+<p>被Service Worker缓存的文件，可以在Network中看到Size项为 from ServiceWorker：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175800" alt="img"></p>
+<p>也可以在Application的Cache Storage中查看缓存的具体内容：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175805" alt="img"></p>
+<p>如果是具体的断点调试，需要使用对应的线程，不再是main线程了，这也是webworker的通用调试方法：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175811" alt="img"></p>
+<h3 id="使用条件"><a href="#使用条件" class="headerlink" title="使用条件"></a>使用条件</h3><p>sw 是基于 HTTPS 的，因为service worker中涉及到请求拦截，所以必须使用HTTPS协议来保障安全。如果是本地调试的话，localhost是可以的。</p>
+<p>而我们刚好全站强制https化，所以正好可以使用。</p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>大概可以用如下图片来解释：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175816" alt="img"></p>
+<h4 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h4><p>要使用Service worker，首先需要注册一个sw，通知浏览器为该页面分配一块内存，然后sw就会进入安装阶段。</p>
+<p>一个简单的注册方式：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> navigator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        navigator<span class="token punctuation">.</span>serviceWorker<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token string">'./sw.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>当然也可以考虑全面点，参考网易新闻的注册方式：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token string">"serviceWorker"</span> <span class="token keyword">in</span> navigator <span class="token operator">&amp;&amp;</span> window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"load"</span><span class="token punctuation">,</span>
+    <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> e <span class="token operator">=</span> location<span class="token punctuation">.</span>pathname<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/\/news\/[a-z]{1,}\//</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"article-sw.js?v=08494f887a520e6455fa"</span><span class="token punctuation">;</span>
+        navigator<span class="token punctuation">.</span>serviceWorker<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            n<span class="token punctuation">.</span>onupdatefound <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">var</span> e <span class="token operator">=</span> n<span class="token punctuation">.</span>installing<span class="token punctuation">;</span>
+                e<span class="token punctuation">.</span>onstatechange <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">switch</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">case</span> <span class="token string">"installed"</span><span class="token punctuation">:</span>
+                            navigator<span class="token punctuation">.</span>serviceWorker<span class="token punctuation">.</span>controller <span class="token operator">?</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"New or updated content is available."</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Content is now available offline!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token keyword">break</span><span class="token punctuation">;</span>
+                        <span class="token keyword">case</span> <span class="token string">"redundant"</span><span class="token punctuation">:</span>
+                            console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"The installing service worker became redundant."</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"Error during service worker registration:"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>前面提到过，由于sw会监听和代理所有的请求，所以<strong>sw的作用域</strong>就显得额外的重要了，比如说我们只想监听我们专题页的所有请求，就在注册时指定路径：</p>
+<pre><code>navigator.serviceWorker.register(&#39;/topics/sw.js&#39;);</code></pre><p>这样就只会对topics/下面的路径进行优化。</p>
+<h4 id="installing"><a href="#installing" class="headerlink" title="installing"></a>installing</h4><p>我们注册后，浏览器就会开始安装sw，可以通过事件监听：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//service worker安装成功后开始缓存所需的资源</span>
+<span class="token keyword">var</span> CACHE_PREFIX <span class="token operator">=</span> <span class="token string">'cms-sw-cache'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> CACHE_VERSION <span class="token operator">=</span> <span class="token string">'0.0.20'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> CACHE_NAME <span class="token operator">=</span> CACHE_PREFIX<span class="token operator">+</span><span class="token string">'-'</span><span class="token operator">+</span>CACHE_VERSION<span class="token punctuation">;</span>
+<span class="token keyword">var</span> allAssets <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'./main.css'</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'install'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">//调试时跳过等待过程</span>
+    self<span class="token punctuation">.</span><span class="token function">skipWaiting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment" spellcheck="true">// Perform install steps</span>
+    <span class="token comment" spellcheck="true">//首先 event.waitUntil 你可以理解为 new Promise，</span>
+    <span class="token comment" spellcheck="true">//它接受的实际参数只能是一个 promise，因为,caches 和 cache.addAll 返回的都是 Promise，</span>
+    <span class="token comment" spellcheck="true">//这里就是一个串行的异步加载，当所有加载都成功时，那么 SW 就可以下一步。</span>
+    <span class="token comment" spellcheck="true">//另外，event.waitUntil 还有另外一个重要好处，它可以用来延长一个事件作用的时间，</span>
+    <span class="token comment" spellcheck="true">//这里特别针对于我们 SW 来说，比如我们使用 caches.open 是用来打开指定的缓存，但开启的时候，</span>
+    <span class="token comment" spellcheck="true">//并不是一下就能调用成功，也有可能有一定延迟，由于系统会随时睡眠 SW，所以，为了防止执行中断，</span>
+    <span class="token comment" spellcheck="true">//就需要使用 event.waitUntil 进行捕获。另外，event.waitUntil 会监听所有的异步 promise</span>
+    <span class="token comment" spellcheck="true">//如果其中一个 promise 是 reject 状态，那么该次 event 是失败的。这就导致，我们的 SW 开启失败。</span>
+    event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span>
+        caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>CACHE_NAME<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>cache<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[SW]: Opened cache'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>allAssets<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>安装时，sw就开始缓存文件了，会检查所有文件的缓存状态，如果都已经缓存了，则安装成功，进入下一阶段。</p>
+<h4 id="activated"><a href="#activated" class="headerlink" title="activated"></a>activated</h4><p>如果是第一次加载sw，在安装后，会直接进入activated阶段，而如果sw进行更新，情况就会显得复杂一些。流程如下：</p>
+<p>首先老的sw为A，新的sw版本为B。B进入install阶段，而A还处于工作状态，所以B进入waiting阶段。只有等到A被terminated后，B才能正常替换A的工作。</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175841" alt="img"></p>
+<p>这个terminated的时机有如下几种方式：</p>
+<p>1、关闭浏览器一段时间；</p>
+<p>2、手动清除serviceworker；</p>
+<p>3、在sw安装时直接跳过waiting阶段</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//service worker安装成功后开始缓存所需的资源</span>
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'install'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//跳过等待过程</span>
+    self<span class="token punctuation">.</span><span class="token function">skipWaiting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>然后就进入了activated阶段，激活sw工作。</p>
+<p>activated阶段可以做很多有意义的事情，比如更新存储在cache中的key和value：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> CACHE_PREFIX <span class="token operator">=</span> <span class="token string">'cms-sw-cache'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> CACHE_VERSION <span class="token operator">=</span> <span class="token string">'0.0.20'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/**
+ * 找出对应的其他key并进行删除操作
+ * @returns {*}
+ */</span>
+<span class="token keyword">function</span> <span class="token function">deleteOldCaches</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> caches<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>keys<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> all <span class="token operator">=</span> keys<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>key<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>CACHE_PREFIX<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> key<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>CACHE_VERSION<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[SW]: Delete cache:'</span> <span class="token operator">+</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> caches<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>all<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//sw激活阶段,说明上一sw已失效</span>
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+
+    event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span>
+        <span class="token comment" spellcheck="true">// 遍历 caches 里所有缓存的 keys 值</span>
+        caches<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>deleteOldCaches<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="idle"><a href="#idle" class="headerlink" title="idle"></a>idle</h4><p>这个空闲状态一般是不可见的，这种一般说明sw的事情都处理完毕了，然后处于闲置状态了。</p>
+<p>浏览器会周期性的轮询，去释放处于idle的sw占用的资源。</p>
+<h4 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h4><p>该阶段是sw最为关键的一个阶段，用于拦截代理所有指定的请求，并进行对应的操作。</p>
+<p>所有的缓存部分，都是在该阶段，这里举一个简单的例子：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//监听浏览器的所有fetch请求，对已经缓存的资源使用本地缓存回复</span>
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    event<span class="token punctuation">.</span><span class="token function">respondWith</span><span class="token punctuation">(</span>
+        caches<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//该fetch请求已经缓存</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>生命周期大概讲清楚了，我们就以一个具体的例子来说明下原生的serviceworker是如何在生产环境中使用的吧。</p>
+<h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3><p>我们可以以网易新闻的wap页为例,其针对不怎么变化的静态资源开启了sw缓存，具体的sw.js逻辑和解读如下：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token string">'use strict'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//需要缓存的资源列表</span>
+<span class="token keyword">var</span> precacheConfig <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/bg_img_sm_minfy.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"c4f55f5a9784ed2093009dadf1e954f9"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/change.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"9af1b102ef784b8ff08567ba25f31d95"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/icon-download.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"1c02c724381d77a1a19ca18925e9b30c"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/icon-login-dark.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"b59ba5abe97ff29855dfa4bd3a7a9f35"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/icon-refresh.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"a5b1084e41939885969a13f8dbc88abd"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/icon-video-play.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"065ff496d7d36345196d254aff027240"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/icon.ico"</span><span class="token punctuation">,</span>
+        <span class="token string">"a14e5365cc2b27ec57e1ab7866c6a228"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/iconfont_1.eot"</span><span class="token punctuation">,</span>
+        <span class="token string">"e4d2788fef09eb0630d66cc7e6b1ab79"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/iconfont_1.svg"</span><span class="token punctuation">,</span>
+        <span class="token string">"d9e57c341608fddd7c140570167bdabb"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/iconfont_1.ttf"</span><span class="token punctuation">,</span>
+        <span class="token string">"f422407038a3180bb3ce941a4a52bfa2"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/iconfont_1.woff"</span><span class="token punctuation">,</span>
+        <span class="token string">"ead2bef59378b00425779c4ca558d9bd"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/index.5cdf03e8.js"</span><span class="token punctuation">,</span>
+        <span class="token string">"6262ac947d12a7b0baf32be79e273083"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/index.bc729f8a.css"</span><span class="token punctuation">,</span>
+        <span class="token string">"58e54a2c735f72a24715af7dab757739"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/logo-app-bohe.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"ac5116d8f5fcb3e7c49e962c54ff9766"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/logo-app-mail.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"a12bbfaeee7fbf025d5ee85634fca1eb"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/logo-app-manhua.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"b8905b119cf19a43caa2d8a0120bdd06"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/logo-app-open.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"b7cc76ba7874b2132f407049d3e4e6e6"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/logo-app-read.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"e6e9c8bc72f857960822df13141cbbfd"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/logo-site.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"2b0d728b46518870a7e2fe424e9c0085"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/version_no_pic.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"aef80885188e9d763282735e53b25c0e"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/version_pc.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"42f3cc914eab7be4258fac3a4889d41d"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"https://static.ws.126.net/163/wap/f2e/milk_index/version_standard.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"573408fa002e58c347041e9f41a5cd0d"</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> cacheName <span class="token operator">=</span> <span class="token string">'sw-precache-v3-new-wap-index-'</span> <span class="token operator">+</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>registration <span class="token operator">?</span> self<span class="token punctuation">.</span>registration<span class="token punctuation">.</span>scope <span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> ignoreUrlParametersMatching <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">/</span><span class="token operator">^</span>utm_<span class="token operator">/</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> addDirectoryIndex <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>originalUrl<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>originalUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>url<span class="token punctuation">.</span>pathname<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'/'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        url<span class="token punctuation">.</span>pathname <span class="token operator">+</span><span class="token operator">=</span> index<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> url<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> cleanResponse <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>originalResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// If this is not a redirected response, then we don't have to do anything.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>originalResponse<span class="token punctuation">.</span>redirected<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>originalResponse<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// Firefox 50 and below doesn't support the Response.body stream, so we may</span>
+    <span class="token comment" spellcheck="true">// need to read the entire body to memory as a Blob.</span>
+    <span class="token keyword">var</span> bodyPromise <span class="token operator">=</span> <span class="token string">'body'</span> <span class="token keyword">in</span> originalResponse <span class="token operator">?</span>
+        Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>originalResponse<span class="token punctuation">.</span>body<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        originalResponse<span class="token punctuation">.</span><span class="token function">blob</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> bodyPromise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// new Response() is happy when passed either a stream or a Blob.</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span>body<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            headers<span class="token punctuation">:</span> originalResponse<span class="token punctuation">.</span>headers<span class="token punctuation">,</span>
+            status<span class="token punctuation">:</span> originalResponse<span class="token punctuation">.</span>status<span class="token punctuation">,</span>
+            statusText<span class="token punctuation">:</span> originalResponse<span class="token punctuation">.</span>statusText
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> createCacheKey <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>originalUrl<span class="token punctuation">,</span> paramName<span class="token punctuation">,</span> paramValue<span class="token punctuation">,</span>
+                              dontCacheBustUrlsMatching<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Create a new URL object to avoid modifying originalUrl.</span>
+    <span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>originalUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// If dontCacheBustUrlsMatching is not set, or if we don't have a match,</span>
+    <span class="token comment" spellcheck="true">// then add in the extra cache-busting URL parameter.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>dontCacheBustUrlsMatching <span class="token operator">||</span>
+        <span class="token operator">!</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>pathname<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>dontCacheBustUrlsMatching<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        url<span class="token punctuation">.</span>search <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>url<span class="token punctuation">.</span>search <span class="token operator">?</span> <span class="token string">'&amp;'</span> <span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token operator">+</span>
+            <span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>paramName<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'='</span> <span class="token operator">+</span> <span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>paramValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> url<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> isPathWhitelisted <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>whitelist<span class="token punctuation">,</span> absoluteUrlString<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// If the whitelist is empty, then consider all URLs to be whitelisted.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>whitelist<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// Otherwise compare each path regex to the path of the URL passed in.</span>
+    <span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>absoluteUrlString<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pathname<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> whitelist<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>whitelistedPathRegex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> path<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>whitelistedPathRegex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> stripIgnoredUrlParameters <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>originalUrl<span class="token punctuation">,</span>
+                                         ignoreUrlParametersMatching<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>originalUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Remove the hash; see https://github.com/GoogleChrome/sw-precache/issues/290</span>
+    url<span class="token punctuation">.</span>hash <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+    url<span class="token punctuation">.</span>search <span class="token operator">=</span> url<span class="token punctuation">.</span>search<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Exclude initial '?'</span>
+        <span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'&amp;'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Split into an array of 'key=value' strings</span>
+        <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>kv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> kv<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'='</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Split each 'key=value' string into a [key, value] array</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>kv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> ignoreUrlParametersMatching<span class="token punctuation">.</span><span class="token function">every</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>ignoredRegex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token operator">!</span>ignoredRegex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>kv<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Return true iff the key doesn't match any of the regexes.</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>kv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> kv<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'='</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Join each [key, value] array into a 'key=value' string</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'&amp;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Join the array of 'key=value' strings into a string with '&amp;' in between each</span>
+    <span class="token keyword">return</span> url<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> hashParamName <span class="token operator">=</span> <span class="token string">'_sw-precache'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//定义需要缓存的url列表</span>
+<span class="token keyword">var</span> urlsToCacheKeys <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span>
+    precacheConfig<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> relativeUrl <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> hash <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> absoluteUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>relativeUrl<span class="token punctuation">,</span> self<span class="token punctuation">.</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> cacheKey <span class="token operator">=</span> <span class="token function">createCacheKey</span><span class="token punctuation">(</span>absoluteUrl<span class="token punctuation">,</span> hashParamName<span class="token punctuation">,</span> hash<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>absoluteUrl<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cacheKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//把cache中的url提取出来,进行去重操作</span>
+<span class="token keyword">function</span> <span class="token function">setOfCachedUrls</span><span class="token punctuation">(</span>cache<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>requests<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//提取url</span>
+        <span class="token keyword">return</span> requests<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> request<span class="token punctuation">.</span>url<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>urls<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//去重</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>urls<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//sw安装阶段</span>
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'install'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span>
+        <span class="token comment" spellcheck="true">//首先尝试取出存在客户端cache中的数据</span>
+        caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>cache<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">setOfCachedUrls</span><span class="token punctuation">(</span>cache<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>cachedUrls<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>
+                    Array<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span>urlsToCacheKeys<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>cacheKey<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment" spellcheck="true">//如果需要缓存的url不在当前cache中,则添加到cache</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cachedUrls<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>cacheKey<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            <span class="token comment" spellcheck="true">//设置same-origin是为了兼容旧版本safari中其默认值不为same-origin,</span>
+                            <span class="token comment" spellcheck="true">//只有当URL与响应脚本同源才发送 cookies、 HTTP Basic authentication 等验证信息</span>
+                            <span class="token keyword">var</span> request <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Request</span><span class="token punctuation">(</span>cacheKey<span class="token punctuation">,</span> <span class="token punctuation">{</span>credentials<span class="token punctuation">:</span> <span class="token string">'same-origin'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token keyword">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                                <span class="token comment" spellcheck="true">//通过fetch api请求资源</span>
+                                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>response<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                                    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Request for '</span> <span class="token operator">+</span> cacheKey <span class="token operator">+</span> <span class="token string">' returned a '</span> <span class="token operator">+</span>
+                                        <span class="token string">'response with status '</span> <span class="token operator">+</span> response<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                <span class="token punctuation">}</span>
+                                <span class="token keyword">return</span> <span class="token function">cleanResponse</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>responseToCache<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                                    <span class="token comment" spellcheck="true">//并设置到当前cache中</span>
+                                    <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>cacheKey<span class="token punctuation">,</span> responseToCache<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment" spellcheck="true">//强制跳过等待阶段,进入激活阶段</span>
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span><span class="token function">skipWaiting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//清除cache中原来老的一批相同key的数据</span>
+    <span class="token keyword">var</span> setOfExpectedUrls <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>urlsToCacheKeys<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span>
+        caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>cache<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>existingRequests<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>
+                    existingRequests<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>existingRequest<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>setOfExpectedUrls<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>existingRequest<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            <span class="token comment" spellcheck="true">//cache中删除指定对象</span>
+                            <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span>existingRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//self相当于webworker线程的当前作用域</span>
+            <span class="token comment" spellcheck="true">//当一个 service worker 被初始注册时，页面在下次加载之前不会使用它。claim() 方法会立即控制这些页面</span>
+            <span class="token comment" spellcheck="true">//从而更新客户端上的serviceworker</span>
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span>clients<span class="token punctuation">.</span><span class="token function">claim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>method <span class="token operator">===</span> <span class="token string">'GET'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 标识位,用来判断是否需要缓存</span>
+        <span class="token keyword">var</span> shouldRespond<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 对url进行一些处理,移除一些不必要的参数</span>
+        <span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token function">stripIgnoredUrlParameters</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>url<span class="token punctuation">,</span> ignoreUrlParametersMatching<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 如果该url不是我们想要缓存的url,置为false</span>
+        shouldRespond <span class="token operator">=</span> urlsToCacheKeys<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 如果shouldRespond未false,再次验证</span>
+        <span class="token keyword">var</span> directoryIndex <span class="token operator">=</span> <span class="token string">'index.html'</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>shouldRespond <span class="token operator">&amp;&amp;</span> directoryIndex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            url <span class="token operator">=</span> <span class="token function">addDirectoryIndex</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> directoryIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            shouldRespond <span class="token operator">=</span> urlsToCacheKeys<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// 再次验证,判断其是否是一个navigation类型的请求</span>
+        <span class="token keyword">var</span> navigateFallback <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>shouldRespond <span class="token operator">&amp;&amp;</span>
+            navigateFallback <span class="token operator">&amp;&amp;</span>
+            <span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>mode <span class="token operator">===</span> <span class="token string">'navigate'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+            <span class="token function">isPathWhitelisted</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>navigateFallback<span class="token punctuation">,</span> self<span class="token punctuation">.</span>location<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            shouldRespond <span class="token operator">=</span> urlsToCacheKeys<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// 如果标识位为true</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>shouldRespond<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            event<span class="token punctuation">.</span><span class="token function">respondWith</span><span class="token punctuation">(</span>
+                caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>cache<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">//去缓存cache中找对应的url的值</span>
+                    <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>urlsToCacheKeys<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment" spellcheck="true">//如果找到了,就返回value</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                        <span class="token keyword">throw</span> <span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">'The cached response that was expected is missing.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 如果没找到则请求该资源</span>
+                    console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'Couldn\'t serve response for "%s" from cache: %O'</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>url<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>这里的策略大概就是优先在cache中寻找资源，如果找不到再请求资源。可以看出，为了实现一个较为简单的缓存，还是比较复杂和繁琐的，所以很多工具就应运而生了。</p>
+<h2 id="Workbox"><a href="#Workbox" class="headerlink" title="Workbox"></a>Workbox</h2><p>由于直接写原生的sw.js，比较繁琐和复杂，所以一些工具就出现了，而workbox是其中的佼佼者，由google团队推出。</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>在 Workbox 之前，GoogleChrome 团队较早时间推出过 sw-precache 和 sw-toolbox 库，但是在 GoogleChrome 工程师们看来，workbox 才是真正能方便统一的处理离线能力的更完美的方案，所以停止了对 sw-precache 和 sw-toolbox 的维护。</p>
+<h3 id="使用者"><a href="#使用者" class="headerlink" title="使用者"></a>使用者</h3><p>有很多团队也是启用该工具来实现serviceworker的缓存，比如说：</p>
+<p>淘宝首页</p>
+<p>网易新闻wap文章页</p>
+<p>百度的Lavas</p>
+<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><p>首先，需要在项目的sw.js文件中，引入workbox的官方js，这里用了我们自己的静态资源：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">importScripts</span><span class="token punctuation">(</span>
+    <span class="token string">"https://edu-cms.nosdn.127.net/topics/js/workbox_9cc4c3d662a4266fe6691d0d5d83f4dc.js"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>其中importScripts是webworker中加载js的方式。</p>
+<p>引入workbox后，全局会挂载一个workbox对象</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>workbox<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'workbox加载成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'workbox加载失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后需要在使用其他的api前，提前使用配置</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//关闭控制台中的输出</span>
+workbox<span class="token punctuation">.</span><span class="token function">setConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span> debug<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>也可以统一指定存储时cache的名称：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//设置缓存cachestorage的名称</span>
+workbox<span class="token punctuation">.</span>core<span class="token punctuation">.</span><span class="token function">setCacheNameDetails</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    prefix<span class="token punctuation">:</span><span class="token string">'edu-cms'</span><span class="token punctuation">,</span>
+    suffix<span class="token punctuation">:</span><span class="token string">'v1'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="precache"><a href="#precache" class="headerlink" title="precache"></a>precache</h3><p>workbox的缓存分为两种，一种的precache，一种的runtimecache。</p>
+<p>precache对应的是在installing阶段进行读取缓存的操作。它让开发人员可以确定缓存文件的时间和长度，以及在不进入网络的情况下将其提供给浏览器，这意味着它可以用于创建Web离线工作的应用。</p>
+<h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><p>首次加载Web应用程序时，workbox会下载指定的资源，并存储具体内容和相关修订的信息在indexedDB中。</p>
+<p>当资源内容和sw.js更新后，workbox会去比对资源，然后将新的资源存入cache，并修改indexedDB中的版本信息。</p>
+<p>我们举一个例子：</p>
+<pre class=" language-javascript"><code class="language-javascript">workbox<span class="token punctuation">.</span>precaching<span class="token punctuation">.</span><span class="token function">precacheAndRoute</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token string">'./main.css'</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175858" alt="img"></p>
+<p>indexedDB中会保存其相关信息</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175904" alt="img"></p>
+<p>这个时候我们把main.css的内容改变后，再刷新页面，会发现除非强制刷新，否则workbox还是会读取cache中存在的老的main.css内容。</p>
+<p>即使我们把main.css从服务器上删除，也不会对页面造成影响。</p>
+<p>所以这种方式的缓存都需要配置一个版本号。在修改sw.js时，对应的版本也需要变更。</p>
+<h4 id="使用实践"><a href="#使用实践" class="headerlink" title="使用实践"></a>使用实践</h4><p>当然了，一般我们的一些不经常变的资源，都会使用cdn，所以这里自然就需要支持域外资源了，配置方式如下：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> fileList <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        url<span class="token punctuation">:</span><span class="token string">'https://edu-cms.nosdn.127.net/topics/js/cms_specialWebCommon_js_f26c710bd7cd055a64b67456192ed32a.js'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        url<span class="token punctuation">:</span><span class="token string">'https://static.ws.126.net/163/frontend/share/css/article.207ac19ad70fd0e54d4a.css'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">//precache 适用于支持跨域的cdn和域内静态资源</span>
+workbox<span class="token punctuation">.</span>precaching<span class="token punctuation">.</span><span class="token function">suppressWarnings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+workbox<span class="token punctuation">.</span>precaching<span class="token punctuation">.</span><span class="token function">precacheAndRoute</span><span class="token punctuation">(</span>fileList<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token string">"ignoreUrlParametersMatching"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>这里需要对应的资源配置跨域允许头，否则是不能正常加载的。且文件都要以版本文件名的方式，来确保修改后cache和indexDB会得到更新。</p>
+<p>理解了原理和实践后，说明这种方式适合于上线后就不会经常变动的静态资源。</p>
+<h3 id="runtimecache"><a href="#runtimecache" class="headerlink" title="runtimecache"></a>runtimecache</h3><p>运行时缓存是在install之后，activated和fetch阶段做的事情。</p>
+<p>既然在fetch阶段发送，那么runtimecache 往往应对着各种类型的资源，对于不同类型的资源往往也有不同的缓存策略。</p>
+<h4 id="缓存策略"><a href="#缓存策略" class="headerlink" title="缓存策略"></a>缓存策略</h4><p>workbox提供的缓存策划有以下几种，通过不同的配置可以针对自己的业务达到不同的效果：</p>
+<h5 id="staleWhileRevalidate"><a href="#staleWhileRevalidate" class="headerlink" title="staleWhileRevalidate"></a>staleWhileRevalidate</h5><p>这种策略的意思是当请求的路由有对应的 Cache 缓存结果就直接返回，在返回 Cache 缓存结果的同时会在后台发起网络请求拿到请求结果并更新 Cache 缓存，如果本来就没有 Cache 缓存的话，直接就发起网络请求并返回结果，这对用户来说是一种<strong>非常安全</strong>的策略，能保证用户最快速的拿到请求的结果。</p>
+<p>但是也有一定的缺点，就是还是会有网络请求占用了用户的网络带宽。可以像如下的方式使用 State While Revalidate 策略：</p>
+<pre class=" language-javascript"><code class="language-javascript">workbox<span class="token punctuation">.</span>routing<span class="token punctuation">.</span><span class="token function">registerRoute</span><span class="token punctuation">(</span>
+    <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token string">'https://edu-cms\.nosdn\.127\.net/topics/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    workbox<span class="token punctuation">.</span>strategies<span class="token punctuation">.</span><span class="token function">staleWhileRevalidate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//cache名称</span>
+        cacheName<span class="token punctuation">:</span> <span class="token string">'lf-sw:static'</span><span class="token punctuation">,</span>
+        plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>expiration<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//cache最大数量</span>
+                maxEntries<span class="token punctuation">:</span> <span class="token number">30</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h5 id="networkFirst"><a href="#networkFirst" class="headerlink" title="networkFirst"></a>networkFirst</h5><p>这种策略就是当请求路由是被匹配的，就采用网络优先的策略，也就是优先尝试拿到网络请求的返回结果，如果拿到网络请求的结果，就将结果返回给客户端并且写入 Cache 缓存。</p>
+<p><strong>如果网络请求失败</strong>，那最后被缓存的 Cache 缓存结果就会被返回到客户端，这种策略一般适用于返回结果不太固定或对实时性有要求的请求，为网络请求失败进行兜底。可以像如下方式使用 Network First 策略：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//自定义要缓存的html列表</span>
+<span class="token keyword">var</span> cacheList <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'/Hexo/public/demo/PWADemo/workbox/index.html'</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+workbox<span class="token punctuation">.</span>routing<span class="token punctuation">.</span><span class="token function">registerRoute</span><span class="token punctuation">(</span>
+    <span class="token comment" spellcheck="true">//自定义过滤方法</span>
+    <span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 需要缓存的HTML路径列表</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>url<span class="token punctuation">.</span>host <span class="token operator">===</span> <span class="token string">'localhost:63342'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">~</span>cacheList<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>url<span class="token punctuation">.</span>pathname<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    workbox<span class="token punctuation">.</span>strategies<span class="token punctuation">.</span><span class="token function">networkFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        cacheName<span class="token punctuation">:</span> <span class="token string">'lf-sw:html'</span><span class="token punctuation">,</span>
+        plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>expiration<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                maxEntries<span class="token punctuation">:</span> <span class="token number">10</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h5 id="cacheFirst"><a href="#cacheFirst" class="headerlink" title="cacheFirst"></a>cacheFirst</h5><p>这个策略的意思就是当匹配到请求之后<strong>直接从 Cache 缓存中取得结果，如果 Cache 缓存中没有结果，那就会发起网络请求</strong>，拿到网络请求结果并将结果更新至 Cache 缓存，并将结果返回给客户端。这种策略比较适合结果不怎么变动且对实时性要求不高的请求。可以像如下方式使用 Cache First 策略：</p>
+<pre class=" language-javascript"><code class="language-javascript">workbox<span class="token punctuation">.</span>routing<span class="token punctuation">.</span><span class="token function">registerRoute</span><span class="token punctuation">(</span>
+    <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token string">'https://edu-image\.nosdn\.127\.net/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    workbox<span class="token punctuation">.</span>strategies<span class="token punctuation">.</span><span class="token function">cacheFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        cacheName<span class="token punctuation">:</span> <span class="token string">'lf-sw:img'</span><span class="token punctuation">,</span>
+        plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token comment" spellcheck="true">//如果要拿到域外的资源，必须配置</span>
+            <span class="token comment" spellcheck="true">//因为跨域使用fetch配置了</span>
+            <span class="token comment" spellcheck="true">//mode: 'no-cors',所以status返回值为0，故而需要兼容</span>
+            <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>cacheableResponse<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                statuses<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>expiration<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                maxEntries<span class="token punctuation">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
+                <span class="token comment" spellcheck="true">//缓存的时间</span>
+                maxAgeSeconds<span class="token punctuation">:</span> <span class="token number">12</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h5 id="networkOnly"><a href="#networkOnly" class="headerlink" title="networkOnly"></a>networkOnly</h5><p>比较直接的策略，直接强制使用正常的网络请求，并将结果返回给客户端，这种策略比较适合对实时性要求非常高的请求。</p>
+<h5 id="cacheOnly"><a href="#cacheOnly" class="headerlink" title="cacheOnly"></a>cacheOnly</h5><p>这个策略也比较直接，直接使用 Cache 缓存的结果，并将结果返回给客户端，这种策略比较适合一上线就不会变的静态资源请求。</p>
+<h3 id="举个栗子-1"><a href="#举个栗子-1" class="headerlink" title="举个栗子"></a>举个栗子</h3><p>又到了举个栗子的阶段了，这次我们用淘宝好了，看看他们是如何通过workbox来配置serviceworker的：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//首先是异常处理</span>
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  self<span class="token punctuation">.</span>clients<span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>clients<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>clients <span class="token operator">&amp;&amp;</span> clients<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        clients<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> 
+          type<span class="token punctuation">:</span> <span class="token string">'ERROR'</span><span class="token punctuation">,</span>
+          msg<span class="token punctuation">:</span> e<span class="token punctuation">.</span>message <span class="token operator">||</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          stack<span class="token punctuation">:</span> e<span class="token punctuation">.</span>error <span class="token operator">?</span> e<span class="token punctuation">.</span>error<span class="token punctuation">.</span>stack <span class="token punctuation">:</span> <span class="token keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'unhandledrejection'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  self<span class="token punctuation">.</span>clients<span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>clients<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>clients <span class="token operator">&amp;&amp;</span> clients<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        clients<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          type<span class="token punctuation">:</span> <span class="token string">'REJECTION'</span><span class="token punctuation">,</span>
+          msg<span class="token punctuation">:</span> e<span class="token punctuation">.</span>reason <span class="token operator">?</span> e<span class="token punctuation">.</span>reason<span class="token punctuation">.</span>message <span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          stack<span class="token punctuation">:</span> e<span class="token punctuation">.</span>reason <span class="token operator">?</span> e<span class="token punctuation">.</span>reason<span class="token punctuation">.</span>stack <span class="token punctuation">:</span> <span class="token keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//然后引入workbox</span>
+<span class="token function">importScripts</span><span class="token punctuation">(</span><span class="token string">'https://g.alicdn.com/kg/workbox/3.3.0/workbox-sw.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+workbox<span class="token punctuation">.</span><span class="token function">setConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  debug<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  modulePathPrefix<span class="token punctuation">:</span> <span class="token string">'https://g.alicdn.com/kg/workbox/3.3.0/'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//直接激活跳过等待阶段</span>
+workbox<span class="token punctuation">.</span><span class="token function">skipWaiting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+workbox<span class="token punctuation">.</span><span class="token function">clientsClaim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//定义要缓存的html</span>
+<span class="token keyword">var</span> cacheList <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'/'</span><span class="token punctuation">,</span>
+  <span class="token string">'/tbhome/home-2017'</span><span class="token punctuation">,</span>
+  <span class="token string">'/tbhome/page/market-list'</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//html采用networkFirst策略，支持离线也能大体访问</span>
+workbox<span class="token punctuation">.</span>routing<span class="token punctuation">.</span><span class="token function">registerRoute</span><span class="token punctuation">(</span>
+  <span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 需要缓存的HTML路径列表</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>url<span class="token punctuation">.</span>host <span class="token operator">===</span> <span class="token string">'www.taobao.com'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">~</span>cacheList<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>url<span class="token punctuation">.</span>pathname<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  workbox<span class="token punctuation">.</span>strategies<span class="token punctuation">.</span><span class="token function">networkFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    cacheName<span class="token punctuation">:</span> <span class="token string">'tbh:html'</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>expiration<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        maxEntries<span class="token punctuation">:</span> <span class="token number">10</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//静态资源采用staleWhileRevalidate策略，安全可靠</span>
+workbox<span class="token punctuation">.</span>routing<span class="token punctuation">.</span><span class="token function">registerRoute</span><span class="token punctuation">(</span>
+  <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token string">'https://g\.alicdn\.com/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  workbox<span class="token punctuation">.</span>strategies<span class="token punctuation">.</span><span class="token function">staleWhileRevalidate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    cacheName<span class="token punctuation">:</span> <span class="token string">'tbh:static'</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>expiration<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        maxEntries<span class="token punctuation">:</span> <span class="token number">20</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//图片采用cacheFirst策略，提升速度</span>
+workbox<span class="token punctuation">.</span>routing<span class="token punctuation">.</span><span class="token function">registerRoute</span><span class="token punctuation">(</span>
+  <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token string">'https://img\.alicdn\.com/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  workbox<span class="token punctuation">.</span>strategies<span class="token punctuation">.</span><span class="token function">cacheFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    cacheName<span class="token punctuation">:</span> <span class="token string">'tbh:img'</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>cacheableResponse<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        statuses<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>expiration<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        maxEntries<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+        maxAgeSeconds<span class="token punctuation">:</span> <span class="token number">12</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+workbox<span class="token punctuation">.</span>routing<span class="token punctuation">.</span><span class="token function">registerRoute</span><span class="token punctuation">(</span>
+  <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token string">'https://gtms01\.alicdn\.com/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  workbox<span class="token punctuation">.</span>strategies<span class="token punctuation">.</span><span class="token function">cacheFirst</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    cacheName<span class="token punctuation">:</span> <span class="token string">'tbh:img'</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>cacheableResponse<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        statuses<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>expiration<span class="token punctuation">.</span>Plugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        maxEntries<span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+        maxAgeSeconds<span class="token punctuation">:</span> <span class="token number">12</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>可以看出，使用workbox比起直接手撸来，要快很多，也明确很多。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>目前分析serviceworker和workbox的文章不少，但是介绍workbox原理的文章却不多。这里简单介绍下workbox这个工具库的原理。</p>
+<p>首先将几个我们产品用到的模块图奉上：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175914" alt="img"></p>
+<p>简单提几个workbox源码的亮点。</p>
+<h4 id="通过Proxy按需依赖"><a href="#通过Proxy按需依赖" class="headerlink" title="通过Proxy按需依赖"></a>通过Proxy按需依赖</h4><p>熟悉了workbox后会得知，它是有很多个子模块的，各个子模块再通过用到的时候按需importScript到线程中。</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200612175919" alt="img"></p>
+<p>做到按需依赖的原理就是通过Proxy对全局对象workbox进行代理：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token keyword">get</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//如果workbox对象上不存在指定对象，就依赖注入该对象对应的脚本</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> t<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> o <span class="token operator">=</span> e<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> o <span class="token operator">&amp;&amp;</span> t<span class="token punctuation">.</span><span class="token function">loadModule</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`workbox-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>o<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> t<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>如果找不到对应模块，则通过importScripts主动加载：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
+ * 加载前端模块
+ * @param {Strnig} t 
+ */</span>
+<span class="token function">loadModule</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> e <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">o</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token function">importScripts</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>s <span class="token operator">=</span> <span class="token operator">!</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">s</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token punctuation">(</span>console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Unable to import module '</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>t<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">' from '</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>e<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'.`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="通过freeze冻结对外暴露api"><a href="#通过freeze冻结对外暴露api" class="headerlink" title="通过freeze冻结对外暴露api"></a>通过freeze冻结对外暴露api</h4><p>workbox.core模块中提供了几个核心操作模块，如封装了indexedDB操作的DBWrapper、对cacheStorage进行读取的cacheWrapper，以及发送请求的fetchWrapper和日志管理的logger等等。</p>
+<p>为了防止外部对内部模块暴露出去的api进行修改，导致出现不可预估的错误，内部模块可以通过Object.freeze将api进行冻结保护：</p>
+<pre class=" language-javascript"><code class="language-javascript">  <span class="token keyword">var</span> _private <span class="token operator">=</span> <span class="token comment" spellcheck="true">/*#__PURE__*/</span>Object<span class="token punctuation">.</span><span class="token function">freeze</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    DBWrapper<span class="token punctuation">:</span> DBWrapper<span class="token punctuation">,</span>
+    WorkboxError<span class="token punctuation">:</span> WorkboxError<span class="token punctuation">,</span>
+    assert<span class="token punctuation">:</span> finalAssertExports<span class="token punctuation">,</span>
+    cacheNames<span class="token punctuation">:</span> cacheNames<span class="token punctuation">,</span>
+    cacheWrapper<span class="token punctuation">:</span> cacheWrapper<span class="token punctuation">,</span>
+    fetchWrapper<span class="token punctuation">:</span> fetchWrapper<span class="token punctuation">,</span>
+    getFriendlyURL<span class="token punctuation">:</span> getFriendlyURL<span class="token punctuation">,</span>
+    logger<span class="token punctuation">:</span> defaultExport
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过对serviceworker的理解和workbox的应用，可以进一步提升产品的性能和弱网情况下的体验。有兴趣的同学也可以对workbox的源码细细评读，其中还有很多不错的设计模式和编程风格值得学习。</p>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                    <span class="chip bg-color">转载</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                                    <span class="chip bg-color">前端面试题</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">
+                                    <span class="chip bg-color">前端优化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-06-12T17-52-55',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/06/16/package-lock-json-chong-tu-jie-jue/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="package-lock.json 冲突解决">
+                        
+                        <span class="card-title">package-lock.json 冲突解决</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            解决github上的漏洞警告
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/github/">
+                        <span class="chip bg-color">github</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/10/ssr-nsp/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="CSR、SSR、NSR、ESR傻傻分不清楚，一文帮你理清前端渲染方案！">
+                        
+                        <span class="card-title">CSR、SSR、NSR、ESR傻傻分不清楚，一文帮你理清前端渲染方案！</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+以下文章来源于奶爸码农 ，作者奶爸码农
+原文地址：https://mp.weixin.qq.com/s/1QPc2EZQs3jjPOK7-K6H7Q
+
+引言随着前端系统的越发复杂，前端的性能也受到越来越多的重视。Google也不断在推进新
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">转载</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                        <span class="chip bg-color">前端面试题</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

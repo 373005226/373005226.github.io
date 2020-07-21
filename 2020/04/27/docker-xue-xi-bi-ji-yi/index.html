@@ -1,0 +1,1303 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker学习笔记一, 勤奋小L的博客">
+    <meta name="description" content="介绍了Docker 镜像与容器">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>docker学习笔记一 | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = 'd548c5b83fa61d8e3bd86ad42a7ffea9b7c86e3f9d8095c1577d3e1270bb9420';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">docker学习笔记一</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                运维
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-27
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    16 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>总结慕课网docker课程的学习总结，本篇总结了docker镜像与容器的操作</p>
+</blockquote>
+<h2 id="docker总体介绍"><a href="#docker总体介绍" class="headerlink" title="docker总体介绍"></a>docker总体介绍</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427180512.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427180559.png" alt=""></p>
+<p><code>docker</code>整体就是一个<strong>c/s</strong>的架构</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427180706.png" alt="client和server的版本"></p>
+<p>而client和dockerd中间是通过rest api server之间去通信的，dockerd比如是镜像、容器之类的管理 </p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427180953.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427181012.png" alt="docker整体架构"></p>
+<p><code>client</code>可以跟<code>docker_host</code>在同一台机器上，可以在不同机器上通过网络去连接，因为<code>docker_host</code>有一个<code>restful api</code>供<code>client</code>去使用</p>
+<p><code>docker_host</code>主要有两个，一个是镜像一个是容器</p>
+<p>最后那个<code>registry</code>可以理解为跟<code>github</code>一样的公共存储服务器，可以把<code>images</code>存储到上面去 </p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427181849.png" alt=""></p>
+<p><code>docker</code>不是一个完全创新的技术，因为底层全部是依赖于<code>linux</code>存在于好多年的技术，比如说<code>namespaces</code>本来就是<code>linux</code>的一个隔离技术，有独立的用户空间、网络空间、进程等，然后通过<code>control groups</code>做资源的限制</p>
+<h2 id="docker-image"><a href="#docker-image" class="headerlink" title="docker image"></a>docker image</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427183012.png" alt=""></p>
+<p><code>linux</code>分为内核空间和用户控件</p>
+<p>最底层那个<code>linux kernel</code>就是内核空间</p>
+<p>用户空间就是在<code>bootfs</code>之上做的各种linux的发行版：<code>ununtu、centos、debian</code>等</p>
+<p><code>docker</code>里面的<code>image</code>是分层的，每一层都可以添加和删除文件，并且可以组成为一个新的<code>image</code></p>
+<p>这些发行版质保函<code>base image</code>，不包含<code>linux kernel</code>，也就是可以共享主机的<code>linux kernel</code></p>
+<p>然后就可以在<code>base image</code>上建立新的<code>image</code>，比如安装<code>apach、Nginx</code>等，然后就会产生新的一层<code>image</code></p>
+<p>这里看一看image的centos大小</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427184239.png" alt=""></p>
+<p>为什么会这么小呢， 一般的发行版都要十几个G，这里因为这里的base image只包含rootfs</p>
+<h3 id="方式一：build-image"><a href="#方式一：build-image" class="headerlink" title="方式一：build image"></a>方式一：build image</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427201310.png" alt=""></p>
+<p>第一行是一个基础的image，也就是base image</p>
+<p>第二行是基本的标识，标识由谁制造</p>
+<p>第三行是命令</p>
+<p>第四行是暴露的端口</p>
+<p>第五行是起点程序的入口，即图中的启动redis的入口</p>
+<p>右图中的五步就是对应着左边的每一行</p>
+<h3 id="方式二：pull-image"><a href="#方式二：pull-image" class="headerlink" title="方式二：pull image"></a>方式二：pull image</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427201715.png" alt=""></p>
+<p>这个其实就跟github很像了，拉取别人的镜像</p>
+<h2 id="docker-hub"><a href="#docker-hub" class="headerlink" title="docker hub"></a>docker hub</h2><p><code>docker hub</code>是<code>docker</code>的一个相当于<code>github</code>的一个仓库</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427202912.png" alt=""></p>
+<p>具体分为两类，一类是官方的，一类是第三方的</p>
+<p>直接拉去镜像的话默认是最新版本</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427203030.png" alt=""></p>
+<p>如果是要指定版本的话比如说<code>ubuntu:14.04</code></p>
+<p>如果是第三方的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427203314.png" alt=""></p>
+<p>第三方的会有个<strong>用户名+/image</strong>的名字</p>
+<h2 id="创建一个自己的image"><a href="#创建一个自己的image" class="headerlink" title="创建一个自己的image"></a>创建一个自己的image</h2><p>可以先拉去一个hello-world的image</p>
+<pre><code>docker pull hello-world</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427210730.png" alt=""></p>
+<p>然后执行run命令</p>
+<pre><code>docker run hello-world</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427210840.png" alt=""></p>
+<p> 这里先安装好gcc和vim的环境</p>
+<pre class=" language-shell"><code class="language-shell"> yum -y install gcc gcc-c++ kernel-devel
+ yum install -y vim
+ yum install glibc-static
+ yum install glibc</code></pre>
+<p>然后编辑一个C语言的hello world</p>
+<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello world\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后编译成可执行的c文件</p>
+<pre class=" language-shell"><code class="language-shell">gcc -static hello.c -o hello</code></pre>
+<p>读取试一试</p>
+<pre class=" language-shell"><code class="language-shell">./hello</code></pre>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427212050.png" alt=""></p>
+<p>然后创建一个Dockerfile文件</p>
+<p>因为是在原本的base image之上安装一些新的软件，来形成一个新的image</p>
+<p>因为这里要写的就是一个base image，所以这里不能从一个base image去安装，所以第一行要写成<code>From scratch</code></p>
+<pre><code>From scratch
+ADD hello /
+CMD [&quot;/hello&quot;]</code></pre><p>这里的<code>ADD</code>就是添加<code>hello</code>这个文件</p>
+<p><code>CMD</code>就是执行这个可执行文件的命令</p>
+<p>然后执行<code>build</code>命令</p>
+<pre><code>docker build -t 373005226/hello-world .</code></pre><p>前面的是<code>docker hub</code>的<code>id</code>，后面是名字 ， <code>.</code>是指当前目录</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427213227.png" alt=""></p>
+<p>这里还可以查看<code>image</code>的分层</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427213454.png" alt=""></p>
+<p>第一层是添加了一个文件，这里要注意，本来第一层是<code>From scratch</code>的，但是这里显示的是ADD file，<code>From scratch</code>的意思是没有base任何的image，也就是不算是一层，所以写了三行代码只有两层</p>
+<p>第二层是运行了一个命令</p>
+<p>这里就可以执行命令了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200427213744.png" alt=""></p>
+<p>成功了也就意味着<code>hello world</code> 是可以变成一个<code>container</code>去执行的</p>
+<p><code>docker image</code>就存一个可执行的文件，运行的时候其实是共享了宿主机<code>centos7</code>的<code>kernel</code>，在<code>kernel</code>之上执行了一个hello world，虽然十分小，但是这个是docker的基础架构</p>
+<h2 id="docker-container"><a href="#docker-container" class="headerlink" title="docker container"></a>docker container</h2><h3 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h3><p><strong>总结：docker container ls是查看运行中的容器，docker container ls -a是查看所有的容器</strong></p>
+<p><code>container</code>是通过<code>image</code>去创建的，<code>image</code>本身是只读的，但是如果是要去运行程序的话，就需要一个可写的空间</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428094829.png" alt=""></p>
+<p>就比如，<code>image</code>是一个类，<code>container</code>是类的实例</p>
+<p><code>image</code>负责app的存储和分发的，<code>container</code>负责运行app</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428101637.png" alt=""></p>
+<p>这里没有显示<code>hello world</code>是因为这个不是一个常驻内存的进程，打印完<code>hello world</code>就退出了</p>
+<p>这条命令就可以显示所有的容器，包括运行的和退出的</p>
+<pre class=" language-shell"><code class="language-shell">docker container ls -a</code></pre>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428101754.png" alt=""></p>
+<p><code>command</code>就是执行<code>hello</code>可执行文件的命令，即相当于<code>./hello</code></p>
+<p>这里执行以下常驻进程的容器</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428102127.png" alt=""></p>
+<p>这里会报错，因为找不到<code>latest</code>这个版本，因为我只有<code>14.04</code>版本的，以下这样子才对</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428102258.png" alt=""></p>
+<p>这里看一下<code>container ls</code>其实还是没有的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428102352.png" alt=""></p>
+<p>因为这里的<code>command</code>是<code>/bin/bash</code>，这个命令不会常驻内存</p>
+<p>这里如果是要交互式的运行呢</p>
+<pre><code>docker run -it ubuntu:14.04</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428102801.png" alt=""></p>
+<p>这里会看到已经进入了一个<code>linux</code>环境</p>
+<p>这里再打开一个<code>ssh</code>连接界面，然后再去看看<code>container ls</code>，这里用另一个<code>ssh</code>就可以看到有容器正在运行</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428103039.png" alt=""></p>
+<p>什么是交互式运行呢，来看一下<code>help</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428105215.png" alt=""></p>
+<p>即进入一个交互式的标准输出里面</p>
+<p><code>container</code>其实就是在<code>image</code>上多了一个可写的层</p>
+<p>这里对容器内的<code>linux</code>系统进行<code>yum</code>一些东西或者创建文件，再<code>exit</code>退出</p>
+<p>然后就可以看到</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428112535.png" alt=""></p>
+<p><code>container ls</code>肯定是没有东西的，因为只显示运行中的容器，<code>container ls -a</code>就可以看到刚刚编辑的容器</p>
+<p>当然如果把修改了的容器删掉了，那么数据就不会保存</p>
+<h3 id="演示启动、进入容器"><a href="#演示启动、进入容器" class="headerlink" title="演示启动、进入容器"></a>演示启动、进入容器</h3><p>比如我刚刚进入了一个容器中，并且下载了vim（已经下载好了的）</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429162838.png" alt=""></p>
+<p>我先进入第一个容器，因为已经存在这个容器了，我直接启动再进入就好了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429163100.png" alt=""></p>
+<pre><code>docker ps                                     #确定容器没有开启
+docker ps -a                                 #查看容器的id
+docker start be22658b1be3                    #启动需要的容器
+docker exec -it be22658b1be3 /bin/bash        #进入这个启动了的容器，或者使用docker attach be22658b1be3也行</code></pre><h2 id="docker常用简写"><a href="#docker常用简写" class="headerlink" title="docker常用简写"></a>docker常用简写</h2><h3 id="id简写"><a href="#id简写" class="headerlink" title="id简写"></a>id简写</h3><p>如果是要删除<code>container</code>的话，可以选择删除id或者是选择名字</p>
+<p>如果是选择id来删除的话，那么可以直接选择id就行</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428114316.png" alt=""></p>
+<p>当然也可以不写全，直接选择能区分开来的部分也行，比如下面图中的2bd，是对于当前的数字是比较独特的，就可以直接简写</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428114515.png" alt=""></p>
+<p><code>docker</code>有很多简写的</p>
+<p>比如<code>docker container ls -a</code>，可以写成<code>docker ps -a</code></p>
+<p>效果都是一样的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428114925.png" alt=""></p>
+<p>比如说<code>rm</code>删除容器，删除命令为<code>docker contaniner rm +标识</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428122331.png" alt=""></p>
+<h3 id="查看容器简写"><a href="#查看容器简写" class="headerlink" title="查看容器简写"></a>查看容器简写</h3><p><code>docker image ls</code>可以简写为<code>docker images</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428122450.png" alt="image-20200428122449814"></p>
+<h3 id="删除简写"><a href="#删除简写" class="headerlink" title="删除简写"></a>删除简写</h3><p><code>docker image rm +标识</code>  是删除镜像，<code>docker rm</code>默认是删除容器，<code>docker rmi</code>是删除镜像</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428122728.png" alt=""></p>
+<h3 id="删除多个容器"><a href="#删除多个容器" class="headerlink" title="删除多个容器"></a>删除多个容器</h3><p>假如<code>run</code>多个镜像</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428123014.png" alt=""></p>
+<p>就可以看到启动了很多个<code>container</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428123106.png" alt=""></p>
+<p>这个时候如果要清除掉所有的话，可能就要一个个<code>rm</code>去清理</p>
+<p>这时候可以一键删除所有的容器</p>
+<p>先打印出第一列的内容</p>
+<pre><code>docker container ls -aq</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428144115.png" alt=""></p>
+<p>这个其实相当于</p>
+<pre><code>docker container ls -a | awk {&#39;print$1&#39;}</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428144155.png" alt=""></p>
+<p>除了这个表头之外没有其他的不同</p>
+<p>此时就可以通过显示的表头去一键删除</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428144404.png" alt=""></p>
+<p>此时已经全部删除了，如果有更复杂的情况</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428144521.png" alt=""></p>
+<p>容器有退出的有启动的，此时就可以把退出的容器筛选出来再删掉</p>
+<p>先列举退出状态的容器</p>
+<pre><code>docker container ls -f &quot;status=exited&quot;</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428144722.png" alt=""></p>
+<p>然后列举出来id</p>
+<pre><code>docker container ls -f &quot;status=exited&quot; -q</code></pre><p>最后再按照之前的方法</p>
+<pre><code>docker rm $(docker container ls -f &quot;status=exited&quot; -q)</code></pre><p>然后就可以一键删除掉了</p>
+<h2 id="构建自己的镜像"><a href="#构建自己的镜像" class="headerlink" title="构建自己的镜像"></a>构建自己的镜像</h2><h3 id="使用container建立镜像"><a href="#使用container建立镜像" class="headerlink" title="使用container建立镜像"></a>使用container建立镜像</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428145320.png" alt=""></p>
+<p>这里要介绍在基于<code>image</code>之上安装了某些软件来发布自己的镜像</p>
+<p>也就是在基于某个<code>image</code>创建一个<code>container</code>，然后再<code>container</code>里面做一些变化（安装软件等），然后把<code>container</code> <code>commit</code>成一个新的<code>image</code></p>
+<p>这个过程命令为</p>
+<pre><code>docker container commit</code></pre><p>因为只有container可以commit，所以也可以简写为</p>
+<pre><code>docker commit</code></pre><p>这里先进入一个<code>image</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428145858.png" alt=""></p>
+<p>然后再里面做一些变化</p>
+<p>里面一开始就是没有<code>vim</code>命令的，因为我把之前的<code>container</code>删掉了</p>
+<p>安装完之后退出查看容器，可以看到我刚刚是退出状态的<code>container</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428150044.png" alt=""></p>
+<p>这里就是想把这个<code>container commit</code>成一个<code>image</code>，这个<code>image</code>呢是基于干净的<code>centos7</code>之外还安装好了<code>vim</code></p>
+<p>这里可以查看就接受的参数</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428150244.png" alt=""></p>
+<p><code>CONTAINER</code>就是<code>ls -a</code>最后那列的<code>name</code> ，然后后面接的是<code>docker</code>的<code>id+/</code>新的<code>image</code>的名字</p>
+<p>所以全部命令为</p>
+<pre><code>docker commit +这个容器的名字 +需要生成的镜像名字</code></pre><p>比如下面的<code>lucid_franklink</code>就是容器名字，后面的<code>373005226/centos-vim</code>是我需要生成镜像的名字</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428150607.png" alt=""></p>
+<p>生成后会给出一个唯一的sha256值</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428150657.png" alt=""></p>
+<p><code>tag</code>如果不指定，默认就是<code>latest</code>的</p>
+<p>新的那个镜像跟<code>centos</code>会共享很多的层，因为我的新镜像就是基于<code>centos</code>去开发的，可在下图看出基于<code>centos</code>之上安装了<code>vim</code>的镜像多了一层119MB的层</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428150902.png" alt=""></p>
+<p>可以看到有三层都是一样的</p>
+<pre><code>5e35e350aded        5 months ago        /bin/sh -c #(nop)  CMD [&quot;/bin/bash&quot;]            0B                  
+&lt;missing&gt;           5 months ago        /bin/sh -c #(nop)  LABEL org.label-schema.sc…   0B                  
+&lt;missing&gt;           5 months ago        /bin/sh -c #(nop) ADD file:45a381049c52b5664…   203MB </code></pre><p>因为我只安装了<code>vim</code>工具，所以只添加了一层</p>
+<p>这个的话其实是不建立这么做的，因为别人拿到我的<code>image</code>，就不知道我的<code>image</code>是怎么产生的，如果有不安全的东西放到<code>image</code>里面，就麻烦了。</p>
+<p>当然最推荐的方式还是通过<code>dockerfile</code>去创建，通过<code>dockerfile</code> 去<code>build</code>成一个新的<code>image</code>，别人看<code>dockerfile</code>就可以知道我执行了什么样的命令，而不用担心我在里面安装了什么的病毒</p>
+<h3 id="推荐方法：使用dockerfile建立镜像"><a href="#推荐方法：使用dockerfile建立镜像" class="headerlink" title="推荐方法：使用dockerfile建立镜像"></a>推荐方法：使用dockerfile建立镜像</h3><p>先创建一个<code>docker-centos-vim</code>目录，然后进去</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428154220.png" alt=""></p>
+<p>这里要思考一下<code>docker image</code>是只读的，在只读的<code>image</code>里面怎么去安装一个<code>vim</code>呢</p>
+<p>这里先介绍命令</p>
+<p>建立镜像为</p>
+<pre><code>docker image build</code></pre><p>因为只有image可以build，所以也可以简写为</p>
+<pre><code>docker build</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428145653.png" alt=""></p>
+<p>也就是把<code>dockerfile build</code>成一个新的<code>image</code></p>
+<p>全部命令为</p>
+<pre><code>docker build -t +镜像的名字 .</code></pre><p>最后面的那个<code>.</code>意思是说<code>dockerfile</code>是在当前目录下的</p>
+<p>如上<code>dockerfile</code>写好之后，再<code>build</code>一下</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428155117.png" alt=""></p>
+<p>这里可以看到图中的这一层</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428155055.png" alt=""></p>
+<p>其实这个是在<code>build</code>的过程中生成了一个新的临时的<code>container</code>，这个就是临时<code>container</code>的<code>id</code>，然后再这个<code>container</code>里面去安装<code>vim</code></p>
+<p> 最后会显示这几行代码</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428154954.png" alt=""></p>
+<p>也就是说最后还会remove删掉这个临时<code>container</code>的<code>id</code></p>
+<p>虽然说两个大致是一样的，但是还是建议去使用<code>dockerfile</code>去生成<code>image</code></p>
+<h2 id="Dockerfile语法"><a href="#Dockerfile语法" class="headerlink" title="Dockerfile语法"></a>Dockerfile语法</h2><p>dockerfile具体看<a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="noopener">官网文档</a></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428161344.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428161451.png" alt=""></p>
+<p>因为这个安全，其次就是label</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428161617.png" alt=""></p>
+<p>即标注image的作者、版本、描述</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428161655.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428161752.png" alt=""></p>
+<p>需要注意的是，每一次run，对于image都会生成新的一层临时的container，所以对于image来说</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428161939.png" alt=""></p>
+<p>worddir其实就是设定工作目录的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428162159.png" alt=""></p>
+<p>workdir /test就是在根目录找到test文件夹，如果没有呢就创建一个，</p>
+<p>这里其实就是进入test目录，如果没有test就创建一个然后进去，然后进入demo目录，如果没有就创建一个再进去</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428163026.png" alt=""></p>
+<p>绝对目录的话绝对是更清晰一些，不容易出错</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428163109.png" alt=""></p>
+<p><code>ADD</code>这个是把本地的文件添加到<code>image</code>里面，也就是之前的<code>hello</code>这个可执行文件添加进去</p>
+<p>然后再<code>RUN</code>执行</p>
+<p><code>ADD</code>和<code>COPY</code>的区别就是<code>ADD</code>文件到目录后可以解压，<code>COPY</code>是单纯的复制这个文件</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428163524.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428163632.png" alt=""></p>
+<p><code>ENV</code>就是设置常量</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428163711.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428163821.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428163841.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428170743.png" alt=""></p>
+<p><code>run</code>每执行一次都会创建一次<code>image layer</code>新的一层</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428170939.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428172629.png" alt=""></p>
+<p>这两个<code>dockerfile</code>就可以看出区别</p>
+<p>在第一个中是可以直接打印<code>hello Docker</code></p>
+<p>在第二个中是打印出<code>hello $name</code></p>
+<p>因为在第一个中是可以<code>shell</code>去执行命令，也就是在<code>bash</code>里面执行，所可以可以识别<code>$name</code>是一个变量</p>
+<p>但是如果是<code>exec</code>格式呢，执行的是<code>echo</code>的这个命令，而不是在<code>shell</code>里面执行<code>echo</code>，所以这里是需要改变一下</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428173058.png" alt=""></p>
+<p>这里就要把后面的命令都改成一个命令去执行才可以，如果是分开的话是为空的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428173413.png" alt=""></p>
+<p>如果是第一个<code>docker run [image]</code>会打印出<code>hello Docker</code></p>
+<p>如果是第二个，<code>docker run</code>指定了其他的命令，那么就不会执行<code>CMD</code></p>
+<p>即如果指定了命令，那么就不会执行<code>CMD</code>，此外<code>CMD</code>还可以拿来接收参数，一般的话是跟<code>ENTRYPOINT</code>一起使用</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428173740.png" alt=""></p>
+<p>这个的话一般是把应用程序以服务的形式去运行，一般的话会拿来做后台的进程，比如说要启动数据库的服务</p>
+<p>比如说最后一个是<code>MongoDB</code>的<code>dockerfile</code>的一部分</p>
+<p>就是<code>copy</code>一个<code>shell</code>脚本到本地目录。然后把这个<code>entrypoint</code>作为启动的脚本来去执行</p>
+<p><code>entrypoint</code>在一些官方的脚本启动比较多，可以当成一个服务器去运行这个容器，而不是像<code>cmd</code>一样去执行</p>
+<h2 id="docker-image的发布"><a href="#docker-image的发布" class="headerlink" title="docker image的发布"></a>docker image的发布</h2><h3 id="上传到docker-hub"><a href="#上传到docker-hub" class="headerlink" title="上传到docker hub"></a>上传到docker hub</h3><p>上面都讲了如何做一个镜像，这里就讲如何去发布</p>
+<p><code>docker hub</code>就是跟<code>github</code>一样的东西，可以把自己的镜像放到上面</p>
+<p>这里我还没有创建自己的<code>image</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428180148.png" alt=""></p>
+<p>这里先要<code>docker login</code>进去</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428180733.png" alt=""></p>
+<p>命令也很简单</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428180842.png" alt=""></p>
+<p><code>docker push</code>和<code>docker image push</code>是一样的，因为只能发布<code>image</code></p>
+<p>这里跟着的参数是<code>docker push +image</code>的名字<strong>+</strong>版本</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428181028.png" alt=""></p>
+<p>然后在<code>push</code>完毕的时候会生成一个id</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428181102.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428181115.png" alt=""></p>
+<p>这里就会显示我刚刚的<code>image</code></p>
+<p>但是仅仅是这样放上去的话，没有说明别人就不知道是怎么产生的，这样还不如直接放上一个<code>dockerfile</code>上去</p>
+<p><code>dockerfile</code>才是推荐的方式</p>
+<p>点击到这个界面</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428182906.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428183223.png" alt=""></p>
+<p>这里可以关联<code>github</code>仓库</p>
+<p>只要<code>github</code>仓库有个<code>dockerfile</code>，<code>docker hub</code>就可以把<code>dockerfile</code>自动<code>build</code>成<code>image</code>到<code>docker hub</code>仓库中</p>
+<h3 id="上传到私有hub"><a href="#上传到私有hub" class="headerlink" title="上传到私有hub"></a>上传到私有hub</h3><p>当然如果是需要公司内部的<code>docker</code>仓库的话</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428202643.png" alt=""></p>
+<p>可以使用<code>docker</code>推荐的<code>registry</code>去搭建一个</p>
+<p>只需要按照这上面的命令搭建即可</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428202905.png" alt=""></p>
+<p>两个服务器之间要可以通信，在我的服务器上已经搭建好了registry这个环境后</p>
+<pre class=" language-shell"><code class="language-shell">telnet *.*.*.* 5000</code></pre>
+<p>来查看是否可以正常访问</p>
+<p>出现</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428203409.png" alt=""></p>
+<p>即访问成功，这样就可以往私有的<code>hub</code> 来<code>push image</code>了</p>
+<p>这里先把原来的<code>image</code>删掉，再去重新<code>build</code>一个</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428203704.png" alt=""></p>
+<p>如图删掉我创建的<code>hello-world</code>，然后再把<code>docker hub</code>的<code>id</code>改成服务器的IP地址和端口</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428203850.png" alt=""></p>
+<p>直接<code>push</code>上去会报错的，如下图</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428204041.png" alt=""></p>
+<p>因为这个是对于<code>docker</code>来说是不可信任的，要去修改一个文件</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428204024.png" alt=""></p>
+<p>要在里面添加一行代码</p>
+<pre><code>&quot;insecure-registries&quot;:[&quot;39.106.12.6:5000&quot;]</code></pre><p>如下图所示</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428204254.png" alt=""></p>
+<p>然后还需要配置一个文件</p>
+<pre><code>sudo vim /lib/systemd/system/docker.service</code></pre><p>然后再去添加这一行代码，需要读取这个环境的文件，然后配置才能被加载</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428204456.png" alt=""></p>
+<p>然后需要重启<code>docker</code></p>
+<pre><code>sudo service docker restart</code></pre><pre><code>sudo systemctl daemon-reload</code></pre><p>然后就可以<code>push</code>成功了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428204831.png" alt=""></p>
+<p>然后这里看到私有hub的服务器上</p>
+<p>命令查看docker registry api，这里可以看到命令是<code>GET /v2/_catalog</code>，即在IP地址后添加/v2/_catalog`</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428205035.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428205130.png" alt=""></p>
+<p>当然<code>pull</code>的原理也一样</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200428205339.png" alt=""></p>
+<p>直接把原来的<code>images</code>删掉，然后直接按照IP地址:5000端口+项目名字回来即可</p>
+<h2 id="对进行中的容器进行操作"><a href="#对进行中的容器进行操作" class="headerlink" title="对进行中的容器进行操作"></a>对进行中的容器进行操作</h2><p>之前都是对退出的容器进行操作，这里介绍正在运行的容器操作</p>
+<h3 id="进入运行中的容器"><a href="#进入运行中的容器" class="headerlink" title="进入运行中的容器"></a>进入运行中的容器</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429110050.png" alt=""></p>
+<pre><code>docker exec -it +容器的id +需要执行的命令</code></pre><h3 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429110409.png" alt=""></p>
+<p>可以直接简写</p>
+<pre><code>docker stop +id或者是名字</code></pre><h3 id="run指定名字"><a href="#run指定名字" class="headerlink" title="run指定名字"></a>run指定名字</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429170938.png" alt=""></p>
+<p>这个时候就可以stop指定名字了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429110936.png" alt=""></p>
+<p>然后可以指定名字来启动了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429111015.png" alt=""></p>
+<h3 id="docker-inspect查看容器详情"><a href="#docker-inspect查看容器详情" class="headerlink" title="docker inspect查看容器详情"></a>docker inspect查看容器详情</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429111209.png" alt=""></p>
+<p>可以看到这个容器的详细信息(命令、网络配置、创建时间等)</p>
+<h3 id="logs查看容器日志"><a href="#logs查看容器日志" class="headerlink" title="logs查看容器日志"></a>logs查看容器日志</h3><p>就是查看容器的日志</p>
+<pre><code>docker logs +容器的id</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429111358.png" alt=""></p>
+<h2 id="CMD与ENTRYPOINT共存"><a href="#CMD与ENTRYPOINT共存" class="headerlink" title="CMD与ENTRYPOINT共存"></a>CMD与ENTRYPOINT共存</h2><p>这里拿的是stress这个linux环境下的压力测试来演示</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429112212.png" alt=""></p>
+<p>如果定义一个十分大的内存的话，最大也不能超过宿主机的内存</p>
+<p>这里先写一个<code>Dockerfile</code>来查看</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429113021.png" alt=""></p>
+<p>这里的<code>CMD</code>用来接收参数，因为<code>vm</code> 设定内存等参数需要重复的填写，但是又是变动的，不能用<code>ENV</code>来默认</p>
+<p>此时直接运行的话就会出现这种情况</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429115038.png" alt=""></p>
+<p>因为没有加上参数，只会显示命令</p>
+<p>这个时候就可以加上参数</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200429115307.png" alt=""></p>
+<p>这个原理就是后面的参数都是放在<code>CMD</code>里面的，这个就是<code>ENTRYPOINT+CMD</code>的方式去结合的，这个是十分的流行的</p>
+<p><code>CMD</code>可以放上默认的参数，也可以自己的指定的参数去运行</p>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-04-27T18-03-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/29/docker-xue-xi-bi-ji-er/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="docker学习笔记二">
+                        
+                        <span class="card-title">docker学习笔记二</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            介绍了Docker的网络部分
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/26/vagrant-xia-zai-jing-xiang-jia-su/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="vagrant">
+                        
+                        <span class="card-title">vagrant</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            因为vagrant官网是在国外的，所以下载十分的慢，这里介绍怎么下载镜像来快速开发
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">运维工具</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1044 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="uniapp性能优化建议, 勤奋小L的博客">
+    <meta name="description" content="
+本文引用于http://www.javanx.cn/20191022/uni-app/
+
+前言Uni-App，从了解到开发，相信大家都会觉得Uni-App性能不好，其实也这是非原生的弊病。React Native、Flutter等，非原生">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>uniapp性能优化建议 | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">uniapp性能优化建议</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                <span class="chip bg-color">转载</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-23
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    10 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>本文引用于<a href="http://www.javanx.cn/20191022/uni-app/" target="_blank" rel="noopener">http://www.javanx.cn/20191022/uni-app/</a></p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><code>Uni-App</code>，从了解到开发，相信大家都会觉得<code>Uni-App</code>性能不好，其实也这是非原生的弊病。<code>React Native</code>、<code>Flutter</code>等，非原生框架，性能上都会或多或少的折损。但各个框架，都会做出<a href="http://www.javanx.cn/tag/性能提升/" target="_blank" rel="noopener">性能提升</a>建议，所以开发者在开发前，多了解一下，后面维护升级等就会更方便一点，否则项目越来越大，后续开发就会越来越难。</p>
+<p><img src="http://cdn.javanx.cn/wp-content/themes/lensnews2.2/images/201909/11/20191018142550.png" alt="&lt;code&gt;&lt;a href=">uni-app: 如何高效开发uni app?” /&gt;</p>
+<p>现在我们就从<code>uni-app</code>运行<a href="http://www.javanx.cn/tag/原理/" target="_blank" rel="noopener">原理</a>上，了解一下，在哪些方面存在性能折损问题？</p>
+<h1 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h1><h2 id="逻辑层和视图层分离，非H5端通信有折损"><a href="#逻辑层和视图层分离，非H5端通信有折损" class="headerlink" title="逻辑层和视图层分离，非H5端通信有折损"></a>逻辑层和视图层分离，非H5端通信有折损</h2><p><code>uni-app</code> 在非H5端运行时，从架构上分为逻辑层和视图层两个部分。逻辑层负责储存数据和执行业务逻辑，视图层负责页面渲染。</p>
+<p>页面加载时，联网和逻辑运算在逻辑层（Android是<code>v8</code>，iOS是<code>jscore</code>），然后会传递数据给视图层渲染。这种通信有损耗。同样，在视图层操作时，比如拖动页面，要实时传递事件给逻辑层接收，也是有损耗的。</p>
+<p><img src="http://cdn.javanx.cn/wp-content/themes/lensnews2.2/images/201909/11/20191018142551.png" alt="&lt;code&gt;uni-app&lt;/code&gt;: 如何高效开发uni app?"></p>
+<h2 id="App端渲染引擎可切换"><a href="#App端渲染引擎可切换" class="headerlink" title="App端渲染引擎可切换"></a>App端渲染引擎可切换</h2><p>在App端，<code>nvue</code> 页面的视图层是由原生引擎渲染的，<code>vue</code> 页面的视图层是os的 <code>webview</code> 渲染的。 <code>uni-app</code> 的 <code>webview</code> 渲染经过优化，性能也足够好。它比 <code>nvue</code> 弱的地方主要在于启动速度和可左右拖动的长列表。</p>
+<h2 id="app-vue和小程序的数据更新，分页面级和组件级"><a href="#app-vue和小程序的数据更新，分页面级和组件级" class="headerlink" title="app-vue和小程序的数据更新，分页面级和组件级"></a>app-vue和<a href="http://www.javanx.cn/tag/小程序/" target="_blank" rel="noopener">小程序</a>的数据更新，分页面级和组件级</h2><p>对于复杂页面，更新某个区域的数据时，需要把这个区域做成组件，这样更新数据时就只更新这个组件，否则会整个页面的数据更新，造成点击延迟卡顿。 这就是自定义组件编译模式的特点。</p>
+<p>比如微博长列表页面，点击一个点赞图标，赞数要立即+1，此时这个点赞图标一定要做成组件。否则这个+1会引发页面级所有数据的更新。</p>
+<p>app-nvue和h5不存在此问题。造成差异的原因是小程序目前只提供了组件差量更新的机制，不能自动计算所有页面差量。</p>
+<p><img src="http://cdn.javanx.cn/wp-content/themes/lensnews2.2/images/201909/11/20191018142552.png" alt="&lt;code&gt;uni-app&lt;/code&gt;: 如何高效开发uni app?"></p>
+<h1 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h1><h2 id="使用自定义组件模式"><a href="#使用自定义组件模式" class="headerlink" title="使用自定义组件模式"></a>使用自定义组件模式</h2><p>使用自定义组件模式，在 <code>manifest</code> 中配置自定义组件模式（HBuilderX1.9起新建项目默认即为自定义组件模式）。</p>
+<p>在复杂页面中，页面中嵌套大量组件，如果是非自定义组件模式，更新一个组件会导致整个页面数据更新。而自定义组件模式则可以单独更新一个组件的数据。</p>
+<p>在App端，除了上述好处，自定义组件模式还新增了一个独立的js引擎，加快启动速度、减少js阻塞。</p>
+<p>之前的非自定义组件模式已经不再推荐，如果你的应用还是非自定义组模式，请尽快升级。</p>
+<h2 id="避免使用大图"><a href="#避免使用大图" class="headerlink" title="避免使用大图"></a>避免使用大图</h2><p>页面中若大量使用大图资源，会造成页面切换的卡顿，导致系统内存升高，甚至白屏崩溃。</p>
+<p>尤其是不要把多张大图缩小后显示在一个屏幕内，比如上传图片前选了数张几M体积的照片，然后缩小在一个屏幕中展示多张几M的大图，非常容易白屏崩溃。</p>
+<p>推荐通过阿里云oss，来压缩图片处理。</p>
+<p><img src="http://cdn.javanx.cn/wp-content/themes/lensnews2.2/images/201909/11/20191018142553.png" alt="&lt;code&gt;uni-app&lt;/code&gt;: 如何高效开发uni app?"></p>
+<h2 id="优化数据更新"><a href="#优化数据更新" class="headerlink" title="优化数据更新"></a>优化数据更新</h2><p>在 <code>uni-app</code> 中，定义在 <code>data</code> 里面的数据每次变化时都会通知视图层重新渲染页面。 所以如果不是视图所需要的变量，可以不定义在 <code>data</code> 中，可在外部定义变量或直接挂载在vue实例上，以避免造成资源浪费。</p>
+<h2 id="长列表"><a href="#长列表" class="headerlink" title="长列表"></a>长列表</h2><p>长列表中如果每个<code>item</code>有一个点赞按钮，点击后点赞数字+1，此时点赞组件必须是一个单独引用的组件，才能做到差量数据更新。否则会造成整个列表数据重载。（要求自定义组件模式）</p>
+<p>长列表中每个<code>item</code>并不一定需要做成组件，取决于你的业务中是否需要差量更新某一行item的数据，如没有此类需求则不应该引入大量组件。（点击item后背景变色，属于css调整，没有更新data数据和渲染，不涉及这个问题）</p>
+<p>app端<code>nvue</code>的长列表应该使用<code>list</code>组件，有自动的渲染资源回收机制。vue页面使用页面滚动的性能，好于使用<code>scroll-view</code>的区域滚动。</p>
+<p>如需要左右滑动的长列表，请参考“在HBuilderX新建<code>uni-app</code>项目” 的 新闻模板，那是一个标杆实现。自己用<code>swiper</code>和<code>scroll-view</code>做很容易引发性能问题。</p>
+<p><img src="http://cdn.javanx.cn/wp-content/themes/lensnews2.2/images/201909/11/20191018142554.jpg" alt="&lt;code&gt;uni-app&lt;/code&gt;: 如何高效开发uni app?"></p>
+<h2 id="减少一次性渲染的节点数量"><a href="#减少一次性渲染的节点数量" class="headerlink" title="减少一次性渲染的节点数量"></a>减少一次性渲染的节点数量</h2><p>页面初始化时，逻辑层如果一次性向视图层传递很大的数据，使视图层一次性渲染大量节点，可能造成通讯变慢、页面切换卡顿，所以建议以局部更新页面的方式渲染页面。</p>
+<p>如：服务端返回100条数据，可进行分批加载，一次加载50条，500ms 后进行下一次加载。</p>
+<h2 id="减少节点嵌套层级"><a href="#减少节点嵌套层级" class="headerlink" title="减少节点嵌套层级"></a>减少节点嵌套层级</h2><p>深层嵌套的节点在页面初始化构建时往往需要更多的内存占用，并且在遍历节点时也会更慢些，所以建议减少深层的节点嵌套。</p>
+<h2 id="避免视图层和逻辑层频繁进行通讯"><a href="#避免视图层和逻辑层频繁进行通讯" class="headerlink" title="避免视图层和逻辑层频繁进行通讯"></a>避免视图层和逻辑层频繁进行通讯</h2><p>减少 <code>scroll-view</code> 组件的 <code>scroll</code> 事件监听，当监听 <code>scroll-view</code> 的滚动事件时，视图层会频繁的向逻辑层发送数据；</p>
+<p>监听 <code>scroll-view</code> 组件的滚动事件时，不要实时的改变 <code>scroll-top/scroll-left</code> 属性，因为监听滚动时，视图层向逻辑层通讯，改变 <code>scroll-top/scroll-left</code> 时，逻辑层又向视图层通讯，这样就可能造成通讯卡顿。</p>
+<p>注意 <code>onPageScroll</code> 的使用，<code>onPageScroll</code> 进行监听时，视图层会频繁的向逻辑层发送数据；<br>多使用<code>css</code>动画，而不是通过js的定时器操作界面做动画</p>
+<p><img src="http://cdn.javanx.cn/wp-content/themes/lensnews2.2/images/201909/11/20191018142555.jpg" alt="&lt;code&gt;uni-app&lt;/code&gt;: 如何高效开发uni app?"></p>
+<h2 id="优化页面切换动画"><a href="#优化页面切换动画" class="headerlink" title="优化页面切换动画"></a>优化页面切换动画</h2><p>页面初始化时若存在大量图片或原生组件渲染和大量数据通讯，会发生新页面渲染和窗体进入动画抢资源，造成页面切换卡顿、掉帧。建议延时100ms~300ms渲染图片或复杂原生组件，分批进行数据通讯，以减少一次性渲染的节点数量。</p>
+<p>App端动画效果可以自定义。<code>popin/popout</code>的双窗体联动挤压动画效果对资源的消耗更大，如果动画期间页面里在执行耗时的js，可能会造成动画掉帧。此时可以使用消耗资源更小的动画效果，比如<code>slide-in-right/slide-out-right</code>。</p>
+<h2 id="优化样式渲染速度"><a href="#优化样式渲染速度" class="headerlink" title="优化样式渲染速度"></a>优化样式渲染速度</h2><p>如果页面背景是深色，在vue页面中可能会发生新窗体刚开始动画时是灰白色背景，动画结束时才变为深色背景，造成闪屏。这是因为webview的背景生效太慢的问题。此时需将样式写在 <code>App.vue</code> 里，可以加速页面样式渲染速度。<code>App.vue</code> 里面的样式是全局样式，每次新开页面会优先加载 <code>App.vue</code> 里面的样式，然后加载普通 <code>vue</code> 页面的样式。另外<code>nvue</code>页面不存在此问题，也可以更改为<code>nvue</code>页面。</p>
+<h2 id="使用-nvue-代替-vue"><a href="#使用-nvue-代替-vue" class="headerlink" title="使用 nvue 代替 vue"></a>使用 nvue 代替 vue</h2><p>在 <code>App</code> 端 <code>uni-app</code> 的 <code>nvue</code> 页面可是基于 <code>weex</code> 定制的原生渲染引擎，实现了页面原生渲染能力、提高了页面流畅性。若对页面性能要求较高可以使用此方式开发。</p>
+<p><img src="http://cdn.javanx.cn/wp-content/themes/lensnews2.2/images/201909/11/20191018142556.jpg" alt="&lt;code&gt;uni-app&lt;/code&gt;: 如何高效开发uni app?"></p>
+<h2 id="优化App启动速度的注意"><a href="#优化App启动速度的注意" class="headerlink" title="优化App启动速度的注意"></a>优化App启动速度的注意</h2><p>工程代码越多，包括背景图和本地字体文件越大，对App的启动速度有影响，应注意控制体积。组件引用的前景图不影响性能。</p>
+<p>App端的 splash 关闭有白屏检测机制，如果首页一直白屏或首页本身就是一个空的中转页面，可能会造成 splash 10秒才关闭。</p>
+<p>App端使用自定义组件模式时启动速度更快，首页为nvue页面时启动速度更快</p>
+<p>App设置为纯nvue项目（<code>manifest</code>里设置<code>app-plus</code>下的<code>renderer:&quot;native&quot;</code>），这种项目的启动速度更快，2秒即可完成启动。因为它整个应用都使用原生渲染，不加载基于webview的那套框架。</p>
+<p><img src="http://cdn.javanx.cn/wp-content/themes/lensnews2.2/images/201909/11/20191018142557.png" alt="&lt;code&gt;uni-app&lt;/code&gt;: 如何高效开发uni app?"></p>
+<h2 id="优化包体积"><a href="#优化包体积" class="headerlink" title="优化包体积"></a>优化包体积</h2><p>1、<code>uni-app</code>发行到小程序时，自带引擎只有几十K，主要是一个定制过的vue.js核心库。如果使用了<code>es6</code>转<code>es5</code>、css对齐的功能，可能会增大代码体积，可以配置这些编译功能是否开启。</p>
+<p>2、<code>uni-app</code>的H5端，自带了<code>vue.js</code>、<code>vue-rooter</code>及部分<code>es6 polyfill</code>库，这部分的体积gzip后只有92k，和web开发使用vue基本一致。而内置组件ui库（如picker、switch等）、小程序的对齐js api等，相当于一个完善的大型ui库。但大多数应用不会用到所有内置组件和API。由此<code>uni-app</code>提供了摇树优化机制，未摇树优化前的<code>uni-app</code>整体包体积约500k，服务器部署gzip后162k。开启摇树优化需在<code>manifest</code>配置。</p>
+<p>3、<code>uni-app</code>的App端，因为自带了一个独立v8引擎和小程序框架，所以比<code>HTML5Plus</code>或<code>mui</code>等普通<code>hybrid</code>的App引擎体积要大。Android基础引擎约15M。App还提供了扩展模块，比如地图、蓝牙等，打包时如不需要这些模块，可以裁剪掉，以缩小发行包体积。在 <code>manifest.json-App</code>模块权限 里可以选择。</p>
+<p>4、App端支持如果选择纯nvue项目（<code>manifest</code>里设置<code>app-plus</code>下的<code>renderer:&quot;native&quot;</code>），包体积可以进一步减少2M左右。</p>
+<p>5、<code>uni-app</code>的App端默认包含arm32和x86两个cpu的支持so库。这会增大包体积。如果你在意体积控制，可以在manifest里去掉x86 cpu的支持（manifest可视化界面-App其他设置里选择cpu），这可以减少包体积到9M。但代价是不支持intel的cpu了。一般手机都是arm的，仅个别少见的Android pad使用x86 cpu。另外as的模拟器里如果选择x86时也无法运行这种apk。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><a href="http://www.javanx.cn/tag/性能优化/" target="_blank" rel="noopener">性能优化</a>可以总结以下几点：</p>
+<p>1、减少页面级渲染<br>2、能用CSS解决的，不要用JS<br>3、减少M级图片，在保证分辨率的同时，尽量压缩图片<br>4、减少包的体积，去掉不必要的图片，字体文件备份文件等</p>
+<p>同时，跟小伙们们说再见了，本专栏完结，同时回顾一下本专栏内容。本专栏主要通过一个简单的“天气”项目，让大家快速上手uni-app，从项目搭建、接口调用、原生交互、组件封装使用等，基本完成了一整套开发。</p>
+<p>再次谢谢，支持我的小伙伴，期待下一次专栏能给大家带来更好更优质的内容。谢谢大家。</p>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                    <span class="chip bg-color">转载</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-06-23T17-12-15',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/06/24/vue-shi-xian-wen-jian-xia-zai/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="vue实现文件下载">
+                        
+                        <span class="card-title">vue实现文件下载</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+download.js这个插件会造成只下载文件地址，只能下载图片和视频地址，对于pdf和word之类的内容只有文件的下载地址
+这个是我根据别人的方法封装成一个工具类，在vue中直接引入就可以使用了
+
+在工具类中引入写入下载方法
+
+impo
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">日常总结</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/19/vue-de-ji-suan-shu-xing-ru-he-shi-xian-huan-cun/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Vue的计算属性如何实现缓存">
+                        
+                        <span class="card-title">Vue的计算属性如何实现缓存</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Vue 的计算属性如何实现缓存？（原理深入揭秘）
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">转载</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                        <span class="chip bg-color">前端面试题</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

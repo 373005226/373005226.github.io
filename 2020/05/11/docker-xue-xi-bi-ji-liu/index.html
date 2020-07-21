@@ -1,0 +1,1193 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker学习笔记六, 勤奋小L的博客">
+    <meta name="description" content="介绍了Kubernetes的用法和介绍">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>docker学习笔记六 | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = 'd548c5b83fa61d8e3bd86ad42a7ffea9b7c86e3f9d8095c1577d3e1270bb9420';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">docker学习笔记六</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                运维
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-11
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Kubernetes介绍"><a href="#Kubernetes介绍" class="headerlink" title="Kubernetes介绍"></a>Kubernetes介绍</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200513105938.png" alt=""></p>
+<p><code>swarm</code>的架构就是一个<code>manager</code>节点和<code>worker</code>节点，<code>K8S</code>的集群架构大致是一样的，但是呢在<code>K8s</code>中，<code>manager</code>节点成为<code>master</code>节点 ，<code>worker</code>节点成为<code>node</code>节点，<code>master</code>节点会对外提供一些接口，通过接口可以对<code>K8s</code>的集群进行操作</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200513110330.png" alt="Master节点"></p>
+<p><code>K8s</code>节点是整个集群的大脑，<code>master</code>的主要功能可以通过模块去看，从图中可知，主要有一个<code>API Server</code>（通过这个跟集群进行交互），<code>Scheduler</code>（调度模块，比如说部署一个应用，应用需要两个容器，容器要运行到哪个节点上去，也就是要<code>Scheduler</code>的调度算法来确定分配到哪个节点），<code>Controller</code>，<code>etcd</code>（就是一个存储K8S的整个状态和配置）</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200513165754.png" alt="Node节点"></p>
+<p>对于<code>Node</code>节点来讲，最重要的概念就是Pod，Pod是容器调用的最小单位，Pod就是具有相同的namespace的一些container的组合</p>
+<p>接下来看一下最下面的四个方块</p>
+<p><code>Docker</code>就是容器的技术</p>
+<p><code>Kubelet</code>：<code>node</code>节点是收到<code>master</code>节点的控制的，<code>master</code>节点如何去控制<code>node</code>节点呢，如何去创建pod、volume、网络等会通过Kubelet去创建</p>
+<p><code>Kube-proxt</code>：这个是跟网络有关的，K8S如何是想要暴露一些端口给外界的去访问，<code>Kube-proxt</code>就去做一些代理的端口的代理和转发，在<code>K8S</code>的<code>serverice</code>里面也可以做一些负载均衡，<code>serverice</code>的发现和负载均衡也是通过<code>Kube-proxt</code>来实现的</p>
+<p><code>Fluentd</code>：做日志的采集和存储以及查询的</p>
+<p>除此之外还有一些<code>optional</code>的插件，有<code>DNS</code>服务模块来提供<code>DNS</code>服务的，<code>UI</code>来通过<code>web</code>的方式去访问<code>K8S</code>集群的；</p>
+<p>最上层的还<code>有Imag Registry</code>来拉去<code>docker</code>需要的<code>image</code></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200513170828.png" alt=""></p>
+<h2 id="K8S介绍"><a href="#K8S介绍" class="headerlink" title="K8S介绍"></a>K8S介绍</h2><p> Pod是K8s里面调度的最小单位，在K8s里面不对容container直接操作，Pod已经是最小单位了，那么pod和container是什么关系呢</p>
+<p>一个pod可以包含一个或者多个container，一个pod共享一个namespace（用户、网络、存储等等），在一个pod里面的container就可以通过localhost去通信</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200514175857.png" alt=""></p>
+<p>在运行容器之前需要安装一个单节点的K8S集群</p>
+<pre><code>minikube start</code></pre><p>在使用集群之前要了解一个kubectl context（可以理解为上下文），kubectl 是一个client的cli，要去连接一个k8s的集群，k8s集群提供了一个API server，cli要去连接这个API server，必须要有一些基本的配置信息，比如说（API地址、IP地址、端口、基本的认证信息），把这些配置信息称之为一个context，minikube是已经帮我们生成好了</p>
+<p>输入命令</p>
+<pre><code>kubectl config view</code></pre><p> 可以看到当前的config的基本情况</p>
+<pre><code>kubectl config get-contexts </code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200514202128.png" alt="image-20200514202126622"></p>
+<p>可以看到有一个集群，只要是不同的集群就有不同的config，所以就可以通过config去连接</p>
+<p>通过</p>
+<pre><code>kubectl cluster-info</code></pre><p>就可以看到集群的情况</p>
+<p>同时也可以进入virtualbox创建的虚拟机</p>
+<pre><code>minikube ssh</code></pre><h2 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h2><p>在视频中的实验是取一个pod_nginx.yml文件</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515100826.png" alt="pod_nginx.yml"></p>
+<p>然后使用命令创建集群</p>
+<pre><code>kubectl create -f pod_nginx.yml</code></pre><p>跑起来的结果如下：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515091338.png" alt=""></p>
+<p>可以看到Nginx其实是一个容器，其实就是一个pod，pod里面跑一个container，那么这个pod在哪呢</p>
+<p>然后使用如下命令可以看到pod的详细信息</p>
+<pre><code>kubectl get pods -o wide</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515091452.png" alt=""></p>
+<p>可以看到是允许在minikube的这个节点上</p>
+<p>如果现在是想进去容器里面那怎么办呢</p>
+<p>可以进去minikube的这个节点里面，然后再在里面使用docker进行操作</p>
+<p>即</p>
+<pre><code>minikube ssh    #先进去pod里面
+docker ps        #进去里面再使用ps</code></pre><p>可以看到里面有个k8s_nginx</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515091646.png" alt=""></p>
+<p>当然也可以直接通过kubectl进去</p>
+<pre><code>kubectl exec -it nginx sh</code></pre><p>这个方法是只进入第一个容器，如果是有多个容器的话，先要查看这个pod的详细信息</p>
+<pre><code>kubectl describe pods Nginx</code></pre><p>就可以打印出来Nginx的详细信息</p>
+<p> <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515095714.png" alt=""></p>
+<p>可以看到IP为172.17.0.4，但是现在的操作环境是在minikube的外边是没办法访问到这个地址的</p>
+<p>所以是要先进去minikube里面</p>
+<pre><code>minikube ssh</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515095858.png" alt=""></p>
+<p>无论是ping还是curl都可以访问到这个地址的</p>
+<p>但是这个Nginx不是为了给开发者自己去访问的，是要给外边去访问的</p>
+<p>此时就需要把这个Nginx地址映射到minikube的接口上</p>
+<p>接下来要看下minikube的地址</p>
+<pre><code>minikube ssh    #先进去minikube
+ip a            #然后查看ip</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515100120.png" alt=""></p>
+<p>可以看到这个地址是可以供外面去访问的</p>
+<p>为了端口映射出去可以让外部访问，有两种方法</p>
+<p>第一种：</p>
+<pre><code>kubectl port-forward nginx 8080:80</code></pre><p>可以看到映射成功</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515100343.png" alt=""></p>
+<p>但是这个方法是要一直去运行的</p>
+<h2 id="pods的拓展"><a href="#pods的拓展" class="headerlink" title="pods的拓展"></a>pods的拓展</h2><h3 id="ReplicationController"><a href="#ReplicationController" class="headerlink" title="ReplicationController"></a>ReplicationController</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515101009.png" alt="rc_nginx.yml"></p>
+<p>还是按照老方法直接create方法去创建</p>
+<pre><code>kubectl create -f rc_nginx.yml</code></pre><p>查看pods</p>
+<pre><code>kubectl get pods    #查看所有的pods
+kubectl get rx         #查看Nginx总量</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515101311.png" alt=""></p>
+<p>如果删掉其中的一个pods</p>
+<pre><code>kubectl delete pods nginx-6r92b</code></pre><p> 然后再查看</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515101442.png" alt=""></p>
+<p>也就是说如果是通过ReplicationController去创建的话，pods会维持一个数目</p>
+<p>那么如何去拓展呢，还是通过scael方法</p>
+<pre><code>kubectl scale rc nginx --replicas=2</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515101658.png" alt=""></p>
+<p>  当然也可以升</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515101725.png" alt=""></p>
+<p>此时可以看到每个Nginx都是监听到80端口的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515102159.png" alt=""></p>
+<p>可以看到每个Nginx都运行在minikube的这个节点上</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515102227.png" alt=""></p>
+<p>在docker swarm中，是有个virtual IP（不变的虚拟IP）去做负载均衡</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515102623.png" alt=""></p>
+<h3 id="ReplicaSet"><a href="#ReplicaSet" class="headerlink" title="ReplicaSet"></a>ReplicaSet</h3><p>ReplicaSet和Replication唯一不同就是ReplicaSet支持new ser-based selector</p>
+<p>那么如何去使用ReplicaSet呢</p>
+<p>这里需要修改原来的rc_nginx.yml文件</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515103212.png" alt="rs_nginx.yml"></p>
+<p>第二和第三个地方是ReplicaSet和Replication要求不同的</p>
+<p>然后修改好之后</p>
+<pre><code>kubectl create -f rs_nginx.yml</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515103332.png" alt=""></p>
+<p>如果是需要去拓展</p>
+<pre><code>kubectl scale rs nginx --replicas=2</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515103428.png" alt=""></p>
+<h2 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h2><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515103810.png" alt="Deployment官方文档介绍"></p>
+<p>即如果我希望部署一个app，那么我要描述这个我希望的状态（比如我希望有三个拓展，pod的docker image是什么版本），Deployment Controller会努力使得这个声明实现，也就是让底层的pods和replicasets去帮我们实现这个所希望的拓展</p>
+<p>但是如果是通过Deployment 去创建的pods和replicasets，我们就不能对他通过独立的去操作了，也不能delete删除掉replicasets，一定只能对Deployment 去操作</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515104414.png" alt="deployment_nginx.yml"></p>
+<p>这里nginx是低版本的，等一下演示如何去升级</p>
+<p>然后创建这个文件</p>
+<pre><code>kubectl create -f deployment_nginx.yml</code></pre><p>此时已经是保持了三个replicas</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515104824.png" alt=""></p>
+<p>可以看到deployment名为nginx-deployment，可以看到replicas的名字为deployment名字后面加随机数字</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515104945.png" alt=""></p>
+<p>然后pods也是一样的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515105102.png" alt=""></p>
+<p>可以看到前面的数字是一样的，后面接着的就是pods的随机字符串</p>
+<p>先看一下所有的详细信息</p>
+<pre><code>kubectl get deployment -o wide</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515105235.png" alt=""></p>
+<p>此时对deployment进行升级</p>
+<pre><code>kubectl set image deployment nginx-deployment</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515105418.png" alt=""></p>
+<p>然后查看服务可以看到有个旧的被撤销了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515105442.png" alt=""></p>
+<p>当然这个还可以进行版本的控制</p>
+<p>这里先看一下版本</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515105524.png" alt=""></p>
+<p>然后进行回滚</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515105608.png" alt=""></p>
+<p>如图所示·版本回滚了，nginx的版本也变成了老版本</p>
+<p>对于deployment来讲，可以很轻松的就可以进行版本的更新</p>
+<p>以上讲部署nginx的方法（Pods、ReplicaSet、ReplicationController）都没办法吧minikube的端口让外部去访问，除非通过pod_forward</p>
+<p>K8S提供了一个另外的方法，可以让端口暴露在节点上面</p>
+<pre><code>kubectl expose deployment nginx-deployment --type=NodePort</code></pre><p> 然后看一下端口</p>
+<pre><code>kubectl get svc</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515110325.png" alt=""></p>
+<p>可以看到监听了minikube的30451端口 </p>
+<p>然后可以通过IP地址+30541去访问nginx，在个地址也就是minikube的地址或者是K8S集群Node的地址</p>
+<h2 id="network"><a href="#network" class="headerlink" title="network"></a>network</h2><p>service和网络有密切的关系，这里要重新搭建一个环境，minikube的单节点环境可以演示但是不够直观，这里通过coreos去演示</p>
+<p>可以通过vagrant方式或者是virtualbox方式安装</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515110826.png" alt=""></p>
+<p>当然这里肯定会遇到兼容的问题，让kubectl去选择</p>
+<p> 这里通过pod_busybox.yml和pod_nginx.yml两个yml文件去创建了pods</p>
+<p>以下是两个pods的运行情况</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515144509.png" alt=""></p>
+<p>如果是在busybox-pod容器里面去ping以下另一个容器的话是可以ping通的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515144757.png" alt=""></p>
+<p>这里假设是在同一个node里面才可以ping通的，现在拿另一个集群的另个一个服务器去ping</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515144953.png" alt=""></p>
+<p>而且还是可以ping通的，这个可以联到docker swarm的多机通信overlay网络</p>
+<p> <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515145132.png" alt=""></p>
+<p>如图所示：</p>
+<p>C1可以ping通w1里面的两个地址，原因是因为两个地方之间做了一个overlay的网络</p>
+<p>在这两台机器之间都安装了一个flanner的插件，这个插 件也是coreos的产品，通过这个插件实现了两个地方之间的overlay网络</p>
+<p>里面的英文文章是k8s的网络说明文档，里面有列举很多插件，但是这些插件都要满足一个基本要求</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515145918.png" alt=""></p>
+<ol>
+<li>所有的容器跟其他容器之间可以直接通信，并且不需要NAT之间的转换</li>
+<li>C1这台机器上的Node去ping W1上面的nginx和busybox，也就是在一个node上可以直接访问 其他的container，哪怕是这个container不在当前的节点上也是可以的</li>
+<li>就是自己的IP是什么， 别人访问他的IP地址就是这个地址</li>
+</ol>
+<p>各个厂商都可以  根据这个规范要求去实现自己的插件 </p>
+<p>在w1上使用ifconfig命令可以看到有一个flannel地址</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515150422.png" alt=""></p>
+<h2 id="service"><a href="#service" class="headerlink" title="service"></a>service</h2><p>还是使用上面的图</p>
+<p> <img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515145132.png" alt=""></p>
+<p>虽然是可以内部通信了，但是类似nginx之类的服务是需要外部网络可以访问的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515150746.png" alt=""></p>
+<p>里面的每个pod都有自己的IP地址，每个之间都是可以ping通的</p>
+<p>只要一个是web service，需要外部访问，只需要IP地址+端口号就可以访问到这个服务，但是不能直接这么做，会出现很多问题</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515151000.png" alt=""></p>
+<p>在水平拓展的时候是做伸缩还是拓展，如果是减少的话那么就要销毁pod，那么这个IP地址肯定是没了，那么外部访问这个IP肯定就是有问题的了，如果是一个web服务，他的scale=3，那么外部访问三个地址之间的哪个</p>
+<p>如果是通过Deployment去部署这个pod，后期如果是需要更新image，升级或者是降级，那么之间的pod就会被销毁，会生成一个新的pod，那么这个pod的IP也会改变</p>
+<p>假如一个service是数据库，那么我们希望的是无论怎么改变，这个IP地址和端口都不要去变化，哪怕是要升级或者是降级</p>
+<p>综上所述也就是关于service的问题</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515151451.png" alt=""></p>
+<p>以下三种都是基于IP地址的</p>
+<h3 id="cluster-IP"><a href="#cluster-IP" class="headerlink" title="cluster IP"></a>cluster IP</h3><h4 id="pod"><a href="#pod" class="headerlink" title="pod"></a>pod</h4><p>顾名思义，cluster IP就是只有cluster 可以访问的地址，外界是无法访问的，假如创建一个数据库service，类型为cluster IP，cluster IP是不会去改变的，是这个service所对应的IP地址，这个service肯定有pod，和这个pod的IP地址和service之间是有一个一对一的对应关系，这个service的IP地址是不会去变化的了，这个pod的IP地址是可以变化的，但是对外提供的cluster IP不会变，所以说这个服务是稳定的</p>
+<p>实验环境还是基于上图的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515152634.png" alt="image-20200515152633840"></p>
+<p>然后使用命令</p>
+<pre><code>kubectl expose pods nginx-pod</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515152702.png" alt=""></p>
+<p>然后再获取service</p>
+<pre><code>kubectl get svc</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515152727.png" alt=""></p>
+<p>可以看到nginx-pod就是cluster IP，对外提供服务的话可以通过这个地址</p>
+<p>10.2.0.252是nginx的pod地址，也是container的ip地址，自行销毁的话这个地址是会变化的，但是service ip是不会变化的</p>
+<p>然后只需要在C1的服务器都可以访问到这个地址</p>
+<h4 id="deployment"><a href="#deployment" class="headerlink" title="deployment"></a>deployment</h4><p>如果是通过deployment去访问的话，先创建并且查看信息</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515153240.png" alt=""></p>
+<p>在C1服务器访问10.2.0.142和10.2.0.141还是可以访问到这个服务的</p>
+<p>这个服务是返回hostname，可以看到两个返回的信息是不一样的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515153416.png" alt=""></p>
+<p>然后把端口暴露给外部去访问</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515153520.png" alt=""></p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515153601.png" alt=""></p>
+<p>然后再去C1的服务器去访问这个地址</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515153713.png" alt=""></p>
+<p>也就是这个service会给我们做一个负载均衡</p>
+<h4 id="使用deployment去做一个无宕机的更新"><a href="#使用deployment去做一个无宕机的更新" class="headerlink" title="使用deployment去做一个无宕机的更新"></a>使用deployment去做一个无宕机的更新</h4><p>这还是跟swarm的实验一样，使用循环去不停的访问地址</p>
+<p>在C1的服务器上循环</p>
+<pre><code>while true;do curl 10.3.120.168:8080;done</code></pre><p>在w1的服务器上可以set image，也就是使得docker image变化去更新deployment，看一下服务会不会中断</p>
+<p>这里有另外一个方法：直接去编辑deployment文件，这里的编辑当然不是通过vim去编辑，而是使用kubectl去编辑这个deployment服务</p>
+<pre><code>kubectl edit deployment service-test</code></pre><p>可以看到会打开启动这个service的yml文件</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515154331.png" alt=""></p>
+<p>只改变输出的内容</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515154401.png" alt=""></p>
+<p>保存退出后面可以看到服务会被down掉</p>
+<p>中止了一断时间然后就变成新的输出内容了</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515154440.png" alt=""></p>
+<p>然后可以看到之前的pods已经被终止了还添加了一个新的</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515154522.png" alt=""></p>
+<p>但是这样并没有实现零宕机的更新，还是有那么一段时间没有访问到，因为这个并不是一个滚动的更新（Rolling Update）</p>
+<h3 id="NodePort"><a href="#NodePort" class="headerlink" title="NodePort"></a>NodePort</h3><h3 id="expose创建"><a href="#expose创建" class="headerlink" title="expose创建"></a>expose创建</h3><p>顾名思义，是绑定到了一个node上面的，node是对外可以提供访问的</p>
+<p> 这里先解释一下label</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515155356.png" alt=""></p>
+<p>在K8S里面几乎是所有的资源都可以设置一个labels，labels是一个key-value的一个对，而且labels可以设置不止一个</p>
+<p>先创建一个pod</p>
+<pre><code>kubectl create -f pod_nginx.yml</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515155709.png" alt=""></p>
+<p>这里先看看帮助，因为默认的就是cluster IP模式</p>
+<p>可以看到</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515155821.png" alt=""></p>
+<p>type默认的就是cluster ip，只需要type指定就可以了</p>
+<pre><code>kubectl expose pods nginx-pod --type=NodePort</code></pre><p>可以看到会有个IP</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515160020.png" alt=""></p>
+<p>主要是看80:31404</p>
+<p>然后看一下node</p>
+<pre><code>kubectl get node -o wide
+kubectl describe node +节点名字</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515160254.png" alt=""></p>
+<p>可以看到节点的IP地址为</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515160341.png" alt=""></p>
+<p>在浏览器访问<code>172.17.4.101:31404</code>，可以看到访问nginx成功</p>
+<p>再试一瞎另外一个node的地址<code>172.17.4.201:31404</code>，可以看到也可以访问</p>
+<p>也就是NodePort这个service，可以把31404的这个整个端口映射到cluster里面的每个node的IP地址上</p>
+<h3 id="通过yml文件去创建"><a href="#通过yml文件去创建" class="headerlink" title="通过yml文件去创建"></a>通过yml文件去创建</h3><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515161352.png" alt="service_nginx.yml"></p>
+<p>先创建这个服务</p>
+<pre><code>kubectl create -f service_nginx.ml</code></pre><p>然后看一下服务</p>
+<pre><code>kubectl get svc</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200515161421.png" alt=""></p>
+<p>然后输入<code>172.17.4.101:32333</code>和<code>172.17.4.201:32333</code></p>
+<p>但是这个NodePort，在端口低于3000的时候会报错，但是自己用的端口可能没那么大，可能是80、443 ，可以在后面加一个nginx代理映射或者是Port是暴露在所有的端口节点上，高端口数量是有限的，低端口不用是对端口是一种浪费，所以这个也不适合在生产环境用，但是可用。</p>
+<p>在生产环境用的比较多的是ExternalName和LoadBalancer，LoadBalancer需要结合云服务商去用，ExternalName就是通过DNS的方式</p>
+<h3 id="LoadBalancer"><a href="#LoadBalancer" class="headerlink" title="LoadBalancer"></a>LoadBalancer</h3><p>这个是需要云服务商去提供LoadBalancer，然后我们通过LoadBalancer就可以自动去访问pod里面的service</p>
+<p>当然也可以去用DNS去做，但是是需要插件</p>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-05-11T21-50-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/05/18/javascript-mian-xiang-dui-xiang-bian-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="JavaScript面向对象编程">
+                        
+                        <span class="card-title">JavaScript面向对象编程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            具体描述了JavaScript的变量和名字
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">JavaScript设计模式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/07/docker-xue-xi-bi-ji-wu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="docker学习笔记五">
+                        
+                        <span class="card-title">docker学习笔记五</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            介绍了Docker swarm
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

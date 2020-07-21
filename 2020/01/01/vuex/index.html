@@ -1,0 +1,1198 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Vuex, 勤奋小L的博客">
+    <meta name="description" content="讲解Vuex的各种属性和方法">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Vuex | 勤奋小L的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">勤奋小L的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">勤奋小L的博客</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/373005226" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/373005226" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Vuex</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-01-01
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-07-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>以下皆是由<a href="https://www.bilibili.com/video/av59594689?from=search&amp;seid=2169751232721048853" target="_blank" rel="noopener">https://www.bilibili.com/video/av59594689?from=search&amp;seid=2169751232721048853</a></p>
+<p>视频中的老师操作代码和讲义总结而成</p>
+</blockquote>
+<h2 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h2><p><code>Vuex</code>在很多网站讲解都是状态管理工具，这个说白了其实就是如果有很多个组件需要传递变量，可以通过<code>Vuex</code>来存储这些变量，<strong>也就是说Vuex就是存储全局变量的地方</strong></p>
+<p>如果两个组件之间变量状态传递，那么可以通过<code>props</code>传递，如果是有很多个组件或者组件之间没有联系的话，通过<code>props</code>传递就会很麻烦</p>
+<p>这个一般是创建一个文件夹，里面创建一个<code>js</code>文件去填写配置</p>
+<p>如图所示：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101224536.png" alt=""></p>
+<p>然后在编写文件之后要去<strong>main.js</strong>挂载才能正常使用</p>
+<p>顺带一提，在<strong>main.js</strong>挂载其实本质就是在<strong>main.js</strong>执行</p>
+<pre><code>Vue.prototype.$store = store</code></pre><h2 id="Vue的单一状态树"><a href="#Vue的单一状态树" class="headerlink" title="Vue的单一状态树"></a>Vue的单一状态树</h2><p>Vue单一状态树其实就是个单一数据源，通俗的讲就是所有数据都只有一个数据源提交。</p>
+<p>如果拿生活中的例子就是，按照以前的公积金政策，每个档案的信息都是分布的，个人档案分到个人档案管理中心，社保分在社保局。但是如果要换个城市入户的话，就要在哪个城市每个地方都提交一份档案，最后再去一个地方提交所有信息，如果有一个部门的信息错误就要回去重新提交一份，原本的方法显得十分的低效。如果换成代码的话，那么就是如果状态信息都保存到多个Store对象中，那么之后的维护和管理都是十分的困难的。</p>
+<p>这也就是我们国家正在完善公积金系统，无论是有多少个城市的公积金，都可以在一个城市里面办理，放在state里面也就是说，无论是有多少个仓库信息，都只调用一个state。无论多少个方法属性都只在一个store存放</p>
+<p>也就是说无论有多少个数据，都只建议创建一个store</p>
+<h2 id="Vuex的结构"><a href="#Vuex的结构" class="headerlink" title="Vuex的结构"></a>Vuex的结构</h2><p>一般的话默认是有如下结构的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101231128.png" style="zoom:67%;" />
+
+
+
+<h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><p>这个就是存储全局变量的地方了</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101231403.png" style="zoom:67%;" />
+
+<p>如果在这里定义变量的话，那么如果要调用它的话，那么就要使用到<code>$store.state.变量</code></p>
+<p>调用方法如图所示：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101232112.png" style="zoom:67%;" />
+
+<h3 id="mutations"><a href="#mutations" class="headerlink" title="mutations"></a>mutations</h3><p>这个其实就相当于vue里面的methods方法</p>
+<h4 id="使用-store-state-counter改变值（错误写法）"><a href="#使用-store-state-counter改变值（错误写法）" class="headerlink" title="使用$store.state.counter改变值（错误写法）"></a>使用$store.state.counter改变值（错误写法）</h4><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101232500.png" alt="官方给出的图" style="zoom:67%;" />
+
+<p>这个<code>devtools</code>是官方推出的插件，<strong>只要使用如上图的流程</strong>，使用这个插件可以跟踪到属性的更改</p>
+<p>比如一个案例：要使用<code>vuex</code>的属性去在页面显示加减法，如果使用如下方法的话，那么达到目的是肯定可以的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101233545.png" style="zoom:67%;" />
+
+<p><code>vuex</code>的变量也可以跟着去修改</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101233519.png" style="zoom:67%;" />
+
+
+
+<p>这个方法其实就是<code>state</code>和<code>Vue Components</code>之间互相改变，虽然是可以达到目的，但是这样就无法使用<code>devtools</code>工具去监听数据的改变了</p>
+<p>所以这个时候要使用<code>mutations</code>去改变<code>vuex</code>属性的值</p>
+<h4 id="使用mutations去改变值（正确写法）"><a href="#使用mutations去改变值（正确写法）" class="headerlink" title="使用mutations去改变值（正确写法）"></a>使用mutations去改变值（正确写法）</h4><p>先在Vuex里面定义方法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101234657.png" style="zoom:67%;" />
+
+<p>然后在组件的使用方法如图</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101235100.png" style="zoom:67%;" />
+
+<p>在组件内使用要使用到<code>this.$store.commit</code>去调用vuex的方法</p>
+<p>此时在<strong>devtools</strong>工具也能监听到属性的改变了</p>
+<h4 id="mutations传入一个参数"><a href="#mutations传入一个参数" class="headerlink" title="mutations传入一个参数"></a>mutations传入一个参数</h4><p>这里拿个案例来说明，这里需要在组件里面传入值的话，那么就可以在mutations里面添加一个形参</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102231831.png" style="zoom:67%;" />
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102232128.png" style="zoom:67%;" />
+
+
+
+<p>在组件内使用mutations方法的话跟emit方法一样的</p>
+<h4 id="mutations传入多个参数"><a href="#mutations传入多个参数" class="headerlink" title="mutations传入多个参数"></a>mutations传入多个参数</h4><p>传入对象的话方法还是一样的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102232705.png" style="zoom:67%;" />
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102232735.png" style="zoom:67%;" />
+
+<p>在组件的methods传入的值有个专属的名词叫<strong>payload：负载</strong></p>
+<h4 id="mutations的另外一种提交风格"><a href="#mutations的另外一种提交风格" class="headerlink" title="mutations的另外一种提交风格"></a>mutations的另外一种提交风格</h4><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102233351.png" style="zoom:67%;" />
+
+<p>但是这种方法传递到vuex的值就不一样了，就不仅仅是一个数字了，而是一个对象，因为这个时候传入过去的就是一个payload对象了</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102233533.png" style="zoom:67%;" />
+
+
+
+<h4 id="mutations响应规则"><a href="#mutations响应规则" class="headerlink" title="mutations响应规则"></a>mutations响应规则</h4><p>Vuex里面所有的state方法都是响应式的，只要state的数据发生了改变，那么Vue组件就会自动更新</p>
+<p>但是做到响应式有两个前提：</p>
+<ul>
+<li>在store里面定义好所需要的属性</li>
+<li>在state中对象添加属性的时候，使用如下的方式<ul>
+<li>方法1：使用Vue.set(obj,’newProp’,123)</li>
+<li>方法2：用新的对象给旧对象重新赋值</li>
+</ul>
+</li>
+</ul>
+<p>这里拿个案例来说明</p>
+<p>先定义一个新属性</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102234336.png" style="zoom:67%;" />
+
+<p>在mutations中添加方法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102234527.png" style="zoom:67%;" />
+
+
+
+
+
+<p>最后在组件内添加方法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102234741.png" style="zoom:50%;" />
+
+<p>这样子的方法是属于响应式的，这个是每个对象都有一个Dep，一个Dep定义着好多个watcher，Dep来监听属性的变化</p>
+<p>Dep就是个观察者模式，先观看数据有没有变化，如果属性发生了变化，就会通知使用到该属性的地方发生改变</p>
+<p>如果里面修改的不是在state里面定义好的属性</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102235443.png" style="zoom:50%;" />
+
+<p>position属性在state里面没有被定义，所以即便是添加了这个属性能在<strong>devtools</strong>工具监听到，也不能提交到响应式系统里面</p>
+<p>所以如果是要添加属性的话，最好是使用<code>Vue.set</code>方法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102235826.png" style="zoom:67%;" />
+
+<p>相对应的，如果是要删除方法就使用<code>Vue.delete</code>方法</p>
+<h3 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h3><p>这个就相当于vue中的计算属性</p>
+<h4 id="只需要一个形参state"><a href="#只需要一个形参state" class="headerlink" title="只需要一个形参state"></a>只需要一个形参state</h4><p>这里做个案例，比如说是要做一个<code>counter</code>的平方</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102214303.png" style="zoom:67%;" />
+
+<p>然后在组件中要引用的话，那么就直接使用</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104124900.png" alt=""></p>
+<p><code>getters</code>还可以做一些过滤功能，比如要过滤年龄大于20岁的数据</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102214939.png" style="zoom:67%;" />
+
+
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102215037.png" style="zoom:67%;" />
+
+
+
+<h4 id="有两个形参：state和getters"><a href="#有两个形参：state和getters" class="headerlink" title="有两个形参：state和getters"></a>有两个形参：state和getters</h4><p><code>getters</code>方法是有第二个形参的，第二个形参实际指向的是自己的<code>getters</code>方法</p>
+<p>比如要调用上述<code>more20stu</code>方法的个数</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102225448.png" style="zoom:67%;" />
+
+
+
+<h4 id="需要在方法中传入值而非定义好的"><a href="#需要在方法中传入值而非定义好的" class="headerlink" title="需要在方法中传入值而非定义好的"></a>需要在方法中传入值而非定义好的</h4><p>如果是需要在组件中传入值，而非在getters里面写死的，那么这个需要在返回值里面定义一个函数，也就是闭包</p>
+<p>如果是需要改变通过组件里面传入数据来筛选大于年龄的范围的话，可以使用如下写法</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102230326.png" style="zoom:67%;" />
+
+
+
+<p>这个其实是可以简化为箭头函数的写法的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200102230406.png" style="zoom:67%;" />
+
+
+
+<h3 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h3><p><code>actions</code>就是异步方法，简单的说就是如果<code>mutations</code>里面有要异步操作的方法，比如网路请求等是异步操作的，官网给出的图是<code>actions</code>异步操作在<code>mutations</code>之前</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200101232500.png" style="zoom:67%;" />
+
+<p>如果在<code>mutations</code>直接去执行异步操作的话，因为不确定执行完的时间，所以如果是异步操作需要时间久的话就不会被<strong>devtools</strong>监听到，所以就有了<code>actions</code>方法，<code>mutations</code>会等待<code>actions</code>的操作执行完毕之后再继续往下走。</p>
+<p>其用法如下：</p>
+<h4 id="普通写法"><a href="#普通写法" class="headerlink" title="普通写法"></a>普通写法</h4><p><code>actions</code>里面默认的第一个形参就是<code>context</code></p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104123038.png" style="zoom:67%;" />
+
+<p>在<code>actions</code>里面调用<code>mutations</code>里面的方法</p>
+<p>然后在组建中使用<code>dispatch</code>方法调用<code>actions</code>的方法就好了</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104123148.png" style="zoom:67%;" />
+
+
+
+<h4 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h4><p>当然<code>actions</code>也是可以传递参数的，默认的第二个参数名是<code>payload</code></p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104123608.png" style="zoom:67%;" />
+
+
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104123639.png" style="zoom:67%;" />
+
+
+
+<h4 id="获取异步操作成功后的信息"><a href="#获取异步操作成功后的信息" class="headerlink" title="获取异步操作成功后的信息"></a>获取异步操作成功后的信息</h4><p>如果是要获取异步操作成功的信息的话</p>
+<p>使用如下写法也是可以的：</p>
+<h5 id="写法1："><a href="#写法1：" class="headerlink" title="写法1："></a>写法1：</h5><p>Vuex里面的方法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104125413.png" style="zoom:67%;" />
+
+
+
+<p>组件中的方法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104125505.png" style="zoom:67%;" />
+
+<p>但是上面的方法有点不好</p>
+<h5 id="写法2："><a href="#写法2：" class="headerlink" title="写法2："></a>写法2：</h5><p>vuex的写法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104125909.png" style="zoom:67%;" />
+
+<p>组件中的写法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104125952.png" style="zoom:67%;" />
+
+
+
+<h5 id="方法3（使用promise）："><a href="#方法3（使用promise）：" class="headerlink" title="方法3（使用promise）："></a>方法3（使用promise）：</h5><p>但是方法2的写法不够优雅</p>
+<p>Vuex的写法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104130901.png" style="zoom:67%;" />
+
+
+
+<p>组件内的写法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104130714.png" style="zoom:67%;" />
+
+<h3 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h3><p>modules方法就是如果所有的东西都往store里面塞，那么数量多的话就会显得很臃肿，但是因为单一状态树的原因只能创建一个store，所以vuex可以在store里面继续划分模块</p>
+<h4 id="使用modelA里面的state"><a href="#使用modelA里面的state" class="headerlink" title="使用modelA里面的state"></a>使用modelA里面的state</h4><p>使用方法如下：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104132122.png" style="zoom:67%;" />
+
+<p>如果是<code>modelA</code>里面有个state属性的话，那么在组件中调用的方法如下：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104132311.png" style="zoom:67%;" />
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104132437.png" style="zoom:67%;" />
+
+<p>因为<code>modelA</code>最终会放在<code>store</code>的<code>state</code>里面</p>
+<h4 id="使用modelA里面的mutations"><a href="#使用modelA里面的mutations" class="headerlink" title="使用modelA里面的mutations"></a>使用modelA里面的mutations</h4><p>如果是在modelA里面定义一个方法的话</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104133005.png" style="zoom:67%;" />
+
+
+
+<p>组件中的方法：</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104133247.png" style="zoom:67%;" />
+
+<p>这个还是用以前的方法就好了，因为只要名字不是重复的，<code>commit</code>会去从<code>store</code>里面找，如果找不到再去看看<code>models</code>里面有没有这个方法</p>
+<h4 id="modelA里面的getter"><a href="#modelA里面的getter" class="headerlink" title="modelA里面的getter"></a>modelA里面的getter</h4><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104133556.png" style="zoom:67%;" />
+
+<p>组件内的写法：</p>
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104133815.png" alt=""></p>
+<p>但是如<code>stote</code>的<code>getters</code>的话，是有一个<code>getters</code>形参的，这个形参是可以调用自己的<code>getters</code>方法的</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104134106.png" style="zoom:67%;" />
+
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104134142.png" alt=""></p>
+<p>如果是想引用<code>store</code>的<code>state</code>属性的话，那么可以引用第三个参数<code>rootState</code></p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104134539.png" style="zoom: 67%;" />
+
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104134617.png" style="zoom:67%;" />
+
+<h4 id="modelA里面的actions"><a href="#modelA里面的actions" class="headerlink" title="modelA里面的actions"></a>modelA里面的actions</h4><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104135150.png" style="zoom:67%;" />
+
+
+
+<p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104135350.png" alt=""></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><code>modelA</code>里面的所有方法的形参都是指向自己<code>modelA</code>里面的方法的</p>
+<h2 id="Vuex的文件结构"><a href="#Vuex的文件结构" class="headerlink" title="Vuex的文件结构"></a>Vuex的文件结构</h2><p><code>Vuex</code>的文件结构是一般都会把<code>state</code>的参数用对象传进去</p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104140640.png" style="zoom:67%;" />
+
+<p>然后<code>mutations</code>、<code>actions</code>、<code>getters</code>里面的方法，把方法写在新的一个文件导入即可</p>
+<p>比如<code>mutations</code></p>
+<img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200104140810.png" style="zoom:67%;" />
+
+<p>如果是<code>model</code>里面的方法，就新建一个<code>model</code>文件夹，里面存放<code>store</code>的<code>model</code>方法即可 </p>
+
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '597160abfabdd55a9c87',
+        clientSecret: '3affb541c52580286f0366b2ff8719e256b2d147',
+        repo: 'https://www.ly-blog.top/',
+        owner: '373005226',
+        admin: null,
+        id: '2020-01-01T00-00-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/01/04/axios/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="axios">
+                        
+                        <span class="card-title">axios</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            讲解axios的各种属性和方法
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/12/27/vue-router/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="v-router详解">
+                        
+                        <span class="card-title">v-router详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            讲解v-router的各种属性
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://www.ly-blog.top" target="_blank">LY</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">245k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank">粤ICP备20043583号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/373005226" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:373005226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=373005226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 373005226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
