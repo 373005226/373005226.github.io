@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="装饰器, 勤奋小L的博客">
-    <meta name="description" content="详细介绍python的装饰器的原理和用法">
+    <meta name="keywords" content="JS删除两个数组的相同元素, 勤奋小L的博客">
+    <meta name="description" content="JS如何快速删除具有相同元素的部分">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>装饰器 | 勤奋小L的博客</title>
+    <title>JS删除两个数组的相同元素 | 勤奋小L的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -316,12 +316,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">装饰器</h1>
+                    <h1 class="description center-align post-title">JS删除两个数组的相同元素</h1>
                 </div>
             </div>
         </div>
@@ -438,8 +438,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python%E8%AF%AD%E6%B3%95/">
-                                <span class="chip bg-color">python语法</span>
+                            <a href="/tags/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/">
+                                <span class="chip bg-color">日常总结</span>
                             </a>
                         
                     </div>
@@ -450,8 +450,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                后端
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
                             </a>
                         
                     </div>
@@ -463,28 +463,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-19
+                    2020-07-23
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-07-17
+                    2020-07-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    56
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -500,157 +500,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="装饰器的概念"><a href="#装饰器的概念" class="headerlink" title="装饰器的概念"></a>装饰器的概念</h2><p>装饰器从理论上讲，就是它可以在让其他函数在不需要做任何代码的变动的前提下增加额外的功能</p>
-<p>这里拿个案例来讲：</p>
-<p>开发公司原本是每个部门都调用同样的一个底层函数，后来要在使用函数前加上一个权限验证代码</p>
-<p>很多人一开始可能都是这样想的</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--检查权限--'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    check<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">pass</span>
-<span class="token keyword">def</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    check<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">pass</span>
-<span class="token keyword">def</span> <span class="token function">f3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    check<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">pass</span>
-<span class="token keyword">def</span> <span class="token function">f4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    check<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">pass</span></code></pre>
-<p>但这种代码违背了<strong>开放封闭原则</strong>，虽然在这个原则是用的面向对象开发，但是也适用于函数式编程，简单来说，<strong>它规定已经实现的功能代码不允许被修改</strong>，但可以被扩展，这个也就是<strong>单例模式</strong>，在不改变别人使用的情况下，在内部写好增加的功能，即：</p>
-<ul>
-<li>封闭：已实现的功能代码块</li>
-<li>开放：对扩展开发</li>
-</ul>
-<p>如果将开放封闭原则应用在上述需求中，那么就不允许在函数 f1 、f2、f3、f4的内部进行修改代码</p>
-<p>根据之前学过的闭包，可以把函数的引用封装进check()函数里面，然后再次调用闭包函数就可以实现每个函数使用前都加上inner函数，代码如下</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--检查权限--'</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> inner
-<span class="token keyword">def</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">pass</span>
-f1<span class="token operator">=</span>check<span class="token punctuation">(</span>f1<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#将f1函数传入check函数里面，然后再去调用</span>
-f1<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>但是这个代码有很大的问题，也违反了开放封闭原则，就是每个部门都要加上这一行代码<code>f1=check(f1)</code></p>
-<p>所以下面介绍python的特殊写法，也叫做语法糖</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--检查权限--'</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> inner
-@check
-<span class="token keyword">def</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">pass</span>
-f1<span class="token punctuation">(</span><span class="token punctuation">)</span> </code></pre>
-<p>@check就代替了f1=check(f1)这行代码，这样每个部门都可以像原来的写法那样调用而且又可以加入检察权限函数了</p>
-<h2 id="两个装饰器"><a href="#两个装饰器" class="headerlink" title="两个装饰器"></a>两个装饰器</h2><p>假如有两个装饰器，他</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">makebold</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--test1--'</span><span class="token punctuation">)</span>
-    <span class="token keyword">def</span> <span class="token function">wrapped</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--1--'</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> <span class="token string">'&lt;b>'</span><span class="token operator">+</span>fn<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'&lt;/b>'</span>
-    <span class="token keyword">return</span> wrapped
-<span class="token keyword">def</span> <span class="token function">makeitalic</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--test2--'</span><span class="token punctuation">)</span>
-    <span class="token keyword">def</span> <span class="token function">wrapped</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--2--'</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> <span class="token string">'&lt;i>'</span><span class="token operator">+</span>fn1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'&lt;/i>'</span>
-    <span class="token keyword">return</span> wrapped
-
-@makebold
-@makeitalic
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token string">'hello world 3'</span>
-
-res<span class="token operator">=</span>test<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span></code></pre>
-<pre><code>--test2--
---test1--
---1--
---2--
-test
-&lt;b&gt;&lt;i&gt;hello world 3&lt;/i&gt;&lt;/b&gt;</code></pre><p><strong>两个装饰器的运行顺序是这样的：python解释器从上往下执行，执行到@makebold，然后返回值还是一个装饰器，然后接着@makeitalic执行,然后makeitalic返回才是一个函数，所以这个顺序是倒着执行的，是test()–&gt;makeitalic()–&gt;makebold()</strong>，调用的时候是从上往下调用，装饰器执行是从下往上执行</p>
-<h2 id="装饰器的执行时间"><a href="#装饰器的执行时间" class="headerlink" title="装饰器的执行时间"></a>装饰器的执行时间</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--执行--'</span><span class="token punctuation">)</span>
-    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--检查权限--'</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> inner
-@check
-<span class="token keyword">def</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">pass</span>
-<span class="token comment" spellcheck="true">#输出 --执行--</span></code></pre>
-<p>从上述代码看出，在执行到@check这一行的时候，就已经执行check函数里面的内容了，而不是要等到f1()的时候再去调用</p>
-<h2 id="装饰器对有参数函数进行装饰"><a href="#装饰器对有参数函数进行装饰" class="headerlink" title="装饰器对有参数函数进行装饰"></a>装饰器对有参数函数进行装饰</h2><p>假如在调用函数的时候需要加入参数，就必须在定义的闭包函数里面也要加入对应的形参，不然会无法调用</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--执行--'</span><span class="token punctuation">)</span>
-    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
-         func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> inner
-@check
-<span class="token keyword">def</span> <span class="token function">f1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'a是%d,b是%d,c是%d'</span><span class="token operator">%</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-f1<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">33</span><span class="token punctuation">)</span></code></pre>
-<h2 id="带返回值的装饰器"><a href="#带返回值的装饰器" class="headerlink" title="带返回值的装饰器"></a>带返回值的装饰器</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>function<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        ret<span class="token operator">=</span>function<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> ret
-    <span class="token keyword">return</span> inner
-@func
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--test--'</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token string">'23333'</span>
-ret<span class="token operator">=</span>test<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'返回值是%s'</span><span class="token operator">%</span>ret<span class="token punctuation">)</span></code></pre>
-<pre><code>--test--
-返回值是23333</code></pre><p>定义返回值也要在闭包函数里面添加相对应的返回值</p>
-<h2 id="有参数的装饰器"><a href="#有参数的装饰器" class="headerlink" title="有参数的装饰器"></a>有参数的装饰器</h2><p>在开发中会出现一个外部变量，如@装饰器名字(‘变量’)的形式，此时就需要多一个闭包函数</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func_args</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>function<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> arg<span class="token operator">==</span><span class="token string">'2333'</span><span class="token punctuation">:</span>
-                function<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                <span class="token keyword">pass</span>
-        <span class="token keyword">return</span> inner
-    <span class="token keyword">return</span> func
-
-@func_args<span class="token punctuation">(</span><span class="token string">'2333'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--test--'</span><span class="token punctuation">)</span>
-test<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#结果 --test--</span></code></pre>
-<p>这样就可以想对什么进行装饰就对什么进行装饰了</p>
-<h2 id="用类当做装饰器进行装饰"><a href="#用类当做装饰器进行装饰" class="headerlink" title="用类当做装饰器进行装饰"></a>用类当做装饰器进行装饰</h2><p>在讲这个之前要懂一个方法</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Test</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">pass</span>
-t<span class="token operator">=</span>Test<span class="token punctuation">(</span><span class="token punctuation">)</span>
-t<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>这样直接调用的话会导致<code>TypeError: &#39;Test&#39; object is not callable</code>错误，所以要在类中声明<code>__call__</code>方法</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Test</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--test--'</span><span class="token punctuation">)</span>
-    <span class="token keyword">pass</span>
-t<span class="token operator">=</span>Test<span class="token punctuation">(</span><span class="token punctuation">)</span>
-t<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#--test--</span></code></pre>
-<p>这样子就可以运行了</p>
-<p>使用类装饰器的形式是这样子的</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Test</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'初始化'</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'函数的名字为%s'</span><span class="token operator">%</span>func<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>__func<span class="token operator">=</span>func
-    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--装饰器的功能--'</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>__func
-
-@Test
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--test--'</span><span class="token punctuation">)</span>
-test<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+                <h2 id="案例1"><a href="#案例1" class="headerlink" title="案例1:"></a>案例1:</h2><p>  如何arr2的数组内容和arr1的id值进行去重</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    id<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                    value<span class="token punctuation">:</span> <span class="token string">'value1'</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    id<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                    value<span class="token punctuation">:</span> <span class="token string">'value2'</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    id<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+                    value<span class="token punctuation">:</span> <span class="token string">'value'</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    id<span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+                    value<span class="token punctuation">:</span> <span class="token string">'value6'</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+  <span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span></code></pre>
+<p>解法：</p>
+<pre class=" language-js"><code class="language-js">  arr1 <span class="token operator">=</span> arr1<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> arr2<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr/>
@@ -664,8 +538,8 @@ test<span class="token punctuation">(</span><span class="token punctuation">)</s
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python%E8%AF%AD%E6%B3%95/">
-                                    <span class="chip bg-color">python语法</span>
+                                <a href="/tags/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/">
+                                    <span class="chip bg-color">日常总结</span>
                                 </a>
                             
                         </div>
@@ -711,7 +585,7 @@ test<span class="token punctuation">(</span><span class="token punctuation">)</s
         repo: 'https://www.ly-blog.top/',
         owner: '373005226',
         admin: null,
-        id: '2019-10-19T00-00-00',
+        id: '2020-07-23T18-29-40',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -732,46 +606,48 @@ test<span class="token punctuation">(</span><span class="token punctuation">)</s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/22/docker-de-an-zhuang/">
+                <a href="/2020/07/23/js-shan-chu-liang-ge-shu-zu-de-xiang-tong-yuan-su/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="docker的安装">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JS删除两个数组的相同元素">
                         
-                        <span class="card-title">docker的安装</span>
+                        <span class="card-title">JS删除两个数组的相同元素</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简洁的介绍docker的安装、部分配置
+                            JS如何快速删除具有相同元素的部分
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
+                    <a href="/tags/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">日常总结</span>
                     </a>
                     
                 </div>
@@ -785,31 +661,31 @@ test<span class="token punctuation">(</span><span class="token punctuation">)</s
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/18/collections-mo-kuai/">
+                <a href="/2020/07/11/qian-duan-kai-fa-ji-qiao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="collections模块">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="前端开发技巧">
                         
-                        <span class="card-title">collections模块</span>
+                        <span class="card-title">前端开发技巧</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            collections模块里面有很多种python常用的数据结构
+                            讲解前端开发小技巧（Vue、JS、CSS）
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                    后端
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
@@ -819,8 +695,16 @@ test<span class="token punctuation">(</span><span class="token punctuation">)</s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">数据结构与算法</span>
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">转载</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">
+                        <span class="chip bg-color">实用技巧</span>
                     </a>
                     
                 </div>

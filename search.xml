@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>JS删除两个数组的相同元素</title>
+      <link href="/2020/07/23/js-shan-chu-liang-ge-shu-zu-de-xiang-tong-yuan-su/"/>
+      <url>/2020/07/23/js-shan-chu-liang-ge-shu-zu-de-xiang-tong-yuan-su/</url>
+      
+        <content type="html"><![CDATA[<h2 id="案例1"><a href="#案例1" class="headerlink" title="案例1:"></a>案例1:</h2><p>  如何arr2的数组内容和arr1的id值进行去重</p><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span>                <span class="token punctuation">{</span>                    id<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>                    value<span class="token punctuation">:</span> <span class="token string">'value1'</span><span class="token punctuation">,</span>                <span class="token punctuation">}</span><span class="token punctuation">,</span>                <span class="token punctuation">{</span>                    id<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>                    value<span class="token punctuation">:</span> <span class="token string">'value2'</span><span class="token punctuation">,</span>                <span class="token punctuation">}</span><span class="token punctuation">,</span>                <span class="token punctuation">{</span>                    id<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>                    value<span class="token punctuation">:</span> <span class="token string">'value'</span><span class="token punctuation">,</span>                <span class="token punctuation">}</span><span class="token punctuation">,</span>                <span class="token punctuation">{</span>                    id<span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>                    value<span class="token punctuation">:</span> <span class="token string">'value6'</span><span class="token punctuation">,</span>                <span class="token punctuation">}</span>            <span class="token punctuation">]</span>  <span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span></code></pre><p>解法：</p><pre class=" language-js"><code class="language-js">  arr1 <span class="token operator">=</span> arr1<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">{</span>      <span class="token keyword">return</span> arr2<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span>  <span class="token punctuation">}</span><span class="token punctuation">)</span>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">)</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日常总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>前端开发技巧</title>
       <link href="/2020/07/11/qian-duan-kai-fa-ji-qiao/"/>
       <url>/2020/07/11/qian-duan-kai-fa-ji-qiao/</url>
@@ -2170,11 +2195,11 @@
     
     
     <entry>
-      <title>mysql配置</title>
-      <link href="/2020/01/12/mysql/"/>
-      <url>/2020/01/12/mysql/</url>
+      <title>linux服务器安装node环境</title>
+      <link href="/2020/01/12/linux-fu-wu-qi-an-zhuang-node/"/>
+      <url>/2020/01/12/linux-fu-wu-qi-an-zhuang-node/</url>
       
-        <content type="html"><![CDATA[<h2 id="linux服务器重置mysql命令："><a href="#linux服务器重置mysql命令：" class="headerlink" title="linux服务器重置mysql命令："></a>linux服务器重置mysql命令：</h2><ol><li><p>查看mysql运行状态</p><pre><code>ps -ef | grep -i mysql</code></pre></li><li><p>vi /etc/my.cnf</p></li></ol><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200110172922.png" alt=""></p><p>在这个地方添加</p><pre><code>skip-grant-tables</code></pre><ol start="3"><li>重启mysql服务器</li></ol><pre><code>systemctl restart mysqld.service</code></pre><ol start="4"><li>执行mysql进去服务器</li></ol><pre><code>mysql</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200110173028.png" alt=""></p><ol start="5"><li>重置密码</li></ol><pre><code>update mysql.user set authentication_string=password(&#39;root_password&#39;) where user=&#39;root&#39;;</code></pre><p>root_password替换成你想要的密码</p><ol start="6"><li>vi /etc/my.cnf删除掉刚刚的那一行skip-grant-tables代码</li><li>重启mysql服务器</li></ol><pre><code>systemctl restart mysqld.service</code></pre><h2 id="mysql开启远程连接"><a href="#mysql开启远程连接" class="headerlink" title="mysql开启远程连接"></a>mysql开启远程连接</h2><ol><li>进入到服务器</li></ol><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200110173028.png" alt=""></p><ol start="2"><li>执行命令</li></ol><pre><code>GRANT ALL PRIVILEGES ON *.* TO &#39;username&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION;</code></pre><p>username为用户名，password是密码（密码要特殊字符）</p><ol start="3"><li>执行命令</li></ol><pre><code>FLUSH PRIVILEGES;</code></pre><p>就可以开启远程服务了</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="centos7安装node环境"><a href="#centos7安装node环境" class="headerlink" title="centos7安装node环境"></a>centos7安装node环境</h3><ol><li><p>下载源码安装包</p><pre class=" language-shell"><code class="language-shell">   wget https://nodejs.org/dist/v10.13.0/node-v10.13.0-linux-x64.tar.xz</code></pre></li><li><p>解压文件夹</p><pre class=" language-shell"><code class="language-shell"> tar -xvf node-v10.13.0-linux-x64.tar.xz</code></pre></li><li><p>移动文件夹目录</p><pre class=" language-shell"><code class="language-shell"> mv node-v10.13.0-linux-x64 /usr/local/nodejs</code></pre></li><li><p>设置环境变量</p><pre class=" language-shell"><code class="language-shell">vim /etc/profile</code></pre></li></ol><p>   在最后面添加这两行代码</p><pre class=" language-shell"><code class="language-shell">   export NODE_HOME=/usr/local/nodejs   export PATH=$NODE_HOME/bin:$PATH</code></pre><ol start="5"><li><p><code>:wq</code>保存后<code>source /etc/profile</code></p></li><li><p>配置成功，最后添加个cnpm </p><pre class=" language-shell"><code class="language-shell"> npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre></li></ol>]]></content>
       
       
       <categories>
@@ -2189,11 +2214,11 @@
     
     
     <entry>
-      <title>linux服务器安装node环境</title>
-      <link href="/2020/01/12/linux-fu-wu-qi-an-zhuang-node/"/>
-      <url>/2020/01/12/linux-fu-wu-qi-an-zhuang-node/</url>
+      <title>mysql配置</title>
+      <link href="/2020/01/12/mysql/"/>
+      <url>/2020/01/12/mysql/</url>
       
-        <content type="html"><![CDATA[<h3 id="centos7安装node环境"><a href="#centos7安装node环境" class="headerlink" title="centos7安装node环境"></a>centos7安装node环境</h3><ol><li><p>下载源码安装包</p><pre class=" language-shell"><code class="language-shell">   wget https://nodejs.org/dist/v10.13.0/node-v10.13.0-linux-x64.tar.xz</code></pre></li><li><p>解压文件夹</p><pre class=" language-shell"><code class="language-shell"> tar -xvf node-v10.13.0-linux-x64.tar.xz</code></pre></li><li><p>移动文件夹目录</p><pre class=" language-shell"><code class="language-shell"> mv node-v10.13.0-linux-x64 /usr/local/nodejs</code></pre></li><li><p>设置环境变量</p><pre class=" language-shell"><code class="language-shell">vim /etc/profile</code></pre></li></ol><p>   在最后面添加这两行代码</p><pre class=" language-shell"><code class="language-shell">   export NODE_HOME=/usr/local/nodejs   export PATH=$NODE_HOME/bin:$PATH</code></pre><ol start="5"><li><p><code>:wq</code>保存后<code>source /etc/profile</code></p></li><li><p>配置成功，最后添加个cnpm </p><pre class=" language-shell"><code class="language-shell"> npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre></li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="linux服务器重置mysql命令："><a href="#linux服务器重置mysql命令：" class="headerlink" title="linux服务器重置mysql命令："></a>linux服务器重置mysql命令：</h2><ol><li><p>查看mysql运行状态</p><pre><code>ps -ef | grep -i mysql</code></pre></li><li><p>vi /etc/my.cnf</p></li></ol><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200110172922.png" alt=""></p><p>在这个地方添加</p><pre><code>skip-grant-tables</code></pre><ol start="3"><li>重启mysql服务器</li></ol><pre><code>systemctl restart mysqld.service</code></pre><ol start="4"><li>执行mysql进去服务器</li></ol><pre><code>mysql</code></pre><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200110173028.png" alt=""></p><ol start="5"><li>重置密码</li></ol><pre><code>update mysql.user set authentication_string=password(&#39;root_password&#39;) where user=&#39;root&#39;;</code></pre><p>root_password替换成你想要的密码</p><ol start="6"><li>vi /etc/my.cnf删除掉刚刚的那一行skip-grant-tables代码</li><li>重启mysql服务器</li></ol><pre><code>systemctl restart mysqld.service</code></pre><h2 id="mysql开启远程连接"><a href="#mysql开启远程连接" class="headerlink" title="mysql开启远程连接"></a>mysql开启远程连接</h2><ol><li>进入到服务器</li></ol><p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200110173028.png" alt=""></p><ol start="2"><li>执行命令</li></ol><pre><code>GRANT ALL PRIVILEGES ON *.* TO &#39;username&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION;</code></pre><p>username为用户名，password是密码（密码要特殊字符）</p><ol start="3"><li>执行命令</li></ol><pre><code>FLUSH PRIVILEGES;</code></pre><p>就可以开启远程服务了</p>]]></content>
       
       
       <categories>
