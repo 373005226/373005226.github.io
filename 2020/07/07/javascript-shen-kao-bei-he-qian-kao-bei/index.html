@@ -478,21 +478,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-07-17
+                    2020-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    634
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    7 分
                 </div>
                 
 
@@ -526,7 +526,195 @@
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707182314" alt=""></p>
 <p>深拷贝：</p>
 <p><img src="https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707182324" alt=""></p>
+<h2 id="深拷贝和浅拷贝详解"><a href="#深拷贝和浅拷贝详解" class="headerlink" title="深拷贝和浅拷贝详解"></a>深拷贝和浅拷贝详解</h2><blockquote>
+<p>本文知识点引用于：<a href="http://caibaojian.com/javascript-array-copy.html" target="_blank" rel="noopener">http://caibaojian.com/javascript-array-copy.html</a></p>
+</blockquote>
+<p>案例：</p>
+<p>array1：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> array1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span>undefined<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
+<h3 id="js的原生方法"><a href="#js的原生方法" class="headerlink" title="js的原生方法"></a>js的原生方法</h3><h4 id="slice-方法"><a href="#slice-方法" class="headerlink" title="slice()方法"></a>slice()方法</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> c1 <span class="token operator">=</span> array1<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="concat-方法"><a href="#concat-方法" class="headerlink" title="concat()方法"></a>concat()方法</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> cc1 <span class="token operator">=</span> array1<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="from-方法"><a href="#from-方法" class="headerlink" title="from()方法"></a>from()方法</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> fc1 <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span>array1<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="push-方法"><a href="#push-方法" class="headerlink" title="push()方法"></a>push()方法</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> pc1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+Array<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>push<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>pc1<span class="token punctuation">,</span>array1<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="map-方法"><a href="#map-方法" class="headerlink" title="map()方法"></a>map()方法</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> mc1 <span class="token operator">=</span> array1<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> item<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>以上几种方法都能实现数组的<code>浅拷贝</code>，即数组的每一项只能是原始类型的数据，如果数组的项包含引用类型，如数组（即js中的二维数组），对象等，以上方法复制的项只是引用。</p>
+<p>还有一种方法是，使用<a href="http://caibaojian.com/t/json" target="_blank" rel="noopener">JSON</a>进行转换，先将数组序列化为json字符串，然后再将字符串转换成json对象即可。</p>
+<h3 id="JSON方法的详解"><a href="#JSON方法的详解" class="headerlink" title="JSON方法的详解"></a>JSON方法的详解</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> jsonc <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>array1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>这种方法可以变相的实现<code>深拷贝</code>,但是这种方法也有其限制：<a href="http://caibaojian.com/javascript-array-copy.html" target="_blank" rel="noopener">·</a></p>
+<ul>
+<li>首先，数组中的项如果是<code>undefined</code>，那么转换后将变为<code>null</code></li>
+<li>如果数组的项为对象，那么对象之间不可相互引用。会造成循环引用，无法JSON序列化。</li>
+</ul>
+<h2 id="总结：性能分析"><a href="#总结：性能分析" class="headerlink" title="总结：性能分析"></a>总结：性能分析</h2><p>以上几种方法都可以实现数组的拷贝，那么，每种方法的性能如何呢，我使用<code>console.time()</code>和<code>console.timeEnd()</code>跟踪当数组大小为100-10000000时，每个方法所用的时间。注意，这里数组每一项都是随机的5种原始值的一个，不包含引用类型</p>
+<table>
+<thead>
+<tr>
+<th align="left">数组大小</th>
+<th align="left">forof</th>
+<th align="left">slice</th>
+<th>concat</th>
+<th>from</th>
+<th>push</th>
+<th>map</th>
+<th>json</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">100</td>
+<td align="left">0.593ms</td>
+<td align="left">0.038ms</td>
+<td>0.034ms</td>
+<td>0.404ms</td>
+<td>0.054ms</td>
+<td>0.193ms</td>
+<td>0.042ms</td>
+</tr>
+<tr>
+<td align="left">1000</td>
+<td align="left">1.606ms</td>
+<td align="left">0.052ms</td>
+<td>0.044ms</td>
+<td>1.311ms</td>
+<td>0.090ms</td>
+<td>0.897ms</td>
+<td>0.124ms</td>
+</tr>
+<tr>
+<td align="left">10000</td>
+<td align="left">2.272ms</td>
+<td align="left">0.097ms</td>
+<td>0.093ms</td>
+<td>3.294ms</td>
+<td>0.145ms</td>
+<td>1.845ms</td>
+<td>0.772ms</td>
+</tr>
+<tr>
+<td align="left">100000</td>
+<td align="left">14.665ms</td>
+<td align="left">0.901ms</td>
+<td>0.730ms</td>
+<td>22.283ms</td>
+<td>4.002ms</td>
+<td>15.894ms</td>
+<td>9.101ms</td>
+</tr>
+<tr>
+<td align="left">1000000</td>
+<td align="left">175.663ms</td>
+<td align="left">16.051ms</td>
+<td>8.400ms</td>
+<td>235.900ms</td>
+<td>Maximum call stack size exceeded</td>
+<td>144.058ms</td>
+<td>97.946ms</td>
+</tr>
+<tr>
+<td align="left">10000000</td>
+<td align="left">1597.242ms</td>
+<td align="left">83.860ms</td>
+<td>124.781ms</td>
+<td>2425.540ms</td>
+<td>Maximum call stack size exceeded</td>
+<td>1424.344ms</td>
+<td>1043.772ms</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>当数组大小超过1000000时，push方式就挂了，报错：<code>Maximum call stack size exceeded</code></p>
+</blockquote>
+<p>webkit浏览器使用cocat().非webkit使用slice()。<a href="http://caibaojian.com/javascript-array-copy.html" target="_blank" rel="noopener">·</a></p>
+<p>补上之前文章的另外另种实现：</p>
+<h3 id="简单的引用复制"><a href="#简单的引用复制" class="headerlink" title="简单的引用复制"></a>简单的引用复制</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">shallowClone</span><span class="token punctuation">(</span>copyObj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token keyword">in</span> copyObj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    obj<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> copyObj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token punctuation">{</span>
+  a<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  b<span class="token punctuation">:</span> <span class="token punctuation">{</span> f<span class="token punctuation">:</span> <span class="token punctuation">{</span> g<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  c<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> y <span class="token operator">=</span> <span class="token function">shallowClone</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">.</span>b<span class="token punctuation">.</span>f <span class="token operator">===</span> x<span class="token punctuation">.</span>b<span class="token punctuation">.</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// true</span></code></pre>
+<h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a>Object.assign()</h3><p>Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。<a href="http://caibaojian.com/javascript-array-copy.html" target="_blank" rel="noopener">·</a></p>
+<pre><code>//code from http://caibaojian.com/javascript-array-copy.html
+var x = {
+  a: 1,
+  b: { f: { g: 1 } },
+  c: [ 1, 2, 3 ]
+};
+var y = Object.assign({}, x);
+console.log(y.b.f === x.b.f);     // true</code></pre><h3 id="深度拷贝"><a href="#深度拷贝" class="headerlink" title="深度拷贝"></a>深度拷贝</h3><h3 id="方法1：使用-JSON-方法"><a href="#方法1：使用-JSON-方法" class="headerlink" title="方法1：使用 JSON 方法"></a>方法1：使用 JSON 方法</h3><p>JSON.stringify(array) 然后再 JSON.parse()。示例：<a href="http://caibaojian.com/javascript-array-copy.html" target="_blank" rel="noopener">·</a></p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//code from http://caibaojian.com/javascript-array-copy.html</span>
+<span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>a<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+arr2 <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>arr1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">,</span> arr2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+arr2<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+arr2<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> arr2<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> arr2<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>此方法存在对古老浏览器的兼容性问题。如确需要作兼容，可引入如下兼容文件解决：<a href="http://caibaojian.com/javascript-array-copy.html" target="_blank" rel="noopener">·</a></p>
+<p><a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js" target="_blank" rel="noopener">https://github.com/douglascrockford/JSON-js/blob/master/json2.js</a></p>
+<p><strong>注意：</strong>如果数组值为函数，上述方法还是不行的</p>
+<p><strong>注意：</strong>如果数组值为函数，上述方法还是不行的。<a href="http://caibaojian.com/javascript-array-copy.html" target="_blank" rel="noopener">·</a></p>
+<h3 id="方法2：深度复制的完全实现"><a href="#方法2：深度复制的完全实现" class="headerlink" title="方法2：深度复制的完全实现"></a>方法2：深度复制的完全实现</h3><p>考虑到多维数组的嵌套，以及数组值为对象的情况，可以作如下原型扩展（当然写为普通函数实现也是可以的，原型扩展是不建议的方式）：</p>
+<pre class=" language-js"><code class="language-js">Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>clone <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token keyword">in</span> <span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+o<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">return</span> o<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+Array<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>clone <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//测试1 Object</span>
+<span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+name<span class="token punctuation">:</span> <span class="token string">'Rattz'</span><span class="token punctuation">,</span>
+age<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+hello<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> <span class="token string">"I'm "</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> obj2 <span class="token operator">=</span> obj1<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj2<span class="token punctuation">.</span>age<span class="token operator">++</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj1<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//测试2 Array</span>
+<span class="token keyword">var</span> fun <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>log<span class="token punctuation">)</span> <span class="token punctuation">{</span>console<span class="token punctuation">.</span>log<span class="token punctuation">}</span><span class="token punctuation">,</span>
+arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>a<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">,</span> fun<span class="token punctuation">]</span><span class="token punctuation">,</span>
+arr2 <span class="token operator">=</span> arr1<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">,</span> arr2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+arr2<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span> <span class="token string">'Mike'</span><span class="token punctuation">;</span>
+arr2<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
+arr2<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">,</span> arr2<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>原文链接：<a href="http://caibaojian.com/javascript-array-copy.html" target="_blank" rel="noopener">http://caibaojian.com/javascript-array-copy.html</a></p>
+<h3 id="方法3：使用-jQuery-的-extend-方法"><a href="#方法3：使用-jQuery-的-extend-方法" class="headerlink" title="方法3：使用 jQuery 的 extend 方法"></a>方法3：使用 <a href="http://caibaojian.com/jquery/" target="_blank" rel="noopener">jQuery</a> 的 extend 方法</h3><p>如果你在使用 jQuery，那么最简单的方法是使用 extend 插件方法。示例：<a href="http://caibaojian.com/javascript-array-copy.html" target="_blank" rel="noopener">·</a></p>
+<pre><code>//code from http://caibaojian.com/javascript-array-copy.html
+var arr1 = [1, 2, [3, 4], {a: 5, b: 6}, 7],
+arr2 = $.extend(true, [], arr1);
+
+console.log(arr1, arr2);
+arr2[1] = 10;
+console.log(arr1, arr2);</code></pre>
             </div>
             <hr/>
 
@@ -870,7 +1058,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">245.1k</span>&nbsp;字
+                class="white-color">246.2k</span>&nbsp;字
             
             
             
