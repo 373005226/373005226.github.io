@@ -27,20 +27,52 @@ tags:
 	}
 </style>
 <style scoped>
-	.my .el-input__inner{
+	.el-input__inner{
 		border-radius: 30px; /* 这个样式不起效果 */
 	}
+</style>
+```
+
+当然直接这样做的话是会污染全局变量的，所以一般的做法是用一个父类去包含
+
+比如：
+
+```css
+<template>
+	<div class="my">
+		<div class="el-input__inner"></div>
+	</div>
+</template>
+
+<style>
+	.my{
+		margin: 20px;
+	}
+	.my .el-input__inner{
+		border-radius: 15px;/* 这个样式起效果 */
+	}
+</style>
+<style scoped lang="less">
+  .my{
+      .el-input__inner{
+      border-radius: 30px; /* 这个样式不起效果 */
+    }
+  }
 </style>
 ```
 
 ## 使用deep样式穿透
 
 ```css
+<template>
+		<div class="el-input__inner"></div>
+</template>
+
 <style scoped>
-	.my .el-input__inner{
+	.el-input__inner{
 		border-radius: 30px;/* 这个不起作用 */
 	}
-	.my /deep/ .el-input__inner{
+	/deep/ .el-input__inner{
 		border-radius: 30px;/* 这个起作用 */
 	}
 </style>
@@ -49,11 +81,15 @@ tags:
 ## 使用>>>穿透
 
 ```css
+<template>
+		<div class="el-input__inner"></div>
+</template>
+
 <style scoped>
-	.my .el-input__inner{
+	.el-input__inner{
 		border-radius: 30px;/* 这个不起作用 */
 	}
-	.my >>> .el-input__inner{
+	>>> .el-input__inner{
 		border-radius: 30px;/* 这些起作用 */
 		border: 1px solid #eceef2;
 		outline: 0;
@@ -65,7 +101,7 @@ tags:
 
 有些样式是行内样式权重比较高则需要使用上面的几种方法来保证可以修改样式并且添加上!important来增加权重
 
-```vue
+```html
 <el-input v-model="input" placeholder="请输入内容" style="width: 300px;"></el-input>
 <style scoped>
 	.my >>> .el-input__inner{

@@ -48,3 +48,216 @@ tags:
 深拷贝：
 
 ![](https://txy-tc-ly-1256104767.cos.ap-guangzhou.myqcloud.com/20200707182324)
+
+## 深拷贝和浅拷贝详解
+
+> 本文知识点引用于：http://caibaojian.com/javascript-array-copy.html
+
+案例：
+
+array1：
+
+```js
+let array1 = [1,'a',true,null,undefined];
+```
+
+### js的原生方法
+
+#### slice()方法
+
+```js
+let c1 = array1.slice();
+```
+
+#### concat()方法
+
+```js
+let cc1 = array1.concat();
+```
+
+#### from()方法
+
+```js
+let fc1 = Array.from(array1);
+```
+
+#### push()方法
+
+```js
+let pc1 = [];
+Array.prototype.push.apply(pc1,array1);
+```
+
+#### map()方法
+
+```js
+let mc1 = array1.map(function(item){
+    return item;
+    });
+```
+
+以上几种方法都能实现数组的`浅拷贝`，即数组的每一项只能是原始类型的数据，如果数组的项包含引用类型，如数组（即js中的二维数组），对象等，以上方法复制的项只是引用。
+
+还有一种方法是，使用[JSON](http://caibaojian.com/t/json)进行转换，先将数组序列化为json字符串，然后再将字符串转换成json对象即可。
+
+### JSON方法的详解
+
+```js
+let jsonc = JSON.parse(JSON.stringify(array1));
+```
+
+这种方法可以变相的实现`深拷贝`,但是这种方法也有其限制：[·](http://caibaojian.com/javascript-array-copy.html)
+
+- 首先，数组中的项如果是`undefined`，那么转换后将变为`null`
+- 如果数组的项为对象，那么对象之间不可相互引用。会造成循环引用，无法JSON序列化。
+
+## 总结：性能分析
+
+以上几种方法都可以实现数组的拷贝，那么，每种方法的性能如何呢，我使用`console.time()`和`console.timeEnd()`跟踪当数组大小为100-10000000时，每个方法所用的时间。注意，这里数组每一项都是随机的5种原始值的一个，不包含引用类型
+
+| 数组大小 | forof      | slice    | concat    | from       | push                             | map        | json       |
+| :------- | :--------- | :------- | --------- | ---------- | -------------------------------- | ---------- | ---------- |
+| 100      | 0.593ms    | 0.038ms  | 0.034ms   | 0.404ms    | 0.054ms                          | 0.193ms    | 0.042ms    |
+| 1000     | 1.606ms    | 0.052ms  | 0.044ms   | 1.311ms    | 0.090ms                          | 0.897ms    | 0.124ms    |
+| 10000    | 2.272ms    | 0.097ms  | 0.093ms   | 3.294ms    | 0.145ms                          | 1.845ms    | 0.772ms    |
+| 100000   | 14.665ms   | 0.901ms  | 0.730ms   | 22.283ms   | 4.002ms                          | 15.894ms   | 9.101ms    |
+| 1000000  | 175.663ms  | 16.051ms | 8.400ms   | 235.900ms  | Maximum call stack size exceeded | 144.058ms  | 97.946ms   |
+| 10000000 | 1597.242ms | 83.860ms | 124.781ms | 2425.540ms | Maximum call stack size exceeded | 1424.344ms | 1043.772ms |
+
+> 当数组大小超过1000000时，push方式就挂了，报错：`Maximum call stack size exceeded`
+
+webkit浏览器使用cocat().非webkit使用slice()。[·](http://caibaojian.com/javascript-array-copy.html)
+
+补上之前文章的另外另种实现：
+
+### 简单的引用复制
+
+```js
+function shallowClone(copyObj) {
+  var obj = {};
+  for ( var i in copyObj) {
+    obj[i] = copyObj[i];
+  }
+  return obj;
+}
+var x = {
+  a: 1,
+  b: { f: { g: 1 } },
+  c: [ 1, 2, 3 ]
+};
+var y = shallowClone(x);
+console.log(y.b.f === x.b.f);     // true
+```
+
+### Object.assign()
+
+Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。[·](http://caibaojian.com/javascript-array-copy.html)
+
+```
+//code from http://caibaojian.com/javascript-array-copy.html
+var x = {
+  a: 1,
+  b: { f: { g: 1 } },
+  c: [ 1, 2, 3 ]
+};
+var y = Object.assign({}, x);
+console.log(y.b.f === x.b.f);     // true
+```
+
+### 深度拷贝
+
+### 方法1：使用 JSON 方法
+
+JSON.stringify(array) 然后再 JSON.parse()。示例：[·](http://caibaojian.com/javascript-array-copy.html)
+
+
+
+```js
+//code from http://caibaojian.com/javascript-array-copy.html
+var arr1 = [1, 2, [3, 4], {a: 5, b: 6}, 7],
+arr2 = JSON.parse(JSON.stringify(arr1));
+
+console.log(arr1, arr2);
+arr2[1] = 10;
+arr2[3].a = 20;
+console.log(arr1[1], arr2[1]);
+console.log(arr1[3], arr2[3]);
+```
+
+此方法存在对古老浏览器的兼容性问题。如确需要作兼容，可引入如下兼容文件解决：[·](http://caibaojian.com/javascript-array-copy.html)
+
+https://github.com/douglascrockford/JSON-js/blob/master/json2.js
+
+**注意：**如果数组值为函数，上述方法还是不行的
+
+
+
+**注意：**如果数组值为函数，上述方法还是不行的。[·](http://caibaojian.com/javascript-array-copy.html)
+
+### 方法2：深度复制的完全实现
+
+考虑到多维数组的嵌套，以及数组值为对象的情况，可以作如下原型扩展（当然写为普通函数实现也是可以的，原型扩展是不建议的方式）：
+
+```js
+Object.prototype.clone = function () {
+var o = {};
+for (var i in this) {
+o[i] = this[i];
+}
+return o;
+};
+Array.prototype.clone = function () {
+var arr = [];
+for (var i = 0; i < this.length; i++)
+if (typeof this[i] !== 'object') {
+arr.push(this[i]);
+} else {
+arr.push(this[i].clone());
+}
+return arr;
+};
+
+//测试1 Object
+var obj1 = {
+name: 'Rattz',
+age: 20,
+hello: function () {
+return "I'm " + name;
+}
+};
+var obj2 = obj1.clone();
+obj2.age++;
+console.log(obj1.age);
+
+//测试2 Array
+var fun = function(log) {console.log},
+arr1 = [1, 2, [3, 4], {a: 5, b: 6}, fun],
+arr2 = arr1.clone();
+
+console.log(arr1, arr2);
+
+arr2[2][1]= 'Mike';
+arr2[3].a = 50;
+arr2[4] = 10;
+console.log(arr1, arr2);
+```
+
+原文链接：http://caibaojian.com/javascript-array-copy.html
+
+### 方法3：使用 [jQuery](http://caibaojian.com/jquery/) 的 extend 方法
+
+如果你在使用 jQuery，那么最简单的方法是使用 extend 插件方法。示例：[·](http://caibaojian.com/javascript-array-copy.html)
+
+```
+//code from http://caibaojian.com/javascript-array-copy.html
+var arr1 = [1, 2, [3, 4], {a: 5, b: 6}, 7],
+arr2 = $.extend(true, [], arr1);
+
+console.log(arr1, arr2);
+arr2[1] = 10;
+console.log(arr1, arr2);
+```
+
+
+
+
